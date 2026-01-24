@@ -1109,9 +1109,43 @@ Last Updated: 2026-01-24
 
 ---
 
+### 2026-01-24 - US-038: Lesson: Defining Methods
+
+**What was implemented:**
+- Created Defining Methods lesson at `/content/lessons/methods/defining-methods.md`
+- Created the `methods` directory for method-related lessons
+- Comprehensive Arabic explanations of:
+  - `def`/`end` syntax for defining methods
+  - Parameters vs arguments distinction
+  - Multiple parameters
+  - Default argument values with proper ordering rules
+  - Method naming conventions (snake_case, ?, !)
+  - Methods calling other methods
+  - Methods with conditionals and loops
+  - Local variables and scope
+- Practical examples: calculator, name formatting, validation, greetings
+- Common errors section: forgetting end, wrong argument count, parameter ordering
+- Exercise: create greeting method with optional `greeting` parameter (default "مرحباً")
+- Added exercise configuration to course.json with hints
+- All typechecks, lint, and build pass
+
+**Files changed:**
+- content/lessons/methods/defining-methods.md (new - lesson content)
+- content/course.json (added exercise configuration for defining-methods lesson)
+
+**Learnings for future iterations:**
+- Created new `methods` directory for method-related lessons
+- Methods in Ruby use `def`/`end` syntax, similar to other blocks
+- Default parameters must come AFTER required parameters
+- Method names use snake_case, predicate methods end with `?`, bang methods end with `!`
+- Variables inside methods are local - can't access outer variables without passing them as arguments
+- Exercise tests both required parameter (name) and optional parameter with default (greeting)
+
+---
+
 ## Current Story
 
-(completed US-037, ready for next iteration)
+(completed US-038, ready for next iteration)
 
 ## Notes
 
