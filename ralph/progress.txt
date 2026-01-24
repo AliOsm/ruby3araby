@@ -980,9 +980,40 @@ Last Updated: 2026-01-24
 
 ---
 
+### 2026-01-24 - US-034: Lesson: Arrays
+
+**What was implemented:**
+- Created Arrays lesson at `/content/lessons/collections/arrays.md`
+- Created the `collections` directory for collection-related lessons
+- Comprehensive Arabic explanations of:
+  - Creating arrays: [], Array.new, %w syntax
+  - Accessing elements: positive/negative indices, ranges, first/last
+  - Modifying arrays: push/<<, pop, shift, unshift, insert, delete, delete_at
+  - Array information: length, size, count, empty?, include?, index
+  - Iterating with for and each, each_with_index
+- Practical examples: shopping list, grade tracking, task list
+- Exercise: manage a shopping list with add, remove, and print operations
+- Added exercise configuration to course.json with hints
+- All typechecks, lint, and build pass
+- Browser verification confirmed: RTL layout, content rendering, code playground with exercise
+
+**Files changed:**
+- content/lessons/collections/arrays.md (new - lesson content)
+- content/course.json (added exercise configuration for arrays lesson)
+
+**Learnings for future iterations:**
+- Created new `collections` directory for array/hash/enumerable lessons
+- Arrays in Ruby use 0-based indexing (like most languages)
+- Negative indices access from end: arr[-1] is last element
+- << (shovel operator) is preferred over push for adding single elements
+- each_with_index useful for displaying numbered lists
+- Exercise tests multiple operations: create, add (end/beginning), delete, access
+
+---
+
 ## Current Story
 
-(completed US-033, ready for next iteration)
+(completed US-034, ready for next iteration)
 
 ## Notes
 
