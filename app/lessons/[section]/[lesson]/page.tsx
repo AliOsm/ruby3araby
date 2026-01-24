@@ -9,6 +9,7 @@ import {
 import LessonContent from "./LessonContent";
 import LessonPlayground from "./LessonPlayground";
 import Sidebar from "@/components/Sidebar";
+import LessonActions from "@/components/LessonActions";
 
 interface LessonPageProps {
   params: Promise<{
@@ -78,10 +79,17 @@ export default async function LessonPage({ params }: LessonPageProps) {
 
         {/* Main content area - split layout on desktop, stacked on mobile */}
         <main className="mx-auto max-w-5xl px-3 py-4 sm:px-4 sm:py-6">
-          {/* Lesson title - responsive font size */}
-          <h1 className="mb-4 text-xl font-bold text-foreground sm:mb-6 sm:text-2xl md:text-3xl">
-            {nav.current.lesson.title}
-          </h1>
+          {/* Lesson title with action buttons - responsive layout */}
+          <div className="mb-4 flex flex-wrap items-start justify-between gap-3 sm:mb-6">
+            <h1 className="text-xl font-bold text-foreground sm:text-2xl md:text-3xl">
+              {nav.current.lesson.title}
+            </h1>
+            <LessonActions
+              sectionSlug={section}
+              lessonSlug={lesson}
+              lessonTitle={nav.current.lesson.title}
+            />
+          </div>
 
           {/* Split layout: Content on right (RTL), Playground on left */}
           {/* In RTL with flex-row: first child appears on RIGHT, last child on LEFT */}
