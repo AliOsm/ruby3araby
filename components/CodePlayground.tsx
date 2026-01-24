@@ -318,88 +318,69 @@ export default function CodePlayground({
 
       {/* Control Buttons - touch-friendly with 44px min tap targets */}
       <div className="flex flex-wrap items-center gap-2">
-        {/* Run Button */}
-        <div className="flex flex-col items-center gap-1">
+        {/* Run Button with Tooltip */}
+        <div className="group relative">
           <button
             onClick={handleRun}
             disabled={isLoading}
-            className="flex min-h-[44px] min-w-[44px] items-center justify-center gap-2 rounded-lg bg-ruby-primary px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-ruby-secondary disabled:cursor-not-allowed disabled:opacity-50 sm:px-4 sm:py-2 sm:text-base"
+            aria-label="تشغيل (Ctrl+Enter)"
+            className="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg bg-ruby-primary p-2.5 text-white transition-colors hover:bg-ruby-secondary disabled:cursor-not-allowed disabled:opacity-50"
           >
             {isLoading ? (
-              <>
-                <svg
-                  className="h-4 w-4 animate-spin sm:h-5 sm:w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <circle
-                    className="opacity-25"
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                  />
-                  <path
-                    className="opacity-75"
-                    fill="currentColor"
-                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                  />
-                </svg>
-                <span className="hidden xs:inline">{loadingText}</span>
-                <span className="xs:hidden">...</span>
-              </>
-            ) : (
-              <>
-                <svg
-                  className="h-5 w-5"
+              <svg
+                className="h-5 w-5 animate-spin"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  className="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  strokeWidth="4"
+                />
+                <path
+                  className="opacity-75"
                   fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                <span>تشغيل</span>
-              </>
-            )}
-          </button>
-          <span className="hidden text-xs text-foreground/60 sm:block" dir="ltr">
-            Ctrl+Enter
-          </span>
-        </div>
-
-        {/* Check Answer Button - only shown when expectedOutput is provided */}
-        {hasValidation && (
-          <button
-            onClick={handleCheckAnswer}
-            disabled={isLoading}
-            className="flex min-h-[44px] min-w-[44px] items-center justify-center gap-2 rounded-lg bg-blue-600 px-3 py-2.5 text-sm font-medium text-white transition-colors hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50 sm:px-4 sm:py-2 sm:text-base"
-          >
-            <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
-              <path
-                fillRule="evenodd"
-                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                clipRule="evenodd"
-              />
-            </svg>
-            <span className="hidden xs:inline">تحقق من الإجابة</span>
-            <span className="xs:hidden">تحقق</span>
-          </button>
-        )}
-
-        {/* Copy Button */}
-        <button
-          onClick={handleCopy}
-          disabled={isLoading}
-          className="flex min-h-[44px] min-w-[44px] items-center justify-center gap-2 rounded-lg border border-foreground/20 bg-foreground/10 px-3 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-foreground/20 disabled:cursor-not-allowed disabled:opacity-50 sm:px-4 sm:py-2 sm:text-base"
-        >
-          {copySuccess ? (
-            <>
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                />
+              </svg>
+            ) : (
               <svg
                 className="h-5 w-5"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            )}
+          </button>
+          {/* Tooltip */}
+          <div className="pointer-events-none absolute top-full right-1/2 z-10 mt-2 translate-x-1/2 whitespace-nowrap rounded bg-foreground px-2 py-1 text-xs text-background opacity-0 shadow-lg transition-opacity delay-300 group-hover:opacity-100" dir="rtl">
+            تشغيل
+            <span className="mx-1 text-background/60">|</span>
+            <span dir="ltr">Ctrl+Enter</span>
+            {/* Arrow */}
+            <div className="absolute bottom-full right-1/2 translate-x-1/2 border-4 border-transparent border-b-foreground" />
+          </div>
+        </div>
+
+        {/* Copy Button with Tooltip */}
+        <div className="group relative">
+          <button
+            onClick={handleCopy}
+            disabled={isLoading}
+            aria-label="نسخ الشيفرة"
+            className="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg border border-foreground/20 bg-foreground/10 p-2.5 text-foreground transition-colors hover:bg-foreground/20 disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            {copySuccess ? (
+              <svg
+                className="h-5 w-5 text-green-500"
                 fill="currentColor"
                 viewBox="0 0 20 20"
               >
@@ -409,10 +390,7 @@ export default function CodePlayground({
                   clipRule="evenodd"
                 />
               </svg>
-              <span className="hidden xs:inline">تم النسخ!</span>
-            </>
-          ) : (
-            <>
+            ) : (
               <svg
                 className="h-5 w-5"
                 fill="none"
@@ -426,32 +404,64 @@ export default function CodePlayground({
                   d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
                 />
               </svg>
-              <span className="hidden xs:inline">نسخ الشيفرة</span>
-            </>
-          )}
-        </button>
+            )}
+          </button>
+          {/* Tooltip */}
+          <div className="pointer-events-none absolute top-full right-1/2 z-10 mt-2 translate-x-1/2 whitespace-nowrap rounded bg-foreground px-2 py-1 text-xs text-background opacity-0 shadow-lg transition-opacity delay-300 group-hover:opacity-100" dir="rtl">
+            {copySuccess ? "تم النسخ!" : "نسخ الشيفرة"}
+            {/* Arrow */}
+            <div className="absolute bottom-full right-1/2 translate-x-1/2 border-4 border-transparent border-b-foreground" />
+          </div>
+        </div>
 
-        {/* Reset Button */}
-        <button
-          onClick={handleReset}
-          disabled={isLoading}
-          className="flex min-h-[44px] min-w-[44px] items-center justify-center gap-2 rounded-lg border border-foreground/20 bg-foreground/10 px-3 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-foreground/20 disabled:cursor-not-allowed disabled:opacity-50 sm:px-4 sm:py-2 sm:text-base"
-        >
-          <svg
-            className="h-5 w-5"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
+        {/* Reset Button with Tooltip */}
+        <div className="group relative">
+          <button
+            onClick={handleReset}
+            disabled={isLoading}
+            aria-label="إعادة تعيين"
+            className="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg border border-foreground/20 bg-foreground/10 p-2.5 text-foreground transition-colors hover:bg-foreground/20 disabled:cursor-not-allowed disabled:opacity-50"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-            />
-          </svg>
-          <span className="hidden xs:inline">إعادة تعيين</span>
-        </button>
+            <svg
+              className="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+              />
+            </svg>
+          </button>
+          {/* Tooltip */}
+          <div className="pointer-events-none absolute top-full right-1/2 z-10 mt-2 translate-x-1/2 whitespace-nowrap rounded bg-foreground px-2 py-1 text-xs text-background opacity-0 shadow-lg transition-opacity delay-300 group-hover:opacity-100" dir="rtl">
+            إعادة تعيين
+            {/* Arrow */}
+            <div className="absolute bottom-full right-1/2 translate-x-1/2 border-4 border-transparent border-b-foreground" />
+          </div>
+        </div>
+
+        {/* Check Answer Button - only shown when expectedOutput is provided */}
+        {hasValidation && (
+          <button
+            onClick={handleCheckAnswer}
+            disabled={isLoading}
+            className="flex min-h-[44px] items-center justify-center gap-2 rounded-lg bg-blue-600 px-3 py-2.5 text-sm font-medium text-white transition-colors hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50 sm:px-4 sm:py-2 sm:text-base"
+          >
+            <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                fillRule="evenodd"
+                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                clipRule="evenodd"
+              />
+            </svg>
+            <span className="hidden xs:inline">تحقق من الإجابة</span>
+            <span className="xs:hidden">تحقق</span>
+          </button>
+        )}
 
         {/* Keyboard Shortcut Hint for Save */}
         {shouldAutoSave && (
