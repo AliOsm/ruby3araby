@@ -424,7 +424,18 @@
           "id": "ranges-enumerables",
           "slug": "ranges-enumerables",
           "title": "النطاقات والتعداد",
-          "contentPath": "/content/lessons/collections/ranges-enumerables.md"
+          "contentPath": "/content/lessons/collections/ranges-enumerables.md",
+          "exercise": {
+            "starterCode": "# 1. أنشئ مصفوفة numbers تحتوي على الأرقام من 1 إلى 20\n\n\n# 2. استخدم select لاختيار الأرقام الزوجية فقط\n\n\n# 3. استخدم map لضرب كل رقم في 3\n\n\n# 4. استخدم reduce لحساب المجموع\n\n\n# 5. اطبع النتائج بالترتيب:\n# - المصفوفة الأصلية\n# - الأرقام الزوجية\n# - الأرقام مضروبة في 3\n# - المجموع النهائي\n",
+            "expectedOutput": "[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]\n[2, 4, 6, 8, 10, 12, 14, 16, 18, 20]\n[6, 12, 18, 24, 30, 36, 42, 48, 54, 60]\n330",
+            "hints": [
+              "لإنشاء المصفوفة من نطاق: numbers = (1..20).to_a",
+              "للتصفية: evens = numbers.select { |n| n.even? }",
+              "للتحويل: tripled = evens.map { |n| n * 3 }",
+              "للمجموع: sum = tripled.reduce(:+) أو tripled.sum",
+              "استخدم p لطباعة المصفوفات: p numbers ثم p evens ثم p tripled ثم puts sum"
+            ]
+          }
         }
       ]
     },
