@@ -675,7 +675,19 @@
           "id": "calculator",
           "slug": "calculator",
           "title": "تحدي الآلة الحاسبة",
-          "contentPath": "/content/lessons/challenges/calculator.md"
+          "contentPath": "/content/lessons/challenges/calculator.md",
+          "exercise": {
+            "starterCode": "# الآلة الحاسبة التفاعلية\n# اكتب برنامجاً يستقبل رقمين وعملية حسابية\n# ثم يُظهر النتيجة\n\n# 1. اطلب الرقم الأول\nputs \"أدخل الرقم الأول:\"\n\n\n# 2. اطلب العملية الحسابية\nputs \"أدخل العملية (+, -, *, /):\"\n\n\n# 3. اطلب الرقم الثاني\nputs \"أدخل الرقم الثاني:\"\n\n\n# 4. نفّذ العملية واعرض النتيجة\n# تلميح: استخدم case/when أو if-elsif-else\n# تلميح: تعامل مع حالة القسمة على صفر\n",
+            "expectedOutput": "أدخل الرقم الأول:\nأدخل العملية (+, -, *, /):\nأدخل الرقم الثاني:\nالنتيجة: 8.0 / 2.0 = 4.0",
+            "defaultInput": "8\n/\n2",
+            "hints": [
+              "استخدم gets.chomp.to_f للحصول على الأرقام كأعداد عشرية",
+              "استخدم gets.chomp للحصول على العملية كنص",
+              "استخدم case operation للتحقق من نوع العملية",
+              "لكل عملية (when \"+\"، when \"-\"، إلخ) احسب result = num1 [العملية] num2",
+              "اطبع النتيجة: puts \"النتيجة: #{num1} #{operation} #{num2} = #{result}\""
+            ]
+          }
         },
         {
           "id": "guessing-game",
