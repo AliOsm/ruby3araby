@@ -253,23 +253,26 @@ export default function CodePlayground({
     <div className="flex flex-col gap-3">
       {/* Simulated Input Panel */}
       {shouldShowInputPanel && (
-        <div className="overflow-hidden rounded-lg border border-gray-700 bg-[#1e1e1e]">
-          <div className="border-b border-gray-700 bg-gray-800 px-3 py-2">
-            <span className="text-sm font-medium text-gray-300">
+        <div
+          className="overflow-hidden rounded-lg border border-foreground/20"
+          style={{ backgroundColor: "var(--editor-bg)" }}
+        >
+          <div className="border-b border-foreground/20 bg-foreground/5 px-3 py-2">
+            <span className="text-sm font-medium text-foreground/80">
               المدخلات المحاكاة
             </span>
           </div>
           <div className="p-3">
-            <p className="mb-2 text-xs text-gray-400" dir="rtl">
+            <p className="mb-2 text-xs text-foreground/60" dir="rtl">
               أدخل القيم التي سيتم استخدامها عند استدعاء{" "}
-              <code className="rounded bg-gray-700 px-1 font-mono">gets</code>.
+              <code className="rounded bg-foreground/10 px-1 font-mono">gets</code>.
               كل سطر يمثل قيمة إدخال واحدة.
             </p>
             <textarea
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="أدخل قيمة لكل سطر..."
-              className="w-full resize-none rounded border border-gray-600 bg-[#2d2d2d] px-3 py-2 font-mono text-sm text-gray-300 placeholder-gray-500 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+              className="w-full resize-none rounded border border-foreground/20 bg-foreground/5 px-3 py-2 font-mono text-sm text-foreground placeholder-foreground/40 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
               rows={3}
               dir="ltr"
               disabled={isRunning || isInitializing}
@@ -352,7 +355,7 @@ export default function CodePlayground({
         <button
           onClick={handleCopy}
           disabled={isLoading}
-          className="flex items-center gap-2 rounded-lg bg-gray-600 px-4 py-2 font-medium text-white transition-colors hover:bg-gray-700 disabled:cursor-not-allowed disabled:opacity-50"
+          className="flex items-center gap-2 rounded-lg border border-foreground/20 bg-foreground/10 px-4 py-2 font-medium text-foreground transition-colors hover:bg-foreground/20 disabled:cursor-not-allowed disabled:opacity-50"
         >
           {copySuccess ? (
             <>
@@ -393,7 +396,7 @@ export default function CodePlayground({
         <button
           onClick={handleReset}
           disabled={isLoading}
-          className="flex items-center gap-2 rounded-lg bg-gray-600 px-4 py-2 font-medium text-white transition-colors hover:bg-gray-700 disabled:cursor-not-allowed disabled:opacity-50"
+          className="flex items-center gap-2 rounded-lg border border-foreground/20 bg-foreground/10 px-4 py-2 font-medium text-foreground transition-colors hover:bg-foreground/20 disabled:cursor-not-allowed disabled:opacity-50"
         >
           <svg
             className="h-4 w-4"
@@ -539,8 +542,8 @@ export default function CodePlayground({
 
           {/* Expected vs Actual diff */}
           {expectedOutput && output && (
-            <div className="rounded-lg border border-gray-600 bg-gray-800/50 p-4">
-              <h4 className="mb-3 text-sm font-medium text-gray-300" dir="rtl">
+            <div className="rounded-lg border border-foreground/20 bg-foreground/5 p-4">
+              <h4 className="mb-3 text-sm font-medium text-foreground/70" dir="rtl">
                 مقارنة المخرجات:
               </h4>
               <div className="grid gap-3 md:grid-cols-2">
@@ -549,7 +552,7 @@ export default function CodePlayground({
                     المخرجات الفعلية:
                   </div>
                   <pre
-                    className="max-h-[150px] overflow-auto rounded border border-red-500/30 bg-red-500/5 p-2 font-mono text-xs text-gray-300"
+                    className="max-h-[150px] overflow-auto rounded border border-red-500/30 bg-red-500/5 p-2 font-mono text-xs text-foreground/80"
                     dir="ltr"
                   >
                     {output || "(فارغ)"}
@@ -560,7 +563,7 @@ export default function CodePlayground({
                     المخرجات المتوقعة:
                   </div>
                   <pre
-                    className="max-h-[150px] overflow-auto rounded border border-green-500/30 bg-green-500/5 p-2 font-mono text-xs text-gray-300"
+                    className="max-h-[150px] overflow-auto rounded border border-green-500/30 bg-green-500/5 p-2 font-mono text-xs text-foreground/80"
                     dir="ltr"
                   >
                     {expectedOutput}
@@ -573,13 +576,16 @@ export default function CodePlayground({
       )}
 
       {/* Output Panel */}
-      <div className="overflow-hidden rounded-lg border border-gray-700 bg-[#1e1e1e]">
-        <div className="border-b border-gray-700 bg-gray-800 px-3 py-2">
-          <span className="text-sm font-medium text-gray-300">المخرجات</span>
+      <div
+        className="overflow-hidden rounded-lg border border-foreground/20"
+        style={{ backgroundColor: "var(--editor-bg)" }}
+      >
+        <div className="border-b border-foreground/20 bg-foreground/5 px-3 py-2">
+          <span className="text-sm font-medium text-foreground/80">المخرجات</span>
         </div>
         <div className="min-h-[100px] p-3 font-mono text-sm" dir="ltr">
           {isLoading ? (
-            <div className="flex items-center gap-2 text-gray-400">
+            <div className="flex items-center gap-2 text-foreground/60">
               <svg
                 className="h-4 w-4 animate-spin"
                 fill="none"
@@ -604,14 +610,14 @@ export default function CodePlayground({
           ) : error ? (
             <div className="space-y-2">
               {output && (
-                <pre className="whitespace-pre-wrap text-gray-300">{output}</pre>
+                <pre className="whitespace-pre-wrap text-foreground/80">{output}</pre>
               )}
               <pre className="whitespace-pre-wrap text-red-400">{error}</pre>
             </div>
           ) : output ? (
-            <pre className="whitespace-pre-wrap text-gray-300">{output}</pre>
+            <pre className="whitespace-pre-wrap text-foreground/80">{output}</pre>
           ) : (
-            <span className="text-gray-500">
+            <span className="text-foreground/50">
               اضغط على &quot;تشغيل&quot; لرؤية المخرجات
             </span>
           )}

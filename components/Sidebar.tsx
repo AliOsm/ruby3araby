@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { CourseStructure, SectionStub } from "@/lib/types";
 import { ProgressService } from "@/lib/progress";
+import ThemeToggle from "./ThemeToggle";
 
 interface SidebarProps {
   course: CourseStructure;
@@ -130,7 +131,7 @@ export default function Sidebar({ course }: SidebarProps) {
       {/* Mobile hamburger button - fixed position */}
       <button
         onClick={() => setIsMobileOpen(!isMobileOpen)}
-        className="fixed top-4 right-4 z-50 flex h-10 w-10 items-center justify-center rounded-lg bg-gray-800 text-white shadow-lg lg:hidden"
+        className="fixed top-4 right-4 z-50 flex h-10 w-10 items-center justify-center rounded-lg bg-foreground/10 text-foreground shadow-lg lg:hidden"
         aria-label={isMobileOpen ? "إغلاق القائمة" : "فتح القائمة"}
       >
         {isMobileOpen ? (
@@ -176,19 +177,22 @@ export default function Sidebar({ course }: SidebarProps) {
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 right-0 z-40 h-full w-72 transform overflow-y-auto border-l border-gray-800 bg-gray-900 transition-transform duration-300 ease-in-out lg:sticky lg:top-0 lg:z-0 lg:h-screen lg:translate-x-0 ${
+        className={`fixed top-0 right-0 z-40 h-full w-72 transform overflow-y-auto border-l border-foreground/10 bg-background transition-transform duration-300 ease-in-out lg:sticky lg:top-0 lg:z-0 lg:h-screen lg:translate-x-0 ${
           isMobileOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
         {/* Sidebar header */}
-        <div className="sticky top-0 z-10 border-b border-gray-800 bg-gray-900 p-4">
-          <Link
-            href="/"
-            className="block text-xl font-bold text-emerald-400 hover:text-emerald-300 transition-colors"
-          >
-            {course.title}
-          </Link>
-          <p className="mt-1 text-sm text-gray-400">دورة تعلم روبي</p>
+        <div className="sticky top-0 z-10 border-b border-foreground/10 bg-background p-4">
+          <div className="flex items-center justify-between">
+            <Link
+              href="/"
+              className="block text-xl font-bold text-emerald-400 hover:text-emerald-300 transition-colors"
+            >
+              {course.title}
+            </Link>
+            <ThemeToggle />
+          </div>
+          <p className="mt-1 text-sm text-foreground/60">دورة تعلم روبي</p>
         </div>
 
         {/* Scrollable sections list */}
@@ -210,13 +214,13 @@ export default function Sidebar({ course }: SidebarProps) {
           </ul>
 
           {/* Glossary link */}
-          <div className="mt-6 border-t border-gray-800 pt-4">
+          <div className="mt-6 border-t border-foreground/10 pt-4">
             <Link
               href="/glossary"
-              className="flex items-center gap-3 rounded-lg px-3 py-2 text-gray-300 transition-colors hover:bg-gray-800 hover:text-white"
+              className="flex items-center gap-3 rounded-lg px-3 py-2 text-foreground/70 transition-colors hover:bg-foreground/10 hover:text-foreground"
             >
               <svg
-                className="h-5 w-5 text-gray-500"
+                className="h-5 w-5 text-foreground/50"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -269,7 +273,7 @@ function SectionAccordion({
         className={`flex w-full items-center justify-between rounded-lg px-3 py-2 text-right transition-colors ${
           isCurrentSection
             ? "bg-emerald-900/30 text-emerald-400"
-            : "text-gray-300 hover:bg-gray-800 hover:text-white"
+            : "text-foreground/70 hover:bg-foreground/10 hover:text-foreground"
         }`}
         aria-expanded={isOpen}
       >
@@ -278,7 +282,7 @@ function SectionAccordion({
             className={`flex h-6 w-6 items-center justify-center rounded-full text-xs font-medium ${
               isSectionComplete
                 ? "bg-emerald-600 text-white"
-                : "bg-gray-700 text-gray-300"
+                : "bg-foreground/20 text-foreground/70"
             }`}
           >
             {isSectionComplete ? (
@@ -294,13 +298,13 @@ function SectionAccordion({
             )}
           </span>
           <span className="font-medium">{section.title}</span>
-          <span className="text-xs text-gray-500">
+          <span className="text-xs text-foreground/50">
             ({completionStats.completed}/{completionStats.total})
           </span>
         </span>
         {/* Chevron indicator */}
         <svg
-          className={`h-4 w-4 text-gray-500 transition-transform duration-200 ${
+          className={`h-4 w-4 text-foreground/50 transition-transform duration-200 ${
             isOpen ? "rotate-180" : ""
           }`}
           fill="none"
@@ -333,13 +337,13 @@ function SectionAccordion({
                   isCurrent
                     ? "bg-emerald-600 text-white font-medium"
                     : isCompleted
-                      ? "text-emerald-400 hover:bg-gray-800 hover:text-emerald-300"
-                      : "text-gray-400 hover:bg-gray-800 hover:text-white"
+                      ? "text-emerald-400 hover:bg-foreground/10 hover:text-emerald-300"
+                      : "text-foreground/60 hover:bg-foreground/10 hover:text-foreground"
                 }`}
               >
                 <span
                   className={`flex h-5 w-5 items-center justify-center text-xs ${
-                    isCompleted && !isCurrent ? "text-emerald-500" : "text-gray-500"
+                    isCompleted && !isCurrent ? "text-emerald-500" : "text-foreground/50"
                   }`}
                 >
                   {isCompleted ? (

@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ProgressService } from "@/lib/progress";
 import { getCourseStructure } from "@/lib/course-loader";
+import ThemeToggle from "@/components/ThemeToggle";
 
 // Static code preview for the mockup
 const previewCode = `# مرحبا بك في روبي!
@@ -54,6 +55,33 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      {/* Header with theme toggle */}
+      <header className="sticky top-0 z-50 border-b border-foreground/10 bg-background/80 backdrop-blur-md">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
+          <Link
+            href="/"
+            className="text-xl font-bold text-emerald-500 hover:text-emerald-400 transition-colors"
+          >
+            روبي بالعربي
+          </Link>
+          <div className="flex items-center gap-4">
+            <Link
+              href="/progress"
+              className="text-sm text-foreground/70 hover:text-foreground transition-colors"
+            >
+              تقدمي
+            </Link>
+            <Link
+              href="/glossary"
+              className="text-sm text-foreground/70 hover:text-foreground transition-colors"
+            >
+              المصطلحات
+            </Link>
+            <ThemeToggle />
+          </div>
+        </div>
+      </header>
+
       {/* Hero Section */}
       <section className="relative overflow-hidden border-b border-foreground/10 bg-gradient-to-b from-emerald-950/20 to-background">
         <div className="mx-auto max-w-6xl px-6 py-20 lg:py-32">

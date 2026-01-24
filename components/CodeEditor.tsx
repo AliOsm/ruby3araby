@@ -2,7 +2,8 @@
 
 import Editor, { OnChange, OnMount } from "@monaco-editor/react";
 import { editor } from "monaco-editor";
-import { useCallback, useRef } from "react";
+import { useCallback, useRef, useMemo } from "react";
+import { useTheme } from "@/lib/theme";
 
 export interface CodeEditorProps {
   value: string;
@@ -18,6 +19,13 @@ export default function CodeEditor({
   readOnly = false,
 }: CodeEditorProps) {
   const editorRef = useRef<editor.IStandaloneCodeEditor | null>(null);
+  const { resolvedTheme } = useTheme();
+
+  // Derive Monaco theme from resolved theme (no state needed)
+  const monacoTheme = useMemo<"vs-dark" | "light">(
+    () => (resolvedTheme === "dark" ? "vs-dark" : "light"),
+    [resolvedTheme]
+  );
 
   const handleEditorDidMount: OnMount = useCallback((mountedEditor) => {
     editorRef.current = mountedEditor;
@@ -34,13 +42,13 @@ export default function CodeEditor({
 
   return (
     <div
-      className="overflow-hidden rounded-lg border border-gray-700"
+      className="overflow-hidden rounded-lg border border-foreground/20"
       dir="ltr"
     >
       <Editor
         height={height}
         language="ruby"
-        theme="vs-dark"
+        theme={monacoTheme}
         value={value}
         onChange={handleChange}
         onMount={handleEditorDidMount}
@@ -80,7 +88,10 @@ export default function CodeEditor({
           },
         }}
         loading={
-          <div className="flex h-full items-center justify-center bg-[#1e1e1e] text-gray-400">
+          <div
+            className="flex h-full items-center justify-center text-foreground/60"
+            style={{ backgroundColor: "var(--editor-bg)" }}
+          >
             <div className="flex items-center gap-2">
               <svg
                 className="h-5 w-5 animate-spin"
