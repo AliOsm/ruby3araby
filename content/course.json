@@ -105,7 +105,19 @@
           "id": "operators",
           "slug": "operators",
           "title": "العمليات الحسابية والمقارنة",
-          "contentPath": "/content/lessons/fundamentals/operators.md"
+          "contentPath": "/content/lessons/fundamentals/operators.md",
+          "exercise": {
+            "starterCode": "# عرّف المتغيرين:\n# a = 15\n# b = 4\n\n# اطبع ناتج جمعهما\n\n# اطبع ناتج ضربهما\n\n# اطبع باقي قسمة a على b\n\n# اطبع ناتج a أُس 2\n\n# اطبع نتيجة المقارنة: هل a أكبر من b؟\n\n# اطبع نتيجة المقارنة: هل a يساوي 15؟\n",
+            "expectedOutput": "19\n60\n3\n225\ntrue\ntrue",
+            "hints": [
+              "ابدأ بتعريف المتغيرين: a = 15 و b = 4",
+              "للجمع استخدم: puts a + b",
+              "للضرب استخدم: puts a * b",
+              "لباقي القسمة استخدم: puts a % b",
+              "للأس استخدم: puts a ** 2",
+              "للمقارنة استخدم: puts a > b ثم puts a == 15"
+            ]
+          }
         },
         {
           "id": "boolean-logic",
