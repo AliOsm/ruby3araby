@@ -519,9 +519,37 @@ Last Updated: 2026-01-24
 
 ---
 
+### 2026-01-24 - US-019: Lesson: Constants and Symbols
+
+**What was implemented:**
+- Created constants and symbols lesson at `/content/lessons/fundamentals/constants-symbols.md`
+- Comprehensive Arabic explanations of:
+  - Constants: UPPERCASE naming, when to use (PI, settings, limits)
+  - Why constants matter: warning when changed but not prevented
+  - Symbols: `:name` syntax, memory efficiency, immutability
+  - Difference between symbols and strings (object_id comparison)
+  - When to use symbols: hash keys, statuses, method names
+  - Converting between symbols and strings (to_sym, to_s)
+- Comparison table: Constants vs Symbols
+- Practical example: application settings with constants and symbols
+- Exercise: define constants and symbols for country data
+- Added exercise configuration to course.json with hints
+- All typechecks, lint, and build pass
+
+**Files changed:**
+- content/lessons/fundamentals/constants-symbols.md (new - lesson content)
+- content/course.json (added exercise configuration for constants-symbols lesson)
+
+**Learnings for future iterations:**
+- Constants in Ruby give warnings but don't prevent reassignment - important to mention
+- Symbol memory efficiency shown by comparing object_id of same symbol vs same string
+- Symbols are commonly used as hash keys (will be important for hashes lesson later)
+
+---
+
 ## Current Story
 
-(completed US-018, ready for next iteration)
+(completed US-019, ready for next iteration)
 
 ## Notes
 
