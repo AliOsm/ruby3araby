@@ -157,7 +157,18 @@
           "id": "string-interpolation",
           "slug": "string-interpolation",
           "title": "دمج المتغيرات في النصوص",
-          "contentPath": "/content/lessons/fundamentals/string-interpolation.md"
+          "contentPath": "/content/lessons/fundamentals/string-interpolation.md",
+          "exercise": {
+            "starterCode": "# أنشئ المتغيرات التالية:\n# city = \"الرياض\"\n# temperature = 35\n# day = \"الأحد\"\n\n# اطبع باستخدام الدمج:\n# \"الطقس في الرياض\"\n# \"اليوم: الأحد\"\n# \"درجة الحرارة: 35 درجة مئوية\"\n# \"الحرارة بالفهرنهايت: [الحساب]\"\n# صيغة التحويل: temperature * 9/5 + 32\n\n",
+            "expectedOutput": "الطقس في الرياض\nاليوم: الأحد\nدرجة الحرارة: 35 درجة مئوية\nالحرارة بالفهرنهايت: 95",
+            "hints": [
+              "ابدأ بتعريف المتغيرات الثلاثة: city و temperature و day",
+              "استخدم علامات اقتباس مزدوجة \"...\" وليس مفردة '...'",
+              "للسطر الأول: puts \"الطقس في #{city}\"",
+              "للسطر الرابع، ضع الحساب داخل #{}: puts \"الحرارة بالفهرنهايت: #{temperature * 9/5 + 32}\"",
+              "تأكد من ترتيب الأسطر الأربعة بالضبط كما في الناتج المتوقع"
+            ]
+          }
         },
         {
           "id": "string-methods",
