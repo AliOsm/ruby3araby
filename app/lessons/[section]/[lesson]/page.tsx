@@ -86,15 +86,15 @@ export default async function LessonPage({ params }: LessonPageProps) {
           {/* Split layout: Content on right (RTL), Playground on left */}
           <div className="flex flex-col gap-6 xl:flex-row-reverse">
             {/* Arabic content panel - right side in RTL */}
-            <div className="flex-1 xl:max-w-[50%]">
+            <article className="flex-1 xl:max-w-[50%]">
               <LessonContent
                 sectionSlug={section}
                 lessonSlug={lesson}
               />
-            </div>
+            </article>
 
             {/* Code playground panel - left side in RTL, mobile-optimized */}
-            <div className="min-w-0 flex-1 xl:max-w-[50%] xl:sticky xl:top-4 xl:self-start">
+            <aside className="min-w-0 flex-1 xl:max-w-[50%] xl:sticky xl:top-4 xl:self-start">
               <div className="rounded-lg border border-foreground/10 bg-foreground/5 p-3 sm:p-4">
                 <h2 className="mb-3 text-base font-semibold text-foreground sm:mb-4 sm:text-lg">
                   {nav.current.lesson.exercise ? "التمرين" : "جرب الكود"}
@@ -104,7 +104,7 @@ export default async function LessonPage({ params }: LessonPageProps) {
                   exercise={nav.current.lesson.exercise}
                 />
               </div>
-            </div>
+            </aside>
           </div>
 
           {/* Navigation buttons - responsive with touch-friendly targets */}

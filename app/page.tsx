@@ -82,8 +82,10 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="relative overflow-hidden border-b border-foreground/10 bg-gradient-to-b from-emerald-950/20 to-background">
+      {/* Main Content */}
+      <main>
+        {/* Hero Section */}
+        <section className="relative overflow-hidden border-b border-foreground/10 bg-gradient-to-b from-emerald-950/20 to-background">
         <div className="mx-auto max-w-6xl px-6 py-20 lg:py-32">
           <div className="text-center">
             {/* Main Title */}
@@ -383,6 +385,7 @@ export default function Home() {
           </Link>
         </div>
       </section>
+      </main>
 
       {/* Footer */}
       <footer className="border-t border-foreground/10 py-8">
