@@ -18,6 +18,7 @@ Last Updated: 2026-01-24
 - For client components in Next.js app router, create separate files with "use client" directive rather than using `require()`
 - Course loader utilities in `lib/course-loader.ts` provide navigation helpers (prev/next lesson)
 - ESLint react-hooks/set-state-in-effect: use ref + setTimeout(0) pattern for state updates based on navigation changes
+- Lesson content files stored at `content/lessons/{section}/{lesson}.md`, served via API at `/api/lesson-content`
 
 ## Completed Stories
 
@@ -379,9 +380,40 @@ Last Updated: 2026-01-24
 
 ---
 
+### 2026-01-24 - US-014: Lesson: What is Ruby and Why Learn It
+
+**What was implemented:**
+- Created first lesson content file: `/content/lessons/getting-started/what-is-ruby.md`
+- Comprehensive Arabic content covering:
+  - Ruby history (created by Yukihiro Matsumoto in 1995)
+  - Ruby philosophy (programmer happiness, least surprise principle)
+  - Use cases: Ruby on Rails (GitHub, Shopify, Airbnb), scripting, automation
+  - Key features: object-oriented, dynamic, interpreted
+  - ruby.wasm for browser-based learning
+  - Reference to wiki.hsoub.com for Arabic terminology
+- Created API route `/app/api/lesson-content/route.ts` to serve lesson markdown files
+- Updated `LessonContent.tsx` to dynamically load content from API
+- No code exercise for this intro lesson (as specified in PRD)
+- All typechecks, lint, and build pass
+- Browser verification confirmed correct Arabic RTL rendering
+
+**Files changed:**
+- content/lessons/getting-started/what-is-ruby.md (new - lesson content)
+- app/api/lesson-content/route.ts (new - API route for serving markdown)
+- app/lessons/[section]/[lesson]/LessonContent.tsx (updated to load content dynamically)
+
+**Learnings for future iterations:**
+- API route pattern for serving lesson content: GET `/api/lesson-content?section=X&lesson=Y`
+- Validate slugs with regex `/^[a-z0-9-]+$/` to prevent path traversal
+- LessonContent now supports `content` prop for server-side rendering or fetches from API
+- Lesson files use standard markdown with Arabic content; code blocks render LTR automatically
+- Content files are stored at `content/lessons/{section}/{lesson}.md`
+
+---
+
 ## Current Story
 
-(completed US-013, ready for next iteration)
+(completed US-014, ready for next iteration)
 
 ## Notes
 
