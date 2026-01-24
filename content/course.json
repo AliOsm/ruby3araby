@@ -658,7 +658,18 @@
           "id": "fizzbuzz",
           "slug": "fizzbuzz",
           "title": "تحدي FizzBuzz",
-          "contentPath": "/content/lessons/challenges/fizzbuzz.md"
+          "contentPath": "/content/lessons/challenges/fizzbuzz.md",
+          "exercise": {
+            "starterCode": "# تحدي FizzBuzz\n# اطبع الأرقام من 1 إلى 15:\n# - إذا قبل القسمة على 3: اطبع \"Fizz\"\n# - إذا قبل القسمة على 5: اطبع \"Buzz\"\n# - إذا قبل القسمة على كليهما: اطبع \"FizzBuzz\"\n# - وإلا: اطبع الرقم نفسه\n\n(1..15).each do |n|\n  # اكتب الشروط هنا\n  \nend\n",
+            "expectedOutput": "1\n2\nFizz\n4\nBuzz\nFizz\n7\n8\nFizz\nBuzz\n11\nFizz\n13\n14\nFizzBuzz",
+            "hints": [
+              "ابدأ بفحص الحالة الخاصة أولاً: هل يقبل القسمة على 3 و 5 معاً؟",
+              "استخدم: if n % 3 == 0 && n % 5 == 0 للتحقق من FizzBuzz",
+              "يمكنك استخدام n % 15 == 0 بدلاً من n % 3 == 0 && n % 5 == 0",
+              "لا تنسَ else puts n للأرقام التي لا تقبل القسمة على أي منهما",
+              "الحل: if n % 15 == 0 then puts \"FizzBuzz\" elsif n % 3 == 0 then puts \"Fizz\" elsif n % 5 == 0 then puts \"Buzz\" else puts n end"
+            ]
+          }
         },
         {
           "id": "calculator",
