@@ -88,7 +88,7 @@ export default function CodeEditor({
 
   return (
     <div
-      className="overflow-hidden rounded-lg border border-foreground/20"
+      className="min-w-0 overflow-hidden rounded-lg border border-foreground/20"
       dir="ltr"
     >
       <Editor
@@ -99,17 +99,33 @@ export default function CodeEditor({
         onChange={handleChange}
         onMount={handleEditorDidMount}
         options={{
-          // Font settings
+          // Font settings - slightly smaller on mobile for better fit
           fontFamily: "'JetBrains Mono', 'Fira Code', 'Consolas', monospace",
-          fontSize: 14,
+          fontSize: 13,
           fontLigatures: true,
 
-          // Editor behavior
+          // Editor behavior - optimize for narrow widths
           minimap: { enabled: false },
           lineNumbers: "on",
           automaticLayout: true,
           scrollBeyondLastLine: false,
           wordWrap: "on",
+
+          // Optimize horizontal scrolling on narrow screens
+          scrollbar: {
+            horizontal: "auto",
+            vertical: "auto",
+            useShadows: false,
+            horizontalScrollbarSize: 8,
+            verticalScrollbarSize: 8,
+          },
+
+          // Fold gutter takes space - disable on narrow screens handled by CSS
+          folding: true,
+          foldingStrategy: "auto",
+
+          // Line numbers gutter - minimal width
+          lineNumbersMinChars: 3,
 
           // Auto-indentation
           autoIndent: "full",
@@ -119,8 +135,8 @@ export default function CodeEditor({
           // Read-only mode
           readOnly,
 
-          // UI improvements
-          padding: { top: 12, bottom: 12 },
+          // UI improvements - reduced padding for mobile
+          padding: { top: 8, bottom: 8 },
           renderLineHighlight: "line",
           cursorBlinking: "smooth",
           cursorSmoothCaretAnimation: "on",

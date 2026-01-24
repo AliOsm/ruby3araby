@@ -128,10 +128,10 @@ export default function Sidebar({ course }: SidebarProps) {
 
   return (
     <>
-      {/* Mobile hamburger button - fixed position */}
+      {/* Mobile hamburger button - fixed position, touch-friendly (44px min) */}
       <button
         onClick={() => setIsMobileOpen(!isMobileOpen)}
-        className="fixed top-4 right-4 z-50 flex h-10 w-10 items-center justify-center rounded-lg bg-foreground/10 text-foreground shadow-lg lg:hidden"
+        className="fixed top-3 right-3 z-50 flex h-11 w-11 items-center justify-center rounded-lg bg-foreground/10 text-foreground shadow-lg backdrop-blur-sm lg:hidden"
         aria-label={isMobileOpen ? "إغلاق القائمة" : "فتح القائمة"}
       >
         {isMobileOpen ? (
@@ -213,11 +213,11 @@ export default function Sidebar({ course }: SidebarProps) {
             ))}
           </ul>
 
-          {/* Glossary link */}
+          {/* Glossary link - touch-friendly */}
           <div className="mt-6 border-t border-foreground/10 pt-4">
             <Link
               href="/glossary"
-              className="flex items-center gap-3 rounded-lg px-3 py-2 text-foreground/70 transition-colors hover:bg-foreground/10 hover:text-foreground"
+              className="flex min-h-[44px] items-center gap-3 rounded-lg px-3 py-2.5 text-foreground/70 transition-colors hover:bg-foreground/10 hover:text-foreground"
             >
               <svg
                 className="h-5 w-5 text-foreground/50"
@@ -267,10 +267,10 @@ function SectionAccordion({
 
   return (
     <li>
-      {/* Section header (accordion toggle) */}
+      {/* Section header (accordion toggle) - touch-friendly */}
       <button
         onClick={onToggle}
-        className={`flex w-full items-center justify-between rounded-lg px-3 py-2 text-right transition-colors ${
+        className={`flex min-h-[44px] w-full items-center justify-between rounded-lg px-3 py-2.5 text-right transition-colors ${
           isCurrentSection
             ? "bg-emerald-900/30 text-emerald-400"
             : "text-foreground/70 hover:bg-foreground/10 hover:text-foreground"
@@ -333,7 +333,7 @@ function SectionAccordion({
             <li key={lesson.id}>
               <Link
                 href={`/lessons/${section.slug}/${lesson.slug}`}
-                className={`flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors ${
+                className={`flex min-h-[44px] items-center gap-2 rounded-lg px-3 py-2.5 text-sm transition-colors ${
                   isCurrent
                     ? "bg-emerald-600 text-white font-medium"
                     : isCompleted
