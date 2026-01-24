@@ -88,7 +88,18 @@
           "id": "constants-symbols",
           "slug": "constants-symbols",
           "title": "الثوابت والرموز",
-          "contentPath": "/content/lessons/fundamentals/constants-symbols.md"
+          "contentPath": "/content/lessons/fundamentals/constants-symbols.md",
+          "exercise": {
+            "starterCode": "# عرّف الثوابت والرموز التالية:\n# 1. COUNTRY - ثابت يحتوي على \"مصر\"\n# 2. POPULATION - ثابت يحتوي على 100000000\n# 3. status - متغير يحتوي على الرمز :active\n# 4. language - متغير يحتوي على الرمز :arabic\n# ثم اطبع كل قيمة باستخدام puts\n\n",
+            "expectedOutput": "مصر\n100000000\nactive\narabic",
+            "hints": [
+              "الثوابت تُكتب بحروف كبيرة: COUNTRY = \"مصر\"",
+              "الأرقام الكبيرة تُكتب بدون علامات اقتباس: POPULATION = 100000000",
+              "الرموز تبدأ بنقطتين: status = :active",
+              "لطباعة الرموز استخدم puts مباشرة: puts status",
+              "الحل الكامل: COUNTRY = \"مصر\" ثم POPULATION = 100000000 ثم status = :active ثم language = :arabic ثم اطبع كل واحد"
+            ]
+          }
         },
         {
           "id": "operators",
