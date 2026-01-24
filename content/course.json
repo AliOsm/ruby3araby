@@ -448,7 +448,18 @@
           "id": "defining-methods",
           "slug": "defining-methods",
           "title": "تعريف الدوال",
-          "contentPath": "/content/lessons/methods/defining-methods.md"
+          "contentPath": "/content/lessons/methods/defining-methods.md",
+          "exercise": {
+            "starterCode": "# عرّف دالة greet تستقبل:\n# - name: اسم الشخص (إلزامي)\n# - greeting: التحية (افتراضياً \"مرحباً\")\n# الدالة تطبع: [التحية] [الاسم]!\n\n\n# استدعِ الدالة مع \"أحمد\" فقط\n\n\n# استدعِ الدالة مع \"سارة\" وتحية \"أهلاً\"\n",
+            "expectedOutput": "مرحباً أحمد!\nأهلاً سارة!",
+            "hints": [
+              "ابدأ بتعريف الدالة: def greet(name, greeting = \"مرحباً\")",
+              "داخل الدالة استخدم puts مع دمج المتغيرات: puts \"#{greeting} #{name}!\"",
+              "لا تنسَ end لإغلاق الدالة",
+              "للاستدعاء الأول: greet(\"أحمد\")",
+              "للاستدعاء الثاني: greet(\"سارة\", \"أهلاً\")"
+            ]
+          }
         },
         {
           "id": "returns-splat",
