@@ -147,7 +147,7 @@ export default function LessonContent({
           ),
           // Blockquotes for notes
           blockquote: ({ children }) => (
-            <blockquote className="border-r-4 border-ruby-primary bg-foreground/5 pr-4 py-2 my-4 text-foreground/90">
+            <blockquote className="border-r-4 border-ruby-primary bg-foreground/5 pr-4 py-2 my-4 text-foreground/90 [&>*:last-child]:mb-0">
               {children}
             </blockquote>
           ),
