@@ -96,14 +96,16 @@ export default async function LessonPage({ params }: LessonPageProps) {
 
             {/* Code playground panel - appears on left in RTL */}
             <aside className="min-w-0 flex-1 xl:max-w-[50%] xl:sticky xl:top-4 xl:self-start">
-              <div className="rounded-lg border border-foreground/10 bg-foreground/5 p-3 sm:p-4">
-                <h2 className="mb-3 text-base font-semibold text-foreground sm:mb-4 sm:text-lg">
+              <div className="flex flex-col rounded-lg border border-foreground/10 bg-foreground/5 p-3 sm:p-4 xl:max-h-[calc(100vh-2rem)]">
+                <h2 className="mb-3 shrink-0 text-base font-semibold text-foreground sm:mb-4 sm:text-lg">
                   {nav.current.lesson.exercise ? "التمرين" : "جرب الشيفرة"}
                 </h2>
-                <LessonPlayground
-                  lessonId={`${section}/${lesson}`}
-                  exercise={nav.current.lesson.exercise}
-                />
+                <div className="min-h-0 flex-1 xl:overflow-y-auto">
+                  <LessonPlayground
+                    lessonId={`${section}/${lesson}`}
+                    exercise={nav.current.lesson.exercise}
+                  />
+                </div>
               </div>
             </aside>
           </div>

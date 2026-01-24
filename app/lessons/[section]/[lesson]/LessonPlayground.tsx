@@ -28,7 +28,7 @@ puts "مرحبا بالعالم!"`;
       expectedOutput={exercise?.expectedOutput}
       defaultInput={exercise?.defaultInput}
       hints={exercise?.hints}
-      editorHeight="300px"
+      editorHeight="200px"
       lessonId={lessonId}
     />
   );
