@@ -11,6 +11,47 @@ export interface ExecutionResult {
   error?: string;
 }
 
+// Cache name and WASM URL constants
+const WASM_CACHE_NAME = "ruby3araby-wasm-cache-v1";
+const WASM_URL =
+  "https://cdn.jsdelivr.net/npm/@ruby/3.4-wasm-wasi@2.7.1/dist/ruby+stdlib.wasm";
+
+/**
+ * Fetch the WASM module with caching support
+ * Uses the Cache API to store the WASM binary for faster subsequent loads
+ */
+async function fetchWasmWithCache(): Promise<Response> {
+  // Check if Cache API is available
+  if (typeof caches === "undefined") {
+    // Fall back to regular fetch if Cache API is not available
+    return fetch(WASM_URL);
+  }
+
+  try {
+    // Try to open the cache
+    const cache = await caches.open(WASM_CACHE_NAME);
+
+    // Check if we have a cached response
+    const cachedResponse = await cache.match(WASM_URL);
+    if (cachedResponse) {
+      return cachedResponse;
+    }
+
+    // Fetch from network
+    const networkResponse = await fetch(WASM_URL);
+
+    if (networkResponse.ok) {
+      // Clone the response before caching (response can only be consumed once)
+      cache.put(WASM_URL, networkResponse.clone());
+    }
+
+    return networkResponse;
+  } catch {
+    // If caching fails, fall back to regular fetch
+    return fetch(WASM_URL);
+  }
+}
+
 /**
  * RubyRunner service class for executing Ruby code in the browser via ruby.wasm
  *
@@ -18,6 +59,11 @@ export interface ExecutionResult {
  *   const runner = RubyRunner.getInstance();
  *   await runner.initialize();
  *   const result = await runner.executeCode('puts "Hello"');
+ *
+ * Features:
+ *   - Lazy loading: WASM is only loaded when initialize() is called
+ *   - Caching: WASM binary is cached using the Cache API for faster subsequent loads
+ *   - Singleton: Only one instance is created and shared across the application
  */
 export class RubyRunner {
   private static instance: RubyRunner | null = null;
@@ -47,6 +93,7 @@ export class RubyRunner {
   /**
    * Initialize the Ruby VM by loading the WASM module
    * This is idempotent - calling multiple times is safe
+   * The WASM binary is cached using Cache API for faster subsequent loads
    */
   async initialize(): Promise<void> {
     // Return existing promise if initialization is in progress
@@ -65,10 +112,8 @@ export class RubyRunner {
 
   private async doInitialize(): Promise<void> {
     try {
-      // Fetch the Ruby WASM module with stdlib
-      const response = await fetch(
-        "https://cdn.jsdelivr.net/npm/@ruby/3.4-wasm-wasi@2.7.1/dist/ruby+stdlib.wasm"
-      );
+      // Fetch the Ruby WASM module with caching
+      const response = await fetchWasmWithCache();
 
       if (!response.ok) {
         throw new Error(`Failed to fetch Ruby WASM: ${response.statusText}`);
