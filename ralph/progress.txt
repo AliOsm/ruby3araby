@@ -854,9 +854,41 @@ Last Updated: 2026-01-24
 
 ---
 
+### 2026-01-24 - US-030: Lesson: Case/When Statements
+
+**What was implemented:**
+- Created case/when lesson at `/content/lessons/control-flow/case-when.md`
+- Comprehensive Arabic explanations of:
+  - Basic case/when structure and syntax
+  - Matching multiple values with commas (when 1, 2, 3)
+  - Matching ranges (when 80..89)
+  - Matching strings and text commands
+  - Matching patterns with Regex
+  - Matching types (when Integer, String)
+  - Case without value (case as if)
+  - Using `then` for single-line cases
+- Comparison table: case/when vs if-elsif-else
+- Practical examples: day names, menu system, calculator, pricing, HTTP status codes
+- Exercise: convert day number (4) to Arabic day name ("الثلاثاء")
+- Added exercise configuration to course.json with hints
+- All typechecks, lint, and build pass
+
+**Files changed:**
+- content/lessons/control-flow/case-when.md (new - lesson content)
+- content/course.json (added exercise configuration for case-when lesson)
+
+**Learnings for future iterations:**
+- case/when in Ruby returns a value - can assign directly to variable
+- when can match multiple values: when 1, 2, 3
+- when can match ranges: when 80..89 (useful for grade-like conditions)
+- case without a value acts like if-elsif (each when has its own condition)
+- then keyword allows single-line case statements
+
+---
+
 ## Current Story
 
-(completed US-029, ready for next iteration)
+(completed US-030, ready for next iteration)
 
 ## Notes
 
