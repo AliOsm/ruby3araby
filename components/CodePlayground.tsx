@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useRef } from "react";
 import CodeEditor from "./CodeEditor";
 import { getRubyRunner, ExecutionResult } from "@/lib/ruby-runner";
 
@@ -13,6 +13,25 @@ export interface CodePlaygroundProps {
   defaultInput?: string;
   /** Whether to show the input panel (default: true when defaultInput is provided) */
   showInputPanel?: boolean;
+  /** Expected output for validation (when provided, shows Check Answer button) */
+  expectedOutput?: string;
+  /** Hints to show when answer is incorrect */
+  hints?: string[];
+}
+
+/** Validation result state */
+type ValidationState =
+  | { status: "idle" }
+  | { status: "correct" }
+  | { status: "incorrect"; hintIndex: number };
+
+/** Normalize output for comparison (trim whitespace, normalize newlines) */
+function normalizeOutput(text: string): string {
+  return text
+    .split("\n")
+    .map((line) => line.trimEnd())
+    .join("\n")
+    .trim();
 }
 
 export default function CodePlayground({
@@ -20,6 +39,8 @@ export default function CodePlayground({
   editorHeight = "250px",
   defaultInput = "",
   showInputPanel,
+  expectedOutput,
+  hints = [],
 }: CodePlaygroundProps) {
   const [code, setCode] = useState(starterCode);
   const [input, setInput] = useState(defaultInput);
@@ -28,6 +49,11 @@ export default function CodePlayground({
   const [isRunning, setIsRunning] = useState(false);
   const [isInitializing, setIsInitializing] = useState(false);
   const [copySuccess, setCopySuccess] = useState(false);
+  const [validation, setValidation] = useState<ValidationState>({
+    status: "idle",
+  });
+  const [showConfetti, setShowConfetti] = useState(false);
+  const confettiRef = useRef<HTMLDivElement>(null);
 
   // Show input panel if explicitly set, or if defaultInput is provided
   const shouldShowInputPanel = showInputPanel ?? defaultInput.length > 0;
@@ -51,6 +77,7 @@ export default function CodePlayground({
     setIsRunning(true);
     setOutput("");
     setError(undefined);
+    setValidation({ status: "idle" });
 
     try {
       const runner = await initializeRunner();
@@ -70,6 +97,54 @@ export default function CodePlayground({
       setIsRunning(false);
     }
   }, [code, input, initializeRunner]);
+
+  // Check answer against expected output
+  const handleCheckAnswer = useCallback(async () => {
+    if (!expectedOutput) return;
+
+    setIsRunning(true);
+    setOutput("");
+    setError(undefined);
+
+    try {
+      const runner = await initializeRunner();
+      const result: ExecutionResult = await runner.executeCode(code, input);
+
+      if (result.error) {
+        setError(result.error);
+        setOutput(result.output);
+        setValidation({ status: "idle" });
+      } else {
+        setOutput(result.output);
+
+        // Compare normalized outputs
+        const normalizedActual = normalizeOutput(result.output);
+        const normalizedExpected = normalizeOutput(expectedOutput);
+
+        if (normalizedActual === normalizedExpected) {
+          setValidation({ status: "correct" });
+          setShowConfetti(true);
+          // Stop confetti after 3 seconds
+          setTimeout(() => setShowConfetti(false), 3000);
+        } else {
+          setValidation((prev) => ({
+            status: "incorrect",
+            hintIndex:
+              prev.status === "incorrect"
+                ? Math.min(prev.hintIndex + 1, hints.length - 1)
+                : 0,
+          }));
+        }
+      }
+    } catch (err) {
+      setError(
+        err instanceof Error ? err.message : "An unexpected error occurred"
+      );
+      setValidation({ status: "idle" });
+    } finally {
+      setIsRunning(false);
+    }
+  }, [code, input, expectedOutput, hints.length, initializeRunner]);
 
   // Copy code to clipboard
   const handleCopy = useCallback(async () => {
@@ -96,6 +171,8 @@ export default function CodePlayground({
     setInput(defaultInput);
     setOutput("");
     setError(undefined);
+    setValidation({ status: "idle" });
+    setShowConfetti(false);
   }, [starterCode, defaultInput]);
 
   // Update code and input when props change
@@ -104,7 +181,12 @@ export default function CodePlayground({
     setInput(defaultInput);
     setOutput("");
     setError(undefined);
+    setValidation({ status: "idle" });
+    setShowConfetti(false);
   }, [starterCode, defaultInput]);
+
+  // Check if exercise has validation enabled
+  const hasValidation = !!expectedOutput;
 
   const isLoading = isRunning || isInitializing;
   const loadingText = isInitializing
@@ -192,6 +274,24 @@ export default function CodePlayground({
           )}
         </button>
 
+        {/* Check Answer Button - only shown when expectedOutput is provided */}
+        {hasValidation && (
+          <button
+            onClick={handleCheckAnswer}
+            disabled={isLoading}
+            className="flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 font-medium text-white transition-colors hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                fillRule="evenodd"
+                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                clipRule="evenodd"
+              />
+            </svg>
+            <span>تحقق من الإجابة</span>
+          </button>
+        )}
+
         {/* Copy Button */}
         <button
           onClick={handleCopy}
@@ -256,15 +356,172 @@ export default function CodePlayground({
         </button>
       </div>
 
+      {/* Validation Feedback */}
+      {validation.status === "correct" && (
+        <div
+          ref={confettiRef}
+          className="relative overflow-hidden rounded-lg border-2 border-green-500 bg-green-500/10 p-4"
+        >
+          {/* Confetti Animation */}
+          {showConfetti && (
+            <div className="pointer-events-none absolute inset-0">
+              {[...Array(50)].map((_, i) => (
+                <div
+                  key={i}
+                  className="absolute animate-confetti"
+                  style={{
+                    left: `${Math.random() * 100}%`,
+                    animationDelay: `${Math.random() * 0.5}s`,
+                    backgroundColor: [
+                      "#10b981",
+                      "#3b82f6",
+                      "#f59e0b",
+                      "#ef4444",
+                      "#8b5cf6",
+                      "#ec4899",
+                    ][Math.floor(Math.random() * 6)],
+                    width: `${Math.random() * 8 + 4}px`,
+                    height: `${Math.random() * 8 + 4}px`,
+                  }}
+                />
+              ))}
+            </div>
+          )}
+          <div className="flex items-center gap-3" dir="rtl">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-500">
+              <svg
+                className="h-6 w-6 text-white"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </div>
+            <div>
+              <h3 className="text-lg font-bold text-green-400">
+                🎉 أحسنت! إجابة صحيحة
+              </h3>
+              <p className="text-sm text-green-300">
+                لقد حللت التمرين بنجاح. استمر في التعلم!
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {validation.status === "incorrect" && (
+        <div className="space-y-3">
+          <div
+            className="rounded-lg border-2 border-orange-500 bg-orange-500/10 p-4"
+            dir="rtl"
+          >
+            <div className="flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-orange-500">
+                <svg
+                  className="h-6 w-6 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h3 className="text-lg font-bold text-orange-400">
+                  حاول مرة أخرى
+                </h3>
+                <p className="text-sm text-orange-300">
+                  الإجابة ليست صحيحة بعد. راجع الكود وحاول مجدداً.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Show hint if available */}
+          {hints.length > 0 && validation.hintIndex >= 0 && (
+            <div
+              className="rounded-lg border border-blue-500/50 bg-blue-500/10 p-4"
+              dir="rtl"
+            >
+              <div className="mb-2 flex items-center gap-2 text-blue-400">
+                <svg
+                  className="h-5 w-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                  />
+                </svg>
+                <span className="font-medium">
+                  تلميح {validation.hintIndex + 1} من {hints.length}:
+                </span>
+              </div>
+              <p className="text-sm text-blue-300">
+                {hints[validation.hintIndex]}
+              </p>
+              {validation.hintIndex < hints.length - 1 && (
+                <p className="mt-2 text-xs text-blue-400/70">
+                  💡 حاول مرة أخرى للحصول على تلميح إضافي
+                </p>
+              )}
+            </div>
+          )}
+
+          {/* Expected vs Actual diff */}
+          {expectedOutput && output && (
+            <div className="rounded-lg border border-gray-600 bg-gray-800/50 p-4">
+              <h4 className="mb-3 text-sm font-medium text-gray-300" dir="rtl">
+                مقارنة المخرجات:
+              </h4>
+              <div className="grid gap-3 md:grid-cols-2">
+                <div>
+                  <div className="mb-2 text-xs font-medium text-red-400">
+                    المخرجات الفعلية:
+                  </div>
+                  <pre
+                    className="max-h-[150px] overflow-auto rounded border border-red-500/30 bg-red-500/5 p-2 font-mono text-xs text-gray-300"
+                    dir="ltr"
+                  >
+                    {output || "(فارغ)"}
+                  </pre>
+                </div>
+                <div>
+                  <div className="mb-2 text-xs font-medium text-green-400">
+                    المخرجات المتوقعة:
+                  </div>
+                  <pre
+                    className="max-h-[150px] overflow-auto rounded border border-green-500/30 bg-green-500/5 p-2 font-mono text-xs text-gray-300"
+                    dir="ltr"
+                  >
+                    {expectedOutput}
+                  </pre>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
       {/* Output Panel */}
       <div className="overflow-hidden rounded-lg border border-gray-700 bg-[#1e1e1e]">
         <div className="border-b border-gray-700 bg-gray-800 px-3 py-2">
           <span className="text-sm font-medium text-gray-300">المخرجات</span>
         </div>
-        <div
-          className="min-h-[100px] p-3 font-mono text-sm"
-          dir="ltr"
-        >
+        <div className="min-h-[100px] p-3 font-mono text-sm" dir="ltr">
           {isLoading ? (
             <div className="flex items-center gap-2 text-gray-400">
               <svg

@@ -45,6 +45,25 @@ end
 const defaultInputValues = `أحمد
 25`;
 
+// Exercise validation demo
+const exerciseCode = `# تمرين: اطبع الأرقام من 1 إلى 5
+# Exercise: Print numbers from 1 to 5
+
+# اكتب الكود هنا:
+`;
+
+const exerciseExpectedOutput = `1
+2
+3
+4
+5`;
+
+const exerciseHints = [
+  "استخدم حلقة times أو each مع نطاق (range)",
+  "جرب: 5.times { |i| puts i + 1 }",
+  "أو جرب: (1..5).each { |n| puts n }",
+];
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -70,6 +89,24 @@ export default function Home() {
             لرؤية النتيجة:
           </p>
           <CodePlayground starterCode={sampleCode} editorHeight="350px" />
+        </section>
+
+        {/* Exercise Validation Demo Section */}
+        <section className="mb-12">
+          <h2 className="mb-6 text-2xl font-semibold">
+            🎯 تمرين تفاعلي - التحقق من الإجابة
+          </h2>
+          <p className="mb-4 text-foreground/80">
+            اكتب كود لطباعة الأرقام من 1 إلى 5، كل رقم في سطر جديد. اضغط على
+            &quot;تحقق من الإجابة&quot; للتحقق من صحة الحل. إذا كانت الإجابة
+            خاطئة، ستحصل على تلميحات لمساعدتك!
+          </p>
+          <CodePlayground
+            starterCode={exerciseCode}
+            editorHeight="200px"
+            expectedOutput={exerciseExpectedOutput}
+            hints={exerciseHints}
+          />
         </section>
 
         {/* Input Demo Section */}
