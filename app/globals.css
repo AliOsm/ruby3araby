@@ -1,5 +1,22 @@
 @import "tailwindcss";
 
+/* Kawkab Mono - Arabic monospace font */
+@font-face {
+  font-family: "Kawkab Mono";
+  src: url("/fonts/KawkabMono-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Kawkab Mono";
+  src: url("/fonts/KawkabMono-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Light theme (default) */
 :root {
   --background: #ffffff;
@@ -34,7 +51,7 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-cairo);
-  --font-mono: var(--font-geist-mono);
+  --font-mono: "Kawkab Mono", var(--font-geist-mono);
 
   /* Custom breakpoint for extra small screens (xs: 475px+) */
   --breakpoint-xs: 475px;

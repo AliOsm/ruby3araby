@@ -175,8 +175,9 @@ export default function CodeEditor({
         onChange={handleChange}
         onMount={handleEditorDidMount}
         options={{
-          // Font settings - slightly smaller on mobile for better fit
-          fontFamily: "'JetBrains Mono', 'Fira Code', 'Consolas', monospace",
+          // Font settings - Kawkab Mono for Arabic monospace support
+          fontFamily:
+            "'Kawkab Mono', 'JetBrains Mono', 'Fira Code', 'Consolas', monospace",
           fontSize: 13,
           fontLigatures: true,
 
