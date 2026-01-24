@@ -756,9 +756,42 @@ Last Updated: 2026-01-24
 
 ---
 
+### 2026-01-24 - US-027: Lesson: Type Conversion
+
+**What was implemented:**
+- Created type conversion lesson at `/content/lessons/fundamentals/type-conversion.md`
+- Comprehensive Arabic explanations of:
+  - `to_i` - convert to integer with behavior explanation
+  - `to_f` - convert to float
+  - `to_s` - convert to string
+  - `to_a` - convert to array (ranges, hashes, nil)
+- Why gets returns string and needs conversion for calculations
+- Practical examples: calculating age, area, sum of two numbers
+- Method chaining examples (chomp.strip.to_i)
+- Validation techniques for input checking
+- Strict conversion methods: `Integer()` and `Float()`
+- Common errors: forgetting conversion, using wrong type, confusing + for addition vs concatenation
+- Summary table with all conversion methods
+- Exercise: input two numbers, calculate and display sum and difference
+- Added exercise configuration to course.json with defaultInput and hints
+- All typechecks, lint, and build pass
+- Browser verification confirmed: RTL layout, content rendering, exercise with pre-populated input
+
+**Files changed:**
+- content/lessons/fundamentals/type-conversion.md (new - lesson content)
+- content/course.json (added exercise configuration for type-conversion lesson)
+
+**Learnings for future iterations:**
+- `to_i` returns 0 for non-numeric strings - doesn't raise error
+- Use `Integer()` or `Float()` for strict conversion that raises errors
+- Method chaining `gets.chomp.to_i` is the standard pattern for numeric input
+- Exercise uses defaultInput to pre-populate simulated input field
+
+---
+
 ## Current Story
 
-(completed US-026, ready for next iteration)
+(completed US-027, ready for next iteration)
 
 ## Notes
 
