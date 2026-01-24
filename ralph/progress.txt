@@ -19,6 +19,9 @@ Last Updated: 2026-01-24
 - Course loader utilities in `lib/course-loader.ts` provide navigation helpers (prev/next lesson)
 - ESLint react-hooks/set-state-in-effect: use ref + setTimeout(0) pattern for state updates based on navigation changes
 - Lesson content files stored at `content/lessons/{section}/{lesson}.md`, served via API at `/api/lesson-content`
+- Theme: use `ThemeProvider` from `lib/theme.tsx`, access via `useTheme()` hook for `theme`, `resolvedTheme`, `setTheme`
+- Theme-aware colors: use `foreground/XX` (e.g., `text-foreground/60`) and `bg-foreground/XX` for theme-responsive styling
+- Monaco editor theme syncs with site via `useMemo` deriving theme from `resolvedTheme`
 
 ## Completed Stories
 
@@ -1624,9 +1627,56 @@ Last Updated: 2026-01-24
 
 ---
 
+### 2026-01-24 - US-053: Implement Dark/Light Theme Toggle
+
+**What was implemented:**
+- Created `ThemeProvider` context component in `/lib/theme.tsx`
+  - Manages theme state: "system", "light", or "dark"
+  - Persists preference in localStorage with `ruby3araby_theme` key
+  - Defaults to system preference via `prefers-color-scheme` media query
+  - Applies theme class to document root for CSS theming
+  - Dispatches custom `themeChange` event for components to react
+- Created `ThemeToggle` button component in `/components/ThemeToggle.tsx`
+  - Cycles through: system -> light -> dark -> system
+  - Shows appropriate icon for current state
+  - Handles hydration mismatch with mounted state
+- Updated `globals.css` with CSS variables for both themes
+  - Light theme: white background, dark text
+  - Dark theme: dark background, light text
+  - Smooth 0.3s transition with `theme-transition` class
+- Updated `layout.tsx` to wrap app with ThemeProvider
+- Updated `CodeEditor.tsx` to sync Monaco theme with site theme
+  - Uses `useMemo` to derive Monaco theme from resolvedTheme
+- Updated homepage with header containing theme toggle
+- Updated Sidebar with theme toggle in header
+- Converted hardcoded dark theme colors to `foreground/XX` utilities throughout:
+  - Lesson page, Sidebar, CodePlayground
+
+**Files changed:**
+- lib/theme.tsx (new - ThemeProvider and useTheme hook)
+- components/ThemeToggle.tsx (new - theme toggle button)
+- app/globals.css (added theme CSS variables and transition)
+- app/layout.tsx (wrapped with ThemeProvider)
+- app/page.tsx (added header with theme toggle)
+- app/lessons/[section]/[lesson]/page.tsx (theme-aware colors)
+- components/Sidebar.tsx (added theme toggle, theme-aware colors)
+- components/CodeEditor.tsx (Monaco theme sync)
+- components/CodePlayground.tsx (theme-aware colors)
+
+**Learnings for future iterations:**
+- Use `useMemo` for derived state from context values to avoid ESLint set-state-in-effect errors
+- Use `useRef` + `setTimeout(0)` pattern for initialization state in effects
+- Theme CSS variables: use `--background`, `--foreground`, `--editor-bg` for consistency
+- `foreground/XX` (e.g., `foreground/60`) provides theme-aware opacity colors
+- Tailwind 4 uses CSS variables directly in @theme inline for --color-background etc.
+- Monaco Editor supports "vs-dark" and "light" themes out of the box
+- `suppressHydrationWarning` on html tag prevents React warning when JS adds theme class
+
+---
+
 ## Current Story
 
-(completed US-052, ready for next iteration)
+(completed US-053, ready for next iteration)
 
 ## Notes
 
