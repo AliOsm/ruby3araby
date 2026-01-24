@@ -1358,9 +1358,43 @@ Last Updated: 2026-01-24
 
 ---
 
+### 2026-01-24 - US-045: Lesson: Inheritance
+
+**What was implemented:**
+- Created Inheritance lesson at `/content/lessons/oop/inheritance.md`
+- Comprehensive Arabic explanations of:
+  - What is inheritance and why use it (الوراثة)
+  - The `<` syntax for class inheritance: `class Child < Parent`
+  - Method overriding (إعادة تعريف الدوال) to customize inherited behavior
+  - Using `super` to call parent methods (with and without arguments)
+  - Different forms of super: `super`, `super()`, `super(args)`
+  - Checking inheritance with `is_a?`, `class`, `superclass`, `ancestors`
+  - Single inheritance limitation in Ruby
+- Practical examples: Animal hierarchy, Employee system, Geometric shapes
+- Common errors: forgetting super in initialize, wrong super arguments, attempting multiple inheritance
+- When to use inheritance ("is-a" relationship vs composition)
+- Exercise: create Animal/Dog/Cat inheritance hierarchy with speak method override
+- Added exercise configuration to course.json with hints
+- All typechecks, lint, and build pass
+- Browser verification confirmed: RTL layout, content rendering, code playground with exercise
+
+**Files changed:**
+- content/lessons/oop/inheritance.md (new - lesson content)
+- content/course.json (added exercise configuration for inheritance lesson)
+
+**Learnings for future iterations:**
+- `super` without parentheses passes all arguments to parent method automatically
+- `super()` with empty parentheses passes no arguments
+- `super(specific_args)` passes only specified arguments
+- Ruby only supports single inheritance - use Modules for multiple behavior sharing
+- `is_a?` checks inheritance chain, `class == X` only checks direct class
+- This completes the OOP section (classes-objects, initialize-accessors, inheritance)
+
+---
+
 ## Current Story
 
-(completed US-044, ready for next iteration)
+(completed US-045, ready for next iteration)
 
 ## Notes
 
