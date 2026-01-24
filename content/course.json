@@ -611,7 +611,18 @@
           "id": "modules-mixins",
           "slug": "modules-mixins",
           "title": "الوحدات والخلط",
-          "contentPath": "/content/lessons/modules/modules-mixins.md"
+          "contentPath": "/content/lessons/modules/modules-mixins.md",
+          "exercise": {
+            "starterCode": "# 1. أنشئ وحدة Speakable تحتوي على دالة speak تطبع \"أتكلم!\"\n\n\n# 2. أنشئ صنف Robot يتضمن الوحدة Speakable\n# مع attr_reader :name و initialize(name)\n\n\n# 3. أنشئ صنف Animal يتضمن الوحدة Speakable\n# مع attr_reader :name و initialize(name)\n\n\n# 4. أنشئ روبوت اسمه \"روبي\" وحيوان اسمه \"بوبي\"\n# اطبع اسم كل كائن ثم استدعِ speak\n",
+            "expectedOutput": "روبي\nأتكلم!\nبوبي\nأتكلم!",
+            "hints": [
+              "ابدأ بتعريف الوحدة: module Speakable",
+              "داخل الوحدة عرّف: def speak ثم puts \"أتكلم!\" ثم end",
+              "في كل صنف استخدم: include Speakable",
+              "لا تنسَ attr_reader :name و def initialize(name) ثم @name = name",
+              "الحل: أنشئ robot = Robot.new(\"روبي\") ثم puts robot.name ثم robot.speak وكرر للحيوان"
+            ]
+          }
         }
       ]
     },
