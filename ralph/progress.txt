@@ -1011,9 +1011,41 @@ Last Updated: 2026-01-24
 
 ---
 
+### 2026-01-24 - US-035: Lesson: Common Array Methods
+
+**What was implemented:**
+- Created Common Array Methods lesson at `/content/lessons/collections/array-methods.md`
+- Comprehensive Arabic explanations of:
+  - Accessing elements: first, last, take, drop
+  - Array info: length, size, count, empty?, any?, none?, include?, index, rindex
+  - Sorting: sort, sort_by, reverse, shuffle
+  - Cleaning: uniq, compact, flatten
+  - Additional: min, max, sum, minmax, sample, join, zip
+- Summary table of all key methods
+- Comparison of regular methods vs bang methods (!)
+- Practical examples: data cleaning, grade analysis, name processing, task merging
+- Exercise: clean raw data by removing nil, removing duplicates, sorting, then analyze
+- Added exercise configuration to course.json with hints
+- All typechecks, lint, and build pass
+- Browser verification confirmed: page loads with correct title "دوال المصفوفات | روبي بالعربي"
+
+**Files changed:**
+- content/lessons/collections/array-methods.md (new - lesson content)
+- content/course.json (added exercise configuration for array-methods lesson)
+
+**Learnings for future iterations:**
+- Method chaining is idiomatic Ruby: `data.compact.uniq.sort`
+- Most array methods return new arrays; use bang methods (!) for in-place modification
+- `count` can take a value or block for conditional counting
+- `sort_by` is cleaner than `sort` with custom comparator when sorting by a single property
+- `flatten` takes optional depth parameter: `flatten(1)` for single level
+- `join` is the opposite of `split` - converts array to string
+
+---
+
 ## Current Story
 
-(completed US-034, ready for next iteration)
+(completed US-035, ready for next iteration)
 
 ## Notes
 
