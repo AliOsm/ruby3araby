@@ -1430,9 +1430,49 @@ Last Updated: 2026-01-24
 
 ---
 
+### 2026-01-24 - US-047: Lesson: Error Handling
+
+**What was implemented:**
+- Created Error Handling lesson at `/content/lessons/errors/error-handling.md`
+- Created the `errors` directory for error handling lessons
+- Comprehensive Arabic explanations of:
+  - What exceptions are and why they occur (ZeroDivisionError, NoMethodError, NameError, etc.)
+  - Basic `begin/rescue/end` structure for error handling
+  - Catching specific error types with `rescue ErrorType`
+  - Catching multiple error types
+  - Accessing error information with `=> e` (e.class, e.message)
+  - Raising errors with `raise` (simple strings and specific error types)
+  - Creating custom error types by inheriting from StandardError
+  - `ensure` block for cleanup code that always runs
+  - `else` block for code that runs only when no error occurs
+  - `retry` for reattempting failed operations (with warning about infinite loops)
+- Practical examples: safe division, bank account withdrawal, calculator with error handling
+- Best practices: catch specific errors, don't swallow errors, use ensure for cleanup
+- Common errors section
+- Exercise: create `safe_divide` function using begin/rescue/end
+- Added exercise configuration to course.json with hints
+- All typechecks, lint, and build pass
+- Browser verification confirmed: RTL layout, content rendering, code playground with exercise
+
+**Files changed:**
+- content/lessons/errors/error-handling.md (new - lesson content)
+- content/course.json (added exercise configuration for error-handling lesson)
+
+**Learnings for future iterations:**
+- Created new `errors` directory for error handling lessons
+- `begin/rescue/end` is Ruby's try/catch equivalent
+- `rescue ZeroDivisionError => e` captures both the type and error object
+- `ensure` runs regardless of success/failure - ideal for cleanup (closing files, connections)
+- `else` runs only on success - separates happy path from error handling
+- `retry` can cause infinite loops - always limit retry attempts
+- Custom errors inherit from StandardError: `class MyError < StandardError`
+- This is the only lesson in the errors section
+
+---
+
 ## Current Story
 
-(completed US-046, ready for next iteration)
+(completed US-047, ready for next iteration)
 
 ## Notes
 
