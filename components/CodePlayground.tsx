@@ -288,7 +288,9 @@ export default function CodePlayground({
           <div className="p-3">
             <p className="mb-2 text-xs text-foreground/60" dir="rtl">
               أدخل القيم التي سيتم استخدامها عند استدعاء{" "}
-              <code className="rounded bg-foreground/10 px-1 font-mono">gets</code>.
+              <bdi>
+                <code className="rounded bg-foreground/10 px-1 font-mono" dir="ltr">gets</code>
+              </bdi>.
               كل سطر يمثل قيمة إدخال واحدة.
             </p>
             <textarea

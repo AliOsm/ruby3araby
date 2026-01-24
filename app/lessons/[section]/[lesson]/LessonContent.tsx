@@ -108,10 +108,17 @@ export default function LessonContent({
           code: ({ className, children }) => {
             const isInline = !className;
             if (isInline) {
+              // Wrap inline code in <bdi> to isolate it from RTL text flow
+              // This prevents English words like "nil?" from displaying as "?nil"
               return (
-                <code className="bg-foreground/10 text-ruby-accent px-1.5 py-0.5 rounded text-sm font-mono">
-                  {children}
-                </code>
+                <bdi>
+                  <code
+                    className="bg-foreground/10 text-ruby-accent px-1.5 py-0.5 rounded text-sm font-mono"
+                    dir="ltr"
+                  >
+                    {children}
+                  </code>
+                </bdi>
               );
             }
             return (
