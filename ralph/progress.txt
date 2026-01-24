@@ -439,9 +439,33 @@ Last Updated: 2026-01-24
 
 ---
 
+### 2026-01-24 - US-016: Lesson: Using Comments
+
+**What was implemented:**
+- Created comments lesson content at `/content/lessons/getting-started/comments.md`
+- Arabic explanation of single-line comments using `#` (الشباك)
+- Arabic explanation of multi-line comments using `=begin`/`=end`
+- Covered why to use comments: documentation, disabling code, planning
+- Included practical examples and tips for good commenting practices
+- Added comparison table showing when to use each comment type
+- Exercise: comment out the middle line to make output show only two lines
+- Added exercise configuration to course.json with hints
+- Browser verification confirmed: RTL layout, exercise validation with success banner
+
+**Files changed:**
+- content/lessons/getting-started/comments.md (new - lesson content)
+- content/course.json (added exercise configuration for comments lesson)
+
+**Learnings for future iterations:**
+- Comments lessons are straightforward - exercise involves commenting out a line to change output
+- Starter code with three `puts` statements works well for demonstrating comment effects
+- The multi-line comment syntax (`=begin`/`=end`) must start at column 0 - important to mention
+
+---
+
 ## Current Story
 
-(completed US-015, ready for next iteration)
+(completed US-016, ready for next iteration)
 
 ## Notes
 
