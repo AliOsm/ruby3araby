@@ -287,7 +287,18 @@
           "id": "case-when",
           "slug": "case-when",
           "title": "جملة case/when",
-          "contentPath": "/content/lessons/control-flow/case-when.md"
+          "contentPath": "/content/lessons/control-flow/case-when.md",
+          "exercise": {
+            "starterCode": "# اسم اليوم\n# عرّف متغير day_number بقيمة 4\n# ثم استخدم case/when لطباعة اسم اليوم المناسب\n\n",
+            "expectedOutput": "الثلاثاء",
+            "hints": [
+              "عرّف المتغير: day_number = 4",
+              "ابدأ بـ: case day_number",
+              "أضف الحالات: when 1 ثم puts \"السبت\" وهكذا",
+              "لا تنسَ else للأرقام غير الصالحة",
+              "الحل: case day_number ثم when 1 puts \"السبت\" ثم when 2 puts \"الأحد\" ثم when 3 puts \"الإثنين\" ثم when 4 puts \"الثلاثاء\" وهكذا... end"
+            ]
+          }
         },
         {
           "id": "ternary",
