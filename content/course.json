@@ -505,7 +505,18 @@
           "id": "yield",
           "slug": "yield",
           "title": "yield وإنشاء دوال مخصصة",
-          "contentPath": "/content/lessons/blocks/yield.md"
+          "contentPath": "/content/lessons/blocks/yield.md",
+          "exercise": {
+            "starterCode": "# أنشئ دالة each_word تستقبل نصاً\n# وتُمرر كل كلمة للكتلة\n\ndef each_word(text)\n  # أكمل الكود هنا\n  # 1. قسّم النص إلى كلمات باستخدام split\n  # 2. استخدم each للتكرار على الكلمات\n  # 3. داخل التكرار، استخدم yield(word)\nend\n\n# استخدم الدالة لطباعة كل كلمة\neach_word(\"روبي لغة برمجة رائعة\") { |word| puts word }\n",
+            "expectedOutput": "روبي\nلغة\nبرمجة\nرائعة",
+            "hints": [
+              "استخدم text.split لتقسيم النص إلى مصفوفة كلمات",
+              "داخل الدالة، استخدم: words = text.split",
+              "ثم استخدم each للتكرار: words.each { |word| yield(word) }",
+              "يمكن اختصارها: text.split.each { |word| yield(word) }",
+              "الحل الكامل: def each_word(text) text.split.each { |word| yield(word) } end"
+            ]
+          }
         },
         {
           "id": "procs-lambdas",
