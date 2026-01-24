@@ -140,7 +140,18 @@
           "id": "truthiness",
           "slug": "truthiness",
           "title": "الصدق والكذب في روبي",
-          "contentPath": "/content/lessons/fundamentals/truthiness.md"
+          "contentPath": "/content/lessons/fundamentals/truthiness.md",
+          "exercise": {
+            "starterCode": "# استخدم !! لتحويل القيم التالية إلى قيم منطقية:\n# 1. false\n# 2. nil\n# 3. 0\n# 4. \"\"\n# 5. []\n# 6. \"روبي\"\n\n",
+            "expectedOutput": "false\nfalse\ntrue\ntrue\ntrue\ntrue",
+            "hints": [
+              "استخدم puts !!value لطباعة القيمة المنطقية",
+              "مثال: puts !!false سيطبع false",
+              "تذكر: فقط nil و false هما الكاذبتان في روبي",
+              "الصفر والنص الفارغ والمصفوفة الفارغة كلها صادقة!",
+              "الحل: puts !!false ثم puts !!nil ثم puts !!0 ثم puts !!\"\" ثم puts !![] ثم puts !!\"روبي\""
+            ]
+          }
         },
         {
           "id": "string-interpolation",
