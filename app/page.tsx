@@ -22,6 +22,29 @@ puts "اسمي #{name} وعمري #{age} سنة"
 end
 `;
 
+// Sample code demonstrating gets (user input)
+const inputDemoCode = `# مثال على استخدام gets لقراءة المدخلات
+# Example of using gets to read user input
+
+puts "ما اسمك؟"
+name = gets.chomp
+
+puts "كم عمرك؟"
+age = gets.chomp.to_i
+
+puts "مرحبا يا #{name}!"
+puts "عمرك #{age} سنة"
+
+if age >= 18
+  puts "أنت بالغ 🎉"
+else
+  puts "أنت قاصر"
+end
+`;
+
+const defaultInputValues = `أحمد
+25`;
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -47,6 +70,32 @@ export default function Home() {
             لرؤية النتيجة:
           </p>
           <CodePlayground starterCode={sampleCode} editorHeight="350px" />
+        </section>
+
+        {/* Input Demo Section */}
+        <section className="mb-12">
+          <h2 className="mb-6 text-2xl font-semibold">
+            المدخلات المحاكاة - استخدام gets
+          </h2>
+          <p className="mb-4 text-foreground/80">
+            في المتصفح، لا يمكننا استخدام{" "}
+            <code className="rounded bg-foreground/10 px-1.5 py-0.5 font-mono text-sm">
+              gets
+            </code>{" "}
+            بشكل تفاعلي. بدلاً من ذلك، أدخل القيم مسبقاً في حقل
+            &quot;المدخلات المحاكاة&quot; أعلاه. كل سطر يمثل قيمة إدخال واحدة
+            ستُستخدم عند كل استدعاء لـ{" "}
+            <code className="rounded bg-foreground/10 px-1.5 py-0.5 font-mono text-sm">
+              gets
+            </code>
+            .
+          </p>
+          <CodePlayground
+            starterCode={inputDemoCode}
+            editorHeight="300px"
+            defaultInput={defaultInputValues}
+            showInputPanel={true}
+          />
         </section>
 
         {/* RTL Test Section */}

@@ -9,18 +9,28 @@ export interface CodePlaygroundProps {
   starterCode?: string;
   /** Height of the code editor */
   editorHeight?: string;
+  /** Default simulated input values (newline-separated for multiple gets calls) */
+  defaultInput?: string;
+  /** Whether to show the input panel (default: true when defaultInput is provided) */
+  showInputPanel?: boolean;
 }
 
 export default function CodePlayground({
   starterCode = '# اكتب كود روبي هنا\nputs "مرحبا بالعالم!"',
   editorHeight = "250px",
+  defaultInput = "",
+  showInputPanel,
 }: CodePlaygroundProps) {
   const [code, setCode] = useState(starterCode);
+  const [input, setInput] = useState(defaultInput);
   const [output, setOutput] = useState<string>("");
   const [error, setError] = useState<string | undefined>(undefined);
   const [isRunning, setIsRunning] = useState(false);
   const [isInitializing, setIsInitializing] = useState(false);
   const [copySuccess, setCopySuccess] = useState(false);
+
+  // Show input panel if explicitly set, or if defaultInput is provided
+  const shouldShowInputPanel = showInputPanel ?? defaultInput.length > 0;
 
   // Initialize RubyRunner on first run
   const initializeRunner = useCallback(async () => {
@@ -44,7 +54,7 @@ export default function CodePlayground({
 
     try {
       const runner = await initializeRunner();
-      const result: ExecutionResult = await runner.executeCode(code);
+      const result: ExecutionResult = await runner.executeCode(code, input);
 
       if (result.error) {
         setError(result.error);
@@ -59,7 +69,7 @@ export default function CodePlayground({
     } finally {
       setIsRunning(false);
     }
-  }, [code, initializeRunner]);
+  }, [code, input, initializeRunner]);
 
   // Copy code to clipboard
   const handleCopy = useCallback(async () => {
@@ -80,19 +90,21 @@ export default function CodePlayground({
     }
   }, [code]);
 
-  // Reset to starter code
+  // Reset to starter code and default input
   const handleReset = useCallback(() => {
     setCode(starterCode);
+    setInput(defaultInput);
     setOutput("");
     setError(undefined);
-  }, [starterCode]);
+  }, [starterCode, defaultInput]);
 
-  // Update code when starterCode prop changes
+  // Update code and input when props change
   useEffect(() => {
     setCode(starterCode);
+    setInput(defaultInput);
     setOutput("");
     setError(undefined);
-  }, [starterCode]);
+  }, [starterCode, defaultInput]);
 
   const isLoading = isRunning || isInitializing;
   const loadingText = isInitializing
@@ -101,6 +113,33 @@ export default function CodePlayground({
 
   return (
     <div className="flex flex-col gap-3">
+      {/* Simulated Input Panel */}
+      {shouldShowInputPanel && (
+        <div className="overflow-hidden rounded-lg border border-gray-700 bg-[#1e1e1e]">
+          <div className="border-b border-gray-700 bg-gray-800 px-3 py-2">
+            <span className="text-sm font-medium text-gray-300">
+              المدخلات المحاكاة
+            </span>
+          </div>
+          <div className="p-3">
+            <p className="mb-2 text-xs text-gray-400" dir="rtl">
+              أدخل القيم التي سيتم استخدامها عند استدعاء{" "}
+              <code className="rounded bg-gray-700 px-1 font-mono">gets</code>.
+              كل سطر يمثل قيمة إدخال واحدة.
+            </p>
+            <textarea
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              placeholder="أدخل قيمة لكل سطر..."
+              className="w-full resize-none rounded border border-gray-600 bg-[#2d2d2d] px-3 py-2 font-mono text-sm text-gray-300 placeholder-gray-500 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+              rows={3}
+              dir="ltr"
+              disabled={isRunning || isInitializing}
+            />
+          </div>
+        </div>
+      )}
+
       {/* Code Editor */}
       <CodeEditor value={code} onChange={setCode} height={editorHeight} />
 
