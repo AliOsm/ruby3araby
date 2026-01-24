@@ -1,0 +1,963 @@
+{
+  "project": "Ruby3araby",
+  "branchName": "ralph/ruby3araby-interactive-course",
+  "description": "Arabic Interactive Ruby Course - A browser-based platform teaching Ruby programming in Arabic with ruby.wasm",
+  "userStories": [
+    {
+      "id": "US-001",
+      "title": "Project Setup and Infrastructure",
+      "description": "As a developer, I need the foundational project structure so that development can begin.",
+      "acceptanceCriteria": [
+        "Initialize Next.js 14+ project with TypeScript and App Router",
+        "Configure Tailwind CSS with RTL (right-to-left) support for Arabic",
+        "Set up ESLint and Prettier with consistent code style",
+        "Create basic folder structure: /app, /components, /lib, /content, /public",
+        "Typecheck passes"
+      ],
+      "priority": 1,
+      "passes": true,
+      "notes": ""
+    },
+    {
+      "id": "US-002",
+      "title": "Configure Arabic RTL Layout",
+      "description": "As a learner, I want the interface in proper Arabic layout so that I can read and navigate comfortably.",
+      "acceptanceCriteria": [
+        "Configure HTML dir='rtl' and lang='ar' in root layout",
+        "Install and configure Arabic font (Cairo or Tajawal) via next/font",
+        "Ensure Tailwind RTL plugin is configured",
+        "Create a simple test page with Arabic text to verify RTL",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 2,
+      "passes": true,
+      "notes": ""
+    },
+    {
+      "id": "US-003",
+      "title": "Integrate ruby.wasm Runtime",
+      "description": "As a developer, I need ruby.wasm integrated so that Ruby code can execute in the browser.",
+      "acceptanceCriteria": [
+        "Install @aspect-build/aspect-workflows or ruby-wasm-wasi package",
+        "Create RubyRunner service class in /lib/ruby-runner.ts",
+        "Implement executeCode(code: string): Promise<{ output: string, error?: string }> method",
+        "Capture puts, print, and p output correctly",
+        "Implement 60-second execution timeout",
+        "Handle runtime errors and return user-friendly messages",
+        "Typecheck passes"
+      ],
+      "priority": 3,
+      "passes": true,
+      "notes": ""
+    },
+    {
+      "id": "US-004",
+      "title": "Integrate Monaco Editor Component",
+      "description": "As a learner, I want a professional code editor so that I can write Ruby code comfortably.",
+      "acceptanceCriteria": [
+        "Install @monaco-editor/react package",
+        "Create CodeEditor component in /components/CodeEditor.tsx",
+        "Enable Ruby syntax highlighting",
+        "Configure dark theme (One Dark or Monokai)",
+        "Enable line numbers and auto-indentation",
+        "Set monospace font (JetBrains Mono or Fira Code)",
+        "Editor maintains LTR direction for code",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 4,
+      "passes": true,
+      "notes": ""
+    },
+    {
+      "id": "US-005",
+      "title": "Create Code Playground Component",
+      "description": "As a learner, I want to write code, run it, and see the output so that I can learn interactively.",
+      "acceptanceCriteria": [
+        "Create CodePlayground component combining CodeEditor with controls",
+        "Add Run button that executes code using RubyRunner",
+        "Add Copy Code button to copy current code to clipboard",
+        "Add Reset button to restore original starter code",
+        "Display output panel below editor",
+        "Show loading spinner while code executes",
+        "Display errors in red, normal output in default color",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 5,
+      "passes": true,
+      "notes": ""
+    },
+    {
+      "id": "US-006",
+      "title": "Create Simulated Input System",
+      "description": "As a learner, I want to provide input for programs that use gets so that I can practice user input exercises.",
+      "acceptanceCriteria": [
+        "Add input textarea above the editor for simulated user input",
+        "Accept newline-separated values for multiple gets calls",
+        "Pass input values to RubyRunner for injection when gets is called",
+        "Show Arabic instructions explaining the input system",
+        "Pre-populate input field when exercise requires specific test values",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 6,
+      "passes": true,
+      "notes": ""
+    },
+    {
+      "id": "US-007",
+      "title": "Create Lesson Content Schema and Types",
+      "description": "As a developer, I need a structured format for lesson content so that content can be easily authored and rendered.",
+      "acceptanceCriteria": [
+        "Define TypeScript interfaces in /lib/types.ts: Lesson, Section, Exercise, Course",
+        "Lesson includes: id, slug, title (Arabic), content (markdown), codeExamples, exercises",
+        "Exercise includes: id, instructions, starterCode, expectedOutput, hints array",
+        "Section includes: id, title, slug, lessons array",
+        "Create course structure JSON in /content/course.json with all sections and lesson stubs",
+        "Typecheck passes"
+      ],
+      "priority": 7,
+      "passes": true,
+      "notes": ""
+    },
+    {
+      "id": "US-008",
+      "title": "Build Lesson Page Layout",
+      "description": "As a learner, I want a clear lesson layout so that I can read explanations and practice code.",
+      "acceptanceCriteria": [
+        "Create /app/lessons/[section]/[lesson]/page.tsx dynamic route",
+        "Split layout: Arabic content on right (RTL), code playground on left",
+        "Render markdown content with proper Arabic typography",
+        "Stack vertically on mobile (content top, editor bottom)",
+        "Add Previous/Next lesson navigation buttons",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 8,
+      "passes": true,
+      "notes": ""
+    },
+    {
+      "id": "US-009",
+      "title": "Build Navigation Sidebar",
+      "description": "As a learner, I want to navigate between lessons and sections so that I can find topics easily.",
+      "acceptanceCriteria": [
+        "Create Sidebar component listing all sections and lessons",
+        "Sections are collapsible/expandable accordions",
+        "Current lesson is highlighted with distinct style",
+        "Sidebar is scrollable for long curriculum",
+        "Add hamburger menu toggle for mobile",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 9,
+      "passes": true,
+      "notes": ""
+    },
+    {
+      "id": "US-010",
+      "title": "Implement Exercise Validation",
+      "description": "As a learner, I want immediate feedback on exercises so that I know if my solution is correct.",
+      "acceptanceCriteria": [
+        "Add Check Answer button to CodePlayground when exercise has expectedOutput",
+        "Compare user output to expected output (trim whitespace, normalize newlines)",
+        "Show green success message with confetti animation when correct",
+        "Show orange try again message with hints when incorrect",
+        "Display expected vs actual output diff for debugging",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 10,
+      "passes": true,
+      "notes": ""
+    },
+    {
+      "id": "US-011",
+      "title": "Implement Local Progress Storage",
+      "description": "As a learner, I want my progress saved so that I can continue where I left off.",
+      "acceptanceCriteria": [
+        "Create ProgressService in /lib/progress.ts",
+        "Implement markComplete(lessonId), isComplete(lessonId), getLastLesson()",
+        "Implement saveCode(lessonId, code), loadCode(lessonId)",
+        "Store data in localStorage with ruby3araby_ prefix",
+        "Auto-save code on change (debounced 1 second)",
+        "Handle localStorage unavailable gracefully",
+        "Typecheck passes"
+      ],
+      "priority": 11,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-012",
+      "title": "Add Completion Indicators to Sidebar",
+      "description": "As a learner, I want to see which lessons I've completed in the navigation.",
+      "acceptanceCriteria": [
+        "Show checkmark icon next to completed lessons in sidebar",
+        "Read completion status from ProgressService",
+        "Update checkmarks when lesson is marked complete",
+        "Show section completion count (e.g., 2/4 lessons)",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 12,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-013",
+      "title": "Create Homepage",
+      "description": "As a visitor, I want an attractive homepage so that I understand what the site offers.",
+      "acceptanceCriteria": [
+        "Create /app/page.tsx as homepage",
+        "Hero section with Arabic title 'روبي بالعربي' and tagline",
+        "Brief Arabic description of Ruby and the course",
+        "Start Learning button linking to first lesson",
+        "Continue button if user has progress (from ProgressService)",
+        "Visual preview/mockup of the code editor",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 13,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-014",
+      "title": "Lesson: What is Ruby and Why Learn It",
+      "description": "As a learner, I want an introduction to Ruby so that I understand what I'm learning.",
+      "acceptanceCriteria": [
+        "Create lesson content in /content/lessons/getting-started/what-is-ruby.md",
+        "Arabic content covering: Ruby history, philosophy, use cases (Rails, scripting)",
+        "No code exercise for this intro lesson",
+        "Reference wiki.hsoub.com for Arabic terminology",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 14,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-015",
+      "title": "Lesson: Hello World",
+      "description": "As a learner, I want to write and run my first Ruby program.",
+      "acceptanceCriteria": [
+        "Create lesson content in /content/lessons/getting-started/hello-world.md",
+        "Arabic explanation of puts and how Ruby executes code",
+        "Starter code: empty or minimal",
+        "Exercise: print 'مرحبا بالعالم' (Hello World in Arabic)",
+        "Expected output validation works",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 15,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-016",
+      "title": "Lesson: Using Comments",
+      "description": "As a learner, I want to learn how to add comments to my code.",
+      "acceptanceCriteria": [
+        "Create lesson in /content/lessons/getting-started/comments.md",
+        "Explain single-line (#) and multi-line (=begin/=end) comments",
+        "Exercise: add comments to existing code",
+        "Verify output ignores comments",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 16,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-017",
+      "title": "Lesson: puts vs print vs p",
+      "description": "As a learner, I want to understand the different output methods in Ruby.",
+      "acceptanceCriteria": [
+        "Create lesson in /content/lessons/getting-started/output-methods.md",
+        "Explain puts (newline), print (no newline), p (debug/inspect)",
+        "Interactive examples showing differences",
+        "Exercise: use all three methods correctly",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 17,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-018",
+      "title": "Lesson: Variables and Data Types",
+      "description": "As a learner, I want to learn how to store information in variables.",
+      "acceptanceCriteria": [
+        "Create lesson in /content/lessons/fundamentals/variables-types.md",
+        "Cover: strings, integers, floats, booleans, nil",
+        "Arabic explanations of each type",
+        "Exercise: create variables of different types and print them",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 18,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-019",
+      "title": "Lesson: Constants and Symbols",
+      "description": "As a learner, I want to understand constants and symbols in Ruby.",
+      "acceptanceCriteria": [
+        "Create lesson in /content/lessons/fundamentals/constants-symbols.md",
+        "Explain constants (UPPERCASE) and when to use them",
+        "Explain symbols (:name) and their memory efficiency",
+        "Exercise: define constants and use symbols",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 19,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-020",
+      "title": "Lesson: Basic Operators",
+      "description": "As a learner, I want to learn arithmetic and comparison operators.",
+      "acceptanceCriteria": [
+        "Create lesson in /content/lessons/fundamentals/operators.md",
+        "Cover arithmetic: +, -, *, /, %, **",
+        "Cover comparison: ==, !=, <, >, <=, >=",
+        "Exercise: perform calculations and comparisons",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 20,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-021",
+      "title": "Lesson: Boolean Logic",
+      "description": "As a learner, I want to combine conditions using boolean operators.",
+      "acceptanceCriteria": [
+        "Create lesson in /content/lessons/fundamentals/boolean-logic.md",
+        "Cover &&, ||, ! operators",
+        "Explain difference between && and 'and', || and 'or'",
+        "Exercise: combine multiple conditions",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 21,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-022",
+      "title": "Lesson: Truthiness and Falsiness",
+      "description": "As a learner, I want to understand what Ruby considers true or false.",
+      "acceptanceCriteria": [
+        "Create lesson in /content/lessons/fundamentals/truthiness.md",
+        "Explain only nil and false are falsy",
+        "Show that 0, empty string, empty array are truthy",
+        "Exercise: predict and verify truthiness of values",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 22,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-023",
+      "title": "Lesson: String Interpolation",
+      "description": "As a learner, I want to insert variables into strings dynamically.",
+      "acceptanceCriteria": [
+        "Create lesson in /content/lessons/fundamentals/string-interpolation.md",
+        "Explain #{} syntax for interpolation",
+        "Compare interpolation vs concatenation (+)",
+        "Exercise: build dynamic strings with variables",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 23,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-024",
+      "title": "Lesson: Common String Methods",
+      "description": "As a learner, I want to manipulate strings using built-in methods.",
+      "acceptanceCriteria": [
+        "Create lesson in /content/lessons/fundamentals/string-methods.md",
+        "Cover: upcase, downcase, capitalize, reverse, length, strip",
+        "Cover: split, join, include?, gsub",
+        "Exercise: transform strings using methods",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 24,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-025",
+      "title": "Lesson: Bang and Predicate Methods",
+      "description": "As a learner, I want to understand Ruby's method naming conventions.",
+      "acceptanceCriteria": [
+        "Create lesson in /content/lessons/fundamentals/bang-predicate.md",
+        "Explain ! methods modify in place (e.g., upcase!)",
+        "Explain ? methods return boolean (e.g., empty?, include?)",
+        "Exercise: use both types correctly",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 25,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-026",
+      "title": "Lesson: Getting User Input",
+      "description": "As a learner, I want to capture input using gets.",
+      "acceptanceCriteria": [
+        "Create lesson in /content/lessons/fundamentals/user-input.md",
+        "Explain gets and gets.chomp",
+        "Add note about simulated input in browser",
+        "Exercise: greet user by name (using simulated input)",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 26,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-027",
+      "title": "Lesson: Type Conversion",
+      "description": "As a learner, I want to convert between data types.",
+      "acceptanceCriteria": [
+        "Create lesson in /content/lessons/fundamentals/type-conversion.md",
+        "Cover to_i, to_f, to_s, to_a",
+        "Explain why gets returns string and needs conversion",
+        "Exercise: convert user input to number and calculate",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 27,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-028",
+      "title": "Lesson: Multiple Assignment and Nil Handling",
+      "description": "As a learner, I want to assign multiple variables and handle nil safely.",
+      "acceptanceCriteria": [
+        "Create lesson in /content/lessons/fundamentals/multiple-assignment.md",
+        "Cover parallel assignment: a, b = 1, 2",
+        "Cover swapping: a, b = b, a",
+        "Explain safe navigation operator (&.)",
+        "Exercise: swap variables and use &. operator",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 28,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-029",
+      "title": "Lesson: Conditionals (if/elsif/else/unless)",
+      "description": "As a learner, I want to make decisions in my code based on conditions.",
+      "acceptanceCriteria": [
+        "Create lesson in /content/lessons/control-flow/conditionals.md",
+        "Cover if, elsif, else structure",
+        "Cover unless as opposite of if",
+        "Cover inline conditionals",
+        "Exercise: grade calculator based on score",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 29,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-030",
+      "title": "Lesson: Case/When Statements",
+      "description": "As a learner, I want to handle multiple conditions cleanly.",
+      "acceptanceCriteria": [
+        "Create lesson in /content/lessons/control-flow/case-when.md",
+        "Explain case/when structure",
+        "Show matching values and ranges",
+        "Exercise: day of week name from number",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 30,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-031",
+      "title": "Lesson: Ternary Operator",
+      "description": "As a learner, I want to write compact conditional expressions.",
+      "acceptanceCriteria": [
+        "Create lesson in /content/lessons/control-flow/ternary.md",
+        "Explain condition ? true_result : false_result syntax",
+        "When to use vs full if/else",
+        "Exercise: convert if/else to ternary",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 31,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-032",
+      "title": "Lesson: While and Until Loops",
+      "description": "As a learner, I want to repeat code based on conditions.",
+      "acceptanceCriteria": [
+        "Create lesson in /content/lessons/loops/while-until.md",
+        "Explain while loop (repeat while true)",
+        "Explain until loop (repeat until true)",
+        "Exercise: countdown from 10",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 32,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-033",
+      "title": "Lesson: For Loops and Loop Control",
+      "description": "As a learner, I want to iterate through ranges and control loop flow.",
+      "acceptanceCriteria": [
+        "Create lesson in /content/lessons/loops/for-control.md",
+        "Cover for loop with ranges",
+        "Explain break (exit loop) and next (skip iteration)",
+        "Exercise: print even numbers, skip certain values",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 33,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-034",
+      "title": "Lesson: Arrays",
+      "description": "As a learner, I want to store ordered lists of items.",
+      "acceptanceCriteria": [
+        "Create lesson in /content/lessons/collections/arrays.md",
+        "Cover creating arrays, accessing by index",
+        "Cover modifying: push, pop, shift, unshift",
+        "Exercise: manage a shopping list array",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 34,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-035",
+      "title": "Lesson: Common Array Methods",
+      "description": "As a learner, I want to manipulate arrays with built-in methods.",
+      "acceptanceCriteria": [
+        "Create lesson in /content/lessons/collections/array-methods.md",
+        "Cover: first, last, length, include?, sort, reverse",
+        "Cover: flatten, uniq, compact",
+        "Exercise: process and clean up an array",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 35,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-036",
+      "title": "Lesson: Hashes",
+      "description": "As a learner, I want to store data in key-value pairs.",
+      "acceptanceCriteria": [
+        "Create lesson in /content/lessons/collections/hashes.md",
+        "Cover hash creation with symbol keys",
+        "Cover accessing, adding, modifying values",
+        "Exercise: create and query a person hash",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 36,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-037",
+      "title": "Lesson: Ranges and Enumerables",
+      "description": "As a learner, I want to work with ranges and iterate collections.",
+      "acceptanceCriteria": [
+        "Create lesson in /content/lessons/collections/ranges-enumerables.md",
+        "Explain inclusive (..) vs exclusive (...) ranges",
+        "Cover each, map, select, find methods",
+        "Exercise: filter and transform array data",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 37,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-038",
+      "title": "Lesson: Defining Methods",
+      "description": "As a learner, I want to create reusable blocks of code.",
+      "acceptanceCriteria": [
+        "Create lesson in /content/lessons/methods/defining-methods.md",
+        "Cover def/end syntax",
+        "Explain parameters vs arguments",
+        "Cover default argument values",
+        "Exercise: create greeting method with optional name",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 38,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-039",
+      "title": "Lesson: Return Values and Splat Operators",
+      "description": "As a learner, I want to understand method return values and variable arguments.",
+      "acceptanceCriteria": [
+        "Create lesson in /content/lessons/methods/returns-splat.md",
+        "Explain implicit vs explicit return",
+        "Cover splat (*args) for variable arguments",
+        "Cover double splat (**kwargs) for keyword arguments",
+        "Exercise: create method accepting any number of arguments",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 39,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-040",
+      "title": "Lesson: Blocks",
+      "description": "As a learner, I want to pass blocks of code to methods.",
+      "acceptanceCriteria": [
+        "Create lesson in /content/lessons/blocks/block-syntax.md",
+        "Cover do...end vs curly brace syntax",
+        "Show blocks with each, map, select",
+        "Explain block parameters |item|",
+        "Exercise: use blocks to process collections",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 40,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-041",
+      "title": "Lesson: Yield and Custom Block Methods",
+      "description": "As a learner, I want to create methods that accept blocks.",
+      "acceptanceCriteria": [
+        "Create lesson in /content/lessons/blocks/yield.md",
+        "Explain yield keyword",
+        "Create method that yields to block",
+        "Exercise: build custom iterator method",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 41,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-042",
+      "title": "Lesson: Procs and Lambdas",
+      "description": "As a learner, I want to store blocks as objects.",
+      "acceptanceCriteria": [
+        "Create lesson in /content/lessons/blocks/procs-lambdas.md",
+        "Explain Proc.new and lambda syntax",
+        "Cover differences: argument checking, return behavior",
+        "Exercise: create and use procs and lambdas",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 42,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-043",
+      "title": "Lesson: Classes and Objects",
+      "description": "As a learner, I want to create my own object types.",
+      "acceptanceCriteria": [
+        "Create lesson in /content/lessons/oop/classes-objects.md",
+        "Cover class definition syntax",
+        "Explain objects as class instances",
+        "Cover instance variables (@var)",
+        "Exercise: create simple Person class",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 43,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-044",
+      "title": "Lesson: Initialize and Accessors",
+      "description": "As a learner, I want to set up objects and access their data.",
+      "acceptanceCriteria": [
+        "Create lesson in /content/lessons/oop/initialize-accessors.md",
+        "Explain initialize method as constructor",
+        "Cover attr_reader, attr_writer, attr_accessor",
+        "Exercise: create class with proper initialization and accessors",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 44,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-045",
+      "title": "Lesson: Inheritance",
+      "description": "As a learner, I want to create class hierarchies.",
+      "acceptanceCriteria": [
+        "Create lesson in /content/lessons/oop/inheritance.md",
+        "Explain class Child < Parent syntax",
+        "Cover method overriding and super",
+        "Exercise: create Animal/Dog inheritance hierarchy",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 45,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-046",
+      "title": "Lesson: Modules and Mixins",
+      "description": "As a learner, I want to organize and share code with modules.",
+      "acceptanceCriteria": [
+        "Create lesson in /content/lessons/modules/modules-mixins.md",
+        "Explain module creation",
+        "Cover namespacing with Module::Class",
+        "Cover include (instance methods) vs extend (class methods)",
+        "Exercise: create shareable module and include in class",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 46,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-047",
+      "title": "Lesson: Error Handling",
+      "description": "As a learner, I want to handle errors gracefully.",
+      "acceptanceCriteria": [
+        "Create lesson in /content/lessons/errors/error-handling.md",
+        "Cover begin/rescue/end structure",
+        "Explain raise for throwing errors",
+        "Cover specific error types (RuntimeError, etc.)",
+        "Exercise: handle potential division by zero",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 47,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-048",
+      "title": "Challenge: FizzBuzz",
+      "description": "As a learner, I want to solve the classic FizzBuzz challenge.",
+      "acceptanceCriteria": [
+        "Create challenge in /content/lessons/challenges/fizzbuzz.md",
+        "Clear Arabic instructions for the challenge",
+        "Starter code with loop structure",
+        "Expected output for 1-100",
+        "Hints available if stuck",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 48,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-049",
+      "title": "Challenge: Simple Calculator",
+      "description": "As a learner, I want to build an interactive calculator.",
+      "acceptanceCriteria": [
+        "Create challenge in /content/lessons/challenges/calculator.md",
+        "Use simulated input for two numbers and operation",
+        "Support +, -, *, / operations",
+        "Handle division by zero",
+        "Hints available",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 49,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-050",
+      "title": "Challenge: Number Guessing Game",
+      "description": "As a learner, I want to build a guessing game.",
+      "acceptanceCriteria": [
+        "Create challenge in /content/lessons/challenges/guessing-game.md",
+        "Game picks random number 1-100",
+        "Use simulated input for guesses (array of attempts)",
+        "Provide higher/lower feedback",
+        "Hints available",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 50,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-051",
+      "title": "Add Progress Dashboard Page",
+      "description": "As a learner, I want to see my overall progress through the course.",
+      "acceptanceCriteria": [
+        "Create /app/progress/page.tsx",
+        "Show overall completion percentage",
+        "Visual progress bar for each section",
+        "List completed vs remaining lessons",
+        "Continue Learning button linking to next incomplete lesson",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 51,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-052",
+      "title": "Create Arabic Programming Glossary",
+      "description": "As a learner, I want a glossary of programming terms in Arabic.",
+      "acceptanceCriteria": [
+        "Create /app/glossary/page.tsx",
+        "Create glossary data in /content/glossary.json",
+        "Each term: English, Arabic translation, Arabic definition",
+        "Alphabetical organization with toggle (Arabic/English)",
+        "Search/filter functionality",
+        "Link from navigation sidebar",
+        "Source terms from wiki.hsoub.com",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 52,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-053",
+      "title": "Implement Dark/Light Theme Toggle",
+      "description": "As a learner, I want to choose between dark and light themes.",
+      "acceptanceCriteria": [
+        "Add theme toggle button in header",
+        "Persist preference in localStorage",
+        "Default to system preference",
+        "Smooth CSS transition between themes",
+        "Monaco editor theme matches site theme",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 53,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-054",
+      "title": "Add Keyboard Shortcuts",
+      "description": "As a learner, I want keyboard shortcuts for common actions.",
+      "acceptanceCriteria": [
+        "Ctrl/Cmd + Enter to run code",
+        "Ctrl/Cmd + S prevents browser save, triggers auto-save",
+        "Display shortcut hints near buttons",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 54,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-055",
+      "title": "Performance: Lazy Load ruby.wasm",
+      "description": "As a learner, I want the site to load quickly.",
+      "acceptanceCriteria": [
+        "Lazy-load ruby.wasm only when CodePlayground mounts",
+        "Show loading indicator while WASM initializes",
+        "Cache WASM in browser (service worker or Cache API)",
+        "Homepage loads without WASM download",
+        "Typecheck passes"
+      ],
+      "priority": 55,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-056",
+      "title": "Mobile Responsiveness Polish",
+      "description": "As a learner, I want to use the site comfortably on mobile.",
+      "acceptanceCriteria": [
+        "Editor usable at 300px width minimum",
+        "Touch-friendly button sizes (44px tap targets)",
+        "Collapsible sidebar with hamburger menu",
+        "Readable font sizes on small screens",
+        "Test on mobile viewport sizes",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 56,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-057",
+      "title": "SEO and Metadata",
+      "description": "As a site owner, I want good SEO for discoverability.",
+      "acceptanceCriteria": [
+        "Add Arabic meta tags (title, description) to all pages",
+        "Add Open Graph tags for social sharing",
+        "Use semantic HTML (header, main, nav, article)",
+        "Generate sitemap.xml",
+        "Typecheck passes"
+      ],
+      "priority": 57,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-058",
+      "title": "Add Syntax Error Highlighting (Optional)",
+      "description": "As a learner, I want to see syntax errors before running code.",
+      "acceptanceCriteria": [
+        "Research Monaco Ruby language support availability",
+        "If available: enable syntax error markers (red underlines)",
+        "If available: show error tooltips on hover",
+        "If not available: skip this feature, mark as N/A",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 58,
+      "passes": false,
+      "notes": "Optional enhancement - skip if complex"
+    }
+  ]
+}

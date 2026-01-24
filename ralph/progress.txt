@@ -1,0 +1,306 @@
+# Ruby3araby Progress Log
+
+Branch: ralph/ruby3araby-interactive-course
+Started: 2026-01-24
+Last Updated: 2026-01-24
+
+## Codebase Patterns
+
+- Tailwind 4.x uses CSS-based configuration with `@theme inline` in globals.css, not tailwind.config.js
+- RTL support in Tailwind 4 is built-in via `rtl:` and `ltr:` variants - set `dir="rtl"` on html element
+- Arabic font (Cairo) configured via next/font with `subsets: ["arabic", "latin"]`
+- ESLint 9 uses flat config format (eslint.config.mjs) with defineConfig and globalIgnores
+- ruby.wasm uses `@ruby/3.4-wasm-wasi` for WASM binary and `@ruby/wasm-wasi` for the `DefaultRubyVM` API
+- Ruby output capture: use `StringIO` to redirect `$stdout`/`$stderr`, not JavaScript callbacks
+- Avoid using `module` as variable name in Next.js due to `@next/next/no-assign-module-variable` rule
+- Monaco editor: wrap in `dir="ltr"` container for code editing in RTL pages; use `automaticLayout: true` for responsiveness
+- Use `react-markdown` with `remark-gfm` for markdown rendering in lesson content
+- For client components in Next.js app router, create separate files with "use client" directive rather than using `require()`
+- Course loader utilities in `lib/course-loader.ts` provide navigation helpers (prev/next lesson)
+- ESLint react-hooks/set-state-in-effect: use ref + setTimeout(0) pattern for state updates based on navigation changes
+
+## Completed Stories
+
+### 2026-01-24 - US-001: Project Setup and Infrastructure
+
+**What was implemented:**
+- Initialized Next.js 16.1.4 with TypeScript and App Router
+- Configured Tailwind CSS 4.1.18 with RTL support
+- Set up Cairo Arabic font via next/font/google
+- Configured ESLint with Next.js rules and Prettier integration
+- Created folder structure: /app, /components, /lib, /content, /public
+- All typechecks and linting pass
+
+**Files changed:**
+- package.json, package-lock.json (dependencies)
+- app/layout.tsx (RTL config, Arabic font, metadata)
+- app/globals.css (Tailwind theme with Arabic font)
+- eslint.config.mjs (added Prettier config)
+- .prettierrc (new - Prettier settings)
+- next.config.ts, tsconfig.json, postcss.config.mjs (Next.js config)
+- components/.gitkeep, lib/.gitkeep, content/.gitkeep (folder structure)
+
+**Learnings for future iterations:**
+- Next.js 16+ uses Tailwind 4 which has different configuration approach
+- Tailwind 4 uses `@import "tailwindcss"` and `@theme inline` in CSS
+- tailwindcss-rtl plugin was installed but not needed - Tailwind 4 has built-in RTL support
+- ESLint 9 flat config requires `eslint-config-prettier` for Prettier integration
+
+---
+
+### 2026-01-24 - US-002: Configure Arabic RTL Layout
+
+**What was implemented:**
+- Verified HTML `dir='rtl'` and `lang='ar'` configured in root layout (from US-001)
+- Verified Cairo Arabic font configured via next/font (from US-001)
+- Confirmed Tailwind 4 built-in RTL support is working (no plugin needed)
+- Created Arabic RTL test page with comprehensive RTL demonstration:
+  - Hero section with Arabic title and tagline
+  - RTL text alignment for paragraphs
+  - RTL list bullets (on right side)
+  - Mixed Arabic/English content handling
+  - Card grid layout in RTL
+- All typechecks and linting pass
+- Browser verification confirmed correct RTL rendering
+
+**Files changed:**
+- app/page.tsx (replaced default template with Arabic RTL test page)
+
+**Learnings for future iterations:**
+- Tailwind 4 handles RTL layout automatically when `dir="rtl"` is set on html element
+- List bullets appear on the right side automatically in RTL mode
+- Mixed content (Arabic + English code snippets) displays correctly with proper bidirectional text handling
+- Use `font-mono` class for code snippets to maintain LTR for code while surrounding text is RTL
+
+---
+
+### 2026-01-24 - US-003: Integrate ruby.wasm Runtime
+
+**What was implemented:**
+- Installed `@ruby/3.4-wasm-wasi` (WASM binary with stdlib) and `@ruby/wasm-wasi` (JavaScript API)
+- Created `RubyRunner` singleton service class in `/lib/ruby-runner.ts`
+- Implemented `executeCode(code, input?, timeoutMs?)` method returning `Promise<{ output: string, error?: string }>`
+- Output capture via Ruby's `StringIO` redirecting `$stdout` and `$stderr`
+- Simulated input support for `gets` calls via overriding `Kernel.gets`
+- 60-second execution timeout with user-friendly error message
+- Error handling with categorized error messages (SyntaxError, NameError, etc.)
+- All typechecks and linting pass
+
+**Files changed:**
+- package.json, package-lock.json (added @ruby/3.4-wasm-wasi, @ruby/wasm-wasi)
+- lib/ruby-runner.ts (new - RubyRunner service class)
+- lib/.gitkeep (removed - no longer needed)
+
+**Learnings for future iterations:**
+- `DefaultRubyVM` from `@ruby/wasm-wasi/dist/browser` is the main API for browser usage
+- WASM is loaded from CDN: `https://cdn.jsdelivr.net/npm/@ruby/3.4-wasm-wasi@2.7.1/dist/ruby+stdlib.wasm`
+- `vm.eval()` runs synchronously, `vm.evalAsync()` for async operations (fetch, etc.)
+- Output capture must be done in Ruby via StringIO, not via JavaScript callbacks
+- Use `consolePrint: false` option to prevent double-logging to browser console
+
+---
+
+### 2026-01-24 - US-004: Integrate Monaco Editor Component
+
+**What was implemented:**
+- Installed `@monaco-editor/react` package for Monaco editor integration
+- Created `CodeEditor` component in `/components/CodeEditor.tsx`
+- Enabled Ruby syntax highlighting via Monaco's built-in language support
+- Configured vs-dark theme with line numbers and auto-indentation
+- Set monospace font (JetBrains Mono, Fira Code fallbacks)
+- Editor wrapped in `dir="ltr"` container to maintain LTR for code in RTL page
+- Added `typecheck` npm script to package.json for TypeScript checking
+- Updated homepage with CodeEditor demo showing Arabic/English Ruby code
+- All typechecks and linting pass
+- Browser verification confirmed correct rendering
+
+**Files changed:**
+- package.json, package-lock.json (added @monaco-editor/react, added typecheck script)
+- components/CodeEditor.tsx (new - Monaco editor wrapper component)
+- app/page.tsx (updated to demonstrate CodeEditor)
+
+**Learnings for future iterations:**
+- Monaco editor types from `monaco-editor` package, react wrapper from `@monaco-editor/react`
+- Use `dir="ltr"` wrapper around editor to prevent RTL interference with code
+- Monaco has built-in Ruby language support - no additional configuration needed
+- Use `automaticLayout: true` option for responsive editor sizing
+- Loading state can be customized via the `loading` prop with Arabic text
+
+---
+
+### 2026-01-24 - US-005: Create Code Playground Component
+
+**What was implemented:**
+- Created `CodePlayground` component in `/components/CodePlayground.tsx`
+- Combines CodeEditor with control buttons and output panel
+- Run button executes code using RubyRunner with loading state
+- Copy Code button copies current code to clipboard with success feedback
+- Reset button restores original starter code and clears output
+- Output panel displays results with loading spinner during execution
+- Errors displayed in red, normal output in default gray color
+- Updated homepage to demonstrate CodePlayground with sample Ruby code
+- All typechecks and linting pass
+- Browser verification confirmed all functionality works
+
+**Files changed:**
+- components/CodePlayground.tsx (new - interactive playground component)
+- app/page.tsx (updated to use CodePlayground instead of plain CodeEditor)
+
+**Learnings for future iterations:**
+- Use `useCallback` for event handlers to prevent unnecessary re-renders
+- Copy to clipboard: use `navigator.clipboard.writeText()` with fallback for older browsers
+- Show visual feedback for copy success using temporary state
+- RubyRunner initialization is lazy - show separate loading message during WASM init vs execution
+- Output panel uses `dir="ltr"` to ensure code output displays correctly in RTL page
+- Use `useEffect` to sync internal state when `starterCode` prop changes
+
+---
+
+### 2026-01-24 - US-006: Create Simulated Input System
+
+**What was implemented:**
+- Added simulated input panel to CodePlayground component
+- Input textarea above the editor for entering values before running code
+- Newline-separated values support for multiple `gets` calls
+- Arabic instructions explaining how the input system works
+- Pre-populate input field via `defaultInput` prop for exercises with test values
+- `showInputPanel` prop to control visibility (auto-shows when defaultInput provided)
+- Input resets when Reset button is clicked
+- Updated homepage with demo showing `gets` usage with simulated input
+- All typechecks, linting, and build pass
+
+**Files changed:**
+- components/CodePlayground.tsx (added input panel, new props, input state management)
+- app/page.tsx (added demo section showing gets usage with simulated input)
+
+**Learnings for future iterations:**
+- RubyRunner already supported input parameter from US-003 implementation
+- Input panel visibility can be automatic (when defaultInput provided) or explicit (showInputPanel prop)
+- Keep input textarea in `dir="ltr"` mode since input values are typically code-related
+- Arabic instructions help users understand the browser limitation with gets
+
+---
+
+### 2026-01-24 - US-007: Create Lesson Content Schema and Types
+
+**What was implemented:**
+- Created TypeScript interfaces in `/lib/types.ts`:
+  - `Exercise`: id, instructions, starterCode, expectedOutput, defaultInput, hints
+  - `CodeExample`: title, code, output
+  - `Lesson`: id, slug, title, content, codeExamples, exercises
+  - `Section`: id, slug, title, lessons array
+  - `Course`: id, title, description, sections array
+  - `LessonStub`, `SectionStub`, `CourseStructure` for course.json structure
+- Created course structure JSON in `/content/course.json`:
+  - 11 sections covering Ruby from basics to OOP and challenges
+  - 37 lesson stubs with Arabic titles and content paths
+  - Complete curriculum matching PRD user stories US-014 to US-050
+- All typechecks, lint, and build pass
+
+**Files changed:**
+- lib/types.ts (new - TypeScript interfaces for content)
+- content/course.json (new - course structure with sections and lesson stubs)
+- content/.gitkeep (removed - no longer needed)
+
+**Learnings for future iterations:**
+- Use `LessonStub` vs `Lesson` to distinguish between course.json references and full content
+- Course structure stores only paths to markdown files; full content loaded at runtime
+- Arabic section titles help with navigation; lesson titles match individual PRD story titles
+
+---
+
+### 2026-01-24 - US-008: Build Lesson Page Layout
+
+**What was implemented:**
+- Created dynamic route `/app/lessons/[section]/[lesson]/page.tsx` for all lessons
+- Split layout on desktop: Arabic content on right (RTL), code playground on left
+- Mobile responsive: stacks vertically with content on top, editor below
+- Markdown rendering with `react-markdown` and `remark-gfm`
+- Arabic typography styling with custom markdown components
+- Previous/Next lesson navigation buttons with lesson titles
+- Breadcrumb navigation showing course > section > lesson
+- Course loader utilities in `lib/course-loader.ts` for navigation
+- Static site generation for all 37 lesson pages
+- All typechecks, lint, and build pass
+- Browser verification confirmed correct RTL layout and responsiveness
+
+**Files changed:**
+- package.json, package-lock.json (added react-markdown, remark-gfm)
+- app/lessons/[section]/[lesson]/page.tsx (new - lesson page with split layout)
+- app/lessons/[section]/[lesson]/LessonContent.tsx (new - markdown rendering component)
+- app/lessons/[section]/[lesson]/LessonPlayground.tsx (new - client component wrapper)
+- lib/course-loader.ts (new - course navigation utilities)
+
+**Learnings for future iterations:**
+- Use `generateStaticParams()` in Next.js App Router for dynamic route static generation
+- Separate client components into their own files to avoid `require()` eslint errors
+- `flex-row-reverse` provides the RTL split layout (content right, editor left)
+- Use `lg:` breakpoint classes for responsive stacking
+- Breadcrumb navigation helps users understand their location in the course structure
+
+---
+
+### 2026-01-24 - US-009: Build Navigation Sidebar
+
+**What was implemented:**
+- Created Sidebar component in `/components/Sidebar.tsx`
+- Collapsible/expandable accordion sections with chevron indicators
+- Current lesson highlighting with emerald background and white dot indicator
+- Section numbering (1-11) and lesson numbering within sections
+- Scrollable sidebar for all 37 lessons across 11 sections
+- Mobile hamburger menu with slide-in animation and dark overlay
+- Auto-expand section containing current lesson on load
+- Auto-close mobile sidebar on navigation
+- Integrated sidebar into lesson pages with RTL layout
+- All typechecks, lint, and build pass
+- Browser verification confirmed all functionality works
+
+**Files changed:**
+- components/Sidebar.tsx (new - navigation sidebar component)
+- app/lessons/[section]/[lesson]/page.tsx (integrated sidebar, adjusted layout)
+
+**Learnings for future iterations:**
+- ESLint react-hooks/set-state-in-effect rule prevents setState in useEffect; use ref-based pattern with setTimeout(0) for navigation changes
+- Use `useMemo` with empty deps for initial state that depends on route params
+- Mobile sidebar uses `translate-x-full`/`translate-x-0` for slide animation
+- Use `lg:` breakpoint for sidebar visibility (hidden on mobile, visible on desktop)
+- Sidebar positioned with `fixed` on mobile, `sticky` on desktop for different behaviors
+
+---
+
+### 2026-01-24 - US-010: Implement Exercise Validation
+
+**What was implemented:**
+- Added `expectedOutput` and `hints` props to CodePlayground component
+- Check Answer button appears when exercise has expectedOutput prop
+- Output comparison with whitespace normalization (trim, normalize newlines)
+- Green success banner with confetti animation for correct answers
+- Orange try again banner with progressive hints for incorrect answers
+- Side-by-side diff view showing expected vs actual output for debugging
+- Confetti CSS animation added to globals.css
+- Demo exercise section added to homepage for testing validation
+- All typechecks, lint, and build pass
+- Browser verification confirmed all validation features work
+
+**Files changed:**
+- components/CodePlayground.tsx (added validation logic, UI feedback, new props)
+- app/globals.css (added confetti animation keyframes)
+- app/page.tsx (added exercise validation demo section)
+
+**Learnings for future iterations:**
+- Use `normalizeOutput()` helper to trim whitespace and normalize newlines before comparison
+- Validation state uses discriminated union type for type safety: `{ status: "idle" | "correct" | "incorrect", hintIndex?: number }`
+- Confetti animation uses CSS keyframes with randomized positions/delays for variety
+- Progressive hints: show next hint on each failed attempt until all hints exhausted
+- Output diff shows expected (green border) vs actual (red border) side-by-side
+
+---
+
+## Current Story
+
+(completed US-010, ready for next iteration)
+
+## Notes
+
+- Using Next.js 16.1.4, React 19.2.3, Tailwind 4.1.18
+- Build and lint pass successfully
