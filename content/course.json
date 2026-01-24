@@ -226,7 +226,20 @@
           "id": "type-conversion",
           "slug": "type-conversion",
           "title": "تحويل أنواع البيانات",
-          "contentPath": "/content/lessons/fundamentals/type-conversion.md"
+          "contentPath": "/content/lessons/fundamentals/type-conversion.md",
+          "exercise": {
+            "starterCode": "# اطلب من المستخدم إدخال رقمين\n# ثم احسب واطبع المجموع والفرق\n\n# تلميح: استخدم gets.chomp.to_i للحصول على رقم صحيح\n\n",
+            "expectedOutput": "أدخل الرقم الأول:\nأدخل الرقم الثاني:\nالمجموع: 30\nالفرق: 10",
+            "defaultInput": "20\n10",
+            "hints": [
+              "ابدأ بطباعة السؤال الأول: puts \"أدخل الرقم الأول:\"",
+              "احصل على الرقم الأول: num1 = gets.chomp.to_i",
+              "كرر نفس الخطوات للرقم الثاني",
+              "احسب المجموع: sum = num1 + num2",
+              "احسب الفرق: diff = num1 - num2",
+              "اطبع النتائج باستخدام دمج المتغيرات: puts \"المجموع: #{sum}\""
+            ]
+          }
         },
         {
           "id": "multiple-assignment",
