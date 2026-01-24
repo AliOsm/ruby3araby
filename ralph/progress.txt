@@ -1533,9 +1533,41 @@ Last Updated: 2026-01-24
 
 ---
 
+### 2026-01-24 - US-050: Challenge: Number Guessing Game
+
+**What was implemented:**
+- Created Number Guessing Game challenge content at `/content/lessons/challenges/guessing-game.md`
+- Comprehensive Arabic content including:
+  - Introduction explaining the guessing game concept
+  - Clear rules: computer picks number, player guesses, feedback given
+  - Random number generation with `rand(1..100)` explanation
+  - Loop structures: `loop do...end` with `break` and `while` alternatives
+  - Attempt counter for tracking number of guesses
+  - Note about simulated input in browser environment
+- Exercise configuration with:
+  - Fixed secret number (65) for output validation
+  - Starter code with welcome message and TODO placeholder
+  - Default input: "50\n75\n60\n65" (4 guesses leading to correct answer)
+  - Expected output showing the full game flow with feedback messages
+  - 5 progressive hints guiding the learner
+- All typechecks and lint pass
+- Browser verification confirmed: page loads with correct title, content, and code playground
+
+**Files changed:**
+- content/lessons/challenges/guessing-game.md (new - challenge content)
+- content/course.json (added exercise configuration for guessing-game challenge)
+
+**Learnings for future iterations:**
+- For validation purposes, use fixed secret number instead of random
+- Input sequence should demonstrate the feedback loop (higher/lower/correct)
+- `loop do...end` with `break` is cleaner than `while` for game loops
+- The challenge completes the "challenges" section with 3 challenges total
+
+---
+
 ## Current Story
 
-(completed US-049, ready for next iteration)
+(completed US-050, ready for next iteration)
 
 ## Notes
 
