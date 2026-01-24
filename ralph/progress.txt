@@ -1249,9 +1249,46 @@ Last Updated: 2026-01-24
 
 ---
 
+### 2026-01-24 - US-042: Lesson: Procs and Lambdas
+
+**What was implemented:**
+- Created Procs and Lambdas lesson at `/content/lessons/blocks/procs-lambdas.md`
+- Comprehensive Arabic explanations of:
+  - What Proc is: storing blocks as objects with Proc.new and proc shortcut
+  - What Lambda is: stricter block storage with lambda or -> syntax
+  - Multiple ways to call Procs: .call(), [], .===, .()
+  - Lambda with parameters using ->(a, b) { } syntax
+  - Key difference #1: Lambda strictly checks argument count, Proc is lenient
+  - Key difference #2: return in Proc exits enclosing method, return in Lambda exits only Lambda
+  - Converting blocks to Procs with & in method definition
+  - Converting Procs to blocks with & when calling methods
+  - Symbol shortcut &:method_name
+  - Closures: Procs/Lambdas capturing surrounding scope
+- Practical examples: event emitter, custom filters, flexible calculator
+- When to use which: Lambda for safety, Proc for flexibility
+- Common errors: forgetting .call(), mixing return behavior, argument count mismatch
+- Exercise: create square Lambda and greet Proc, use with map
+- Added exercise configuration to course.json with hints
+- All typechecks, lint pass
+- Browser verification confirmed: RTL layout, content rendering, code playground with exercise
+
+**Files changed:**
+- content/lessons/blocks/procs-lambdas.md (new - lesson content)
+- content/course.json (added exercise configuration for procs-lambdas lesson)
+
+**Learnings for future iterations:**
+- Procs and Lambdas are objects that store blocks for later execution
+- Lambda is safer (strict arg checking, normal return) - recommended for most cases
+- Proc is more flexible (lenient args, return exits enclosing method)
+- The & operator converts between blocks and Procs in both directions
+- Closures make Procs/Lambdas powerful for creating factories and callbacks
+- This completes the blocks section (block-syntax, yield, procs-lambdas)
+
+---
+
 ## Current Story
 
-(completed US-041, ready for next iteration)
+(completed US-042, ready for next iteration)
 
 ## Notes
 
