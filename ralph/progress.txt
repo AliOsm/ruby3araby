@@ -1321,9 +1321,46 @@ Last Updated: 2026-01-24
 
 ---
 
+### 2026-01-24 - US-044: Lesson: Initialize and Accessors
+
+**What was implemented:**
+- Created Initialize and Accessors lesson at `/content/lessons/oop/initialize-accessors.md`
+- Comprehensive Arabic explanations of:
+  - The `initialize` method (المُهيّئ) as constructor - called automatically with `new`
+  - Default parameter values in initialize
+  - The problem with manual getter/setter methods (repetitive code)
+  - `attr_reader` for read-only access (creates getter methods)
+  - `attr_writer` for write-only access (creates setter methods)
+  - `attr_accessor` for read/write access (creates both getter and setter)
+  - When to use each accessor type (reader for immutable data, writer for security, accessor for mutable data)
+  - Custom setter methods with validation
+  - Combining accessors with custom methods
+- Practical examples: User account with mixed accessors, Car class, BankAccount with validation
+- Common errors section: forgetting `:` before symbol, using `@` with accessors
+- Summary comparison table of before/after using initialize and accessors
+- Exercise: create Book class with attr_reader, attr_accessor, initialize, and progress method
+- Added exercise configuration to course.json with hints
+- All typechecks, lint pass
+- Browser verification confirmed: RTL layout, content rendering, code playground with exercise
+
+**Files changed:**
+- content/lessons/oop/initialize-accessors.md (new - lesson content)
+- content/course.json (added exercise configuration for initialize-accessors lesson)
+
+**Learnings for future iterations:**
+- `initialize` is Ruby's constructor - called automatically when `.new` is invoked
+- `attr_reader :name` creates `def name; @name; end` automatically
+- `attr_writer :name` creates `def name=(value); @name = value; end` automatically
+- `attr_accessor :name` creates both getter and setter
+- Use attr_reader for immutable data (id, created_at), attr_writer for secrets (password), attr_accessor for normal mutable data
+- Custom setters can be combined with accessors for validation logic
+- This lesson builds on classes-objects by replacing manual set_/get_ methods with Ruby conventions
+
+---
+
 ## Current Story
 
-(completed US-043, ready for next iteration)
+(completed US-044, ready for next iteration)
 
 ## Notes
 
