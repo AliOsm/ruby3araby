@@ -22,6 +22,8 @@ Last Updated: 2026-01-24
 - Theme: use `ThemeProvider` from `lib/theme.tsx`, access via `useTheme()` hook for `theme`, `resolvedTheme`, `setTheme`
 - Theme-aware colors: use `foreground/XX` (e.g., `text-foreground/60`) and `bg-foreground/XX` for theme-responsive styling
 - Monaco editor theme syncs with site via `useMemo` deriving theme from `resolvedTheme`
+- Monaco syntax errors: use `monaco.editor.setModelMarkers(model, owner, markers)` with `MarkerSeverity.Error` for red underlines
+- Ruby syntax validation: use `RubyVM::InstructionSequence.compile(code, filename)` to parse without executing
 
 ## Completed Stories
 
@@ -1808,3 +1810,31 @@ Last Updated: 2026-01-24
 
 - Using Next.js 16.1.4, React 19.2.3, Tailwind 4.1.18
 - Build and lint pass successfully
+
+### 2026-01-24 - US-058: Add Syntax Error Highlighting (Optional)
+
+**What was implemented:**
+- Research: Monaco Editor has built-in Ruby syntax highlighting but NO built-in error validation (only TypeScript/JavaScript/HTML/CSS have that)
+- Solution: Used ruby.wasm's `RubyVM::InstructionSequence.compile` to validate syntax without executing code
+- Added `checkSyntax()` method to RubyRunner class returning `SyntaxCheckResult` with validity and error details
+- Added `syntaxChecker` prop to CodeEditor component
+- Integrated with Monaco's `setModelMarkers` API to display red squiggly underlines on error lines
+- Debounced syntax checking (500ms) to avoid excessive validation while typing
+- Only checks syntax when Ruby VM is already initialized (non-blocking)
+- Browser verification confirmed: red underlines appear for syntax errors (e.g., missing `end`), disappear when fixed
+- All typechecks and linting pass
+
+**Files changed:**
+- lib/ruby-runner.ts (added SyntaxCheckResult interface and checkSyntax method)
+- components/CodeEditor.tsx (added syntaxChecker prop, Monaco marker integration, debounced checking)
+- components/CodePlayground.tsx (wired syntaxChecker callback to CodeEditor)
+
+**Learnings for future iterations:**
+- Monaco error validation requires custom implementation for Ruby (not built-in like TypeScript)
+- Use `monaco.editor.setModelMarkers(model, owner, markers)` to show errors with red underlines
+- Ruby's `RubyVM::InstructionSequence.compile(code, filename)` parses without executing - ideal for syntax validation
+- SyntaxError messages from Ruby include file:line format that can be parsed to extract location
+- Use `[\s\S]` instead of `.` with `/s` regex flag for ES compatibility in TypeScript
+- Debouncing syntax checks (500ms) provides good balance between responsiveness and performance
+
+---
