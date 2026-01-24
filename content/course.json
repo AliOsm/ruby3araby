@@ -123,7 +123,18 @@
           "id": "boolean-logic",
           "slug": "boolean-logic",
           "title": "المنطق البولياني",
-          "contentPath": "/content/lessons/fundamentals/boolean-logic.md"
+          "contentPath": "/content/lessons/fundamentals/boolean-logic.md",
+          "exercise": {
+            "starterCode": "# عرّف المتغيرات:\n# x = 10\n# y = 5\n# z = 15\n\n# اطبع: هل x أكبر من y و x أصغر من z؟\n\n# اطبع: هل y يساوي 10 أو z يساوي 15؟\n\n# اطبع: عكس (x يساوي y)\n\n# اطبع: هل (x أكبر من y) و (y أكبر من 0 أو z يساوي 20)؟\n",
+            "expectedOutput": "true\ntrue\ntrue\ntrue",
+            "hints": [
+              "ابدأ بتعريف المتغيرات: x = 10 و y = 5 و z = 15",
+              "للسؤال الأول استخدم &&: puts x > y && x < z",
+              "للسؤال الثاني استخدم ||: puts y == 10 || z == 15",
+              "للسؤال الثالث استخدم !: puts !(x == y) أو puts x != y",
+              "للسؤال الرابع استخدم أقواساً: puts (x > y) && (y > 0 || z == 20)"
+            ]
+          }
         },
         {
           "id": "truthiness",
