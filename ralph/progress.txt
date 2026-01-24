@@ -696,9 +696,39 @@ Last Updated: 2026-01-24
 
 ---
 
+### 2026-01-24 - US-025: Lesson: Bang and Predicate Methods
+
+**What was implemented:**
+- Created lesson content at `/content/lessons/fundamentals/bang-predicate.md`
+- Comprehensive Arabic explanations of:
+  - Bang methods (!): upcase!, downcase!, capitalize!, strip!, gsub!, etc.
+  - How bang methods modify the original value instead of returning a copy
+  - Warning about bang methods returning nil when no change occurs
+  - Predicate methods (?): empty?, nil?, include?, start_with?, end_with?
+  - Number predicates: even?, odd?, zero?, positive?, negative?, between?
+  - Array predicates: empty?, include?, any?
+  - Type checking: is_a?, respond_to?
+- Comparison table for both bang and predicate methods
+- Practical examples: data validation, cleaning user input
+- Exercise: use upcase!, empty?, even?, and include? to produce expected output
+- Added exercise configuration to course.json with hints
+- All typechecks, lint, and build pass
+
+**Files changed:**
+- content/lessons/fundamentals/bang-predicate.md (new - lesson content)
+- content/course.json (added exercise configuration for bang-predicate lesson)
+
+**Learnings for future iterations:**
+- Bang methods (!) modify in place but return nil if no change occurs - don't chain them
+- Predicate methods (?) always return true or false - ideal for conditionals
+- This lesson builds on string-methods by explaining the ! variant
+- Exercise tests all four main predicate/bang concepts in one go
+
+---
+
 ## Current Story
 
-(completed US-024, ready for next iteration)
+(completed US-025, ready for next iteration)
 
 ## Notes
 
