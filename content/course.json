@@ -48,7 +48,17 @@
           "id": "output-methods",
           "slug": "output-methods",
           "title": "puts و print و p",
-          "contentPath": "/content/lessons/getting-started/output-methods.md"
+          "contentPath": "/content/lessons/getting-started/output-methods.md",
+          "exercise": {
+            "starterCode": "# استخدم print لطباعة \"مرحباً \" (مع مسافة في النهاية)\n\n# استخدم puts لطباعة \"بالعالم\"\n\n# استخدم p لطباعة الرقم 2025\n",
+            "expectedOutput": "مرحباً بالعالم\n2025",
+            "hints": [
+              "print لا ينتقل لسطر جديد، لذا ضع مسافة بعد كلمة مرحباً",
+              "puts ينتقل تلقائياً لسطر جديد بعد الطباعة",
+              "p يطبع القيمة مع علامات الاقتباس للنصوص، لكن الأرقام تظهر بدونها",
+              "الحل: print \"مرحباً \" ثم puts \"بالعالم\" ثم p 2025"
+            ]
+          }
         }
       ]
     },
