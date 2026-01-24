@@ -270,7 +270,18 @@
           "id": "conditionals",
           "slug": "conditionals",
           "title": "الشروط (if/elsif/else/unless)",
-          "contentPath": "/content/lessons/control-flow/conditionals.md"
+          "contentPath": "/content/lessons/control-flow/conditionals.md",
+          "exercise": {
+            "starterCode": "# حاسبة التقديرات\n# عرّف متغير score بقيمة 78\n# ثم استخدم if-elsif-else لطباعة التقدير المناسب\n\n",
+            "expectedOutput": "جيد",
+            "hints": [
+              "عرّف المتغير: score = 78",
+              "ابدأ بالشرط الأعلى: if score >= 90",
+              "استخدم elsif للشروط الأخرى: elsif score >= 80",
+              "تذكر أن 78 تقع بين 70 و 79، أي تقدير \"جيد\"",
+              "الحل: if score >= 90 ثم puts \"ممتاز\" ثم elsif score >= 80 ثم puts \"جيد جداً\" ثم elsif score >= 70 ثم puts \"جيد\" وهكذا..."
+            ]
+          }
         },
         {
           "id": "case-when",
