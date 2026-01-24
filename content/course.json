@@ -174,7 +174,18 @@
           "id": "string-methods",
           "slug": "string-methods",
           "title": "دوال النصوص",
-          "contentPath": "/content/lessons/fundamentals/string-methods.md"
+          "contentPath": "/content/lessons/fundamentals/string-methods.md",
+          "exercise": {
+            "starterCode": "# البيانات الأولية:\nname = \"   ruby programmer   \"\nemail = \"   AHMED@Email.COM   \"\naddress = \"Cairo-Egypt-Africa\"\n\n# 1. اطبع الاسم بأحرف كبيرة (بعد إزالة المسافات)\n\n# 2. اطبع البريد الإلكتروني نظيفاً (بدون مسافات وبأحرف صغيرة)\n\n# 3. اطبع العنوان بعد استبدال الشرطات بمسافات\n\n# 4. اطبع طول الاسم الأصلي (مع المسافات)\n",
+            "expectedOutput": "RUBY PROGRAMMER\nahmed@email.com\nCairo Egypt Africa\n21",
+            "hints": [
+              "للسؤال الأول استخدم strip ثم upcase: puts name.strip.upcase",
+              "للسؤال الثاني استخدم strip ثم downcase: puts email.strip.downcase",
+              "للسؤال الثالث استخدم gsub لاستبدال الشرطة بمسافة: puts address.gsub(\"-\", \" \")",
+              "للسؤال الرابع استخدم length على الاسم الأصلي: puts name.length",
+              "تذكر: الدوال لا تغير النص الأصلي، بل تُرجع نصاً جديداً"
+            ]
+          }
         },
         {
           "id": "bang-predicate",
