@@ -47,7 +47,7 @@ function normalizeOutput(text: string): string {
 }
 
 export default function CodePlayground({
-  starterCode = '# اكتب كود روبي هنا\nputs "مرحبا بالعالم!"',
+  starterCode = '# اكتب شيفرة روبي هنا\nputs "مرحبا بالعالم!"',
   editorHeight = "250px",
   defaultInput = "",
   showInputPanel,
@@ -270,7 +270,7 @@ export default function CodePlayground({
   const isLoading = isRunning || isInitializing;
   const loadingText = isInitializing
     ? "جارٍ تحميل Ruby..."
-    : "جارٍ تنفيذ الكود...";
+    : "جارٍ تنفيذ الشيفرة...";
 
   return (
     <div className="flex flex-col gap-3">
@@ -424,7 +424,7 @@ export default function CodePlayground({
                   d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
                 />
               </svg>
-              <span className="hidden xs:inline">نسخ الكود</span>
+              <span className="hidden xs:inline">نسخ الشيفرة</span>
             </>
           )}
         </button>
@@ -454,7 +454,7 @@ export default function CodePlayground({
         {/* Keyboard Shortcut Hint for Save */}
         {shouldAutoSave && (
           <span className="mr-auto hidden text-xs text-foreground/40 sm:block" dir="ltr">
-            Ctrl+S لحفظ الكود
+            Ctrl+S لحفظ الشيفرة
           </span>
         )}
       </div>
@@ -543,7 +543,7 @@ export default function CodePlayground({
                   حاول مرة أخرى
                 </h3>
                 <p className="text-sm text-orange-300">
-                  الإجابة ليست صحيحة بعد. راجع الكود وحاول مجدداً.
+                  الإجابة ليست صحيحة بعد. راجع الشيفرة وحاول مجدداً.
                 </p>
               </div>
             </div>

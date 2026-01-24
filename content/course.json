@@ -20,7 +20,7 @@
           "title": "مرحبا بالعالم",
           "contentPath": "/content/lessons/getting-started/hello-world.md",
           "exercise": {
-            "starterCode": "# اكتب كوداً يطبع: مرحبا بالعالم\n",
+            "starterCode": "# اكتب شيفرة تطبع: مرحبا بالعالم\n",
             "expectedOutput": "مرحبا بالعالم",
             "hints": [
               "استخدم الأمر puts لطباعة النص",
@@ -306,7 +306,7 @@
           "title": "العامل الثلاثي",
           "contentPath": "/content/lessons/control-flow/ternary.md",
           "exercise": {
-            "starterCode": "# حوّل هذا الكود إلى عامل ثلاثي:\n# if number > 0\n#   puts \"موجب\"\n# else\n#   puts \"سالب أو صفر\"\n# end\n\nnumber = 10\n# اكتب الحل هنا باستخدام العامل الثلاثي\n",
+            "starterCode": "# حوّل هذه الشيفرة إلى عامل ثلاثي:\n# if number > 0\n#   puts \"موجب\"\n# else\n#   puts \"سالب أو صفر\"\n# end\n\nnumber = 10\n# اكتب الحل هنا باستخدام العامل الثلاثي\n",
             "expectedOutput": "موجب",
             "hints": [
               "عرّف المتغير: number = 10",
@@ -329,7 +329,7 @@
           "title": "حلقات while و until",
           "contentPath": "/content/lessons/loops/while-until.md",
           "exercise": {
-            "starterCode": "# اكتب كودك هنا\n# عرّف countdown = 10\n# استخدم حلقة while للعد التنازلي\n# اطبع \"انطلق!\" في النهاية\n",
+            "starterCode": "# اكتب شيفرتك هنا\n# عرّف countdown = 10\n# استخدم حلقة while للعد التنازلي\n# اطبع \"انطلق!\" في النهاية\n",
             "expectedOutput": "10\n9\n8\n7\n6\n5\n4\n3\n2\n1\nانطلق!",
             "hints": [
               "ابدأ بتعريف المتغير: countdown = 10",
@@ -491,7 +491,7 @@
           "title": "صياغة الكتل",
           "contentPath": "/content/lessons/blocks/block-syntax.md",
           "exercise": {
-            "starterCode": "# الكتل البرمجية مع select, map, reduce\n\nnumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\n\n# 1. استخدم select لاختيار الأرقام الزوجية\n# 2. استخدم map لمضاعفة كل رقم\n# 3. استخدم reduce لحساب المجموع\n# 4. اطبع النتيجة\n\nresult = numbers\n  # أكمل الكود هنا\n\nputs result",
+            "starterCode": "# الكتل البرمجية مع select, map, reduce\n\nnumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\n\n# 1. استخدم select لاختيار الأرقام الزوجية\n# 2. استخدم map لمضاعفة كل رقم\n# 3. استخدم reduce لحساب المجموع\n# 4. اطبع النتيجة\n\nresult = numbers\n  # أكمل الشيفرة هنا\n\nputs result",
             "expectedOutput": "60",
             "hints": [
               "استخدم .select { |n| n.even? } لاختيار الأرقام الزوجية",
@@ -507,7 +507,7 @@
           "title": "yield وإنشاء دوال مخصصة",
           "contentPath": "/content/lessons/blocks/yield.md",
           "exercise": {
-            "starterCode": "# أنشئ دالة each_word تستقبل نصاً\n# وتُمرر كل كلمة للكتلة\n\ndef each_word(text)\n  # أكمل الكود هنا\n  # 1. قسّم النص إلى كلمات باستخدام split\n  # 2. استخدم each للتكرار على الكلمات\n  # 3. داخل التكرار، استخدم yield(word)\nend\n\n# استخدم الدالة لطباعة كل كلمة\neach_word(\"روبي لغة برمجة رائعة\") { |word| puts word }\n",
+            "starterCode": "# أنشئ دالة each_word تستقبل نصاً\n# وتُمرر كل كلمة للكتلة\n\ndef each_word(text)\n  # أكمل الشيفرة هنا\n  # 1. قسّم النص إلى كلمات باستخدام split\n  # 2. استخدم each للتكرار على الكلمات\n  # 3. داخل التكرار، استخدم yield(word)\nend\n\n# استخدم الدالة لطباعة كل كلمة\neach_word(\"روبي لغة برمجة رائعة\") { |word| puts word }\n",
             "expectedOutput": "روبي\nلغة\nبرمجة\nرائعة",
             "hints": [
               "استخدم text.split لتقسيم النص إلى مصفوفة كلمات",

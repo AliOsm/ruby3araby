@@ -19,7 +19,7 @@ export default function LessonPlayground({
   exercise,
 }: LessonPlaygroundProps) {
   // Default starter code for lessons without exercises
-  const defaultStarterCode = `# اكتب كود روبي هنا
+  const defaultStarterCode = `# اكتب شيفرة روبي هنا
 puts "مرحبا بالعالم!"`;
 
   return (
