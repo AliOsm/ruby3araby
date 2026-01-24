@@ -1757,9 +1757,52 @@ Last Updated: 2026-01-24
 
 ---
 
+### 2026-01-24 - US-057: SEO and Metadata
+
+**What was implemented:**
+- Enhanced root layout.tsx with comprehensive SEO metadata including:
+  - Title template with default and per-page titles
+  - Arabic description with keywords
+  - metadataBase for proper URL resolution
+  - robots configuration for search engines
+- Added Open Graph tags for social sharing:
+  - og:type, og:locale (ar_SA), og:siteName
+  - og:title, og:description, og:image
+  - Twitter card configuration
+- Created app/sitemap.ts for automatic sitemap generation:
+  - Static pages: /, /progress, /glossary
+  - All lesson pages dynamically generated from course structure
+  - Proper priority and changeFrequency settings
+- Added metadata layouts for client component pages:
+  - app/progress/layout.tsx with Arabic title and description
+  - app/glossary/layout.tsx with Arabic title, description, and keywords
+- Improved semantic HTML:
+  - Added `<main>` wrapper to homepage
+  - Changed lesson content container from `<div>` to `<article>`
+  - Changed code playground container from `<div>` to `<aside>`
+- All typechecks and build pass successfully
+
+**Files changed:**
+- app/layout.tsx (comprehensive SEO metadata and Open Graph tags)
+- app/sitemap.ts (new - automatic sitemap generation)
+- app/progress/layout.tsx (new - metadata for progress page)
+- app/glossary/layout.tsx (new - metadata for glossary page)
+- app/page.tsx (added `<main>` tag for semantic HTML)
+- app/lessons/[section]/[lesson]/page.tsx (changed to `<article>` and `<aside>` for semantic HTML)
+
+**Learnings for future iterations:**
+- Use layout.tsx files to export metadata for client component pages
+- Next.js automatically generates /sitemap.xml from app/sitemap.ts export
+- metadataBase in root layout resolves relative URLs in og:image and other meta tags
+- Use title template `{ default: "...", template: "%s | Site Name" }` for consistent page titles
+- Open Graph locale for Arabic is "ar_SA"
+- Sitemap changeFrequency helps search engines know how often to crawl pages
+
+---
+
 ## Current Story
 
-(completed US-056, ready for next iteration)
+(completed US-057, ready for next iteration)
 
 ## Notes
 
