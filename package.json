@@ -6,9 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@monaco-editor/react": "^4.7.0",
     "@ruby/3.4-wasm-wasi": "^2.8.1",
     "@ruby/wasm-wasi": "^2.8.1",
     "next": "16.1.4",

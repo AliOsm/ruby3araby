@@ -1,4 +1,31 @@
+"use client";
+
+import CodeEditor from "@/components/CodeEditor";
+import { useState } from "react";
+
+const sampleCode = `# مرحبا بك في روبي بالعربي!
+# Welcome to Ruby3araby!
+
+# طباعة نص على الشاشة
+puts "مرحبا بالعالم"
+puts "Hello, World!"
+
+# المتغيرات
+name = "أحمد"
+age = 25
+
+# طباعة باستخدام التضمين
+puts "اسمي #{name} وعمري #{age} سنة"
+
+# حلقة بسيطة
+3.times do |i|
+  puts "العد: #{i + 1}"
+end
+`;
+
 export default function Home() {
+  const [code, setCode] = useState(sampleCode);
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <main className="mx-auto max-w-4xl px-6 py-12">
@@ -13,6 +40,15 @@ export default function Home() {
           <button className="rounded-lg bg-foreground px-8 py-3 text-lg font-medium text-background transition-opacity hover:opacity-90">
             ابدأ التعلم
           </button>
+        </section>
+
+        {/* Code Editor Section */}
+        <section className="mb-12">
+          <h2 className="mb-6 text-2xl font-semibold">محرر الأكواد</h2>
+          <p className="mb-4 text-foreground/80">
+            جرب كتابة كود روبي في المحرر التفاعلي أدناه:
+          </p>
+          <CodeEditor value={code} onChange={setCode} height="400px" />
         </section>
 
         {/* RTL Test Section */}
@@ -50,8 +86,15 @@ export default function Home() {
                 نص مختلط (عربي وإنجليزي):
               </h3>
               <p className="leading-relaxed text-foreground/80">
-                يمكنك كتابة <code className="rounded bg-foreground/10 px-1.5 py-0.5 font-mono text-sm">puts &quot;مرحبا&quot;</code> لطباعة
-                نص على الشاشة. جرب استخدام <code className="rounded bg-foreground/10 px-1.5 py-0.5 font-mono text-sm">Ruby</code> اليوم!
+                يمكنك كتابة{" "}
+                <code className="rounded bg-foreground/10 px-1.5 py-0.5 font-mono text-sm">
+                  puts &quot;مرحبا&quot;
+                </code>{" "}
+                لطباعة نص على الشاشة. جرب استخدام{" "}
+                <code className="rounded bg-foreground/10 px-1.5 py-0.5 font-mono text-sm">
+                  Ruby
+                </code>{" "}
+                اليوم!
               </p>
             </div>
 
