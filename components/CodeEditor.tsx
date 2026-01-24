@@ -165,6 +165,7 @@ export default function CodeEditor({
   return (
     <div
       className="min-w-0 overflow-hidden rounded-lg border border-foreground/20"
+      style={{ backgroundColor: "var(--editor-bg)" }}
       dir="ltr"
     >
       <Editor
