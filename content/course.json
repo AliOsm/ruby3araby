@@ -1,0 +1,306 @@
+{
+  "id": "ruby3araby",
+  "title": "روبي بالعربي",
+  "description": "تعلم برمجة روبي باللغة العربية - دورة تفاعلية شاملة للمبتدئين",
+  "sections": [
+    {
+      "id": "getting-started",
+      "slug": "getting-started",
+      "title": "البداية",
+      "lessons": [
+        {
+          "id": "what-is-ruby",
+          "slug": "what-is-ruby",
+          "title": "ما هي روبي ولماذا نتعلمها؟",
+          "contentPath": "/content/lessons/getting-started/what-is-ruby.md"
+        },
+        {
+          "id": "hello-world",
+          "slug": "hello-world",
+          "title": "مرحبا بالعالم",
+          "contentPath": "/content/lessons/getting-started/hello-world.md"
+        },
+        {
+          "id": "comments",
+          "slug": "comments",
+          "title": "التعليقات",
+          "contentPath": "/content/lessons/getting-started/comments.md"
+        },
+        {
+          "id": "output-methods",
+          "slug": "output-methods",
+          "title": "puts و print و p",
+          "contentPath": "/content/lessons/getting-started/output-methods.md"
+        }
+      ]
+    },
+    {
+      "id": "fundamentals",
+      "slug": "fundamentals",
+      "title": "الأساسيات",
+      "lessons": [
+        {
+          "id": "variables-types",
+          "slug": "variables-types",
+          "title": "المتغيرات وأنواع البيانات",
+          "contentPath": "/content/lessons/fundamentals/variables-types.md"
+        },
+        {
+          "id": "constants-symbols",
+          "slug": "constants-symbols",
+          "title": "الثوابت والرموز",
+          "contentPath": "/content/lessons/fundamentals/constants-symbols.md"
+        },
+        {
+          "id": "operators",
+          "slug": "operators",
+          "title": "العمليات الحسابية والمقارنة",
+          "contentPath": "/content/lessons/fundamentals/operators.md"
+        },
+        {
+          "id": "boolean-logic",
+          "slug": "boolean-logic",
+          "title": "المنطق البولياني",
+          "contentPath": "/content/lessons/fundamentals/boolean-logic.md"
+        },
+        {
+          "id": "truthiness",
+          "slug": "truthiness",
+          "title": "الصدق والكذب في روبي",
+          "contentPath": "/content/lessons/fundamentals/truthiness.md"
+        },
+        {
+          "id": "string-interpolation",
+          "slug": "string-interpolation",
+          "title": "دمج المتغيرات في النصوص",
+          "contentPath": "/content/lessons/fundamentals/string-interpolation.md"
+        },
+        {
+          "id": "string-methods",
+          "slug": "string-methods",
+          "title": "دوال النصوص",
+          "contentPath": "/content/lessons/fundamentals/string-methods.md"
+        },
+        {
+          "id": "bang-predicate",
+          "slug": "bang-predicate",
+          "title": "الدوال المنتهية بـ ! و ?",
+          "contentPath": "/content/lessons/fundamentals/bang-predicate.md"
+        },
+        {
+          "id": "user-input",
+          "slug": "user-input",
+          "title": "إدخال المستخدم",
+          "contentPath": "/content/lessons/fundamentals/user-input.md"
+        },
+        {
+          "id": "type-conversion",
+          "slug": "type-conversion",
+          "title": "تحويل أنواع البيانات",
+          "contentPath": "/content/lessons/fundamentals/type-conversion.md"
+        },
+        {
+          "id": "multiple-assignment",
+          "slug": "multiple-assignment",
+          "title": "التعيين المتعدد ومعالجة nil",
+          "contentPath": "/content/lessons/fundamentals/multiple-assignment.md"
+        }
+      ]
+    },
+    {
+      "id": "control-flow",
+      "slug": "control-flow",
+      "title": "التحكم في التدفق",
+      "lessons": [
+        {
+          "id": "conditionals",
+          "slug": "conditionals",
+          "title": "الشروط (if/elsif/else/unless)",
+          "contentPath": "/content/lessons/control-flow/conditionals.md"
+        },
+        {
+          "id": "case-when",
+          "slug": "case-when",
+          "title": "جملة case/when",
+          "contentPath": "/content/lessons/control-flow/case-when.md"
+        },
+        {
+          "id": "ternary",
+          "slug": "ternary",
+          "title": "العامل الثلاثي",
+          "contentPath": "/content/lessons/control-flow/ternary.md"
+        }
+      ]
+    },
+    {
+      "id": "loops",
+      "slug": "loops",
+      "title": "الحلقات التكرارية",
+      "lessons": [
+        {
+          "id": "while-until",
+          "slug": "while-until",
+          "title": "حلقات while و until",
+          "contentPath": "/content/lessons/loops/while-until.md"
+        },
+        {
+          "id": "for-control",
+          "slug": "for-control",
+          "title": "حلقة for والتحكم في التكرار",
+          "contentPath": "/content/lessons/loops/for-control.md"
+        }
+      ]
+    },
+    {
+      "id": "collections",
+      "slug": "collections",
+      "title": "المجموعات",
+      "lessons": [
+        {
+          "id": "arrays",
+          "slug": "arrays",
+          "title": "المصفوفات",
+          "contentPath": "/content/lessons/collections/arrays.md"
+        },
+        {
+          "id": "array-methods",
+          "slug": "array-methods",
+          "title": "دوال المصفوفات",
+          "contentPath": "/content/lessons/collections/array-methods.md"
+        },
+        {
+          "id": "hashes",
+          "slug": "hashes",
+          "title": "القواميس (Hashes)",
+          "contentPath": "/content/lessons/collections/hashes.md"
+        },
+        {
+          "id": "ranges-enumerables",
+          "slug": "ranges-enumerables",
+          "title": "النطاقات والتعداد",
+          "contentPath": "/content/lessons/collections/ranges-enumerables.md"
+        }
+      ]
+    },
+    {
+      "id": "methods",
+      "slug": "methods",
+      "title": "الدوال",
+      "lessons": [
+        {
+          "id": "defining-methods",
+          "slug": "defining-methods",
+          "title": "تعريف الدوال",
+          "contentPath": "/content/lessons/methods/defining-methods.md"
+        },
+        {
+          "id": "returns-splat",
+          "slug": "returns-splat",
+          "title": "القيم المرجعة وعوامل Splat",
+          "contentPath": "/content/lessons/methods/returns-splat.md"
+        }
+      ]
+    },
+    {
+      "id": "blocks",
+      "slug": "blocks",
+      "title": "الكتل البرمجية",
+      "lessons": [
+        {
+          "id": "block-syntax",
+          "slug": "block-syntax",
+          "title": "صياغة الكتل",
+          "contentPath": "/content/lessons/blocks/block-syntax.md"
+        },
+        {
+          "id": "yield",
+          "slug": "yield",
+          "title": "yield وإنشاء دوال مخصصة",
+          "contentPath": "/content/lessons/blocks/yield.md"
+        },
+        {
+          "id": "procs-lambdas",
+          "slug": "procs-lambdas",
+          "title": "Procs و Lambdas",
+          "contentPath": "/content/lessons/blocks/procs-lambdas.md"
+        }
+      ]
+    },
+    {
+      "id": "oop",
+      "slug": "oop",
+      "title": "البرمجة الكائنية",
+      "lessons": [
+        {
+          "id": "classes-objects",
+          "slug": "classes-objects",
+          "title": "الأصناف والكائنات",
+          "contentPath": "/content/lessons/oop/classes-objects.md"
+        },
+        {
+          "id": "initialize-accessors",
+          "slug": "initialize-accessors",
+          "title": "المُنشئ والموصّلات",
+          "contentPath": "/content/lessons/oop/initialize-accessors.md"
+        },
+        {
+          "id": "inheritance",
+          "slug": "inheritance",
+          "title": "الوراثة",
+          "contentPath": "/content/lessons/oop/inheritance.md"
+        }
+      ]
+    },
+    {
+      "id": "modules",
+      "slug": "modules",
+      "title": "الوحدات",
+      "lessons": [
+        {
+          "id": "modules-mixins",
+          "slug": "modules-mixins",
+          "title": "الوحدات والخلط",
+          "contentPath": "/content/lessons/modules/modules-mixins.md"
+        }
+      ]
+    },
+    {
+      "id": "errors",
+      "slug": "errors",
+      "title": "معالجة الأخطاء",
+      "lessons": [
+        {
+          "id": "error-handling",
+          "slug": "error-handling",
+          "title": "التعامل مع الأخطاء",
+          "contentPath": "/content/lessons/errors/error-handling.md"
+        }
+      ]
+    },
+    {
+      "id": "challenges",
+      "slug": "challenges",
+      "title": "التحديات",
+      "lessons": [
+        {
+          "id": "fizzbuzz",
+          "slug": "fizzbuzz",
+          "title": "تحدي FizzBuzz",
+          "contentPath": "/content/lessons/challenges/fizzbuzz.md"
+        },
+        {
+          "id": "calculator",
+          "slug": "calculator",
+          "title": "تحدي الآلة الحاسبة",
+          "contentPath": "/content/lessons/challenges/calculator.md"
+        },
+        {
+          "id": "guessing-game",
+          "slug": "guessing-game",
+          "title": "تحدي لعبة التخمين",
+          "contentPath": "/content/lessons/challenges/guessing-game.md"
+        }
+      ]
+    }
+  ]
+}
