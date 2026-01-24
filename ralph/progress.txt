@@ -1075,9 +1075,43 @@ Last Updated: 2026-01-24
 
 ---
 
+### 2026-01-24 - US-037: Lesson: Ranges and Enumerables
+
+**What was implemented:**
+- Created Ranges and Enumerables lesson at `/content/lessons/collections/ranges-enumerables.md`
+- Comprehensive Arabic explanations of:
+  - Inclusive ranges (`..`) vs exclusive ranges (`...`)
+  - Range creation, iteration with `each`, membership testing with `include?`/`cover?`
+  - Ranges with letters, in case/when, and for slicing strings/arrays
+  - Enumerable methods: `each`, `each_with_index`, `map`/`collect`, `select`/`find_all`
+  - `reject`, `find`/`detect`, `reduce`/`inject`, `any?`, `all?`, `none?`
+  - `count`, `take`, `drop`, `partition`, `group_by`
+- Summary table of all key enumerable methods
+- Method chaining examples for complex operations
+- Practical examples: filtering students, price discounts, text analysis, data validation
+- Comparison of `each` vs `map`
+- Exercise: create array from range, select evens, map to triple, reduce sum
+- Added exercise configuration to course.json with hints
+- All typechecks, lint, and build pass
+- Browser verification confirmed: page loads with correct title and RTL layout
+
+**Files changed:**
+- content/lessons/collections/ranges-enumerables.md (new - lesson content)
+- content/course.json (added exercise configuration for ranges-enumerables lesson)
+
+**Learnings for future iterations:**
+- `..` is inclusive (includes end), `...` is exclusive (excludes end) - opposite of what some might expect
+- Enumerables are the core of functional-style programming in Ruby
+- `cover?` is faster than `include?` for ranges (doesn't iterate)
+- `reduce(:+)` is a shorthand for `reduce { |sum, n| sum + n }`
+- `partition` returns two arrays: [matching, non-matching]
+- `group_by` returns a hash with keys being the block results
+
+---
+
 ## Current Story
 
-(completed US-036, ready for next iteration)
+(completed US-037, ready for next iteration)
 
 ## Notes
 
