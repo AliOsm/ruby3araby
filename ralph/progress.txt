@@ -1392,9 +1392,47 @@ Last Updated: 2026-01-24
 
 ---
 
+### 2026-01-24 - US-046: Lesson: Modules and Mixins
+
+**What was implemented:**
+- Created Modules and Mixins lesson at `/content/lessons/modules/modules-mixins.md`
+- Created the `modules` directory for module-related lessons
+- Comprehensive Arabic explanations of:
+  - What modules are and how they differ from classes
+  - Namespacing with `Module::Class` syntax for organizing code
+  - Mixins for sharing behavior between unrelated classes
+  - `include` for instance methods (called on objects)
+  - `extend` for class methods (called on the class itself)
+  - Using both include and extend together
+  - Accessing instance variables from modules
+  - Method lookup order with `ancestors`
+  - Using `super` in modules
+  - Built-in modules: Comparable, Enumerable
+- Practical examples: Flyable mixin, ability system, permission system
+- Comparison tables for include vs extend and when to use modules vs inheritance
+- Common errors section
+- Exercise: create Speakable module and include in Robot and Animal classes
+- Added exercise configuration to course.json with hints
+- All typechecks, lint, and build pass
+- Browser verification confirmed: RTL layout, content rendering, code playground with exercise
+
+**Files changed:**
+- content/lessons/modules/modules-mixins.md (new - lesson content)
+- content/course.json (added exercise configuration for modules-mixins lesson)
+
+**Learnings for future iterations:**
+- Modules are created with `module Name` and cannot be instantiated
+- `include` adds methods as instance methods (on objects), `extend` adds as class methods (on the class)
+- Modules can access instance variables (@var) from the class they're mixed into
+- Method lookup order: class -> last included module -> earlier modules -> parent class -> Object
+- Built-in modules like Comparable and Enumerable are powerful - just implement one method (<=> or each)
+- This starts the modules section - only one lesson in this section
+
+---
+
 ## Current Story
 
-(completed US-045, ready for next iteration)
+(completed US-046, ready for next iteration)
 
 ## Notes
 
