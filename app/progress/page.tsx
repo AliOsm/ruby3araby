@@ -118,7 +118,7 @@ export default function ProgressPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Header */}
-      <header className="border-b border-foreground/10 bg-gradient-to-b from-emerald-950/20 to-background">
+      <header className="border-b border-foreground/10 bg-gradient-to-b from-ruby-surface to-background">
         <div className="mx-auto max-w-4xl px-6 py-8">
           {/* Back to Home */}
           <Link
@@ -152,7 +152,7 @@ export default function ProgressPage() {
         <div className="mb-10 rounded-xl border border-foreground/10 bg-foreground/5 p-6">
           <div className="mb-4 flex items-center justify-between">
             <h2 className="text-xl font-semibold">التقدم الإجمالي</h2>
-            <span className="text-2xl font-bold text-emerald-500">
+            <span className="text-2xl font-bold text-ruby-primary">
               {overallPercentage}%
             </span>
           </div>
@@ -160,7 +160,7 @@ export default function ProgressPage() {
           {/* Progress Bar */}
           <div className="mb-4 h-4 overflow-hidden rounded-full bg-foreground/10">
             <div
-              className="h-full rounded-full bg-emerald-500 transition-all duration-500"
+              className="h-full rounded-full bg-ruby-primary transition-all duration-500"
               style={{ width: `${overallPercentage}%` }}
             />
           </div>
@@ -179,16 +179,16 @@ export default function ProgressPage() {
           <div className="mb-10">
             <Link
               href={`/lessons/${nextLesson.section.slug}/${nextLesson.lesson.slug}`}
-              className="flex items-center justify-between rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-6 transition-colors hover:border-emerald-500/50 hover:bg-emerald-500/20"
+              className="flex items-center justify-between rounded-xl border border-ruby-primary/30 bg-ruby-primary/10 p-6 transition-colors hover:border-ruby-primary/50 hover:bg-ruby-primary/20"
             >
               <div>
-                <p className="mb-1 text-sm text-emerald-400">الدرس التالي</p>
+                <p className="mb-1 text-sm text-ruby-primary">الدرس التالي</p>
                 <p className="text-lg font-semibold">{nextLesson.lesson.title}</p>
                 <p className="text-sm text-foreground/60">
                   في قسم: {nextLesson.section.title}
                 </p>
               </div>
-              <div className="flex items-center gap-2 rounded-lg bg-emerald-600 px-4 py-2 text-white">
+              <div className="flex items-center gap-2 rounded-lg bg-ruby-primary px-4 py-2 text-white">
                 <span>أكمل التعلم</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -209,9 +209,9 @@ export default function ProgressPage() {
 
         {/* All Completed Message */}
         {!nextLesson && completedCount === totalLessons && (
-          <div className="mb-10 rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-6 text-center">
+          <div className="mb-10 rounded-xl border border-green-500/30 bg-green-500/10 p-6 text-center">
             <div className="mb-3 text-4xl">🎉</div>
-            <h3 className="mb-2 text-xl font-semibold text-emerald-400">
+            <h3 className="mb-2 text-xl font-semibold text-green-400">
               مبروك! أكملت جميع الدروس
             </h3>
             <p className="text-foreground/70">
@@ -270,7 +270,7 @@ function SectionProgressCard({
             <div className="flex items-center gap-2">
               <h3 className="font-semibold">{section.title}</h3>
               {isComplete && (
-                <span className="text-emerald-500">
+                <span className="text-green-500">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
@@ -298,7 +298,7 @@ function SectionProgressCard({
           <div className="hidden h-2 w-24 overflow-hidden rounded-full bg-foreground/10 sm:block">
             <div
               className={`h-full rounded-full transition-all duration-500 ${
-                isComplete ? "bg-emerald-500" : "bg-emerald-500/70"
+                isComplete ? "bg-green-500" : "bg-ruby-primary/70"
               }`}
               style={{ width: `${completionPercentage}%` }}
             />
@@ -307,7 +307,7 @@ function SectionProgressCard({
           {/* Percentage */}
           <span
             className={`text-sm font-medium ${
-              isComplete ? "text-emerald-500" : "text-foreground/70"
+              isComplete ? "text-green-500" : "text-foreground/70"
             }`}
           >
             {completionPercentage}%
@@ -337,7 +337,7 @@ function SectionProgressCard({
           {/* Completed Lessons */}
           {completedLessons.length > 0 && (
             <div className="p-4">
-              <h4 className="mb-3 text-sm font-medium text-emerald-500">
+              <h4 className="mb-3 text-sm font-medium text-green-500">
                 الدروس المكتملة ({completedLessons.length})
               </h4>
               <ul className="space-y-2">
@@ -351,7 +351,7 @@ function SectionProgressCard({
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 20 20"
                         fill="currentColor"
-                        className="h-4 w-4 text-emerald-500"
+                        className="h-4 w-4 text-green-500"
                       >
                         <path
                           fillRule="evenodd"

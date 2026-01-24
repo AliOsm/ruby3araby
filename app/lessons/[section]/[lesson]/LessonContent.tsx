@@ -70,7 +70,7 @@ export default function LessonContent({
   }
 
   return (
-    <article className="prose prose-invert prose-emerald max-w-none">
+    <article className="prose prose-invert max-w-none">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{
@@ -109,7 +109,7 @@ export default function LessonContent({
             const isInline = !className;
             if (isInline) {
               return (
-                <code className="bg-gray-800 text-emerald-400 px-1.5 py-0.5 rounded text-sm font-mono">
+                <code className="bg-gray-800 text-ruby-accent px-1.5 py-0.5 rounded text-sm font-mono">
                   {children}
                 </code>
               );
@@ -136,11 +136,11 @@ export default function LessonContent({
             <strong className="text-white font-semibold">{children}</strong>
           ),
           em: ({ children }) => (
-            <em className="text-emerald-300 italic">{children}</em>
+            <em className="text-ruby-accent italic">{children}</em>
           ),
           // Blockquotes for notes
           blockquote: ({ children }) => (
-            <blockquote className="border-r-4 border-emerald-500 bg-gray-800/50 pr-4 py-2 my-4 text-gray-300">
+            <blockquote className="border-r-4 border-ruby-primary bg-gray-800/50 pr-4 py-2 my-4 text-gray-300">
               {children}
             </blockquote>
           ),
@@ -148,7 +148,7 @@ export default function LessonContent({
           a: ({ href, children }) => (
             <a
               href={href}
-              className="text-emerald-400 hover:text-emerald-300 underline"
+              className="text-ruby-primary hover:text-ruby-secondary underline"
               target="_blank"
               rel="noopener noreferrer"
             >

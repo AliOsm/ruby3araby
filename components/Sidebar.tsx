@@ -186,7 +186,7 @@ export default function Sidebar({ course }: SidebarProps) {
           <div className="flex items-center justify-between">
             <Link
               href="/"
-              className="block text-xl font-bold text-emerald-400 hover:text-emerald-300 transition-colors"
+              className="block text-xl font-bold text-ruby-primary hover:text-ruby-secondary transition-colors"
             >
               {course.title}
             </Link>
@@ -272,7 +272,7 @@ function SectionAccordion({
         onClick={onToggle}
         className={`flex min-h-[44px] w-full items-center justify-between rounded-lg px-3 py-2.5 text-right transition-colors ${
           isCurrentSection
-            ? "bg-emerald-900/30 text-emerald-400"
+            ? "bg-ruby-primary/20 text-ruby-primary"
             : "text-foreground/70 hover:bg-foreground/10 hover:text-foreground"
         }`}
         aria-expanded={isOpen}
@@ -281,7 +281,7 @@ function SectionAccordion({
           <span
             className={`flex h-6 w-6 items-center justify-center rounded-full text-xs font-medium ${
               isSectionComplete
-                ? "bg-emerald-600 text-white"
+                ? "bg-ruby-primary text-white"
                 : "bg-foreground/20 text-foreground/70"
             }`}
           >
@@ -335,15 +335,15 @@ function SectionAccordion({
                 href={`/lessons/${section.slug}/${lesson.slug}`}
                 className={`flex min-h-[44px] items-center gap-2 rounded-lg px-3 py-2.5 text-sm transition-colors ${
                   isCurrent
-                    ? "bg-emerald-600 text-white font-medium"
+                    ? "bg-ruby-primary text-white font-medium"
                     : isCompleted
-                      ? "text-emerald-400 hover:bg-foreground/10 hover:text-emerald-300"
+                      ? "text-green-500 hover:bg-foreground/10 hover:text-green-400"
                       : "text-foreground/60 hover:bg-foreground/10 hover:text-foreground"
                 }`}
               >
                 <span
                   className={`flex h-5 w-5 items-center justify-center text-xs ${
-                    isCompleted && !isCurrent ? "text-emerald-500" : "text-foreground/50"
+                    isCompleted && !isCurrent ? "text-green-500" : "text-foreground/50"
                   }`}
                 >
                   {isCompleted ? (

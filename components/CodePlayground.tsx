@@ -295,7 +295,7 @@ export default function CodePlayground({
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="أدخل قيمة لكل سطر..."
-              className="w-full resize-none rounded border border-foreground/20 bg-foreground/5 px-3 py-2 font-mono text-sm text-foreground placeholder-foreground/40 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+              className="w-full resize-none rounded border border-foreground/20 bg-foreground/5 px-3 py-2 font-mono text-sm text-foreground placeholder-foreground/40 focus:border-ruby-primary focus:outline-none focus:ring-1 focus:ring-ruby-primary"
               rows={3}
               dir="ltr"
               disabled={isRunning || isInitializing}
@@ -321,7 +321,7 @@ export default function CodePlayground({
           <button
             onClick={handleRun}
             disabled={isLoading}
-            className="flex min-h-[44px] min-w-[44px] items-center justify-center gap-2 rounded-lg bg-emerald-600 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-50 sm:px-4 sm:py-2 sm:text-base"
+            className="flex min-h-[44px] min-w-[44px] items-center justify-center gap-2 rounded-lg bg-ruby-primary px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-ruby-secondary disabled:cursor-not-allowed disabled:opacity-50 sm:px-4 sm:py-2 sm:text-base"
           >
             {isLoading ? (
               <>

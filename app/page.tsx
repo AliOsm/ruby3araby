@@ -60,7 +60,7 @@ export default function Home() {
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
           <Link
             href="/"
-            className="text-xl font-bold text-emerald-500 hover:text-emerald-400 transition-colors"
+            className="text-xl font-bold text-ruby-primary hover:text-ruby-secondary transition-colors"
           >
             روبي عربي
           </Link>
@@ -85,7 +85,7 @@ export default function Home() {
       {/* Main Content */}
       <main>
         {/* Hero Section */}
-        <section className="relative overflow-hidden border-b border-foreground/10 bg-gradient-to-b from-emerald-950/20 to-background">
+        <section className="relative overflow-hidden border-b border-foreground/10 bg-gradient-to-b from-ruby-surface to-background">
         <div className="mx-auto max-w-6xl px-6 py-20 lg:py-32">
           <div className="text-center">
             {/* Main Title */}
@@ -103,7 +103,7 @@ export default function Home() {
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
                 href={firstLessonPath}
-                className="inline-flex items-center gap-2 rounded-lg bg-emerald-600 px-8 py-4 text-lg font-semibold text-white transition-colors hover:bg-emerald-700"
+                className="inline-flex items-center gap-2 rounded-lg bg-ruby-primary px-8 py-4 text-lg font-semibold text-white transition-colors hover:bg-ruby-secondary"
               >
                 <span>ابدأ التعلم</span>
                 <svg
@@ -153,7 +153,7 @@ export default function Home() {
         </div>
 
         {/* Decorative gradient blob */}
-        <div className="absolute top-0 left-1/2 -z-10 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-500/10 blur-3xl" />
+        <div className="absolute top-0 left-1/2 -z-10 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-ruby-primary/10 blur-3xl" />
       </section>
 
       {/* About Ruby Section */}
@@ -180,25 +180,25 @@ export default function Home() {
               {/* Feature List */}
               <ul className="mt-8 space-y-3">
                 <li className="flex items-center gap-3 text-foreground/80">
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-500">
+                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-ruby-primary/20 text-ruby-primary">
                     ✓
                   </span>
                   <span>قواعد نحوية واضحة وسهلة التعلم</span>
                 </li>
                 <li className="flex items-center gap-3 text-foreground/80">
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-500">
+                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-ruby-primary/20 text-ruby-primary">
                     ✓
                   </span>
                   <span>مجتمع نشط ومكتبات غنية</span>
                 </li>
                 <li className="flex items-center gap-3 text-foreground/80">
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-500">
+                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-ruby-primary/20 text-ruby-primary">
                     ✓
                   </span>
                   <span>مثالية لتطوير الويب والأتمتة</span>
                 </li>
                 <li className="flex items-center gap-3 text-foreground/80">
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-500">
+                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-ruby-primary/20 text-ruby-primary">
                     ✓
                   </span>
                   <span>برمجة كائنية بالكامل</span>
@@ -254,7 +254,7 @@ export default function Home() {
                                 {line.split("=")[0].trim()}
                               </span>
                               <span className="text-zinc-300"> = </span>
-                              <span className="text-emerald-400">
+                              <span className="text-ruby-accent">
                                 {line.split("=")[1].trim()}
                               </span>
                             </>
@@ -286,7 +286,7 @@ export default function Home() {
                   </div>
                   <pre
                     dir="ltr"
-                    className="font-mono text-sm leading-relaxed text-emerald-400"
+                    className="font-mono text-sm leading-relaxed text-ruby-accent"
                   >
                     {previewOutput}
                   </pre>
@@ -344,7 +344,7 @@ export default function Home() {
             ].map((feature, index) => (
               <div
                 key={index}
-                className="rounded-xl border border-foreground/10 bg-foreground/5 p-6 transition-colors hover:border-emerald-500/30 hover:bg-emerald-500/5"
+                className="rounded-xl border border-foreground/10 bg-foreground/5 p-6 transition-colors hover:border-ruby-primary/30 hover:bg-ruby-primary/5"
               >
                 <div className="mb-4 text-4xl">{feature.icon}</div>
                 <h3 className="mb-2 text-xl font-semibold">{feature.title}</h3>
@@ -356,7 +356,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="border-t border-foreground/10 bg-gradient-to-b from-emerald-950/10 to-background py-16 lg:py-24">
+      <section className="border-t border-foreground/10 bg-gradient-to-b from-ruby-surface to-background py-16 lg:py-24">
         <div className="mx-auto max-w-3xl px-6 text-center">
           <h2 className="mb-6 text-3xl font-bold lg:text-4xl">
             ابدأ رحلتك في البرمجة اليوم
@@ -367,7 +367,7 @@ export default function Home() {
           </p>
           <Link
             href={firstLessonPath}
-            className="inline-flex items-center gap-2 rounded-lg bg-emerald-600 px-8 py-4 text-lg font-semibold text-white transition-colors hover:bg-emerald-700"
+            className="inline-flex items-center gap-2 rounded-lg bg-ruby-primary px-8 py-4 text-lg font-semibold text-white transition-colors hover:bg-ruby-secondary"
           >
             <span>ابدأ الآن مجاناً</span>
             <svg

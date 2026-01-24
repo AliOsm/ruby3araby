@@ -22,6 +22,11 @@
   --background: #ffffff;
   --foreground: #171717;
   --editor-bg: #ffffff;
+  /* Ruby-themed colors - light theme */
+  --ruby-primary: #9b1c31;
+  --ruby-secondary: #7c1d3e;
+  --ruby-accent: #be3455;
+  --ruby-surface: #fef2f4;
 }
 
 /* Dark theme */
@@ -29,6 +34,11 @@
   --background: #0a0a0a;
   --foreground: #ededed;
   --editor-bg: #1e1e1e;
+  /* Ruby-themed colors - dark theme */
+  --ruby-primary: #dc2743;
+  --ruby-secondary: #e85d75;
+  --ruby-accent: #f472b6;
+  --ruby-surface: #1a0a0e;
 }
 
 /* Light theme explicit class */
@@ -36,6 +46,11 @@
   --background: #ffffff;
   --foreground: #171717;
   --editor-bg: #ffffff;
+  /* Ruby-themed colors - light theme */
+  --ruby-primary: #9b1c31;
+  --ruby-secondary: #7c1d3e;
+  --ruby-accent: #be3455;
+  --ruby-surface: #fef2f4;
 }
 
 /* System preference fallback (before JS loads) */
@@ -55,6 +70,12 @@
 
   /* Custom breakpoint for extra small screens (xs: 475px+) */
   --breakpoint-xs: 475px;
+
+  /* Ruby-themed color palette for Tailwind */
+  --color-ruby-primary: var(--ruby-primary);
+  --color-ruby-secondary: var(--ruby-secondary);
+  --color-ruby-accent: var(--ruby-accent);
+  --color-ruby-surface: var(--ruby-surface);
 }
 
 body {

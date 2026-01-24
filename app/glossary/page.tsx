@@ -90,7 +90,7 @@ export default function GlossaryPage() {
         <div className="mx-auto max-w-6xl px-4 py-6">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-emerald-400">
+              <h1 className="text-3xl font-bold text-ruby-primary">
                 قاموس المصطلحات البرمجية
               </h1>
               <p className="mt-2 text-gray-400">
@@ -131,7 +131,7 @@ export default function GlossaryPage() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="ابحث عن مصطلح..."
-                className="w-full rounded-lg border border-gray-700 bg-gray-800 px-4 py-2 pr-10 text-white placeholder-gray-500 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full rounded-lg border border-gray-700 bg-gray-800 px-4 py-2 pr-10 text-white placeholder-gray-500 focus:border-ruby-primary focus:outline-none focus:ring-1 focus:ring-ruby-primary"
               />
               <svg
                 className="absolute top-1/2 right-3 h-5 w-5 -translate-y-1/2 text-gray-500"
@@ -156,7 +156,7 @@ export default function GlossaryPage() {
                   onClick={() => setSortOrder("arabic")}
                   className={`rounded-md px-4 py-1.5 text-sm font-medium transition-colors ${
                     sortOrder === "arabic"
-                      ? "bg-emerald-600 text-white"
+                      ? "bg-ruby-primary text-white"
                       : "text-gray-400 hover:text-white"
                   }`}
                 >
@@ -166,7 +166,7 @@ export default function GlossaryPage() {
                   onClick={() => setSortOrder("english")}
                   className={`rounded-md px-4 py-1.5 text-sm font-medium transition-colors ${
                     sortOrder === "english"
-                      ? "bg-emerald-600 text-white"
+                      ? "bg-ruby-primary text-white"
                       : "text-gray-400 hover:text-white"
                   }`}
                 >
@@ -227,7 +227,7 @@ export default function GlossaryPage() {
             </p>
             <button
               onClick={() => setSearchQuery("")}
-              className="mt-4 rounded-lg bg-emerald-600 px-4 py-2 text-white transition-colors hover:bg-emerald-700"
+              className="mt-4 rounded-lg bg-ruby-primary px-4 py-2 text-white transition-colors hover:bg-ruby-secondary"
             >
               عرض جميع المصطلحات
             </button>
@@ -239,7 +239,7 @@ export default function GlossaryPage() {
               <section key={letter}>
                 {/* Letter header */}
                 <div className="mb-4 flex items-center gap-3">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-600 text-xl font-bold text-white">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-ruby-primary text-xl font-bold text-white">
                     {letter}
                   </span>
                   <div className="h-px flex-1 bg-gray-800" />
@@ -268,7 +268,7 @@ export default function GlossaryPage() {
             href="https://wiki.hsoub.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-emerald-400 hover:underline"
+            className="text-ruby-primary hover:underline"
           >
             موسوعة حسوب
           </a>
@@ -287,19 +287,19 @@ function TermCard({ term, sortOrder }: TermCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <div className="group rounded-lg border border-gray-800 bg-gray-900/50 p-4 transition-colors hover:border-emerald-600/50 hover:bg-gray-900">
+    <div className="group rounded-lg border border-gray-800 bg-gray-900/50 p-4 transition-colors hover:border-ruby-primary/50 hover:bg-gray-900">
       {/* Term names */}
       <div className="mb-3">
         {sortOrder === "arabic" ? (
           <>
-            <h3 className="text-lg font-bold text-emerald-400">{term.arabic}</h3>
+            <h3 className="text-lg font-bold text-ruby-primary">{term.arabic}</h3>
             <p className="text-sm text-gray-400" dir="ltr">
               {term.english}
             </p>
           </>
         ) : (
           <>
-            <h3 className="text-lg font-bold text-emerald-400" dir="ltr">
+            <h3 className="text-lg font-bold text-ruby-primary" dir="ltr">
               {term.english}
             </h3>
             <p className="text-sm text-gray-400">{term.arabic}</p>
@@ -320,7 +320,7 @@ function TermCard({ term, sortOrder }: TermCardProps) {
       {term.definition.length > 100 && (
         <button
           onClick={() => setIsExpanded(!isExpanded)}
-          className="mt-2 text-xs text-emerald-400 hover:text-emerald-300"
+          className="mt-2 text-xs text-ruby-primary hover:text-ruby-secondary"
         >
           {isExpanded ? "عرض أقل" : "عرض المزيد"}
         </button>

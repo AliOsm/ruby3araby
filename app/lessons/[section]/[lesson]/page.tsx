@@ -65,7 +65,7 @@ export default async function LessonPage({ params }: LessonPageProps) {
         <header className="border-b border-foreground/10 bg-foreground/5">
           <div className="mx-auto max-w-5xl px-3 py-3 sm:px-4 sm:py-4">
             <nav className="flex flex-wrap items-center gap-1.5 text-xs text-foreground/60 sm:gap-2 sm:text-sm">
-              <Link href="/" className="hover:text-emerald-400 transition-colors shrink-0">
+              <Link href="/" className="hover:text-ruby-primary transition-colors shrink-0">
                 {course.title}
               </Link>
               <span className="text-foreground/30">/</span>
@@ -113,10 +113,10 @@ export default async function LessonPage({ params }: LessonPageProps) {
             {nav.previous ? (
               <Link
                 href={`/lessons/${nav.previous.section.slug}/${nav.previous.lesson.slug}`}
-                className="group flex min-h-[44px] items-center gap-2 rounded-lg border border-foreground/20 bg-foreground/5 px-3 py-2.5 transition-colors hover:border-emerald-600 hover:bg-foreground/10 sm:px-4 sm:py-3"
+                className="group flex min-h-[44px] items-center gap-2 rounded-lg border border-foreground/20 bg-foreground/5 px-3 py-2.5 transition-colors hover:border-ruby-primary hover:bg-foreground/10 sm:px-4 sm:py-3"
               >
                 <svg
-                  className="h-5 w-5 shrink-0 text-foreground/60 transition-transform group-hover:-translate-x-1 group-hover:text-emerald-400 rtl:rotate-180"
+                  className="h-5 w-5 shrink-0 text-foreground/60 transition-transform group-hover:-translate-x-1 group-hover:text-ruby-primary rtl:rotate-180"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -143,7 +143,7 @@ export default async function LessonPage({ params }: LessonPageProps) {
             {nav.next ? (
               <Link
                 href={`/lessons/${nav.next.section.slug}/${nav.next.lesson.slug}`}
-                className="group flex min-h-[44px] items-center gap-2 rounded-lg border border-foreground/20 bg-foreground/5 px-3 py-2.5 transition-colors hover:border-emerald-600 hover:bg-foreground/10 sm:px-4 sm:py-3"
+                className="group flex min-h-[44px] items-center gap-2 rounded-lg border border-foreground/20 bg-foreground/5 px-3 py-2.5 transition-colors hover:border-ruby-primary hover:bg-foreground/10 sm:px-4 sm:py-3"
               >
                 <div className="min-w-0 text-left rtl:text-right">
                   <div className="text-xs text-foreground/60">الدرس التالي</div>
@@ -152,7 +152,7 @@ export default async function LessonPage({ params }: LessonPageProps) {
                   </div>
                 </div>
                 <svg
-                  className="h-5 w-5 shrink-0 text-foreground/60 transition-transform group-hover:translate-x-1 group-hover:text-emerald-400 rtl:rotate-180"
+                  className="h-5 w-5 shrink-0 text-foreground/60 transition-transform group-hover:translate-x-1 group-hover:text-ruby-primary rtl:rotate-180"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -168,16 +168,16 @@ export default async function LessonPage({ params }: LessonPageProps) {
             ) : (
               <Link
                 href="/"
-                className="group flex min-h-[44px] items-center gap-2 rounded-lg border border-emerald-600 bg-emerald-600/10 px-3 py-2.5 transition-colors hover:bg-emerald-600/20 sm:px-4 sm:py-3"
+                className="group flex min-h-[44px] items-center gap-2 rounded-lg border border-green-600 bg-green-600/10 px-3 py-2.5 transition-colors hover:bg-green-600/20 sm:px-4 sm:py-3"
               >
                 <div className="min-w-0 text-left rtl:text-right">
-                  <div className="text-xs text-emerald-400">أحسنت!</div>
+                  <div className="text-xs text-green-400">أحسنت!</div>
                   <div className="truncate text-sm font-medium text-foreground">
                     العودة للرئيسية
                   </div>
                 </div>
                 <svg
-                  className="h-5 w-5 shrink-0 text-emerald-400"
+                  className="h-5 w-5 shrink-0 text-green-400"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
