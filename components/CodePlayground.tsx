@@ -69,6 +69,7 @@ export default function CodePlayground({
   });
   const [showConfetti, setShowConfetti] = useState(false);
   const confettiRef = useRef<HTMLDivElement>(null);
+  const [runStatus, setRunStatus] = useState<"idle" | "success" | "error">("idle");
 
   // Auto-save is enabled by default when lessonId is provided
   const shouldAutoSave = enableAutoSave ?? !!lessonId;
@@ -141,6 +142,10 @@ export default function CodePlayground({
     setOutput("");
     setError(undefined);
     setValidation({ status: "idle" });
+    setRunStatus("idle");
+
+    const startTime = Date.now();
+    let hasError = false;
 
     try {
       const runner = await initializeRunner();
@@ -149,6 +154,7 @@ export default function CodePlayground({
       if (result.error) {
         setError(result.error);
         setOutput(result.output);
+        hasError = true;
       } else {
         setOutput(result.output);
       }
@@ -156,8 +162,19 @@ export default function CodePlayground({
       setError(
         err instanceof Error ? err.message : "An unexpected error occurred"
       );
+      hasError = true;
     } finally {
-      setIsRunning(false);
+      // Ensure minimum animation duration of 400ms
+      const elapsed = Date.now() - startTime;
+      const minDuration = 400;
+      const remaining = Math.max(0, minDuration - elapsed);
+
+      setTimeout(() => {
+        setIsRunning(false);
+        setRunStatus(hasError ? "error" : "success");
+        // Clear the status after animation completes
+        setTimeout(() => setRunStatus("idle"), 400);
+      }, remaining);
     }
   }, [code, input, initializeRunner]);
 
@@ -324,7 +341,9 @@ export default function CodePlayground({
             onClick={handleRun}
             disabled={isLoading}
             aria-label="تشغيل (Ctrl+Enter)"
-            className="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg bg-ruby-primary p-2.5 text-white transition-colors hover:bg-ruby-secondary disabled:cursor-not-allowed disabled:opacity-50"
+            className={`flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg bg-ruby-primary p-2.5 text-white transition-colors hover:bg-ruby-secondary disabled:cursor-not-allowed disabled:opacity-50 ${
+              runStatus === "success" ? "animate-run-success" : ""
+            } ${runStatus === "error" ? "animate-run-error" : ""}`}
           >
             {isLoading ? (
               <svg
@@ -344,6 +363,18 @@ export default function CodePlayground({
                   className="opacity-75"
                   fill="currentColor"
                   d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                />
+              </svg>
+            ) : runStatus === "success" ? (
+              <svg
+                className="h-5 w-5"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clipRule="evenodd"
                 />
               </svg>
             ) : (
