@@ -3,6 +3,7 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { useEffect, useState } from "react";
+import CodeBlock from "@/components/CodeBlock";
 
 interface LessonContentProps {
   sectionSlug: string;
@@ -104,7 +105,7 @@ export default function LessonContent({
             </ol>
           ),
           li: ({ children }) => <li className="text-foreground/90">{children}</li>,
-          // Code blocks with LTR direction
+          // Inline code with LTR direction
           code: ({ className, children }) => {
             const isInline = !className;
             if (isInline) {
@@ -121,23 +122,34 @@ export default function LessonContent({
                 </bdi>
               );
             }
+            // Block code is handled by the pre component with syntax highlighting
+            return <>{children}</>;
+          },
+          // Code blocks with syntax highlighting
+          pre: ({ children }) => {
+            // Extract the code and language from the children
+            // ReactMarkdown wraps code in: <pre><code className="language-xxx">...</code></pre>
+            const codeElement = children as React.ReactElement<{
+              className?: string;
+              children?: string;
+            }>;
+            const className = codeElement?.props?.className || "";
+            const code = codeElement?.props?.children || "";
+
+            // Extract language from className (e.g., "language-ruby" -> "ruby")
+            const languageMatch = className.match(/language-(\w+)/);
+            const language = languageMatch ? languageMatch[1] : "ruby";
+
+            // Get the code string
+            const codeString =
+              typeof code === "string" ? code : String(code || "");
+
             return (
-              <code
-                className="block bg-foreground/10 p-4 rounded-lg overflow-x-auto text-sm font-mono text-foreground/90"
-                dir="ltr"
-              >
-                {children}
-              </code>
+              <div className="mb-4">
+                <CodeBlock code={codeString} language={language} />
+              </div>
             );
           },
-          pre: ({ children }) => (
-            <pre
-              className="bg-foreground/10 rounded-lg overflow-x-auto mb-4"
-              dir="ltr"
-            >
-              {children}
-            </pre>
-          ),
           // Strong and emphasis
           strong: ({ children }) => (
             <strong className="text-foreground font-semibold">{children}</strong>
