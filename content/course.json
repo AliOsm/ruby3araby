@@ -522,7 +522,18 @@
           "id": "procs-lambdas",
           "slug": "procs-lambdas",
           "title": "Procs و Lambdas",
-          "contentPath": "/content/lessons/blocks/procs-lambdas.md"
+          "contentPath": "/content/lessons/blocks/procs-lambdas.md",
+          "exercise": {
+            "starterCode": "# 1. أنشئ Lambda اسمه square يُربّع الرقم\n\n\n# 2. أنشئ Proc اسمه greet يطبع تحية باسم الشخص\n# الصيغة: \"مرحباً [الاسم]!\"\n\n\n# 3. استخدم square مع map لتربيع [1, 2, 3, 4, 5]\n# واطبع النتيجة باستخدام p\n\n\n# 4. استدعِ greet مع اسم \"روبي\"\n",
+            "expectedOutput": "[1, 4, 9, 16, 25]\nمرحباً روبي!",
+            "hints": [
+              "لإنشاء Lambda استخدم: square = ->(n) { n ** 2 }",
+              "لإنشاء Proc استخدم: greet = Proc.new { |name| puts \"مرحباً #{name}!\" }",
+              "لاستخدام Lambda مع map: p [1, 2, 3, 4, 5].map(&square)",
+              "لاستدعاء Proc: greet.call(\"روبي\")",
+              "تأكد من ترتيب الطباعة: أولاً المصفوفة المُربّعة، ثم التحية"
+            ]
+          }
         }
       ]
     },
