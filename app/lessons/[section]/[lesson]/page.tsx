@@ -55,8 +55,8 @@ export default async function LessonPage({ params }: LessonPageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-background lg:flex lg:flex-row-reverse">
-      {/* Sidebar - right side in RTL */}
+    <div className="min-h-screen bg-background lg:flex lg:flex-row">
+      {/* Sidebar - right side in RTL (flex-row works because RTL reverses flex direction) */}
       <Sidebar course={course} />
 
       {/* Main content wrapper */}
@@ -84,8 +84,9 @@ export default async function LessonPage({ params }: LessonPageProps) {
           </h1>
 
           {/* Split layout: Content on right (RTL), Playground on left */}
-          <div className="flex flex-col gap-6 xl:flex-row-reverse">
-            {/* Arabic content panel - right side in RTL */}
+          {/* In RTL with flex-row: first child appears on RIGHT, last child on LEFT */}
+          <div className="flex flex-col gap-6 xl:flex-row">
+            {/* Arabic content panel - appears on right in RTL */}
             <article className="flex-1 xl:max-w-[50%]">
               <LessonContent
                 sectionSlug={section}
@@ -93,7 +94,7 @@ export default async function LessonPage({ params }: LessonPageProps) {
               />
             </article>
 
-            {/* Code playground panel - left side in RTL, mobile-optimized */}
+            {/* Code playground panel - appears on left in RTL */}
             <aside className="min-w-0 flex-1 xl:max-w-[50%] xl:sticky xl:top-4 xl:self-start">
               <div className="rounded-lg border border-foreground/10 bg-foreground/5 p-3 sm:p-4">
                 <h2 className="mb-3 text-base font-semibold text-foreground sm:mb-4 sm:text-lg">
