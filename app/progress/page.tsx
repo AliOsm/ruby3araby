@@ -261,7 +261,7 @@ function SectionProgressCard({
       >
         <div className="flex items-center gap-3">
           {/* Section Number */}
-          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-foreground/10 text-sm font-medium">
+          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-foreground/15 text-sm font-medium text-foreground">
             {index + 1}
           </span>
 
@@ -318,7 +318,7 @@ function SectionProgressCard({
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
             fill="currentColor"
-            className={`h-5 w-5 text-foreground/40 transition-transform ${
+            className={`h-5 w-5 text-foreground/60 transition-transform ${
               isExpanded ? "rotate-180" : ""
             }`}
           >

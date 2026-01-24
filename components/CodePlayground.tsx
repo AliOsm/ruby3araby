@@ -364,7 +364,7 @@ export default function CodePlayground({
               </>
             )}
           </button>
-          <span className="hidden text-xs text-foreground/40 sm:block" dir="ltr">
+          <span className="hidden text-xs text-foreground/60 sm:block" dir="ltr">
             Ctrl+Enter
           </span>
         </div>
@@ -453,7 +453,7 @@ export default function CodePlayground({
 
         {/* Keyboard Shortcut Hint for Save */}
         {shouldAutoSave && (
-          <span className="mr-auto hidden text-xs text-foreground/40 sm:block" dir="ltr">
+          <span className="mr-auto hidden text-xs text-foreground/60 sm:block" dir="ltr">
             Ctrl+S لحفظ الشيفرة
           </span>
         )}
@@ -661,7 +661,7 @@ export default function CodePlayground({
           ) : output ? (
             <pre className="whitespace-pre-wrap text-foreground/80">{output}</pre>
           ) : (
-            <span className="text-foreground/50">
+            <span className="text-foreground/60">
               اضغط على &quot;تشغيل&quot; لرؤية المخرجات
             </span>
           )}

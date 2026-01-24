@@ -84,22 +84,22 @@ export default function GlossaryPage() {
   }, [groupedTerms, sortOrder]);
 
   return (
-    <div className="min-h-screen bg-gray-950 text-white">
+    <div className="min-h-screen bg-background text-foreground">
       {/* Header */}
-      <header className="border-b border-gray-800 bg-gray-900">
+      <header className="border-b border-foreground/10 bg-foreground/5">
         <div className="mx-auto max-w-6xl px-4 py-6">
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-3xl font-bold text-ruby-primary">
                 قاموس المصطلحات البرمجية
               </h1>
-              <p className="mt-2 text-gray-400">
+              <p className="mt-2 text-foreground/70">
                 مصطلحات البرمجة بالعربية والإنجليزية مع شرح مفصل
               </p>
             </div>
             <Link
               href="/"
-              className="flex items-center gap-2 rounded-lg bg-gray-800 px-4 py-2 text-gray-300 transition-colors hover:bg-gray-700 hover:text-white"
+              className="flex items-center gap-2 rounded-lg bg-foreground/10 px-4 py-2 text-foreground/80 transition-colors hover:bg-foreground/20 hover:text-foreground"
             >
               <svg
                 className="h-5 w-5 rtl:rotate-180"
@@ -121,7 +121,7 @@ export default function GlossaryPage() {
       </header>
 
       {/* Controls */}
-      <div className="border-b border-gray-800 bg-gray-900/50">
+      <div className="border-b border-foreground/10 bg-foreground/5">
         <div className="mx-auto max-w-6xl px-4 py-4">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             {/* Search */}
@@ -131,10 +131,10 @@ export default function GlossaryPage() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="ابحث عن مصطلح..."
-                className="w-full rounded-lg border border-gray-700 bg-gray-800 px-4 py-2 pr-10 text-white placeholder-gray-500 focus:border-ruby-primary focus:outline-none focus:ring-1 focus:ring-ruby-primary"
+                className="w-full rounded-lg border border-foreground/20 bg-foreground/5 px-4 py-2 pr-10 text-foreground placeholder-foreground/50 focus:border-ruby-primary focus:outline-none focus:ring-1 focus:ring-ruby-primary"
               />
               <svg
-                className="absolute top-1/2 right-3 h-5 w-5 -translate-y-1/2 text-gray-500"
+                className="absolute top-1/2 right-3 h-5 w-5 -translate-y-1/2 text-foreground/50"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -150,14 +150,14 @@ export default function GlossaryPage() {
 
             {/* Sort Toggle */}
             <div className="flex items-center gap-2">
-              <span className="text-sm text-gray-400">ترتيب حسب:</span>
-              <div className="flex rounded-lg bg-gray-800 p-1">
+              <span className="text-sm text-foreground/70">ترتيب حسب:</span>
+              <div className="flex rounded-lg bg-foreground/10 p-1">
                 <button
                   onClick={() => setSortOrder("arabic")}
                   className={`rounded-md px-4 py-1.5 text-sm font-medium transition-colors ${
                     sortOrder === "arabic"
                       ? "bg-ruby-primary text-white"
-                      : "text-gray-400 hover:text-white"
+                      : "text-foreground/70 hover:text-foreground"
                   }`}
                 >
                   عربي
@@ -167,7 +167,7 @@ export default function GlossaryPage() {
                   className={`rounded-md px-4 py-1.5 text-sm font-medium transition-colors ${
                     sortOrder === "english"
                       ? "bg-ruby-primary text-white"
-                      : "text-gray-400 hover:text-white"
+                      : "text-foreground/70 hover:text-foreground"
                   }`}
                 >
                   English
@@ -178,7 +178,7 @@ export default function GlossaryPage() {
 
           {/* Results count */}
           {mounted && (
-            <p className="mt-3 text-sm text-gray-500">
+            <p className="mt-3 text-sm text-foreground/60">
               {filteredTerms.length === terms.length
                 ? `${terms.length} مصطلح`
                 : `${filteredTerms.length} نتيجة من ${terms.length} مصطلح`}
@@ -194,10 +194,10 @@ export default function GlossaryPage() {
           <div className="space-y-8">
             {[1, 2, 3].map((i) => (
               <div key={i} className="animate-pulse">
-                <div className="mb-4 h-8 w-16 rounded bg-gray-800" />
+                <div className="mb-4 h-8 w-16 rounded bg-foreground/10" />
                 <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                   {[1, 2, 3].map((j) => (
-                    <div key={j} className="h-32 rounded-lg bg-gray-800" />
+                    <div key={j} className="h-32 rounded-lg bg-foreground/10" />
                   ))}
                 </div>
               </div>
@@ -207,7 +207,7 @@ export default function GlossaryPage() {
           // No results
           <div className="py-12 text-center">
             <svg
-              className="mx-auto h-16 w-16 text-gray-600"
+              className="mx-auto h-16 w-16 text-foreground/40"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -219,10 +219,10 @@ export default function GlossaryPage() {
                 d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
-            <h3 className="mt-4 text-xl font-medium text-gray-300">
+            <h3 className="mt-4 text-xl font-medium text-foreground/80">
               لم يتم العثور على نتائج
             </h3>
-            <p className="mt-2 text-gray-500">
+            <p className="mt-2 text-foreground/60">
               جرب البحث بكلمات مختلفة أو تصفح جميع المصطلحات
             </p>
             <button
@@ -242,8 +242,8 @@ export default function GlossaryPage() {
                   <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-ruby-primary text-xl font-bold text-white">
                     {letter}
                   </span>
-                  <div className="h-px flex-1 bg-gray-800" />
-                  <span className="text-sm text-gray-500">
+                  <div className="h-px flex-1 bg-foreground/20" />
+                  <span className="text-sm text-foreground/60">
                     {groupedTerms[letter].length} مصطلح
                   </span>
                 </div>
@@ -261,7 +261,7 @@ export default function GlossaryPage() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-gray-800 py-6 text-center text-sm text-gray-500">
+      <footer className="border-t border-foreground/10 py-6 text-center text-sm text-foreground/60">
         <p>
           المصطلحات مستوحاة من{" "}
           <a
@@ -287,13 +287,13 @@ function TermCard({ term, sortOrder }: TermCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <div className="group rounded-lg border border-gray-800 bg-gray-900/50 p-4 transition-colors hover:border-ruby-primary/50 hover:bg-gray-900">
+    <div className="group rounded-lg border border-foreground/10 bg-foreground/5 p-4 transition-colors hover:border-ruby-primary/50 hover:bg-foreground/10">
       {/* Term names */}
       <div className="mb-3">
         {sortOrder === "arabic" ? (
           <>
             <h3 className="text-lg font-bold text-ruby-primary">{term.arabic}</h3>
-            <p className="text-sm text-gray-400" dir="ltr">
+            <p className="text-sm text-foreground/70" dir="ltr">
               {term.english}
             </p>
           </>
@@ -302,14 +302,14 @@ function TermCard({ term, sortOrder }: TermCardProps) {
             <h3 className="text-lg font-bold text-ruby-primary" dir="ltr">
               {term.english}
             </h3>
-            <p className="text-sm text-gray-400">{term.arabic}</p>
+            <p className="text-sm text-foreground/70">{term.arabic}</p>
           </>
         )}
       </div>
 
       {/* Definition */}
       <p
-        className={`text-sm text-gray-300 leading-relaxed ${
+        className={`text-sm text-foreground/80 leading-relaxed ${
           !isExpanded && "line-clamp-3"
         }`}
       >

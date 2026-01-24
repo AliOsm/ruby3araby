@@ -192,7 +192,7 @@ export default function Sidebar({ course }: SidebarProps) {
             </Link>
             <ThemeToggle />
           </div>
-          <p className="mt-1 text-sm text-foreground/60">دورة تعلم روبي</p>
+          <p className="mt-1 text-sm text-foreground/70">دورة تعلم روبي</p>
         </div>
 
         {/* Scrollable sections list */}
@@ -220,7 +220,7 @@ export default function Sidebar({ course }: SidebarProps) {
               className="flex min-h-[44px] items-center gap-3 rounded-lg px-3 py-2.5 text-foreground/70 transition-colors hover:bg-foreground/10 hover:text-foreground"
             >
               <svg
-                className="h-5 w-5 text-foreground/50"
+                className="h-5 w-5 text-foreground/60"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -281,8 +281,8 @@ function SectionAccordion({
           <span
             className={`flex h-6 w-6 items-center justify-center rounded-full text-xs font-medium ${
               isSectionComplete
-                ? "bg-ruby-primary text-white"
-                : "bg-foreground/20 text-foreground/70"
+                ? "bg-green-500 text-white"
+                : "bg-foreground/15 text-foreground"
             }`}
           >
             {isSectionComplete ? (
@@ -298,13 +298,13 @@ function SectionAccordion({
             )}
           </span>
           <span className="font-medium">{section.title}</span>
-          <span className="text-xs text-foreground/50">
+          <span className="text-xs text-foreground/70">
             ({completionStats.completed}/{completionStats.total})
           </span>
         </span>
         {/* Chevron indicator */}
         <svg
-          className={`h-4 w-4 text-foreground/50 transition-transform duration-200 ${
+          className={`h-4 w-4 text-foreground/70 transition-transform duration-200 ${
             isOpen ? "rotate-180" : ""
           }`}
           fill="none"
@@ -343,7 +343,7 @@ function SectionAccordion({
               >
                 <span
                   className={`flex h-5 w-5 items-center justify-center text-xs ${
-                    isCompleted && !isCurrent ? "text-green-500" : "text-foreground/50"
+                    isCompleted && !isCurrent ? "text-green-500" : "text-foreground/70"
                   }`}
                 >
                   {isCompleted ? (

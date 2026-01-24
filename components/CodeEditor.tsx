@@ -228,7 +228,7 @@ export default function CodeEditor({
         }}
         loading={
           <div
-            className="flex h-full items-center justify-center text-foreground/60"
+            className="flex h-full items-center justify-center text-foreground/70"
             style={{ backgroundColor: "var(--editor-bg)" }}
           >
             <div className="flex items-center gap-2">
