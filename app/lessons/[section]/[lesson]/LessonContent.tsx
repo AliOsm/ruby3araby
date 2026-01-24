@@ -2,43 +2,72 @@
 
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { useEffect, useState } from "react";
 
 interface LessonContentProps {
   sectionSlug: string;
   lessonSlug: string;
+  content?: string;
 }
 
 /**
  * Lesson content component that renders markdown with Arabic typography
- * For now, shows a placeholder until lesson markdown files are created
  */
 export default function LessonContent({
   sectionSlug,
   lessonSlug,
+  content: initialContent,
 }: LessonContentProps) {
-  // Placeholder content until lesson markdown files are created
-  const placeholderContent = `
-## محتوى الدرس
+  const [content, setContent] = useState<string | null>(initialContent || null);
+  const [loading, setLoading] = useState(!initialContent);
+  const [error, setError] = useState<string | null>(null);
 
-هذا الدرس في قسم **${sectionSlug}** بعنوان **${lessonSlug}**.
+  useEffect(() => {
+    if (initialContent) return;
 
-سيتم إضافة محتوى الدرس الكامل قريباً. في الوقت الحالي، يمكنك تجربة كتابة كود روبي في المحرر على اليسار.
+    const loadContent = async () => {
+      try {
+        const response = await fetch(
+          `/api/lesson-content?section=${sectionSlug}&lesson=${lessonSlug}`
+        );
+        if (!response.ok) {
+          throw new Error("فشل تحميل محتوى الدرس");
+        }
+        const data = await response.json();
+        setContent(data.content);
+      } catch {
+        setError("لم نتمكن من تحميل محتوى الدرس. جرب تحديث الصفحة.");
+      } finally {
+        setLoading(false);
+      }
+    };
 
-### مثال بسيط
+    loadContent();
+  }, [sectionSlug, lessonSlug, initialContent]);
 
-\`\`\`ruby
-# هذا تعليق في روبي
-puts "مرحبا بالعالم!"
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center py-12">
+        <div className="text-gray-400">جاري تحميل الدرس...</div>
+      </div>
+    );
+  }
 
-# المتغيرات
-name = "أحمد"
-puts "مرحبا يا #{name}!"
-\`\`\`
+  if (error) {
+    return (
+      <div className="rounded-lg border border-red-800 bg-red-900/20 p-4">
+        <p className="text-red-400">{error}</p>
+      </div>
+    );
+  }
 
-### جرب بنفسك
-
-اكتب الكود في المحرر واضغط على زر "تشغيل" لرؤية النتيجة.
-`;
+  if (!content) {
+    return (
+      <div className="rounded-lg border border-yellow-800 bg-yellow-900/20 p-4">
+        <p className="text-yellow-400">محتوى الدرس غير متوفر بعد.</p>
+      </div>
+    );
+  }
 
   return (
     <article className="prose prose-invert prose-emerald max-w-none">
@@ -148,7 +177,7 @@ puts "مرحبا يا #{name}!"
           ),
         }}
       >
-        {placeholderContent}
+        {content}
       </ReactMarkdown>
     </article>
   );
