@@ -411,9 +411,37 @@ Last Updated: 2026-01-24
 
 ---
 
+### 2026-01-24 - US-015: Lesson: Hello World
+
+**What was implemented:**
+- Created Hello World lesson content at `/content/lessons/getting-started/hello-world.md`
+- Arabic explanation of the `puts` command and how Ruby executes code
+- Explanation of strings and their syntax in Ruby
+- Added ExerciseConfig type to `lib/types.ts` for lesson exercise configuration
+- Updated LessonStub to support optional exercise property in course.json
+- Updated LessonPlayground to receive and pass exercise configuration to CodePlayground
+- Updated lesson page to pass exercise config from course navigation data
+- Exercise with starter code, expected output validation, and hints
+- Browser verification confirmed: exercise validation shows green success banner with confetti
+
+**Files changed:**
+- content/lessons/getting-started/hello-world.md (new - lesson content with Arabic explanation)
+- lib/types.ts (added ExerciseConfig interface, updated LessonStub)
+- content/course.json (added exercise configuration for hello-world lesson)
+- app/lessons/[section]/[lesson]/LessonPlayground.tsx (updated to accept exercise props)
+- app/lessons/[section]/[lesson]/page.tsx (passes exercise config to LessonPlayground)
+
+**Learnings for future iterations:**
+- ExerciseConfig type allows embedding exercise details directly in course.json
+- Lessons with exercises show "التمرين" (The Exercise) heading instead of "جرب الكود" (Try the Code)
+- Exercise configuration includes: starterCode, expectedOutput, defaultInput (optional), hints (optional)
+- When user solves exercise correctly, lesson is automatically marked complete in sidebar
+
+---
+
 ## Current Story
 
-(completed US-014, ready for next iteration)
+(completed US-015, ready for next iteration)
 
 ## Notes
 
