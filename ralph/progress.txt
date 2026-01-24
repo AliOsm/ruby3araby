@@ -1565,9 +1565,36 @@ Last Updated: 2026-01-24
 
 ---
 
+### 2026-01-24 - US-051: Add Progress Dashboard Page
+
+**What was implemented:**
+- Created `/app/progress/page.tsx` - a comprehensive progress dashboard page
+- Overall progress card showing completion percentage with visual progress bar
+- Section-by-section progress view with expandable accordions
+- Each section shows: title, completion count, progress bar, and percentage
+- Expandable sections reveal completed lessons (with green checkmarks) and remaining lessons
+- "Continue Learning" button linking to the next incomplete lesson
+- Congratulations message when all lessons are complete
+- Back to home link in header
+- RTL layout with proper Arabic text alignment
+- Loading skeleton state while client-side data loads
+- Listens for progressUpdate and storage events for real-time updates
+
+**Files changed:**
+- app/progress/page.tsx (new - progress dashboard page)
+
+**Learnings for future iterations:**
+- Use `useRef` + `setTimeout(0)` pattern to avoid ESLint react-hooks/set-state-in-effect rule
+- Progress calculation done client-side from ProgressService and getCourseStructure
+- Lesson ID format is `section-slug/lesson-slug` matching URL structure
+- Expandable accordion pattern with useState for each section's expanded state
+- The next incomplete lesson is found by iterating through sections/lessons in order
+
+---
+
 ## Current Story
 
-(completed US-050, ready for next iteration)
+(completed US-051, ready for next iteration)
 
 ## Notes
 
