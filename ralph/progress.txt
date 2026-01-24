@@ -949,9 +949,40 @@ Last Updated: 2026-01-24
 
 ---
 
+### 2026-01-24 - US-033: Lesson: For Loops and Loop Control
+
+**What was implemented:**
+- Created for loops and loop control lesson at `/content/lessons/loops/for-control.md`
+- Comprehensive Arabic explanations of:
+  - `for` loop with ranges (inclusive `..` and exclusive `...`)
+  - Understanding ranges in Ruby (numeric and character ranges)
+  - `break` - exit loop immediately when condition is met
+  - `next` - skip current iteration and continue with next
+  - Combining break and next in the same loop
+- Practical examples: multiplication tables, prime numbers, filtered iteration
+- Comparison table: for vs while loops
+- Common errors section with examples
+- Exercise: print even numbers 1-20, skip 6, stop at 14 (tests both break and next)
+- Added exercise configuration to course.json with hints
+- All typechecks, lint, and build pass
+- Browser verification confirmed: RTL layout, content rendering, code playground works
+
+**Files changed:**
+- content/lessons/loops/for-control.md (new - lesson content)
+- content/course.json (added exercise configuration for for-control lesson)
+
+**Learnings for future iterations:**
+- For loops in Ruby work with ranges and collections
+- Inclusive range `1..5` includes 5, exclusive range `1...5` excludes 5
+- break only exits the innermost loop (important for nested loops)
+- next is useful for filtering values without deeply nested if statements
+- Exercise combining break and next tests understanding of both concepts
+
+---
+
 ## Current Story
 
-(completed US-032, ready for next iteration)
+(completed US-033, ready for next iteration)
 
 ## Notes
 
