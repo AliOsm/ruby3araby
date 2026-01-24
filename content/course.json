@@ -208,7 +208,19 @@
           "id": "user-input",
           "slug": "user-input",
           "title": "إدخال المستخدم",
-          "contentPath": "/content/lessons/fundamentals/user-input.md"
+          "contentPath": "/content/lessons/fundamentals/user-input.md",
+          "exercise": {
+            "starterCode": "# اطلب من المستخدم اسمه ثم حيّه\n# تلميح: استخدم puts لطرح السؤال\n# واستخدم gets.chomp للحصول على الإدخال\n\n",
+            "expectedOutput": "ما اسمك؟\nمرحباً أحمد!",
+            "defaultInput": "أحمد",
+            "hints": [
+              "ابدأ بطباعة السؤال: puts \"ما اسمك؟\"",
+              "ثم احصل على الإدخال: name = gets.chomp",
+              "استخدم chomp لإزالة السطر الجديد من نهاية الإدخال",
+              "أخيراً اطبع التحية باستخدام دمج المتغيرات: puts \"مرحباً #{name}!\"",
+              "الحل الكامل: puts \"ما اسمك؟\" ثم name = gets.chomp ثم puts \"مرحباً #{name}!\""
+            ]
+          }
         },
         {
           "id": "type-conversion",
