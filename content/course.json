@@ -327,7 +327,17 @@
           "id": "while-until",
           "slug": "while-until",
           "title": "حلقات while و until",
-          "contentPath": "/content/lessons/loops/while-until.md"
+          "contentPath": "/content/lessons/loops/while-until.md",
+          "exercise": {
+            "starterCode": "# اكتب كودك هنا\n# عرّف countdown = 10\n# استخدم حلقة while للعد التنازلي\n# اطبع \"انطلق!\" في النهاية\n",
+            "expectedOutput": "10\n9\n8\n7\n6\n5\n4\n3\n2\n1\nانطلق!",
+            "hints": [
+              "ابدأ بتعريف المتغير: countdown = 10",
+              "شرط while هو: countdown > 0 أو countdown >= 1",
+              "داخل الحلقة: اطبع countdown ثم قلّله بـ 1",
+              "بعد end الحلقة: puts \"انطلق!\""
+            ]
+          }
         },
         {
           "id": "for-control",
