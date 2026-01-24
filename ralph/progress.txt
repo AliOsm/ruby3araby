@@ -917,9 +917,41 @@ Last Updated: 2026-01-24
 
 ---
 
+### 2026-01-24 - US-032: Lesson: While and Until Loops
+
+**What was implemented:**
+- Created while and until loops lesson at `/content/lessons/loops/while-until.md`
+- Created the `loops` directory for loop-related lessons
+- Comprehensive Arabic explanations of:
+  - `while` loop: repeat code while condition is true
+  - `until` loop: repeat code until condition becomes true
+  - Loop mechanics: condition checking, variable updates, avoiding infinite loops
+  - Comparison of while vs until with equivalence table
+  - Inline/modifier syntax for single-line loops
+  - Nested loops with practical examples
+- Practical examples: counting, summing, factorial, multiplication table, star triangle
+- Common errors: forgetting to update variable, unreachable conditions
+- Summary table comparing while and until
+- Exercise: countdown from 10 to 1, then print "انطلق!"
+- Added exercise configuration to course.json with hints
+- All typechecks, lint, and build pass
+
+**Files changed:**
+- content/lessons/loops/while-until.md (new - lesson content)
+- content/course.json (added exercise configuration for while-until lesson)
+
+**Learnings for future iterations:**
+- Created new `loops` directory for loop-related lessons
+- While and until are logical inverses: `while x <= 5` equals `until x > 5`
+- Warning about infinite loops is important - browser has 60-second timeout
+- Inline loop syntax (modifier form) is less readable, use sparingly
+- Nested loops can affect performance - mention this to learners
+
+---
+
 ## Current Story
 
-(completed US-031, ready for next iteration)
+(completed US-032, ready for next iteration)
 
 ## Notes
 
