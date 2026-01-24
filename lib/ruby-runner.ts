@@ -11,6 +11,18 @@ export interface ExecutionResult {
   error?: string;
 }
 
+/**
+ * Result of syntax checking
+ */
+export interface SyntaxCheckResult {
+  valid: boolean;
+  error?: {
+    message: string;
+    line: number;
+    column: number;
+  };
+}
+
 // Cache name and WASM URL constants
 const WASM_CACHE_NAME = "ruby3araby-wasm-cache-v1";
 const WASM_URL =
@@ -246,6 +258,69 @@ export class RubyRunner {
         });
       }
     });
+  }
+
+  /**
+   * Check Ruby code for syntax errors without executing it
+   * Uses Ruby's parser to validate the code
+   *
+   * @param code - The Ruby code to check
+   * @returns SyntaxCheckResult with validity and error details if invalid
+   */
+  checkSyntax(code: string): SyntaxCheckResult {
+    if (!this.isInitialized || !this.vm) {
+      // Can't check syntax without VM - assume valid
+      return { valid: true };
+    }
+
+    try {
+      // Use RubyVM::InstructionSequence.compile to parse without executing
+      // This will throw a SyntaxError if the code is invalid
+      const checkCode = `
+        begin
+          RubyVM::InstructionSequence.compile(${JSON.stringify(code)}, "<code>")
+          "valid"
+        rescue SyntaxError => e
+          # Parse the error message to extract line and column
+          msg = e.message
+          # Format: "<code>:LINE: syntax error, ..."
+          if msg =~ /<code>:(\\d+):/
+            line = $1.to_i
+            # Remove the file prefix from the message
+            clean_msg = msg.sub(/<code>:\\d+:\\s*/, "")
+            "error:#{line}:1:#{clean_msg}"
+          else
+            "error:1:1:#{msg}"
+          end
+        end
+      `;
+
+      const result = this.vm.eval(checkCode).toString();
+
+      if (result === "valid") {
+        return { valid: true };
+      }
+
+      // Parse error result: "error:LINE:COLUMN:MESSAGE"
+      // Use [\s\S] instead of . with /s flag for ES5 compatibility
+      const match = result.match(/^error:(\d+):(\d+):([\s\S]+)$/);
+      if (match) {
+        return {
+          valid: false,
+          error: {
+            message: match[3].trim(),
+            line: parseInt(match[1], 10),
+            column: parseInt(match[2], 10),
+          },
+        };
+      }
+
+      return { valid: true };
+    } catch {
+      // If checking fails for any reason, assume valid
+      // (better to not show false positives)
+      return { valid: true };
+    }
   }
 
   /**

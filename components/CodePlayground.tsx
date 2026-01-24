@@ -2,7 +2,11 @@
 
 import { useCallback, useEffect, useState, useRef, useMemo } from "react";
 import CodeEditor from "./CodeEditor";
-import { getRubyRunner, ExecutionResult } from "@/lib/ruby-runner";
+import {
+  getRubyRunner,
+  ExecutionResult,
+  SyntaxCheckResult,
+} from "@/lib/ruby-runner";
 import {
   ProgressService,
   createDebouncedCodeSaver,
@@ -118,6 +122,17 @@ export default function CodePlayground({
       }
     }
     return runner;
+  }, []);
+
+  // Syntax checker function for real-time error highlighting
+  // Only checks when Ruby VM is already initialized (doesn't trigger initialization)
+  const syntaxChecker = useCallback((codeToCheck: string): SyntaxCheckResult => {
+    const runner = getRubyRunner();
+    if (!runner.initialized) {
+      // Don't check syntax if not initialized - avoid blocking
+      return { valid: true };
+    }
+    return runner.checkSyntax(codeToCheck);
   }, []);
 
   // Run the code
@@ -296,6 +311,7 @@ export default function CodePlayground({
         height={editorHeight}
         onRun={handleRun}
         onSave={handleSave}
+        syntaxChecker={syntaxChecker}
       />
 
       {/* Control Buttons - touch-friendly with 44px min tap targets */}
