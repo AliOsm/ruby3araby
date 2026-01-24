@@ -245,7 +245,19 @@
           "id": "multiple-assignment",
           "slug": "multiple-assignment",
           "title": "التعيين المتعدد ومعالجة nil",
-          "contentPath": "/content/lessons/fundamentals/multiple-assignment.md"
+          "contentPath": "/content/lessons/fundamentals/multiple-assignment.md",
+          "exercise": {
+            "starterCode": "# 1. عرّف x و y باستخدام التعيين المتعدد (x = 5, y = 10)\n\n\n# 2. اطبع القيم الأصلية\nputs \"قبل التبادل:\"\n\n\n# 3. بدّل قيمتي x و y\n\n\n# 4. اطبع القيم بعد التبادل\nputs \"بعد التبادل:\"\n\n\n# 5. عرّف متغير name يساوي nil\n\n\n# 6. اطبع طول الاسم باستخدام &. (ملاحة آمنة)\nputs name&.length\n\n# 7. اطبع قيمة افتراضية باستخدام ||\nputs name || \"مجهول\"\n",
+            "expectedOutput": "قبل التبادل:\nx = 5\ny = 10\nبعد التبادل:\nx = 10\ny = 5\n\nمجهول",
+            "hints": [
+              "للتعيين المتعدد استخدم: x, y = 5, 10",
+              "لطباعة القيم استخدم: puts \"x = #{x}\" و puts \"y = #{y}\"",
+              "لتبادل القيم استخدم: x, y = y, x",
+              "لتعريف nil استخدم: name = nil",
+              "الملاحة الآمنة &. تُرجع nil بدون خطأ، لذا puts تطبع سطراً فارغاً",
+              "العامل || يُرجع القيمة الثانية إذا كانت الأولى nil أو false"
+            ]
+          }
         }
       ]
     },
