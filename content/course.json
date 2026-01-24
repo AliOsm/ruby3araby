@@ -406,7 +406,19 @@
           "id": "hashes",
           "slug": "hashes",
           "title": "القواميس (Hashes)",
-          "contentPath": "/content/lessons/collections/hashes.md"
+          "contentPath": "/content/lessons/collections/hashes.md",
+          "exercise": {
+            "starterCode": "# أنشئ قاموساً person يحتوي على:\n# name: \"فاطمة\"\n# age: 30\n# city: \"دبي\"\n# skills: [\"Ruby\", \"Python\"]\n\n\n# اطبع الاسم\n\n\n# اطبع المدينة\n\n\n# أضف مفتاح job بقيمة \"مبرمجة\"\n\n\n# اطبع عدد المفاتيح\n\n\n# اطبع جميع المفاتيح باستخدام p\n\n\n# تحقق هل المفتاح :email موجود\n",
+            "expectedOutput": "فاطمة\nدبي\n5\n[:name, :age, :city, :skills, :job]\nfalse",
+            "hints": [
+              "لإنشاء القاموس: person = { name: \"فاطمة\", age: 30, city: \"دبي\", skills: [\"Ruby\", \"Python\"] }",
+              "للوصول للقيمة: puts person[:name]",
+              "لإضافة مفتاح جديد: person[:job] = \"مبرمجة\"",
+              "لعدد المفاتيح: puts person.length أو puts person.keys.length",
+              "لطباعة المفاتيح: p person.keys",
+              "للتحقق من وجود مفتاح: puts person.key?(:email)"
+            ]
+          }
         },
         {
           "id": "ranges-enumerables",
