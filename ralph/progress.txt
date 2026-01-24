@@ -1502,9 +1502,40 @@ Last Updated: 2026-01-24
 
 ---
 
+### 2026-01-24 - US-049: Challenge: Simple Calculator
+
+**What was implemented:**
+- Created Simple Calculator challenge content at `/content/lessons/challenges/calculator.md`
+- Comprehensive Arabic content including:
+  - Introduction explaining the challenge (building an interactive calculator)
+  - Clear requirements: input two numbers and an operation, display result
+  - Supported operations table: +, -, *, /
+  - Key concepts: using gets.chomp.to_f for numbers, case/when for operations
+  - Division by zero handling guidance
+  - Multiple solution approaches (case/when and if-elsif-else)
+- Exercise configuration with:
+  - Starter code with prompts for inputs and TODO comments
+  - Default input: "8", "/", "2"
+  - Expected output showing the calculation result
+  - 5 progressive hints guiding the learner
+- All typechecks and lint pass
+- Browser verification confirmed: page loads with RTL layout, code playground, and simulated input
+
+**Files changed:**
+- content/lessons/challenges/calculator.md (new - challenge content)
+- content/course.json (added exercise configuration for calculator challenge)
+
+**Learnings for future iterations:**
+- Use `to_f` instead of `to_i` for calculator to support decimal numbers
+- Division by zero in Ruby with floats returns Infinity, not an error - need explicit check
+- Case/when is cleaner than if-elsif for operation selection
+- Exercise uses default inputs "8\n/\n2" to test division case
+
+---
+
 ## Current Story
 
-(completed US-048, ready for next iteration)
+(completed US-049, ready for next iteration)
 
 ## Notes
 
