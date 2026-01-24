@@ -489,7 +489,17 @@
           "id": "block-syntax",
           "slug": "block-syntax",
           "title": "صياغة الكتل",
-          "contentPath": "/content/lessons/blocks/block-syntax.md"
+          "contentPath": "/content/lessons/blocks/block-syntax.md",
+          "exercise": {
+            "starterCode": "# الكتل البرمجية مع select, map, reduce\n\nnumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\n\n# 1. استخدم select لاختيار الأرقام الزوجية\n# 2. استخدم map لمضاعفة كل رقم\n# 3. استخدم reduce لحساب المجموع\n# 4. اطبع النتيجة\n\nresult = numbers\n  # أكمل الكود هنا\n\nputs result",
+            "expectedOutput": "60",
+            "hints": [
+              "استخدم .select { |n| n.even? } لاختيار الأرقام الزوجية",
+              "استخدم .map { |n| n * 2 } لمضاعفة كل رقم",
+              "استخدم .reduce(:+) أو .reduce(0) { |sum, n| sum + n } لحساب المجموع",
+              "سلسل الدوال: numbers.select { ... }.map { ... }.reduce(:+)"
+            ]
+          }
         },
         {
           "id": "yield",
