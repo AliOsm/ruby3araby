@@ -546,7 +546,18 @@
           "id": "classes-objects",
           "slug": "classes-objects",
           "title": "الأصناف والكائنات",
-          "contentPath": "/content/lessons/oop/classes-objects.md"
+          "contentPath": "/content/lessons/oop/classes-objects.md",
+          "exercise": {
+            "starterCode": "# أنشئ صنف Person يحتوي على:\n# - دالة set_info تستقبل name و age\n# - دالة get_name تُرجع الاسم\n# - دالة get_age تُرجع العمر\n# - دالة introduce تطبع التحية\n\n\n# أنشئ كائناً وعيّن له اسم \"فاطمة\" وعمر 25\n\n\n# استدعِ دالة introduce\n",
+            "expectedOutput": "مرحباً، أنا فاطمة وعمري 25 سنة",
+            "hints": [
+              "ابدأ بتعريف الصنف: class Person",
+              "عرّف دالة set_info: def set_info(name, age) ثم @name = name و @age = age",
+              "عرّف دالة get_name: def get_name ثم @name",
+              "عرّف دالة introduce: def introduce ثم puts \"مرحباً، أنا #{@name} وعمري #{@age} سنة\"",
+              "أنشئ الكائن: person = Person.new ثم person.set_info(\"فاطمة\", 25) ثم person.introduce"
+            ]
+          }
         },
         {
           "id": "initialize-accessors",
