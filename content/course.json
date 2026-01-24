@@ -465,7 +465,18 @@
           "id": "returns-splat",
           "slug": "returns-splat",
           "title": "القيم المرجعة وعوامل Splat",
-          "contentPath": "/content/lessons/methods/returns-splat.md"
+          "contentPath": "/content/lessons/methods/returns-splat.md",
+          "exercise": {
+            "starterCode": "# 1. عرّف دالة sum_all تستقبل أي عدد من الأرقام\n# وتُرجع مجموعها (استخدم *numbers)\n\n\n# 2. عرّف دالة describe_person تستقبل:\n# - name (إلزامي)\n# - **info (وسائط مسماة اختيارية)\n# الدالة تطبع الاسم ثم كل المعلومات الإضافية\n\n\n# اختبر الدالتين:\nputs sum_all(1, 2, 3)\nputs sum_all(10, 20, 30, 40)\nputs \"---\"\ndescribe_person(\"أحمد\", age: 25, city: \"القاهرة\")\n",
+            "expectedOutput": "6\n100\n---\nالاسم: أحمد\nage: 25\ncity: القاهرة",
+            "hints": [
+              "للدالة الأولى استخدم: def sum_all(*numbers)",
+              "لجمع الأرقام استخدم: numbers.sum أو numbers.reduce(0, :+)",
+              "للدالة الثانية استخدم: def describe_person(name, **info)",
+              "اطبع الاسم أولاً: puts \"الاسم: #{name}\"",
+              "للمعلومات الإضافية استخدم: info.each { |k, v| puts \"#{k}: #{v}\" }"
+            ]
+          }
         }
       ]
     },
