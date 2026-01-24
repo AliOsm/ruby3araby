@@ -604,9 +604,40 @@ Last Updated: 2026-01-24
 
 ---
 
+### 2026-01-24 - US-022: Lesson: Truthiness and Falsiness
+
+**What was implemented:**
+- Created Truthiness lesson at `/content/lessons/fundamentals/truthiness.md`
+- Comprehensive Arabic explanations of:
+  - Only `nil` and `false` are falsy in Ruby (the golden rule)
+  - `0`, empty string `""`, empty array `[]`, and empty hash `{}` are truthy
+  - Comparison with other languages (JavaScript, Python)
+  - The `!!` (double bang) technique for converting to boolean
+  - Difference between `nil` and `false`
+  - Using `empty?` to check for empty strings/arrays
+  - Safe navigation operator `&.` for nil handling
+- Practical examples: checking for nil values, default values with `||`
+- Comparison table showing truthiness in Ruby vs other languages
+- Exercise: use `!!` to convert various values and verify their truthiness
+- Added exercise configuration to course.json with hints
+- Browser verification confirmed: RTL layout, content rendering, exercise validation with green success banner
+
+**Files changed:**
+- content/lessons/fundamentals/truthiness.md (new - lesson content)
+- content/course.json (added exercise configuration for truthiness lesson)
+
+**Learnings for future iterations:**
+- Ruby's truthiness is simpler than most languages: only `nil` and `false` are falsy
+- This is different from JavaScript/Python where 0, "", [], {} are falsy
+- The `!!` pattern is useful for converting any value to a strict boolean
+- `nil?` checks specifically for nil, while truthiness checks work for any value
+- Safe navigation `&.` returns nil instead of raising error on nil receiver
+
+---
+
 ## Current Story
 
-(completed US-021, ready for next iteration)
+(completed US-022, ready for next iteration)
 
 ## Notes
 
