@@ -583,7 +583,22 @@
           "id": "inheritance",
           "slug": "inheritance",
           "title": "الوراثة",
-          "contentPath": "/content/lessons/oop/inheritance.md"
+          "contentPath": "/content/lessons/oop/inheritance.md",
+          "exercise": {
+            "starterCode": "# أنشئ صنف Animal مع attr_reader :name و initialize(name) و speak\n\n# أنشئ صنف Dog يرث من Animal مع إعادة تعريف speak\n\n# أنشئ صنف Cat يرث من Animal مع إعادة تعريف speak\n\n# أنشئ كلباً اسمه \"بوبي\" وقطاً اسمه \"ميشو\"\n# اطبع اسم كل حيوان ثم استدعِ speak\n",
+            "expectedOutput": "بوبي\nهاو هاو!\nميشو\nمياو!",
+            "hints": [
+              "ابدأ بتعريف صنف Animal: class Animal",
+              "أضف attr_reader :name في بداية الصنف",
+              "عرّف المُهيّئ: def initialize(name) ثم @name = name",
+              "عرّف speak في Animal: def speak ثم puts \"صوت غير معروف\"",
+              "أنشئ Dog يرث من Animal: class Dog < Animal",
+              "أعد تعريف speak في Dog: def speak ثم puts \"هاو هاو!\"",
+              "أنشئ Cat بنفس الطريقة مع puts \"مياو!\"",
+              "أنشئ الكائنات: dog = Dog.new(\"بوبي\") و cat = Cat.new(\"ميشو\")",
+              "اطبع: puts dog.name ثم dog.speak ثم puts cat.name ثم cat.speak"
+            ]
+          }
         }
       ]
     },
