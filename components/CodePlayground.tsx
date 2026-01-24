@@ -661,7 +661,7 @@ export default function CodePlayground({
           ) : output ? (
             <pre className="whitespace-pre-wrap text-foreground/80">{output}</pre>
           ) : (
-            <span className="text-foreground/60">
+            <span className="text-foreground/60" dir="rtl">
               اضغط على &quot;تشغيل&quot; لرؤية المخرجات
             </span>
           )}
