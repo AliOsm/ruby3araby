@@ -1143,9 +1143,43 @@ Last Updated: 2026-01-24
 
 ---
 
+### 2026-01-24 - US-039: Lesson: Return Values and Splat Operators
+
+**What was implemented:**
+- Created Return Values and Splat Operators lesson at `/content/lessons/methods/returns-splat.md`
+- Comprehensive Arabic explanations of:
+  - Implicit return (الإرجاع الضمني) - Ruby returns last computed value
+  - Explicit return (الإرجاع الصريح) - using `return` keyword for early exit
+  - Returning multiple values using arrays with destructuring
+  - Splat operator (`*args`) for accepting variable number of arguments
+  - Double splat operator (`**kwargs`) for accepting keyword arguments as hash
+  - Combining splat with regular parameters
+  - Using splat when calling methods to unpack arrays/hashes
+  - Proper parameter ordering (required, default, *args, keyword, **kwargs)
+- Summary table of all return and splat concepts
+- Common errors section: puts returning nil, parameter ordering, unnecessary return
+- Exercise: create `sum_all` with splat and `describe_person` with double splat
+- Added exercise configuration to course.json with hints
+- All typechecks, lint, and build pass
+- Browser verification confirmed: RTL layout, content rendering, code playground works
+
+**Files changed:**
+- content/lessons/methods/returns-splat.md (new - lesson content)
+- content/course.json (added exercise configuration for returns-splat lesson)
+
+**Learnings for future iterations:**
+- Implicit return is idiomatic Ruby - prefer it over explicit return at end of methods
+- `*args` collects remaining positional arguments into an array
+- `**kwargs` collects keyword arguments into a hash
+- Parameter order matters: required, defaults, *splat, keyword, **double_splat
+- Common gotcha: `puts` returns nil, not the printed value
+- Splat can also be used when calling methods to unpack arrays/hashes
+
+---
+
 ## Current Story
 
-(completed US-038, ready for next iteration)
+(completed US-039, ready for next iteration)
 
 ## Notes
 
