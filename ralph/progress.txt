@@ -576,9 +576,37 @@ Last Updated: 2026-01-24
 
 ---
 
+### 2026-01-24 - US-021: Lesson: Boolean Logic
+
+**What was implemented:**
+- Created Boolean Logic lesson at `/content/lessons/fundamentals/boolean-logic.md`
+- Comprehensive Arabic explanations of:
+  - `&&` (AND) operator with truth table
+  - `||` (OR) operator with truth table
+  - `!` (NOT) operator for negation
+  - Operator precedence (! > && > ||)
+  - Difference between `&&`/`||` and `and`/`or` (precedence issues)
+  - Short-circuit evaluation explanation
+- Practical examples: age/balance checks, permissions, password validation
+- Exercise: combine conditions using all three operators
+- Added exercise configuration to course.json with hints
+- Browser verification confirmed: RTL layout, content rendering, exercise validation with green success banner
+
+**Files changed:**
+- content/lessons/fundamentals/boolean-logic.md (new - lesson content)
+- content/course.json (added exercise configuration for boolean-logic lesson)
+
+**Learnings for future iterations:**
+- Boolean operators in Ruby: `&&` and `||` have higher precedence than `and`/`or`
+- `and`/`or` have lower precedence than `=`, which can cause unexpected behavior
+- Short-circuit evaluation stops evaluating once result is determined
+- Always recommend using `&&`/`||` for conditions, `and`/`or` only for control flow
+
+---
+
 ## Current Story
 
-(completed US-020, ready for next iteration)
+(completed US-021, ready for next iteration)
 
 ## Notes
 
