@@ -563,7 +563,21 @@
           "id": "initialize-accessors",
           "slug": "initialize-accessors",
           "title": "المُنشئ والموصّلات",
-          "contentPath": "/content/lessons/oop/initialize-accessors.md"
+          "contentPath": "/content/lessons/oop/initialize-accessors.md",
+          "exercise": {
+            "starterCode": "# أنشئ صنف Book يحتوي على:\n# - attr_reader :title, :author (لا يتغيران)\n# - attr_accessor :pages_read (يمكن تعديلها)\n# - دالة initialize تستقبل title, author, total_pages\n# - دالة progress تُرجع نسبة الإنجاز كنص\n\n\n# أنشئ كتاباً بعنوان \"تعلم روبي\"، للكاتب \"أحمد\"، وعدد صفحاته 200\n\n\n# اقرأ 50 صفحة (عيّن pages_read = 50)\n\n\n# اطبع العنوان والكاتب ونسبة الإنجاز\n",
+            "expectedOutput": "تعلم روبي\nأحمد\n25%",
+            "hints": [
+              "ابدأ بتعريف الصنف: class Book",
+              "أضف الموصّلات: attr_reader :title, :author ثم attr_accessor :pages_read",
+              "عرّف المُهيّئ: def initialize(title, author, total_pages)",
+              "داخل المُهيّئ عيّن: @title = title و @author = author و @total_pages = total_pages و @pages_read = 0",
+              "عرّف دالة progress: def progress ثم \"#{(@pages_read.to_f / @total_pages * 100).to_i}%\"",
+              "أنشئ الكتاب: book = Book.new(\"تعلم روبي\", \"أحمد\", 200)",
+              "عيّن الصفحات: book.pages_read = 50",
+              "اطبع: puts book.title ثم puts book.author ثم puts book.progress"
+            ]
+          }
         },
         {
           "id": "inheritance",
