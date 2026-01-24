@@ -5,7 +5,6 @@ import { useState, useCallback } from "react";
 interface LessonActionsProps {
   sectionSlug: string;
   lessonSlug: string;
-  lessonTitle: string;
 }
 
 /**
@@ -14,7 +13,6 @@ interface LessonActionsProps {
 export default function LessonActions({
   sectionSlug,
   lessonSlug,
-  lessonTitle,
 }: LessonActionsProps) {
   const [copyStatus, setCopyStatus] = useState<"idle" | "copied">("idle");
   const [isLoading, setIsLoading] = useState(false);

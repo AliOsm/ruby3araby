@@ -84,11 +84,7 @@ export default async function LessonPage({ params }: LessonPageProps) {
             <h1 className="text-xl font-bold text-foreground sm:text-2xl md:text-3xl">
               {nav.current.lesson.title}
             </h1>
-            <LessonActions
-              sectionSlug={section}
-              lessonSlug={lesson}
-              lessonTitle={nav.current.lesson.title}
-            />
+            <LessonActions sectionSlug={section} lessonSlug={lesson} />
           </div>
 
           {/* Split layout: Content on right (RTL), Playground on left */}
