@@ -18,7 +18,16 @@
           "id": "hello-world",
           "slug": "hello-world",
           "title": "مرحبا بالعالم",
-          "contentPath": "/content/lessons/getting-started/hello-world.md"
+          "contentPath": "/content/lessons/getting-started/hello-world.md",
+          "exercise": {
+            "starterCode": "# اكتب كوداً يطبع: مرحبا بالعالم\n",
+            "expectedOutput": "مرحبا بالعالم",
+            "hints": [
+              "استخدم الأمر puts لطباعة النص",
+              "ضع النص داخل علامات اقتباس: puts \"مرحبا بالعالم\"",
+              "تأكد من كتابة النص بالضبط: مرحبا بالعالم (بدون علامة تعجب)"
+            ]
+          }
         },
         {
           "id": "comments",

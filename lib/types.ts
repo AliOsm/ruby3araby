@@ -82,6 +82,21 @@ export interface Course {
 }
 
 /**
+ * Exercise configuration for course.json
+ * Simplified exercise definition for lesson stubs
+ */
+export interface ExerciseConfig {
+  /** Initial code to display in the editor */
+  starterCode: string;
+  /** Expected output for validation */
+  expectedOutput: string;
+  /** Pre-populated input for simulated gets calls (optional) */
+  defaultInput?: string;
+  /** Array of hints to help learners (displayed progressively) */
+  hints?: string[];
+}
+
+/**
  * Lesson stub for course.json
  * Used in course.json to reference lessons without full content
  * (content is stored in separate markdown files)
@@ -95,6 +110,8 @@ export interface LessonStub {
   title: string;
   /** Path to markdown file containing lesson content */
   contentPath: string;
+  /** Exercise configuration (optional - not all lessons have exercises) */
+  exercise?: ExerciseConfig;
 }
 
 /**

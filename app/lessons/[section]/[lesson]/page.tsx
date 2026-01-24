@@ -97,9 +97,12 @@ export default async function LessonPage({ params }: LessonPageProps) {
             <div className="flex-1 xl:max-w-[50%] xl:sticky xl:top-4 xl:self-start">
               <div className="rounded-lg border border-gray-800 bg-gray-900 p-4">
                 <h2 className="mb-4 text-lg font-semibold text-white">
-                  جرب الكود
+                  {nav.current.lesson.exercise ? "التمرين" : "جرب الكود"}
                 </h2>
-                <LessonPlayground lessonId={`${section}/${lesson}`} />
+                <LessonPlayground
+                  lessonId={`${section}/${lesson}`}
+                  exercise={nav.current.lesson.exercise}
+                />
               </div>
             </div>
           </div>
