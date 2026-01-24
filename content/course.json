@@ -33,7 +33,16 @@
           "id": "comments",
           "slug": "comments",
           "title": "التعليقات",
-          "contentPath": "/content/lessons/getting-started/comments.md"
+          "contentPath": "/content/lessons/getting-started/comments.md",
+          "exercise": {
+            "starterCode": "puts \"روبي\"\nputs \"لغة\"\nputs \"رائعة\"",
+            "expectedOutput": "روبي\nرائعة",
+            "hints": [
+              "أضف علامة # في بداية السطر الذي تريد تعطيله",
+              "السطر الثاني هو: puts \"لغة\" - أضف # قبله",
+              "الحل: # puts \"لغة\""
+            ]
+          }
         },
         {
           "id": "output-methods",
