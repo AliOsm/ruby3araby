@@ -1216,9 +1216,42 @@ Last Updated: 2026-01-24
 
 ---
 
+### 2026-01-24 - US-041: Lesson: Yield and Custom Block Methods
+
+**What was implemented:**
+- Created Yield and Custom Block Methods lesson at `/content/lessons/blocks/yield.md`
+- Comprehensive Arabic explanations of:
+  - What `yield` is: executing blocks passed to methods
+  - Passing values to blocks via `yield(value)`
+  - Receiving return values from blocks
+  - Multiple yields in a single method
+  - Checking for block presence with `block_given?`
+  - Creating custom iterators (each_even, each_numbered, select_if)
+  - Common patterns: wrapper, setup/teardown, conditional repetition
+  - Difference between yield and Proc.call (preview for next lesson)
+- Summary table of yield concepts
+- Practical examples: task processing, HTML builder, prime number iterator
+- Common errors section: calling yield without block, forgetting to capture yield result
+- Exercise: create `each_word` method that yields each word from a text
+- Added exercise configuration to course.json with hints
+- All typechecks, lint pass
+- Browser verification confirmed: RTL layout, content rendering, code playground with exercise
+
+**Files changed:**
+- content/lessons/blocks/yield.md (new - lesson content)
+- content/course.json (added exercise configuration for yield lesson)
+
+**Learnings for future iterations:**
+- `yield` is fundamental to Ruby's block system - enables creating flexible methods
+- `block_given?` prevents LocalJumpError when method is called without a block
+- Exercise using `split` and `yield` demonstrates practical custom iterator creation
+- Lesson builds on blocks lesson and sets up for procs/lambdas lesson next
+
+---
+
 ## Current Story
 
-(completed US-040, ready for next iteration)
+(completed US-041, ready for next iteration)
 
 ## Notes
 
