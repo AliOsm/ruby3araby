@@ -325,9 +325,36 @@ Last Updated: 2026-01-24
 
 ---
 
+### 2026-01-24 - US-012: Add Completion Indicators to Sidebar
+
+**What was implemented:**
+- Updated Sidebar component to read completion status from ProgressService
+- Added checkmark icons next to completed lessons in sidebar
+- Show section completion count (e.g., "2/4") next to section title
+- Section header shows green checkmark when all lessons in section are complete
+- Completed lessons highlighted in emerald color in sidebar
+- Listen for `progressUpdate` custom event to update checkmarks in real-time
+- Listen for `storage` events for cross-tab sync
+- Wired up lesson completion when exercise validation passes in CodePlayground
+- Added `progressUpdate` event dispatch in ProgressService.markComplete()
+- All typechecks, lint, and build pass
+
+**Files changed:**
+- components/Sidebar.tsx (added completion tracking, checkmark icons, completion count)
+- lib/progress.ts (added progressUpdate event dispatch on markComplete)
+- components/CodePlayground.tsx (call markComplete when exercise validation passes)
+
+**Learnings for future iterations:**
+- Use `useCallback` with proper dependencies for memoized completion check functions
+- Custom events via `window.dispatchEvent(new CustomEvent(...))` enable real-time UI updates
+- Storage events only fire in other tabs, not the current tab - need custom events for same-tab updates
+- Section completion status derived from counting completed lessons vs total lessons
+
+---
+
 ## Current Story
 
-(completed US-011, ready for next iteration)
+(completed US-012, ready for next iteration)
 
 ## Notes
 
