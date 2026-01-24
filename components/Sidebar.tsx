@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, useMemo, useRef } from "react";
+import { useState, useMemo, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { CourseStructure, SectionStub } from "@/lib/types";
+import { ProgressService } from "@/lib/progress";
 
 interface SidebarProps {
   course: CourseStructure;
@@ -27,6 +28,59 @@ export default function Sidebar({ course }: SidebarProps) {
 
   // Track the previous pathname to detect navigation
   const prevPathnameRef = useRef(pathname);
+
+  // Track completed lessons from ProgressService
+  const [completedLessons, setCompletedLessons] = useState<Set<string>>(new Set());
+
+  // Load completed lessons on mount and listen for changes
+  useEffect(() => {
+    const loadCompletedLessons = () => {
+      const completed = ProgressService.getCompletedLessons();
+      setCompletedLessons(new Set(completed));
+    };
+
+    // Initial load
+    loadCompletedLessons();
+
+    // Listen for storage changes (other tabs) and custom progress events
+    const handleStorageChange = (e: StorageEvent) => {
+      if (e.key?.startsWith("ruby3araby_")) {
+        loadCompletedLessons();
+      }
+    };
+
+    const handleProgressUpdate = () => {
+      loadCompletedLessons();
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+    window.addEventListener("progressUpdate", handleProgressUpdate);
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+      window.removeEventListener("progressUpdate", handleProgressUpdate);
+    };
+  }, []);
+
+  // Function to check if a lesson is completed
+  const isLessonCompleted = useCallback(
+    (sectionSlug: string, lessonSlug: string) => {
+      const lessonId = `${sectionSlug}/${lessonSlug}`;
+      return completedLessons.has(lessonId);
+    },
+    [completedLessons]
+  );
+
+  // Calculate section completion stats
+  const getSectionCompletionStats = useCallback(
+    (section: SectionStub) => {
+      const completedCount = section.lessons.filter((lesson) =>
+        completedLessons.has(`${section.slug}/${lesson.slug}`)
+      ).length;
+      return { completed: completedCount, total: section.lessons.length };
+    },
+    [completedLessons]
+  );
 
   // Initialize open sections with current section already expanded
   const initialOpenSections = useMemo(
@@ -149,6 +203,8 @@ export default function Sidebar({ course }: SidebarProps) {
                 onToggle={() => toggleSection(section.slug)}
                 isCurrentLesson={isCurrentLesson}
                 currentSectionSlug={currentSectionSlug}
+                isLessonCompleted={isLessonCompleted}
+                completionStats={getSectionCompletionStats(section)}
               />
             ))}
           </ul>
@@ -165,6 +221,8 @@ interface SectionAccordionProps {
   onToggle: () => void;
   isCurrentLesson: (sectionSlug: string, lessonSlug: string) => boolean;
   currentSectionSlug: string;
+  isLessonCompleted: (sectionSlug: string, lessonSlug: string) => boolean;
+  completionStats: { completed: number; total: number };
 }
 
 function SectionAccordion({
@@ -174,8 +232,11 @@ function SectionAccordion({
   onToggle,
   isCurrentLesson,
   currentSectionSlug,
+  isLessonCompleted,
+  completionStats,
 }: SectionAccordionProps) {
   const isCurrentSection = section.slug === currentSectionSlug;
+  const isSectionComplete = completionStats.completed === completionStats.total;
 
   return (
     <li>
@@ -190,10 +251,29 @@ function SectionAccordion({
         aria-expanded={isOpen}
       >
         <span className="flex items-center gap-2">
-          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-gray-700 text-xs font-medium text-gray-300">
-            {sectionIndex + 1}
+          <span
+            className={`flex h-6 w-6 items-center justify-center rounded-full text-xs font-medium ${
+              isSectionComplete
+                ? "bg-emerald-600 text-white"
+                : "bg-gray-700 text-gray-300"
+            }`}
+          >
+            {isSectionComplete ? (
+              <svg className="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  fillRule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            ) : (
+              sectionIndex + 1
+            )}
           </span>
           <span className="font-medium">{section.title}</span>
+          <span className="text-xs text-gray-500">
+            ({completionStats.completed}/{completionStats.total})
+          </span>
         </span>
         {/* Chevron indicator */}
         <svg
@@ -221,6 +301,7 @@ function SectionAccordion({
       >
         {section.lessons.map((lesson, lessonIndex) => {
           const isCurrent = isCurrentLesson(section.slug, lesson.slug);
+          const isCompleted = isLessonCompleted(section.slug, lesson.slug);
           return (
             <li key={lesson.id}>
               <Link
@@ -228,11 +309,31 @@ function SectionAccordion({
                 className={`flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors ${
                   isCurrent
                     ? "bg-emerald-600 text-white font-medium"
-                    : "text-gray-400 hover:bg-gray-800 hover:text-white"
+                    : isCompleted
+                      ? "text-emerald-400 hover:bg-gray-800 hover:text-emerald-300"
+                      : "text-gray-400 hover:bg-gray-800 hover:text-white"
                 }`}
               >
-                <span className="flex h-5 w-5 items-center justify-center text-xs text-gray-500">
-                  {lessonIndex + 1}.
+                <span
+                  className={`flex h-5 w-5 items-center justify-center text-xs ${
+                    isCompleted && !isCurrent ? "text-emerald-500" : "text-gray-500"
+                  }`}
+                >
+                  {isCompleted ? (
+                    <svg
+                      className="h-4 w-4"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  ) : (
+                    `${lessonIndex + 1}.`
+                  )}
                 </span>
                 <span className="flex-1">{lesson.title}</span>
                 {isCurrent && (

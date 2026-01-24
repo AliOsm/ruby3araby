@@ -84,6 +84,10 @@ export const ProgressService = {
       data.completedLessons.push(lessonId);
       data.lastUpdated = new Date().toISOString();
       saveProgressData(data);
+      // Dispatch event so UI components can update
+      if (typeof window !== "undefined") {
+        window.dispatchEvent(new CustomEvent("progressUpdate"));
+      }
     }
   },
 

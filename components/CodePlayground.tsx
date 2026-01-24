@@ -172,6 +172,10 @@ export default function CodePlayground({
         if (normalizedActual === normalizedExpected) {
           setValidation({ status: "correct" });
           setShowConfetti(true);
+          // Mark lesson as complete if lessonId is provided
+          if (lessonId) {
+            ProgressService.markComplete(lessonId);
+          }
           // Stop confetti after 3 seconds
           setTimeout(() => setShowConfetti(false), 3000);
         } else {
@@ -192,7 +196,7 @@ export default function CodePlayground({
     } finally {
       setIsRunning(false);
     }
-  }, [code, input, expectedOutput, hints.length, initializeRunner]);
+  }, [code, input, expectedOutput, hints.length, initializeRunner, lessonId]);
 
   // Copy code to clipboard
   const handleCopy = useCallback(async () => {
