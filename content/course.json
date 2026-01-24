@@ -191,7 +191,18 @@
           "id": "bang-predicate",
           "slug": "bang-predicate",
           "title": "الدوال المنتهية بـ ! و ?",
-          "contentPath": "/content/lessons/fundamentals/bang-predicate.md"
+          "contentPath": "/content/lessons/fundamentals/bang-predicate.md",
+          "exercise": {
+            "starterCode": "# المتغيرات المعطاة\ntext = \"hello world\"\nempty_text = \"\"\nnumber = 8\nsentence = \"أنا أحب البرمجة بلغة روبي\"\n\n# 1. استخدم upcase! لتحويل text إلى أحرف كبيرة\n# ثم اطبع text\n\n\n# 2. استخدم empty? للتحقق من empty_text\n# اطبع true إذا كان فارغاً\n\n\n# 3. استخدم even? للتحقق من أن number زوجي\n# اطبع true إذا كان زوجياً\n\n\n# 4. استخدم include? للتحقق من وجود \"روبي\" في sentence\n# اطبع true إذا وُجدت\n",
+            "expectedOutput": "HELLO WORLD\ntrue\ntrue\ntrue",
+            "hints": [
+              "للسؤال الأول: استخدم text.upcase! ثم puts text",
+              "للسؤال الثاني: استخدم puts empty_text.empty?",
+              "للسؤال الثالث: استخدم puts number.even?",
+              "للسؤال الرابع: استخدم puts sentence.include?(\"روبي\")",
+              "تذكر: دوال البانج (!) تعدل القيمة الأصلية، ودوال الاستعلام (?) تُرجع true أو false"
+            ]
+          }
         },
         {
           "id": "user-input",
