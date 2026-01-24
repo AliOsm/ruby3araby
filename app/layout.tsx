@@ -18,8 +18,8 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://ruby3araby.com";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "روبي بالعربي - تعلم البرمجة بلغة روبي",
-    template: "%s | روبي بالعربي",
+    default: "روبي عربي - تعلم البرمجة بلغة روبي",
+    template: "%s | روبي عربي",
   },
   description:
     "منصة تفاعلية لتعلم لغة البرمجة روبي باللغة العربية. دروس شاملة من الأساسيات إلى البرمجة الكائنية مع محرر كود تفاعلي يعمل في المتصفح.",
@@ -30,14 +30,14 @@ export const metadata: Metadata = {
     "برمجة بالعربي",
     "دورة روبي",
     "Ruby tutorial Arabic",
-    "تعلم روبي بالعربي",
+    "تعلم روبي عربي",
     "برمجة للمبتدئين",
     "ruby.wasm",
     "محرر كود تفاعلي",
   ],
-  authors: [{ name: "روبي بالعربي" }],
-  creator: "روبي بالعربي",
-  publisher: "روبي بالعربي",
+  authors: [{ name: "روبي عربي" }],
+  creator: "روبي عربي",
+  publisher: "روبي عربي",
   robots: {
     index: true,
     follow: true,
@@ -53,8 +53,8 @@ export const metadata: Metadata = {
     type: "website",
     locale: "ar_SA",
     url: siteUrl,
-    siteName: "روبي بالعربي",
-    title: "روبي بالعربي - تعلم البرمجة بلغة روبي",
+    siteName: "روبي عربي",
+    title: "روبي عربي - تعلم البرمجة بلغة روبي",
     description:
       "منصة تفاعلية لتعلم لغة البرمجة روبي باللغة العربية. دروس شاملة مع محرر كود تفاعلي يعمل في المتصفح.",
     images: [
@@ -62,13 +62,13 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "روبي بالعربي - تعلم البرمجة بلغة روبي",
+        alt: "روبي عربي - تعلم البرمجة بلغة روبي",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "روبي بالعربي - تعلم البرمجة بلغة روبي",
+    title: "روبي عربي - تعلم البرمجة بلغة روبي",
     description:
       "منصة تفاعلية لتعلم لغة البرمجة روبي باللغة العربية. دروس شاملة مع محرر كود تفاعلي.",
     images: ["/og-image.png"],

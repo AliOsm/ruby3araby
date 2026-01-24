@@ -35,12 +35,12 @@ export async function generateMetadata({
 
   if (!nav) {
     return {
-      title: "الدرس غير موجود | روبي بالعربي",
+      title: "الدرس غير موجود | روبي عربي",
     };
   }
 
   return {
-    title: `${nav.current.lesson.title} | روبي بالعربي`,
+    title: `${nav.current.lesson.title} | روبي عربي`,
     description: `تعلم ${nav.current.lesson.title} في لغة روبي - ${nav.current.section.title}`,
   };
 }

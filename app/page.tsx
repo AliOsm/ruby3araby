@@ -62,7 +62,7 @@ export default function Home() {
             href="/"
             className="text-xl font-bold text-emerald-500 hover:text-emerald-400 transition-colors"
           >
-            روبي بالعربي
+            روبي عربي
           </Link>
           <div className="flex items-center gap-4">
             <Link
@@ -90,7 +90,7 @@ export default function Home() {
           <div className="text-center">
             {/* Main Title */}
             <h1 className="mb-6 text-5xl font-bold tracking-tight text-foreground lg:text-7xl">
-              روبي بالعربي
+              روبي عربي
             </h1>
 
             {/* Tagline */}
@@ -390,7 +390,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="border-t border-foreground/10 py-8">
         <div className="mx-auto max-w-6xl px-6 text-center text-sm text-foreground/60">
-          <p>روبي بالعربي © 2026 - تعلم البرمجة باللغة العربية</p>
+          <p>روبي عربي © 2026 - تعلم البرمجة باللغة العربية</p>
         </div>
       </footer>
     </div>

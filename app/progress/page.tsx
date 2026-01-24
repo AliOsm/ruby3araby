@@ -215,7 +215,7 @@ export default function ProgressPage() {
               مبروك! أكملت جميع الدروس
             </h3>
             <p className="text-foreground/70">
-              لقد أنهيت دورة روبي بالعربي بنجاح. استمر في الممارسة وبناء المشاريع!
+              لقد أنهيت دورة روبي عربي بنجاح. استمر في الممارسة وبناء المشاريع!
             </p>
           </div>
         )}
@@ -232,7 +232,7 @@ export default function ProgressPage() {
       {/* Footer */}
       <footer className="border-t border-foreground/10 py-8">
         <div className="mx-auto max-w-4xl px-6 text-center text-sm text-foreground/60">
-          <p>روبي بالعربي © 2026 - تعلم البرمجة باللغة العربية</p>
+          <p>روبي عربي © 2026 - تعلم البرمجة باللغة العربية</p>
         </div>
       </footer>
     </div>
