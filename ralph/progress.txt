@@ -489,9 +489,39 @@ Last Updated: 2026-01-24
 
 ---
 
+### 2026-01-24 - US-018: Lesson: Variables and Data Types
+
+**What was implemented:**
+- Created variables and data types lesson at `/content/lessons/fundamentals/variables-types.md`
+- Comprehensive Arabic explanations of:
+  - Variables: naming conventions, assignment operator, snake_case
+  - Strings: single and double quotes, unicode support
+  - Integers: whole numbers, underscores for readability
+  - Floats: decimal numbers
+  - Booleans: true/false values
+  - nil: representing absence of value
+- Using `.class` to inspect data types
+- Variable reassignment and update shortcuts (+=, -=, *=)
+- Comparison table of all data types
+- Practical examples: personal info, simple calculation
+- Exercise: create variables of each type for Cairo city data
+- Added exercise configuration to course.json with hints
+- Browser verification confirmed: RTL layout, content rendering, exercise validation
+
+**Files changed:**
+- content/lessons/fundamentals/variables-types.md (new - lesson content)
+- content/course.json (added exercise configuration for variables-types lesson)
+
+**Learnings for future iterations:**
+- Created the `fundamentals` directory since it's the first lesson in this section
+- Exercise asking students to create real-world data (city info) makes the lesson more engaging
+- Include `.to_s` usage early since string concatenation with other types requires conversion
+
+---
+
 ## Current Story
 
-(completed US-017, ready for next iteration)
+(completed US-018, ready for next iteration)
 
 ## Notes
 
