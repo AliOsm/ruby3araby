@@ -693,7 +693,19 @@
           "id": "guessing-game",
           "slug": "guessing-game",
           "title": "تحدي لعبة التخمين",
-          "contentPath": "/content/lessons/challenges/guessing-game.md"
+          "contentPath": "/content/lessons/challenges/guessing-game.md",
+          "exercise": {
+            "starterCode": "# لعبة التخمين\n# الرقم السري ثابت للتحقق من الناتج\nsecret = 65\nattempts = 0\n\nputs \"مرحباً بك في لعبة التخمين!\"\nputs \"خمّن رقماً بين 1 و 100\"\n\n# TODO: اكتب حلقة التخمين هنا\n# استخدم loop do...end مع break\n# أو استخدم while\n",
+            "expectedOutput": "مرحباً بك في لعبة التخمين!\nخمّن رقماً بين 1 و 100\nتخمينك:\nأعلى!\nتخمينك:\nأقل!\nتخمينك:\nأقل!\nتخمينك:\nمبروك! لقد خمّنت الرقم 65 في 4 محاولات!",
+            "defaultInput": "50\n75\n60\n65",
+            "hints": [
+              "استخدم loop do...end لإنشاء حلقة تكرارية",
+              "داخل الحلقة: puts \"تخمينك:\" ثم guess = gets.chomp.to_i",
+              "لا تنسَ زيادة العداد: attempts += 1",
+              "قارن guess مع secret: إذا تساويا استخدم break للخروج",
+              "إذا كان guess < secret اطبع \"أعلى!\"، وإلا اطبع \"أقل!\""
+            ]
+          }
         }
       ]
     }
