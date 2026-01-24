@@ -1674,9 +1674,35 @@ Last Updated: 2026-01-24
 
 ---
 
+### 2026-01-24 - US-054: Add Keyboard Shortcuts
+
+**What was implemented:**
+- Added Ctrl/Cmd + Enter keyboard shortcut to run code in the editor
+- Added Ctrl/Cmd + S keyboard shortcut to prevent browser save dialog and trigger auto-save
+- Keyboard shortcuts registered via Monaco Editor's `addAction` API
+- Added visual shortcut hints near the buttons:
+  - "Ctrl+Enter" shown below the Run button
+  - "Ctrl+S لحفظ الكود" shown in the button row when auto-save is enabled
+- Used refs to store callbacks to avoid re-registering actions on every render
+- Used `Monaco` type from `@monaco-editor/react` to access `KeyMod` and `KeyCode` safely (avoids SSR issues)
+- All typechecks, lint, and build pass
+
+**Files changed:**
+- components/CodeEditor.tsx (added onRun, onSave props, keyboard action registration)
+- components/CodePlayground.tsx (added handleSave callback, passed handlers to CodeEditor, added shortcut hints)
+
+**Learnings for future iterations:**
+- Don't import `KeyMod`/`KeyCode` directly from `monaco-editor` at top level - causes SSR `window is not defined` error
+- Instead, access them from the `monaco` object passed to the `onMount` callback
+- Use `type` import for types: `import type { editor } from "monaco-editor"`
+- Store callbacks in refs to avoid re-registering Monaco actions when callbacks change
+- `KeyMod.CtrlCmd` handles both Ctrl (Windows/Linux) and Cmd (Mac) automatically
+
+---
+
 ## Current Story
 
-(completed US-053, ready for next iteration)
+(completed US-054, ready for next iteration)
 
 ## Notes
 
