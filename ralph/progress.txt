@@ -886,9 +886,40 @@ Last Updated: 2026-01-24
 
 ---
 
+### 2026-01-24 - US-031: Lesson: Ternary Operator
+
+**What was implemented:**
+- Created ternary operator lesson at `/content/lessons/control-flow/ternary.md`
+- Comprehensive Arabic explanations of:
+  - Ternary operator syntax: `condition ? true_result : false_result`
+  - The three parts: condition, `?`, true result, `:`, false result
+  - When to use ternary vs full if-else (simple conditions only)
+  - Using ternary inside puts directly
+  - Using ternary in string interpolation
+  - Converting if-else to ternary operator
+  - Why to avoid nested ternary operators
+- Comparison table: Ternary vs if-else
+- Practical examples: checking positivity, even/odd, absolute value, member pricing
+- Exercise: convert if-else for positive/negative check to ternary operator
+- Added exercise configuration to course.json with hints
+- All typechecks, lint, and build pass
+
+**Files changed:**
+- content/lessons/control-flow/ternary.md (new - lesson content)
+- content/course.json (added exercise configuration for ternary lesson)
+
+**Learnings for future iterations:**
+- Ternary operator is ideal for simple one-condition assignments
+- Avoid nested ternaries - use if-elsif-else or case/when instead
+- Ternary can be used directly inside puts: `puts x > 0 ? "yes" : "no"`
+- Ternary works inside string interpolation: `"#{x > 0 ? "+" : "-"}"`
+- Ruby style guide recommends ternary only for simple, clear conditions
+
+---
+
 ## Current Story
 
-(completed US-030, ready for next iteration)
+(completed US-031, ready for next iteration)
 
 ## Notes
 
