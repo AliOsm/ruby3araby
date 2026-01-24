@@ -343,7 +343,18 @@
           "id": "for-control",
           "slug": "for-control",
           "title": "حلقة for والتحكم في التكرار",
-          "contentPath": "/content/lessons/loops/for-control.md"
+          "contentPath": "/content/lessons/loops/for-control.md",
+          "exercise": {
+            "starterCode": "# اطبع الأرقام الزوجية من 1 إلى 20\n# لكن: تخطَّ الرقم 6، وتوقف عند 14\n\nfor i in 1..20\n  # تحقق من الزوجية أولاً\n  \n  # تخطَّ الرقم 6\n  \n  # اطبع الرقم\n  \n  # توقف بعد 14\n  \nend\n",
+            "expectedOutput": "2\n4\n8\n10\n12\n14",
+            "hints": [
+              "أولاً تحقق من الزوجية: if i % 2 != 0 then next end",
+              "لتخطي الرقم 6 استخدم: if i == 6 then next end",
+              "اطبع الرقم بعد التحققات: puts i",
+              "للتوقف عند 14 استخدم: if i == 14 then break end",
+              "الترتيب مهم: تحقق الزوجية، تخطي 6، طباعة، ثم فحص 14"
+            ]
+          }
         }
       ]
     },
