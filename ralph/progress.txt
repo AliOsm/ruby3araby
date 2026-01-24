@@ -463,9 +463,35 @@ Last Updated: 2026-01-24
 
 ---
 
+### 2026-01-24 - US-017: Lesson: puts vs print vs p
+
+**What was implemented:**
+- Created output methods lesson at `/content/lessons/getting-started/output-methods.md`
+- Comprehensive Arabic explanations of:
+  - `puts` - prints with automatic newline
+  - `print` - prints without newline for same-line output
+  - `p` - prints with inspection (shows quotes, type info) for debugging
+- Comparison table showing differences in behavior
+- Code examples demonstrating each method's unique behavior
+- Practical examples showing when to use each method
+- Exercise requiring use of all three methods to produce specific output
+- Added exercise configuration to course.json with hints
+- Browser verification confirmed: RTL layout, content rendering, exercise validation
+
+**Files changed:**
+- content/lessons/getting-started/output-methods.md (new - lesson content)
+- content/course.json (added exercise configuration for output-methods lesson)
+
+**Learnings for future iterations:**
+- Output method lessons benefit from side-by-side comparison showing same code with different output
+- The `p` method is particularly useful for debugging - showing quotes around strings helps distinguish types
+- Exercise requiring all three methods tests understanding of their distinct behaviors
+
+---
+
 ## Current Story
 
-(completed US-016, ready for next iteration)
+(completed US-017, ready for next iteration)
 
 ## Notes
 
