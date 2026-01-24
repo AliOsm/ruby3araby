@@ -1,8 +1,12 @@
 "use client";
 
-import { useCallback, useEffect, useState, useRef } from "react";
+import { useCallback, useEffect, useState, useRef, useMemo } from "react";
 import CodeEditor from "./CodeEditor";
 import { getRubyRunner, ExecutionResult } from "@/lib/ruby-runner";
+import {
+  ProgressService,
+  createDebouncedCodeSaver,
+} from "@/lib/progress";
 
 export interface CodePlaygroundProps {
   /** Initial/starter code to display in the editor */
@@ -17,6 +21,10 @@ export interface CodePlaygroundProps {
   expectedOutput?: string;
   /** Hints to show when answer is incorrect */
   hints?: string[];
+  /** Lesson ID for code persistence (format: "section-slug/lesson-slug") */
+  lessonId?: string;
+  /** Whether to enable auto-save (default: true if lessonId provided) */
+  enableAutoSave?: boolean;
 }
 
 /** Validation result state */
@@ -41,7 +49,10 @@ export default function CodePlayground({
   showInputPanel,
   expectedOutput,
   hints = [],
+  lessonId,
+  enableAutoSave,
 }: CodePlaygroundProps) {
+  // Determine initial code: load saved code if lessonId provided, otherwise use starterCode
   const [code, setCode] = useState(starterCode);
   const [input, setInput] = useState(defaultInput);
   const [output, setOutput] = useState<string>("");
@@ -55,8 +66,45 @@ export default function CodePlayground({
   const [showConfetti, setShowConfetti] = useState(false);
   const confettiRef = useRef<HTMLDivElement>(null);
 
+  // Auto-save is enabled by default when lessonId is provided
+  const shouldAutoSave = enableAutoSave ?? !!lessonId;
+
+  // Create debounced code saver (memoized to prevent re-creation on every render)
+  const debouncedSaveCode = useMemo(() => {
+    if (lessonId && shouldAutoSave) {
+      return createDebouncedCodeSaver(lessonId, 1000);
+    }
+    return null;
+  }, [lessonId, shouldAutoSave]);
+
+  // Load saved code and track last lesson on mount
+  useEffect(() => {
+    if (lessonId) {
+      // Track this as the last visited lesson
+      ProgressService.setLastLesson(lessonId);
+
+      // Load saved code if available
+      const savedCode = ProgressService.loadCode(lessonId);
+      if (savedCode !== null) {
+        setCode(savedCode);
+      }
+    }
+  }, [lessonId]);
+
   // Show input panel if explicitly set, or if defaultInput is provided
   const shouldShowInputPanel = showInputPanel ?? defaultInput.length > 0;
+
+  // Handle code changes with auto-save
+  const handleCodeChange = useCallback(
+    (newCode: string) => {
+      setCode(newCode);
+      // Trigger debounced save if enabled
+      if (debouncedSaveCode) {
+        debouncedSaveCode(newCode);
+      }
+    },
+    [debouncedSaveCode]
+  );
 
   // Initialize RubyRunner on first run
   const initializeRunner = useCallback(async () => {
@@ -173,7 +221,11 @@ export default function CodePlayground({
     setError(undefined);
     setValidation({ status: "idle" });
     setShowConfetti(false);
-  }, [starterCode, defaultInput]);
+    // Clear saved code when resetting
+    if (lessonId) {
+      ProgressService.clearCode(lessonId);
+    }
+  }, [starterCode, defaultInput, lessonId]);
 
   // Update code and input when props change
   useEffect(() => {
@@ -223,7 +275,7 @@ export default function CodePlayground({
       )}
 
       {/* Code Editor */}
-      <CodeEditor value={code} onChange={setCode} height={editorHeight} />
+      <CodeEditor value={code} onChange={handleCodeChange} height={editorHeight} />
 
       {/* Control Buttons */}
       <div className="flex flex-wrap gap-2">

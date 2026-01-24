@@ -99,7 +99,7 @@ export default async function LessonPage({ params }: LessonPageProps) {
                 <h2 className="mb-4 text-lg font-semibold text-white">
                   جرب الكود
                 </h2>
-                <LessonPlayground />
+                <LessonPlayground lessonId={`${section}/${lesson}`} />
               </div>
             </div>
           </div>
