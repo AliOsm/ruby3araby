@@ -352,9 +352,36 @@ Last Updated: 2026-01-24
 
 ---
 
+### 2026-01-24 - US-013: Create Homepage
+
+**What was implemented:**
+- Replaced demo/test page with an attractive landing homepage
+- Hero section with Arabic title "روبي بالعربي" and engaging tagline
+- "ابدأ التعلم" (Start Learning) button linking to first lesson (/lessons/getting-started/what-is-ruby)
+- "أكمل من حيث توقفت" (Continue) button that appears when user has progress in localStorage
+- Progress indicator showing completed lessons count
+- "ما هي لغة روبي؟" section with Arabic description of Ruby and its use cases
+- Visual code editor mockup with syntax-highlighted Ruby code and output preview
+- "ماذا ستتعلم؟" section with 6 feature cards covering course topics
+- Final CTA section encouraging users to start learning
+- Footer with copyright
+- All typechecks, lint, and build pass
+- Browser verification confirmed correct RTL layout and all elements
+
+**Files changed:**
+- app/page.tsx (complete rewrite as homepage)
+
+**Learnings for future iterations:**
+- Use `useRef` + `setTimeout(0)` pattern to avoid ESLint react-hooks/set-state-in-effect rule
+- Static code preview mockup with basic syntax highlighting is effective for showcasing without loading Monaco
+- Use `mounted` state to avoid hydration mismatch when rendering progress from localStorage
+- `rtl:rotate-180` class is useful for flipping arrows in RTL layouts
+
+---
+
 ## Current Story
 
-(completed US-012, ready for next iteration)
+(completed US-013, ready for next iteration)
 
 ## Notes
 
