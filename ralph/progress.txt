@@ -547,9 +547,38 @@ Last Updated: 2026-01-24
 
 ---
 
+### 2026-01-24 - US-020: Lesson: Basic Operators
+
+**What was implemented:**
+- Created basic operators lesson at `/content/lessons/fundamentals/operators.md`
+- Comprehensive Arabic explanations of:
+  - Arithmetic operators: +, -, *, /, %, **
+  - Division behavior (integer vs float division)
+  - Operator precedence (PEMDAS/BODMAS)
+  - Comparison operators: ==, !=, <, >, <=, >=
+  - String comparison (alphabetical ordering)
+  - Spaceship operator (<=>)
+- Tables summarizing all arithmetic and comparison operators
+- Practical examples showing combined arithmetic and comparison
+- Exercise: perform calculations and comparisons with a=15, b=4
+- Added exercise configuration to course.json with hints
+- Browser verification confirmed: RTL layout, content rendering, exercise validation with green success banner
+
+**Files changed:**
+- content/lessons/fundamentals/operators.md (new - lesson content)
+- content/course.json (added exercise configuration for operators lesson)
+
+**Learnings for future iterations:**
+- Integer division in Ruby returns integer (15/4=3), need float for decimal result
+- Operator precedence follows standard math rules (PEMDAS)
+- The spaceship operator (<=>) is useful for sorting and returns -1, 0, or 1
+- String comparison is case-sensitive and follows alphabetical order
+
+---
+
 ## Current Story
 
-(completed US-019, ready for next iteration)
+(completed US-020, ready for next iteration)
 
 ## Notes
 
