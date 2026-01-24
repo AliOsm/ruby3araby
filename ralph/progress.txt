@@ -296,9 +296,38 @@ Last Updated: 2026-01-24
 
 ---
 
+### 2026-01-24 - US-011: Implement Local Progress Storage
+
+**What was implemented:**
+- Created ProgressService singleton in `/lib/progress.ts`
+- Implemented `markComplete(lessonId)` and `isComplete(lessonId)` for lesson completion tracking
+- Implemented `getLastLesson()` and `setLastLesson(lessonId)` for tracking last visited lesson
+- Implemented `saveCode(lessonId, code)` and `loadCode(lessonId)` for code persistence
+- All data stored in localStorage with `ruby3araby_` prefix
+- Created `debounce` utility and `createDebouncedCodeSaver()` for 1-second debounced auto-save
+- Graceful handling when localStorage unavailable (all operations fail silently)
+- Updated CodePlayground with `lessonId` prop for automatic code persistence
+- Updated LessonPlayground and lesson page to pass lessonId
+- All typechecks, lint, and build pass
+
+**Files changed:**
+- lib/progress.ts (new - ProgressService with all progress management)
+- components/CodePlayground.tsx (added lessonId prop, auto-save integration)
+- app/lessons/[section]/[lesson]/LessonPlayground.tsx (accepts and passes lessonId)
+- app/lessons/[section]/[lesson]/page.tsx (passes lessonId to LessonPlayground)
+
+**Learnings for future iterations:**
+- localStorage availability check uses try/catch around test write/read/remove
+- Use `useMemo` for debounced functions to prevent re-creation on every render
+- lessonId format is "section-slug/lesson-slug" matching URL structure
+- clearCode() called on reset to remove saved code and restore to starter
+- ProgressService is a plain object (not a class instance) for simpler exports
+
+---
+
 ## Current Story
 
-(completed US-010, ready for next iteration)
+(completed US-011, ready for next iteration)
 
 ## Notes
 
