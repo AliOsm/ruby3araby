@@ -821,9 +821,42 @@ Last Updated: 2026-01-24
 
 ---
 
+### 2026-01-24 - US-029: Lesson: Conditionals (if/elsif/else/unless)
+
+**What was implemented:**
+- Created conditionals lesson at `/content/lessons/control-flow/conditionals.md`
+- Created `control-flow` directory for control flow lessons
+- Comprehensive Arabic explanations of:
+  - `if` statement: basic syntax, structure, single and multi-line code blocks
+  - `if-else`: alternative execution when condition is false
+  - `if-elsif-else`: handling multiple conditions in sequence
+  - `unless`: opposite of if (executes when condition is false)
+  - Inline conditionals: `puts "yes" if condition` syntax
+  - Nested conditionals and simplification with `&&`
+  - Combining conditions with boolean operators
+- Practical examples: age verification, grade calculator, weather conditions, discounts
+- Common errors section: forgetting end, using = instead of ==, unreachable conditions
+- Summary table of all conditional forms
+- Exercise: grade calculator that prints "جيد" for score 78
+- Added exercise configuration to course.json with hints
+- All typechecks, lint, and build pass
+
+**Files changed:**
+- content/lessons/control-flow/conditionals.md (new - lesson content)
+- content/course.json (added exercise configuration for conditionals lesson)
+
+**Learnings for future iterations:**
+- Control flow section started - created new `control-flow` directory
+- Conditionals build on boolean-logic lesson from fundamentals
+- elsif order matters - more specific conditions should come first
+- unless should not be used with elsif (becomes confusing)
+- Inline conditionals useful for simple one-liners only
+
+---
+
 ## Current Story
 
-(completed US-028, ready for next iteration)
+(completed US-029, ready for next iteration)
 
 ## Notes
 
