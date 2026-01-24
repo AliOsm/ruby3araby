@@ -1,0 +1,268 @@
+"use client";
+
+import { DefaultRubyVM } from "@ruby/wasm-wasi/dist/browser";
+import type { RubyVM } from "@ruby/wasm-wasi";
+
+/**
+ * Result of executing Ruby code
+ */
+export interface ExecutionResult {
+  output: string;
+  error?: string;
+}
+
+/**
+ * RubyRunner service class for executing Ruby code in the browser via ruby.wasm
+ *
+ * Usage:
+ *   const runner = RubyRunner.getInstance();
+ *   await runner.initialize();
+ *   const result = await runner.executeCode('puts "Hello"');
+ */
+export class RubyRunner {
+  private static instance: RubyRunner | null = null;
+  private vm: RubyVM | null = null;
+  private isInitialized = false;
+  private initPromise: Promise<void> | null = null;
+
+  private constructor() {}
+
+  /**
+   * Get the singleton instance of RubyRunner
+   */
+  static getInstance(): RubyRunner {
+    if (!RubyRunner.instance) {
+      RubyRunner.instance = new RubyRunner();
+    }
+    return RubyRunner.instance;
+  }
+
+  /**
+   * Check if the runner is initialized
+   */
+  get initialized(): boolean {
+    return this.isInitialized;
+  }
+
+  /**
+   * Initialize the Ruby VM by loading the WASM module
+   * This is idempotent - calling multiple times is safe
+   */
+  async initialize(): Promise<void> {
+    // Return existing promise if initialization is in progress
+    if (this.initPromise) {
+      return this.initPromise;
+    }
+
+    // Return immediately if already initialized
+    if (this.isInitialized) {
+      return;
+    }
+
+    this.initPromise = this.doInitialize();
+    return this.initPromise;
+  }
+
+  private async doInitialize(): Promise<void> {
+    try {
+      // Fetch the Ruby WASM module with stdlib
+      const response = await fetch(
+        "https://cdn.jsdelivr.net/npm/@ruby/3.4-wasm-wasi@2.7.1/dist/ruby+stdlib.wasm"
+      );
+
+      if (!response.ok) {
+        throw new Error(`Failed to fetch Ruby WASM: ${response.statusText}`);
+      }
+
+      // Compile the WASM module
+      const wasmModule = await WebAssembly.compileStreaming(response);
+
+      // Create the Ruby VM with console output disabled (we'll capture it ourselves)
+      const { vm } = await DefaultRubyVM(wasmModule, {
+        consolePrint: false,
+      });
+
+      this.vm = vm;
+      this.isInitialized = true;
+    } catch (err) {
+      this.initPromise = null;
+      throw err;
+    }
+  }
+
+  /**
+   * Execute Ruby code and return the output
+   *
+   * @param code - The Ruby code to execute
+   * @param input - Optional simulated input for gets calls (newline-separated values)
+   * @param timeoutMs - Timeout in milliseconds (default: 60000)
+   * @returns ExecutionResult with output and optional error
+   */
+  async executeCode(
+    code: string,
+    input?: string,
+    timeoutMs: number = 60000
+  ): Promise<ExecutionResult> {
+    if (!this.isInitialized || !this.vm) {
+      throw new Error(
+        "RubyRunner not initialized. Call initialize() first."
+      );
+    }
+
+    // Capture vm reference to ensure it's not null within the promise
+    const vm = this.vm;
+
+    return new Promise<ExecutionResult>((resolve) => {
+      // Set up timeout
+      const timeoutId = setTimeout(() => {
+        resolve({
+          output: "",
+          error: "Execution timed out after 60 seconds. Your code may have an infinite loop.",
+        });
+      }, timeoutMs);
+
+      try {
+        // Prepare input lines for gets simulation
+        const inputLines = input ? input.split("\n") : [];
+        const inputLinesJson = JSON.stringify(inputLines);
+
+        // Build the wrapper code that:
+        // 1. Sets up output capture
+        // 2. Sets up input simulation for gets
+        // 3. Executes the user code
+        // 4. Returns captured output
+        const wrapperCode = `
+          require 'js'
+          require 'stringio'
+
+          # Capture output
+          __output = StringIO.new
+          __original_stdout = $stdout
+          __original_stderr = $stderr
+          $stdout = __output
+          $stderr = __output
+
+          # Set up input simulation
+          __input_lines = ${inputLinesJson}
+          __input_index = 0
+
+          # Override gets to use simulated input
+          define_method(:gets) do
+            if __input_index < __input_lines.length
+              line = __input_lines[__input_index]
+              __input_index += 1
+              line + "\\n"
+            else
+              nil
+            end
+          end
+
+          # Override Kernel.gets as well
+          module Kernel
+            alias_method :__original_gets, :gets rescue nil
+            def gets
+              if $__input_lines && $__input_index < $__input_lines.length
+                line = $__input_lines[$__input_index]
+                $__input_index += 1
+                line + "\\n"
+              else
+                nil
+              end
+            end
+          end
+
+          $__input_lines = __input_lines
+          $__input_index = __input_index
+
+          begin
+            ${this.escapeRubyCode(code)}
+          rescue => e
+            $stderr.puts "\\n\#{e.class}: \#{e.message}"
+            e.backtrace.first(5).each { |line| $stderr.puts "  \#{line}" }
+          ensure
+            $stdout = __original_stdout
+            $stderr = __original_stderr
+          end
+
+          __output.string
+        `;
+
+        // Execute the code
+        const result = vm.eval(wrapperCode);
+        const output = result.toString();
+
+        clearTimeout(timeoutId);
+        resolve({ output });
+      } catch (err) {
+        clearTimeout(timeoutId);
+        resolve({
+          output: "",
+          error: this.formatError(err),
+        });
+      }
+    });
+  }
+
+  /**
+   * Escape Ruby code for embedding in a heredoc-style string
+   */
+  private escapeRubyCode(code: string): string {
+    // We don't need to escape because we're not using string interpolation
+    // The code is directly embedded in the wrapper
+    return code;
+  }
+
+  /**
+   * Format an error into a user-friendly message
+   */
+  private formatError(err: unknown): string {
+    if (err instanceof Error) {
+      const message = err.message;
+
+      // Handle common Ruby errors with Arabic-friendly messages
+      if (message.includes("SyntaxError")) {
+        return `Syntax Error: ${message}`;
+      }
+      if (message.includes("NameError")) {
+        return `Name Error: ${message}`;
+      }
+      if (message.includes("TypeError")) {
+        return `Type Error: ${message}`;
+      }
+      if (message.includes("NoMethodError")) {
+        return `No Method Error: ${message}`;
+      }
+      if (message.includes("ArgumentError")) {
+        return `Argument Error: ${message}`;
+      }
+      if (message.includes("ZeroDivisionError")) {
+        return `Division by Zero Error: ${message}`;
+      }
+      if (message.includes("RuntimeError")) {
+        return `Runtime Error: ${message}`;
+      }
+
+      return message;
+    }
+
+    return String(err);
+  }
+
+  /**
+   * Reset the Ruby VM state
+   * Note: This creates a new VM instance which can be slow
+   */
+  async reset(): Promise<void> {
+    this.isInitialized = false;
+    this.initPromise = null;
+    this.vm = null;
+    await this.initialize();
+  }
+}
+
+/**
+ * Convenience function to get the RubyRunner singleton
+ */
+export function getRubyRunner(): RubyRunner {
+  return RubyRunner.getInstance();
+}
