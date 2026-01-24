@@ -71,7 +71,18 @@
           "id": "variables-types",
           "slug": "variables-types",
           "title": "المتغيرات وأنواع البيانات",
-          "contentPath": "/content/lessons/fundamentals/variables-types.md"
+          "contentPath": "/content/lessons/fundamentals/variables-types.md",
+          "exercise": {
+            "starterCode": "# أنشئ المتغيرات التالية:\n# 1. city - نص يحتوي على \"القاهرة\"\n# 2. population - رقم صحيح يحتوي على 20000000\n# 3. area - رقم عشري يحتوي على 3085.1\n# 4. is_capital - قيمة منطقية true\n# ثم اطبع كل متغير باستخدام puts\n\n",
+            "expectedOutput": "القاهرة\n20000000\n3085.1\ntrue",
+            "hints": [
+              "لإنشاء متغير نصي: city = \"القاهرة\"",
+              "الأرقام الصحيحة تُكتب بدون علامات اقتباس: population = 20000000",
+              "الأرقام العشرية تحتوي على نقطة: area = 3085.1",
+              "القيم المنطقية بدون علامات اقتباس: is_capital = true",
+              "اطبع كل متغير: puts city ثم puts population وهكذا..."
+            ]
+          }
         },
         {
           "id": "constants-symbols",
