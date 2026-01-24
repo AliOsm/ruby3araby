@@ -37,9 +37,12 @@ age2 = 30
 _private = "خاص"
 
 # أسماء خاطئة (ستسبب خطأ)
-# 2age = 30        # لا تبدأ برقم
-# user name = "x"  # لا مسافات
-# user-name = "x"  # لا شرطات عادية
+# لا تبدأ برقم
+# 2age = 30
+# لا مسافات
+# user name = "x"
+# لا شرطات عادية
+# user-name = "x"
 ```
 
 ### اصطلاح snake_case
@@ -88,7 +91,8 @@ puts message
 age = 25
 year = 2025
 negative_number = -10
-big_number = 1_000_000  # يمكن استخدام _ للوضوح
+# يمكن استخدام الشرطة السفلية _ لتسهيل قراءة الأرقام الكبيرة
+big_number = 1_000_000
 
 puts age
 puts year
@@ -216,14 +220,20 @@ puts score
 ```ruby
 count = 10
 
-count += 5   # يساوي: count = count + 5
-puts count   # 15
+# يساوي: count = count + 5
+count += 5
+# 15
+puts count
 
-count -= 3   # يساوي: count = count - 3
-puts count   # 12
+# يساوي: count = count - 3
+count -= 3
+# 12
+puts count
 
-count *= 2   # يساوي: count = count * 2
-puts count   # 24
+# يساوي: count = count * 2
+count *= 2
+# 24
+puts count
 ```
 
 الناتج:

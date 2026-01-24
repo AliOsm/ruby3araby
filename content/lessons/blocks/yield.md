@@ -66,8 +66,10 @@ def calculate
   puts "النتيجة: #{result}"
 end
 
-calculate { |n| n * 2 }  # النتيجة: 10
-calculate { |n| n ** 2 } # النتيجة: 25
+# النتيجة: 10
+calculate { |n| n * 2 }
+# النتيجة: 25
+calculate { |n| n ** 2 }
 ```
 
 ## yield المتعدد
@@ -83,7 +85,8 @@ end
 
 counter = 0
 repeat_three_times { counter += 1 }
-puts counter  # 3
+# 3
+puts counter
 ```
 
 ### مثال: مكرر مخصص
@@ -136,8 +139,10 @@ def fetch_data
   end
 end
 
-puts fetch_data { "بيانات مخصصة" }  # بيانات مخصصة
-puts fetch_data                      # بيانات افتراضية
+# بيانات مخصصة
+puts fetch_data { "بيانات مخصصة" }
+# بيانات افتراضية
+puts fetch_data
 ```
 
 ## إنشاء مكررات مخصصة
@@ -189,7 +194,8 @@ end
 
 numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 evens = select_if(numbers) { |n| n.even? }
-puts evens.inspect  # [2, 4, 6, 8, 10]
+# [2, 4, 6, 8, 10]
+puts evens.inspect
 ```
 
 ## yield مع إرجاع قيمة
@@ -207,7 +213,8 @@ end
 
 numbers = [1, 2, 3]
 doubled = transform_all(numbers) { |n| n * 2 }
-puts doubled.inspect  # [2, 4, 6]
+# [2, 4, 6]
+puts doubled.inspect
 ```
 
 ## أنماط شائعة مع yield
@@ -264,7 +271,8 @@ attempt = 0
 result = repeat_until_success(5) do
   attempt += 1
   puts "المحاولة #{attempt}"
-  attempt >= 3  # ينجح في المحاولة الثالثة
+  # ينجح في المحاولة الثالثة
+  attempt >= 3
 end
 # المحاولة 1
 # المحاولة 2
@@ -370,10 +378,12 @@ each_prime(20) { |prime| print "#{prime} " }
 
 ```ruby
 def bad_yield
-  yield  # خطأ إذا لم تُمرر كتلة!
+  # خطأ إذا لم تُمرر كتلة!
+  yield
 end
 
-# bad_yield  # LocalJumpError: no block given
+# LocalJumpError: no block given
+# bad_yield
 
 # الحل: استخدم block_given?
 def safe_yield
@@ -388,16 +398,19 @@ end
 def bad_map(array)
   result = []
   array.each do |item|
-    yield(item)  # النتيجة ضائعة!
+    # النتيجة ضائعة!
+    yield(item)
   end
-  result  # مصفوفة فارغة دائماً
+  # مصفوفة فارغة دائماً
+  result
 end
 
 # صحيح
 def good_map(array)
   result = []
   array.each do |item|
-    result << yield(item)  # حفظ النتيجة
+    # حفظ النتيجة
+    result << yield(item)
   end
   result
 end

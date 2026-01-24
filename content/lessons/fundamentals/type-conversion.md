@@ -9,10 +9,12 @@
 ```ruby
 puts "أدخل عمرك:"
 age = gets.chomp
-puts age.class  # String
+# String
+puts age.class
 
 # محاولة الحساب ستسبب مشكلة!
-puts age + 5  # خطأ! لا يمكن جمع نص مع رقم
+# خطأ! لا يمكن جمع نص مع رقم
+puts age + 5
 ```
 
 لذلك نحتاج تحويل النص إلى رقم قبل إجراء العمليات الحسابية عليه.
@@ -35,7 +37,8 @@ puts age + 5  # خطأ! لا يمكن جمع نص مع رقم
 -2.7.to_i      # -2
 
 # تحويل قيم منطقية
-true.to_i      # خطأ! القيم المنطقية لا تدعم to_i
+# خطأ! القيم المنطقية لا تدعم to_i
+true.to_i
 ```
 
 #### سلوك خاص مع النصوص:
@@ -127,7 +130,8 @@ nil.to_a             # []
 
 ```ruby
 puts "أدخل سنة ميلادك:"
-birth_year = gets.chomp.to_i  # تحويل مباشر بعد chomp
+# تحويل مباشر بعد chomp
+birth_year = gets.chomp.to_i
 
 current_year = 2024
 age = current_year - birth_year
@@ -168,11 +172,13 @@ puts "المجموع = #{sum}"
 ```ruby
 # تنظيف وتحويل في خطوة واحدة
 price = "  99.5  ".strip.to_f
-puts price  # 99.5
+# 99.5
+puts price
 
 # تحويل من نص إلى رقم ثم إلى نص مرة أخرى
 number = "42".to_i.to_s
-puts number.class  # String
+# String
+puts number.class
 ```
 
 ## التحقق من صلاحية التحويل
@@ -236,21 +242,25 @@ Float("abc")       # ArgumentError! (خطأ)
 ```ruby
 # خطأ!
 age = gets.chomp
-next_year_age = age + 1  # TypeError!
+# TypeError!
+next_year_age = age + 1
 
 # صحيح
 age = gets.chomp.to_i
-next_year_age = age + 1  # يعمل بشكل صحيح
+# يعمل بشكل صحيح
+next_year_age = age + 1
 ```
 
 ### 2. استخدام التحويل الخاطئ
 
 ```ruby
 # خطأ - يفقد الكسر العشري
-price = "99.99".to_i  # 99 (فقد .99)
+# 99 (فقد .99)
+price = "99.99".to_i
 
 # صحيح
-price = "99.99".to_f  # 99.99
+# 99.99
+price = "99.99".to_f
 ```
 
 ### 3. الخلط بين + للجمع والدمج
@@ -260,10 +270,12 @@ a = "10"
 b = "20"
 
 # دمج نصوص (ليس جمع أرقام)
-puts a + b  # "1020"
+# "1020"
+puts a + b
 
 # جمع أرقام
-puts a.to_i + b.to_i  # 30
+# 30
+puts a.to_i + b.to_i
 ```
 
 ## مثال شامل: حاسبة بسيطة

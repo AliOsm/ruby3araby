@@ -73,8 +73,10 @@ puts person1.class  # Person
 puts person2.class  # Person
 
 # كل كائن له هوية فريدة
-puts person1.object_id  # رقم فريد
-puts person2.object_id  # رقم مختلف
+# رقم فريد
+puts person1.object_id
+# رقم مختلف
+puts person2.object_id
 ```
 
 ## متغيرات النسخة (Instance Variables)
@@ -84,7 +86,8 @@ puts person2.object_id  # رقم مختلف
 ```ruby
 class Person
   def set_name(name)
-    @name = name  # متغير نسخة
+    # متغير نسخة
+    @name = name
   end
 
   def get_name
@@ -98,8 +101,10 @@ person1.set_name("أحمد")
 person2 = Person.new
 person2.set_name("سارة")
 
-puts person1.get_name  # أحمد
-puts person2.get_name  # سارة
+# أحمد
+puts person1.get_name
+# سارة
+puts person2.get_name
 ```
 
 **ملاحظات مهمة:**
@@ -128,8 +133,10 @@ end
 
 dog = Dog.new
 dog.set_name("بوبي")
-dog.bark           # بوبي يقول: هاو هاو!
-puts dog.description  # كلب اسمه بوبي
+# بوبي يقول: هاو هاو!
+dog.bark
+# كلب اسمه بوبي
+puts dog.description
 ```
 
 ## مثال شامل: صنف الطالب
@@ -214,9 +221,12 @@ car2.set_brand("هوندا")
 car3 = Car.new
 car3.set_brand("مرسيدس")
 
-puts car1.info  # سيارة من نوع تويوتا
-puts car2.info  # سيارة من نوع هوندا
-puts car3.info  # سيارة من نوع مرسيدس
+# سيارة من نوع تويوتا
+puts car1.info
+# سيارة من نوع هوندا
+puts car2.info
+# سيارة من نوع مرسيدس
+puts car3.info
 ```
 
 ## لماذا نستخدم الأصناف؟
@@ -318,9 +328,12 @@ end
 
 account = BankAccount.new
 account.set_balance(1000)
-account.deposit(500)   # تم إيداع 500. الرصيد الجديد: 1500
-account.withdraw(200)  # تم سحب 200. الرصيد الجديد: 1300
-account.withdraw(2000) # لا يمكن سحب هذا المبلغ!
+# تم إيداع 500. الرصيد الجديد: 1500
+account.deposit(500)
+# تم سحب 200. الرصيد الجديد: 1300
+account.withdraw(200)
+# لا يمكن سحب هذا المبلغ!
+account.withdraw(2000)
 ```
 
 ## أمثلة عملية
@@ -358,8 +371,10 @@ end
 
 book = Book.new
 book.set_info("تعلم روبي", "أحمد محمد", 200)
-puts book.info      # تعلم روبي - للكاتب أحمد محمد (200 صفحة)
-book.read_pages(50) # وصلت للصفحة 51
+# تعلم روبي - للكاتب أحمد محمد (200 صفحة)
+puts book.info
+# وصلت للصفحة 51
+book.read_pages(50)
 puts book.progress  # 25.5% مُنجز
 ```
 
@@ -406,9 +421,11 @@ end
 
 product = Product.new
 product.set_info("هاتف ذكي", 2500, 10)
-puts product.details     # هاتف ذكي: 2500 ريال (متوفر: 10)
+# هاتف ذكي: 2500 ريال (متوفر: 10)
+puts product.details
 puts product.total_value # 25000
-product.sell(3)          # تم بيع 3 من هاتف ذكي
+# تم بيع 3 من هاتف ذكي
+product.sell(3)
 puts product.in_stock?   # true
 ```
 
@@ -462,10 +479,14 @@ end
 
 player = Player.new
 player.set_info("البطل", 100, 25)
-puts player.status      # البطل | الصحة: 100/100 | القوة: 25 | النقاط: 0
-player.attack("التنين") # البطل يهاجم التنين بقوة 25!
-player.take_damage(30)  # البطل تلقى ضربة! الصحة: 70/100
-player.add_score(100)   # البطل حصل على 100 نقطة! المجموع: 100
+# البطل | الصحة: 100/100 | القوة: 25 | النقاط: 0
+puts player.status
+# البطل يهاجم التنين بقوة 25!
+player.attack("التنين")
+# البطل تلقى ضربة! الصحة: 70/100
+player.take_damage(30)
+# البطل حصل على 100 نقطة! المجموع: 100
+player.add_score(100)
 ```
 
 ## أخطاء شائعة
@@ -475,21 +496,25 @@ player.add_score(100)   # البطل حصل على 100 نقطة! المجموع:
 ```ruby
 class Wrong
   def set_name(name)
-    name = name  # هذا لا يحفظ شيء!
+    # هذا لا يحفظ شيء!
+    name = name
   end
 
   def get_name
-    name  # خطأ: المتغير غير موجود
+    # خطأ: المتغير غير موجود
+    name
   end
 end
 
 class Correct
   def set_name(name)
-    @name = name  # صحيح!
+    # صحيح!
+    @name = name
   end
 
   def get_name
-    @name  # صحيح!
+    # صحيح!
+    @name
   end
 end
 ```
@@ -521,7 +546,8 @@ class Cat
 end
 
 # خطأ
-# cat = Cat  # هذا يُعيّن الصنف نفسه، ليس كائناً
+# هذا يُعيّن الصنف نفسه، ليس كائناً
+# cat = Cat
 
 # صحيح
 cat = Cat.new

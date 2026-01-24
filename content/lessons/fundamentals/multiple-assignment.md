@@ -17,9 +17,12 @@ c = 3
 # يمكنك كتابة سطر واحد
 a, b, c = 1, 2, 3
 
-puts a  # 1
-puts b  # 2
-puts c  # 3
+# 1
+puts a
+# 2
+puts b
+# 3
+puts c
 ```
 
 ### أمثلة عملية
@@ -28,9 +31,12 @@ puts c  # 3
 # تعيين بيانات شخص
 name, age, city = "أحمد", 25, "القاهرة"
 
-puts "الاسم: #{name}"      # الاسم: أحمد
-puts "العمر: #{age}"       # العمر: 25
-puts "المدينة: #{city}"    # المدينة: القاهرة
+# الاسم: أحمد
+puts "الاسم: #{name}"
+# العمر: 25
+puts "العمر: #{age}"
+# المدينة: القاهرة
+puts "المدينة: #{city}"
 ```
 
 ```ruby
@@ -49,15 +55,19 @@ a = 10
 b = 20
 
 puts "قبل التبادل:"
-puts "a = #{a}"  # a = 10
-puts "b = #{b}"  # b = 20
+# a = 10
+puts "a = #{a}"
+# b = 20
+puts "b = #{b}"
 
 # تبادل القيم في سطر واحد!
 a, b = b, a
 
 puts "بعد التبادل:"
-puts "a = #{a}"  # a = 20
-puts "b = #{b}"  # b = 10
+# a = 20
+puts "a = #{a}"
+# b = 10
+puts "b = #{b}"
 ```
 
 ### مقارنة مع اللغات الأخرى
@@ -78,11 +88,13 @@ a, b = b, a
 
 ```ruby
 a, b, c = 1, 2, 3
-puts "#{a}, #{b}, #{c}"  # 1, 2, 3
+# 1, 2, 3
+puts "#{a}, #{b}, #{c}"
 
 # دوران القيم
 a, b, c = b, c, a
-puts "#{a}, #{b}, #{c}"  # 2, 3, 1
+# 2, 3, 1
+puts "#{a}, #{b}, #{c}"
 ```
 
 ## عدم تطابق عدد المتغيرات والقيم
@@ -93,8 +105,10 @@ puts "#{a}, #{b}, #{c}"  # 2, 3, 1
 
 ```ruby
 a, b = 1, 2, 3, 4
-puts a  # 1
-puts b  # 2
+# 1
+puts a
+# 2
+puts b
 # القيم 3 و 4 ضاعت
 ```
 
@@ -104,10 +118,14 @@ puts b  # 2
 
 ```ruby
 a, b, c = 1, 2
-puts a    # 1
-puts b    # 2
-puts c    # (فارغ - nil)
-puts c.nil?  # true
+# 1
+puts a
+# 2
+puts b
+# (فارغ - nil)
+puts c
+# true
+puts c.nil?
 ```
 
 ## التعيين المتعدد مع المصفوفات
@@ -120,9 +138,12 @@ numbers = [10, 20, 30]
 # تعيين عناصر المصفوفة لمتغيرات
 a, b, c = numbers
 
-puts a  # 10
-puts b  # 20
-puts c  # 30
+# 10
+puts a
+# 20
+puts b
+# 30
+puts c
 ```
 
 ### تجميع القيم الزائدة بـ splat (*)
@@ -130,17 +151,22 @@ puts c  # 30
 ```ruby
 first, *rest = 1, 2, 3, 4, 5
 
-puts first        # 1
-puts rest.inspect # [2, 3, 4, 5]
+# 1
+puts first
+# [2, 3, 4, 5]
+puts rest.inspect
 ```
 
 ```ruby
 # أو في الوسط
 first, *middle, last = 1, 2, 3, 4, 5
 
-puts first          # 1
-puts middle.inspect # [2, 3, 4]
-puts last           # 5
+# 1
+puts first
+# [2, 3, 4]
+puts middle.inspect
+# 5
+puts last
 ```
 
 ## ما هو nil؟
@@ -150,9 +176,12 @@ puts last           # 5
 ```ruby
 empty_variable = nil
 
-puts empty_variable      # (لا يطبع شيئاً)
-puts empty_variable.nil? # true
-puts empty_variable.class # NilClass
+# (لا يطبع شيئاً)
+puts empty_variable
+# true
+puts empty_variable.nil?
+# NilClass
+puts empty_variable.class
 ```
 
 ### متى نواجه nil؟
@@ -160,15 +189,18 @@ puts empty_variable.class # NilClass
 ```ruby
 # 1. متغير غير معيّن في التعيين المتعدد
 a, b, c = 1, 2
-puts c.nil?  # true
+# true
+puts c.nil?
 
 # 2. الوصول لعنصر غير موجود في مصفوفة
 arr = [1, 2, 3]
-puts arr[10].nil?  # true
+# true
+puts arr[10].nil?
 
 # 3. الوصول لمفتاح غير موجود في قاموس
 hash = {name: "أحمد"}
-puts hash[:age].nil?  # true
+# true
+puts hash[:age].nil?
 
 # 4. دالة لا تُرجع قيمة صريحة
 def say_hello
@@ -176,7 +208,8 @@ def say_hello
   # لا يوجد return
 end
 result = say_hello
-puts result.nil?  # true
+# true
+puts result.nil?
 ```
 
 ## مشكلة nil
@@ -204,7 +237,8 @@ name = nil
 # puts name.length
 
 # مع الملاحة الآمنة - آمن!
-puts name&.length   # (لا يطبع شيئاً - يُرجع nil)
+# (لا يطبع شيئاً - يُرجع nil)
+puts name&.length
 ```
 
 ### كيف يعمل &.؟
@@ -214,10 +248,12 @@ puts name&.length   # (لا يطبع شيئاً - يُرجع nil)
 
 ```ruby
 name = "أحمد"
-puts name&.length   # 4 (يعمل طبيعياً)
+# 4 (يعمل طبيعياً)
+puts name&.length
 
 name = nil
-puts name&.length   # (nil - بدون خطأ)
+# (nil - بدون خطأ)
+puts name&.length
 ```
 
 ### سلسلة الملاحة الآمنة
@@ -265,11 +301,13 @@ end
 # إذا كانت القيمة nil أو false، استخدم القيمة الافتراضية
 name = nil
 display_name = name || "زائر"
-puts display_name  # زائر
+# زائر
+puts display_name
 
 name = "أحمد"
 display_name = name || "زائر"
-puts display_name  # أحمد
+# أحمد
+puts display_name
 ```
 
 ### القيم الافتراضية مع ||=
@@ -278,10 +316,13 @@ puts display_name  # أحمد
 # تعيين قيمة فقط إذا كان المتغير nil أو false
 username = nil
 username ||= "مجهول"
-puts username  # مجهول
+# مجهول
+puts username
 
-username ||= "أحمد"  # لن يتغير لأنه لم يعد nil
-puts username  # مجهول
+# لن يتغير لأنه لم يعد nil
+username ||= "أحمد"
+# مجهول
+puts username
 ```
 
 ## جدول ملخص
@@ -322,10 +363,12 @@ a = 50
 b = 30
 
 if a > b
-  a, b = b, a  # تبادل إذا كان a أكبر
+  # تبادل إذا كان a أكبر
+  a, b = b, a
 end
 
-puts "#{a} < #{b}"  # 30 < 50
+# 30 < 50
+puts "#{a} < #{b}"
 ```
 
 ### مثال 3: استخراج أول وآخر عنصر
@@ -335,9 +378,12 @@ colors = ["أحمر", "أخضر", "أزرق", "أصفر", "بنفسجي"]
 
 first, *middle, last = colors
 
-puts "اللون الأول: #{first}"      # أحمر
-puts "اللون الأخير: #{last}"      # بنفسجي
-puts "الألوان الوسطى: #{middle.join(', ')}"  # أخضر, أزرق, أصفر
+# أحمر
+puts "اللون الأول: #{first}"
+# بنفسجي
+puts "اللون الأخير: #{last}"
+# أخضر, أزرق, أصفر
+puts "الألوان الوسطى: #{middle.join(', ')}"
 ```
 
 ### مثال 4: معالجة إدخال آمنة

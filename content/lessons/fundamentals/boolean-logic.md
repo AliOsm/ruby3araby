@@ -16,10 +16,14 @@
 عامل `&&` يُرجع `true` فقط إذا كان **كلا الشرطين صحيحين**:
 
 ```ruby
-puts true && true    # كلاهما صحيح
-puts true && false   # الثاني خاطئ
-puts false && true   # الأول خاطئ
-puts false && false  # كلاهما خاطئ
+# كلاهما صحيح
+puts true && true
+# الثاني خاطئ
+puts true && false
+# الأول خاطئ
+puts false && true
+# كلاهما خاطئ
+puts false && false
 ```
 
 الناتج:
@@ -75,10 +79,14 @@ puts "في سن العمل: " + is_working_age.to_s
 عامل `||` يُرجع `true` إذا كان **أحد الشرطين على الأقل صحيحاً**:
 
 ```ruby
-puts true || true    # كلاهما صحيح
-puts true || false   # الأول صحيح
-puts false || true   # الثاني صحيح
-puts false || false  # كلاهما خاطئ
+# كلاهما صحيح
+puts true || true
+# الأول صحيح
+puts true || false
+# الثاني صحيح
+puts false || true
+# كلاهما خاطئ
+puts false || false
 ```
 
 الناتج:
@@ -134,8 +142,10 @@ puts "عطلة: " + is_weekend.to_s
 عامل `!` يعكس القيمة المنطقية:
 
 ```ruby
-puts !true   # عكس صحيح
-puts !false  # عكس خاطئ
+# عكس صحيح
+puts !true
+# عكس خاطئ
+puts !false
 ```
 
 الناتج:
@@ -224,13 +234,15 @@ puts "البيانات صحيحة: " + is_valid.to_s
 
 ```ruby
 # بدون أقواس
-puts true || false && false   # && تُنفذ أولاً
+# && تُنفذ أولاً
+puts true || false && false
 # يصبح: true || (false && false)
 # يصبح: true || false
 # النتيجة: true
 
 # مع أقواس لتوضيح القصد
-puts (true || false) && false  # الأقواس أولاً
+# الأقواس أولاً
+puts (true || false) && false
 # يصبح: true && false
 # النتيجة: false
 ```
@@ -252,7 +264,8 @@ false
 ```ruby
 # && و || أولويتهما أعلى من =
 result = true || false
-puts result   # true
+# true
+puts result
 
 # and و or أولويتهما أقل من =
 # هذا قد يسبب نتائج غير متوقعة!
@@ -263,11 +276,13 @@ puts result   # true
 ```ruby
 # باستخدام &&
 a = true && false
-puts a   # false (تم حساب && أولاً ثم التعيين)
+# false (تم حساب && أولاً ثم التعيين)
+puts a
 
 # باستخدام and
 b = true and false
-puts b   # true (تم التعيين أولاً لأن and أولويته أقل!)
+# true (تم التعيين أولاً لأن and أولويته أقل!)
+puts b
 ```
 
 الناتج:

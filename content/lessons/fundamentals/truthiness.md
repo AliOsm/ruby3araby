@@ -142,13 +142,20 @@ end
 يمكنك استخدام `!!` لتحويل أي قيمة إلى قيمة منطقية حقيقية (`true` أو `false`):
 
 ```ruby
-puts !!true      # true -> true
-puts !!false     # false -> false
-puts !!nil       # nil -> false
-puts !!0         # 0 -> true
-puts !!""        # "" -> true
-puts !![]        # [] -> true
-puts !!"مرحبا"   # "مرحبا" -> true
+# true -> true
+puts !!true
+# false -> false
+puts !!false
+# nil -> false
+puts !!nil
+# 0 -> true
+puts !!0
+# "" -> true
+puts !!""
+# [] -> true
+puts !![]
+# "مرحبا" -> true
+puts !!"مرحبا"
 ```
 
 الناتج:
@@ -169,8 +176,10 @@ true
 
 ```ruby
 value = "نص"
-puts !value   # نص صادق، فعكسه false
-puts !!value  # false، فعكسه true
+# نص صادق، فعكسه false
+puts !value
+# false، فعكسه true
+puts !!value
 ```
 
 الناتج:
@@ -240,11 +249,16 @@ end
 value1 = nil
 value2 = false
 
-puts value1 == value2     # هل هما متساويان؟
-puts value1.nil?          # هل الأول nil؟
-puts value2.nil?          # هل الثاني nil؟
-puts value1.class         # نوع الأول
-puts value2.class         # نوع الثاني
+# هل هما متساويان؟
+puts value1 == value2
+# هل الأول nil؟
+puts value1.nil?
+# هل الثاني nil؟
+puts value2.nil?
+# نوع الأول
+puts value1.class
+# نوع الثاني
+puts value2.class
 ```
 
 الناتج:
@@ -267,8 +281,10 @@ FalseClass
 text = ""
 numbers = []
 
-puts text.empty?      # هل النص فارغ؟
-puts numbers.empty?   # هل المصفوفة فارغة؟
+# هل النص فارغ؟
+puts text.empty?
+# هل المصفوفة فارغة؟
+puts numbers.empty?
 
 # لكن لا يمكن استخدام empty? مع nil
 # nil.empty? سيُسبب خطأ!

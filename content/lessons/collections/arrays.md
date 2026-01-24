@@ -86,11 +86,16 @@ puts days.length  # 7
 ```ruby
 fruits = ["تفاح", "موز", "برتقال", "عنب"]
 
-puts fruits[0]  # تفاح (العنصر الأول)
-puts fruits[1]  # موز (العنصر الثاني)
-puts fruits[2]  # برتقال (العنصر الثالث)
-puts fruits[3]  # عنب (العنصر الرابع)
-puts fruits[4]  # لا شيء (nil) - خارج النطاق
+# تفاح (العنصر الأول)
+puts fruits[0]
+# موز (العنصر الثاني)
+puts fruits[1]
+# برتقال (العنصر الثالث)
+puts fruits[2]
+# عنب (العنصر الرابع)
+puts fruits[3]
+# لا شيء (nil) - خارج النطاق
+puts fruits[4]
 ```
 
 ### الفهرس السلبي (من النهاية)
@@ -98,10 +103,14 @@ puts fruits[4]  # لا شيء (nil) - خارج النطاق
 ```ruby
 fruits = ["تفاح", "موز", "برتقال", "عنب"]
 
-puts fruits[-1]  # عنب (الأخير)
-puts fruits[-2]  # برتقال (ما قبل الأخير)
-puts fruits[-3]  # موز
-puts fruits[-4]  # تفاح (الأول)
+# عنب (الأخير)
+puts fruits[-1]
+# برتقال (ما قبل الأخير)
+puts fruits[-2]
+# موز
+puts fruits[-3]
+# تفاح (الأول)
+puts fruits[-4]
 ```
 
 ### جدول الفهارس
@@ -145,12 +154,14 @@ p numbers.last(3)      # [30, 40, 50] (آخر 3 عناصر)
 
 ```ruby
 colors = ["أحمر", "أخضر", "أزرق"]
-puts colors[1]  # أخضر
+# أخضر
+puts colors[1]
 
 colors[1] = "أصفر"
-puts colors[1]  # أصفر
+# أصفر
+puts colors[1]
 
-p colors  # ["أحمر", "أصفر", "أزرق"]
+p colors
 ```
 
 ### إضافة عناصر
@@ -222,7 +233,8 @@ fruits = ["تفاح", "موز", "برتقال"]
 p fruits  # ["تفاح", "موز", "برتقال"]
 
 removed = fruits.pop
-puts removed  # برتقال
+# برتقال
+puts removed
 p fruits      # ["تفاح", "موز"]
 
 # حذف آخر عنصرين
@@ -300,7 +312,8 @@ puts fruits.include?("مانجو")   # false
 
 # موضع عنصر
 puts fruits.index("موز")      # 1
-puts fruits.index("مانجو")    # لا شيء (nil)
+# لا شيء (nil)
+puts fruits.index("مانجو")
 ```
 
 ## التكرار على المصفوفات

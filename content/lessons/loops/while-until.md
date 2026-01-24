@@ -48,7 +48,8 @@ countdown = 5
 
 while countdown > 0
   puts countdown
-  countdown -= 1  # اختصار لـ countdown = countdown - 1
+  # اختصار لـ countdown = countdown - 1
+  countdown -= 1
 end
 
 puts "انطلق!"
@@ -108,7 +109,8 @@ value = 1
 
 while value <= 100
   puts value
-  value *= 2  # مضاعفة القيمة
+  # مضاعفة القيمة
+  value *= 2
 end
 ```
 

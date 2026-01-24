@@ -55,7 +55,8 @@ puts "عدد أيام الأسبوع: " + DAYS_IN_WEEK.to_s
 MAX_SCORE = 100
 puts MAX_SCORE
 
-MAX_SCORE = 200  # روبي ستُظهر تحذيراً!
+# روبي ستُظهر تحذيراً!
+MAX_SCORE = 200
 puts MAX_SCORE
 ```
 
@@ -78,7 +79,8 @@ DATABASE_NAME = "production"
 API_KEY = "abc123"
 
 # يمكن أيضاً البدء بحرف كبير فقط (للأصناف والوحدات)
-MyClass = "example"  # هذا ثابت أيضاً!
+# هذا ثابت أيضاً!
+MyClass = "example"
 ```
 
 ## الرموز (Symbols)
@@ -145,7 +147,8 @@ true
 
 ```ruby
 # الرموز ثابتة - تُنشأ مرة واحدة
-10.times { :my_symbol }  # نفس الكائن 10 مرات
+# نفس الكائن 10 مرات
+10.times { :my_symbol }
 
 # النصوص تُنشأ كل مرة
 10.times { "my_string" } # 10 كائنات مختلفة!
@@ -172,7 +175,8 @@ puts user[:age]
 
 2. **حالات ثابتة:**
 ```ruby
-status = :pending  # بدلاً من "pending"
+# بدلاً من "pending"
+status = :pending
 
 if status == :pending
   puts "في الانتظار"

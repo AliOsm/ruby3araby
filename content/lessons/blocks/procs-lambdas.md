@@ -25,8 +25,10 @@ greet = Proc.new { |name| puts "أهلاً #{name}!" }
 greet2 = proc { |name| puts "أهلاً #{name}!" }
 
 # كلاهما متطابقان
-greet.call("أحمد")   # أهلاً أحمد!
-greet2.call("سارة")  # أهلاً سارة!
+# أهلاً أحمد!
+greet.call("أحمد")
+# أهلاً سارة!
+greet2.call("سارة")
 ```
 
 ### طرق استدعاء Proc
@@ -58,8 +60,10 @@ say_bye = lambda { puts "مع السلامة!" }
 # أو باستخدام السهم (الطريقة الحديثة)
 say_bye2 = -> { puts "مع السلامة!" }
 
-say_bye.call   # مع السلامة!
-say_bye2.call  # مع السلامة!
+# مع السلامة!
+say_bye.call
+# مع السلامة!
+say_bye2.call
 ```
 
 ### Lambda مع معاملات
@@ -67,16 +71,20 @@ say_bye2.call  # مع السلامة!
 ```ruby
 # Lambda مع معامل واحد
 double = ->(n) { n * 2 }
-puts double.call(5)  # 10
+# 10
+puts double.call(5)
 
 # Lambda مع معاملات متعددة
 add = ->(a, b) { a + b }
-puts add.call(3, 4)  # 7
+# 7
+puts add.call(3, 4)
 
 # Lambda مع معامل افتراضي
 greet = ->(name, greeting = "مرحباً") { "#{greeting} #{name}!" }
-puts greet.call("أحمد")            # مرحباً أحمد!
-puts greet.call("سارة", "أهلاً")   # أهلاً سارة!
+# مرحباً أحمد!
+puts greet.call("أحمد")
+# أهلاً سارة!
+puts greet.call("سارة", "أهلاً")
 ```
 
 ## الفرق بين Proc و Lambda
@@ -90,15 +98,21 @@ puts greet.call("سارة", "أهلاً")   # أهلاً سارة!
 ```ruby
 # Lambda - صارمة
 my_lambda = ->(a, b) { puts "#{a}, #{b}" }
-# my_lambda.call(1)      # خطأ! ArgumentError
-my_lambda.call(1, 2)     # 1, 2
-# my_lambda.call(1, 2, 3) # خطأ! ArgumentError
+# خطأ! ArgumentError
+# my_lambda.call(1)
+# 1, 2
+my_lambda.call(1, 2)
+# خطأ! ArgumentError
+# my_lambda.call(1, 2, 3)
 
 # Proc - متساهلة
 my_proc = Proc.new { |a, b| puts "#{a}, #{b}" }
-my_proc.call(1)          # 1,  (b = nil)
-my_proc.call(1, 2)       # 1, 2
-my_proc.call(1, 2, 3)    # 1, 2 (تجاهل 3)
+# 1,  (b = nil)
+my_proc.call(1)
+# 1, 2
+my_proc.call(1, 2)
+# 1, 2 (تجاهل 3)
+my_proc.call(1, 2, 3)
 ```
 
 ### 2. سلوك return
@@ -109,18 +123,22 @@ my_proc.call(1, 2, 3)    # 1, 2 (تجاهل 3)
 def test_proc
   my_proc = Proc.new { return "من Proc" }
   my_proc.call
-  puts "هذا لن يُطبع!"  # لن يصل هنا
+  # لن يصل هنا
+  puts "هذا لن يُطبع!"
 end
 
 def test_lambda
   my_lambda = -> { return "من Lambda" }
   my_lambda.call
-  puts "هذا سيُطبع!"  # سيصل هنا
+  # سيصل هنا
+  puts "هذا سيُطبع!"
   "من الدالة"
 end
 
-puts test_proc    # من Proc
-puts test_lambda  # هذا سيُطبع! \n من الدالة
+# من Proc
+puts test_proc
+# هذا سيُطبع! \n من الدالة
+puts test_lambda
 ```
 
 **الفرق:**
@@ -140,8 +158,10 @@ puts test_lambda  # هذا سيُطبع! \n من الدالة
 my_proc = Proc.new { }
 my_lambda = -> { }
 
-puts my_proc.lambda?   # false
-puts my_lambda.lambda? # true
+# false
+puts my_proc.lambda?
+# true
+puts my_lambda.lambda?
 ```
 
 ## تحويل الكتل إلى Procs
@@ -151,7 +171,8 @@ puts my_lambda.lambda? # true
 ```ruby
 def execute(&block)
   # block أصبح Proc الآن
-  puts block.class  # Proc
+  # Proc
+  puts block.class
   block.call
 end
 
@@ -167,7 +188,8 @@ my_proc = Proc.new { |n| n * 2 }
 
 # تحويل Proc إلى كتلة باستخدام &
 result = [1, 2, 3].map(&my_proc)
-puts result.inspect  # [2, 4, 6]
+# [2, 4, 6]
+puts result.inspect
 ```
 
 ### اختصار الرموز
@@ -181,8 +203,10 @@ puts result.inspect  # [2, 4, 6]
 # ["1", "2", "3"]
 
 # هذا يعمل مع أي دالة بدون معاملات:
-["hello", "world"].map(&:upcase)  # ["HELLO", "WORLD"]
-[1, 2, 3].select(&:odd?)          # [1, 3]
+# ["HELLO", "WORLD"]
+["hello", "world"].map(&:upcase)
+# [1, 3]
+[1, 2, 3].select(&:odd?)
 ```
 
 ## تخزين Procs وإعادة استخدامها
@@ -202,9 +226,12 @@ end
 
 nums = [1, 2, 3, 4, 5]
 
-puts apply_operation(nums, double).inspect  # [2, 4, 6, 8, 10]
-puts apply_operation(nums, square).inspect  # [1, 4, 9, 16, 25]
-puts apply_operation(nums, add_ten).inspect # [11, 12, 13, 14, 15]
+# [2, 4, 6, 8, 10]
+puts apply_operation(nums, double).inspect
+# [1, 4, 9, 16, 25]
+puts apply_operation(nums, square).inspect
+# [11, 12, 13, 14, 15]
+puts apply_operation(nums, add_ten).inspect
 ```
 
 ### تخزين في Hash
@@ -217,8 +244,10 @@ operations = {
   divide: ->(a, b) { a / b }
 }
 
-puts operations[:add].call(10, 5)      # 15
-puts operations[:multiply].call(3, 4)  # 12
+# 15
+puts operations[:add].call(10, 5)
+# 12
+puts operations[:multiply].call(3, 4)
 ```
 
 ## Closures: الإغلاق
@@ -227,14 +256,17 @@ Procs و Lambdas تحتفظ بالسياق الذي أُنشئت فيه:
 
 ```ruby
 def create_multiplier(factor)
-  ->(n) { n * factor }  # factor محفوظ!
+  # factor محفوظ!
+  ->(n) { n * factor }
 end
 
 double = create_multiplier(2)
 triple = create_multiplier(3)
 
-puts double.call(5)  # 10
-puts triple.call(5)  # 15
+# 10
+puts double.call(5)
+# 15
+puts triple.call(5)
 ```
 
 ### مثال: عداد
@@ -253,9 +285,11 @@ counter = create_counter
 counter[:increment].call
 counter[:increment].call
 counter[:increment].call
-puts counter[:value].call  # 3
+# 3
+puts counter[:value].call
 counter[:decrement].call
-puts counter[:value].call  # 2
+# 2
+puts counter[:value].call
 ```
 
 ## أمثلة عملية
@@ -308,7 +342,8 @@ end
 numbers = [-5, -2, 0, 1, 2, 3, 8, 12, 15, 20]
 
 result = apply_filters(numbers, :positive, :even, :less_than_10, filters: filters)
-puts result.inspect  # [2, 8]
+# [2, 8]
+puts result.inspect
 ```
 
 ### مثال 3: حساب مرن
@@ -320,19 +355,23 @@ def calculate(a, b, operation = nil, &block)
   elsif operation
     operation.call(a, b)
   else
-    a + b  # افتراضي
+    # افتراضي
+    a + b
   end
 end
 
 # باستخدام كتلة
-puts calculate(10, 5) { |a, b| a * b }  # 50
+# 50
+puts calculate(10, 5) { |a, b| a * b }
 
 # باستخدام Lambda
 power = ->(a, b) { a ** b }
-puts calculate(2, 10, power)  # 1024
+# 1024
+puts calculate(2, 10, power)
 
 # بدون عملية (الافتراضي)
-puts calculate(10, 5)  # 15
+# 15
+puts calculate(10, 5)
 ```
 
 ## متى تستخدم أيهما؟
@@ -388,10 +427,12 @@ end
 my_lambda = ->(a, b) { a + b }
 
 # خطأ
-# my_lambda.call(1)  # ArgumentError
+# ArgumentError
+# my_lambda.call(1)
 
 # صحيح
-my_lambda.call(1, 2)  # 3
+# 3
+my_lambda.call(1, 2)
 ```
 
 ## جدول ملخص

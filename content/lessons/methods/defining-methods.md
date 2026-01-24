@@ -43,8 +43,10 @@ def say_hello
 end
 
 # استدعاء الدالة
-say_hello  # مرحباً بالعالم!
-say_hello  # مرحباً بالعالم!
+# مرحباً بالعالم!
+say_hello
+# مرحباً بالعالم!
+say_hello
 ```
 
 ## المعاملات (Parameters)
@@ -56,8 +58,10 @@ def greet(name)
   puts "مرحباً #{name}!"
 end
 
-greet("أحمد")  # مرحباً أحمد!
-greet("سارة")  # مرحباً سارة!
+# مرحباً أحمد!
+greet("أحمد")
+# مرحباً سارة!
+greet("سارة")
 ```
 
 ### الفرق بين المعاملات والوسائط
@@ -105,8 +109,10 @@ def greet(name = "زائر")
   puts "مرحباً #{name}!"
 end
 
-greet("أحمد")  # مرحباً أحمد!
-greet          # مرحباً زائر!
+# مرحباً أحمد!
+greet("أحمد")
+# مرحباً زائر!
+greet
 ```
 
 ### عدة معاملات مع قيم افتراضية
@@ -118,9 +124,12 @@ def create_user(name, role = "عضو", active = true)
   puts "نشط: #{active}"
 end
 
-create_user("أحمد")                    # يستخدم القيم الافتراضية
-create_user("سارة", "مشرف")            # يغير الدور فقط
-create_user("علي", "مدير", false)      # يغير كل القيم
+# يستخدم القيم الافتراضية
+create_user("أحمد")
+# يغير الدور فقط
+create_user("سارة", "مشرف")
+# يغير كل القيم
+create_user("علي", "مدير", false)
 ```
 
 الناتج:
@@ -202,7 +211,8 @@ def sum_of_squares(a, b)
   square(a) + square(b)
 end
 
-puts sum_of_squares(3, 4)  # 25 (9 + 16)
+# 25 (9 + 16)
+puts sum_of_squares(3, 4)
 ```
 
 ## الدوال مع الشروط
@@ -218,9 +228,12 @@ def check_age(age)
   end
 end
 
-check_age(25)  # بالغ
-check_age(15)  # مراهق
-check_age(8)   # طفل
+# بالغ
+check_age(25)
+# مراهق
+check_age(15)
+# طفل
+check_age(8)
 ```
 
 ## الدوال مع الحلقات
@@ -251,28 +264,36 @@ countdown(3)
 
 ```ruby
 def calculate
-  result = 100  # متغير محلي
+  # متغير محلي
+  result = 100
   puts result
 end
 
-calculate      # 100
-# puts result  # خطأ! result غير معرّف هنا
+# 100
+calculate
+# خطأ! result غير معرّف هنا
+# puts result
 ```
 
 ### نطاق المتغيرات
 
 ```ruby
-x = 10  # متغير خارجي
+# متغير خارجي
+x = 10
 
 def show_x
   # x هنا غير معرّف!
-  # puts x  # سيسبب خطأ
-  x = 5     # هذا متغير محلي جديد، ليس نفس x الخارجي
+  # سيسبب خطأ
+  # puts x
+  # هذا متغير محلي جديد، ليس نفس x الخارجي
+  x = 5
   puts x
 end
 
-show_x   # 5
-puts x   # 10 (لم يتغير)
+# 5
+show_x
+# 10 (لم يتغير)
+puts x
 ```
 
 ## أمثلة عملية
@@ -304,8 +325,10 @@ def format_name(first, last, title = "السيد")
   puts "#{title} #{first} #{last}"
 end
 
-format_name("أحمد", "محمد")              # السيد أحمد محمد
-format_name("سارة", "علي", "الدكتورة")   # الدكتورة سارة علي
+# السيد أحمد محمد
+format_name("أحمد", "محمد")
+# الدكتورة سارة علي
+format_name("سارة", "علي", "الدكتورة")
 ```
 
 ### مثال 3: التحقق من البيانات
@@ -338,8 +361,10 @@ def welcome_message(name, time_of_day = "صباح")
   puts "#{greeting} #{name}!"
 end
 
-welcome_message("أحمد")          # صباح الخير أحمد!
-welcome_message("سارة", "مساء")  # مساء الخير سارة!
+# صباح الخير أحمد!
+welcome_message("أحمد")
+# مساء الخير سارة!
+welcome_message("سارة", "مساء")
 ```
 
 ## جدول ملخص
@@ -376,7 +401,8 @@ def greet(name, age)
 end
 
 # خطأ ✗
-# greet("أحمد")  # ينقص وسيط!
+# ينقص وسيط!
+# greet("أحمد")
 
 # صحيح ✓
 greet("أحمد", 25)

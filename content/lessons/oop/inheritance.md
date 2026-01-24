@@ -98,9 +98,12 @@ end
 
 # إنشاء كلب
 dog = Dog.new("بوبي")
-dog.eat    # بوبي يأكل (موروثة من Animal)
-dog.sleep  # بوبي ينام (موروثة من Animal)
-dog.bark   # بوبي ينبح: هاو هاو! (خاصة بـ Dog)
+# بوبي يأكل (موروثة من Animal)
+dog.eat
+# بوبي ينام (موروثة من Animal)
+dog.sleep
+# بوبي ينبح: هاو هاو! (خاصة بـ Dog)
+dog.bark
 ```
 
 **الآن:**
@@ -155,17 +158,24 @@ cat = Cat.new("ميشو")
 bird = Bird.new("تويتي")
 
 # كل الحيوانات تأكل وتنام
-dog.eat    # بوبي يأكل
-cat.eat    # ميشو يأكل
-bird.eat   # تويتي يأكل
+# بوبي يأكل
+dog.eat
+# ميشو يأكل
+cat.eat
+# تويتي يأكل
+bird.eat
 
 # لكن كل حيوان له صوته الخاص
-dog.bark   # بوبي ينبح: هاو هاو!
-cat.meow   # ميشو يموء: مياو!
-bird.chirp # تويتي يُغرّد: تغريد!
+# بوبي ينبح: هاو هاو!
+dog.bark
+# ميشو يموء: مياو!
+cat.meow
+# تويتي يُغرّد: تغريد!
+bird.chirp
 
 # والطائر يطير
-bird.fly   # تويتي يطير في السماء!
+# تويتي يطير في السماء!
+bird.fly
 ```
 
 ## إعادة تعريف الدوال (Method Overriding)
@@ -211,10 +221,14 @@ dog = Dog.new("بوبي")
 cat = Cat.new("ميشو")
 fish = Fish.new("نيمو")
 
-animal.speak  # حيوان يُصدر صوتاً
-dog.speak     # بوبي ينبح: هاو هاو!
-cat.speak     # ميشو يموء: مياو!
-fish.speak    # نيمو لا يُصدر صوتاً (سمكة صامتة)
+# حيوان يُصدر صوتاً
+animal.speak
+# بوبي ينبح: هاو هاو!
+dog.speak
+# ميشو يموء: مياو!
+cat.speak
+# نيمو لا يُصدر صوتاً (سمكة صامتة)
+fish.speak
 ```
 
 ## استدعاء دالة الأب بـ super
@@ -244,22 +258,26 @@ class Dog < Animal
   attr_reader :breed
 
   def initialize(name, breed)
-    super(name)  # يستدعي initialize من Animal
+    # يستدعي initialize من Animal
+    super(name)
     @breed = breed
   end
 
   def eat
-    super  # يستدعي eat من Animal
+    # يستدعي eat من Animal
+    super
     puts "#{@name} يأكل بسرعة كبيرة!"
   end
 
   def info
-    super + ", السلالة: #{@breed}"  # يُضيف على الناتج
+    # يُضيف على الناتج
+    super + ", السلالة: #{@breed}"
   end
 end
 
 dog = Dog.new("بوبي", "جيرمن شيبرد")
-puts dog.info  # الاسم: بوبي, الطاقة: 100, السلالة: جيرمن شيبرد
+# الاسم: بوبي, الطاقة: 100, السلالة: جيرمن شيبرد
+puts dog.info
 
 dog.eat
 # بوبي يأكل. الطاقة: 110
@@ -292,14 +310,16 @@ child.greet("أحمد")
 # 2. super() بأقواس فارغة - لا يُمرر أي مُعاملات
 class Child2 < Parent
   def greet(name, greeting = "أهلاً")
-    super()  # خطأ! Parent.greet يحتاج name
+    # خطأ! Parent.greet يحتاج name
+    super()
   end
 end
 
 # 3. super مع مُعاملات محددة
 class Child3 < Parent
   def greet(name, greeting = "أهلاً")
-    super(name, "السلام عليكم")  # يُمرر مُعاملات مختلفة
+    # يُمرر مُعاملات مختلفة
+    super(name, "السلام عليكم")
     puts "(تحية خاصة)"
   end
 end
@@ -331,7 +351,8 @@ dog = Dog.new("بوبي")
 # is_a? - هل الكائن من هذا النوع أو وارث منه؟
 puts dog.is_a?(Dog)      # true
 puts dog.is_a?(Animal)   # true
-puts dog.is_a?(Object)   # true (كل شيء يرث من Object)
+# true (كل شيء يرث من Object)
+puts dog.is_a?(Object)
 puts dog.is_a?(String)   # false
 
 # class - النوع المباشر فقط
@@ -393,7 +414,8 @@ class Manager < Employee
 
   # المدير له بونص
   def annual_salary
-    super + 5000  # بونص سنوي
+    # بونص سنوي
+    super + 5000
   end
 end
 
@@ -472,11 +494,13 @@ class Shape
   end
 
   def area
-    0  # سيتم إعادة تعريفها في الأبناء
+    # سيتم إعادة تعريفها في الأبناء
+    0
   end
 
   def perimeter
-    0  # سيتم إعادة تعريفها في الأبناء
+    # سيتم إعادة تعريفها في الأبناء
+    0
   end
 
   def describe
@@ -578,10 +602,12 @@ end
 class A
 end
 
-class B < A  # صحيح
+# صحيح
+class B < A
 end
 
-# class C < A, B  # خطأ! لا يمكن الوراثة من صنفين
+# خطأ! لا يمكن الوراثة من صنفين
+# class C < A, B
 ```
 
 **ملاحظة:** لمشاركة الشيفرة بين أصناف غير متعلقة، نستخدم **الوحدات** (Modules) - سنتعلمها في الدرس القادم.
@@ -610,7 +636,8 @@ end
 
 child = Child.new
 child.name = "طفل"
-puts child.name  # طفل
+# طفل
+puts child.name
 ```
 
 ## جدول مقارنة
@@ -651,7 +678,8 @@ puts dog.instance_variable_get(:@name)  # nil! لأن @name لم يُعيّن
 ```ruby
 class Dog < Animal
   def initialize(name, breed)
-    super(name)  # يُعيّن @name
+    # يُعيّن @name
+    super(name)
     @breed = breed
   end
 end
@@ -668,7 +696,8 @@ end
 
 class Dog < Animal
   def initialize(name, breed)
-    super  # خطأ! يُمرر (name, breed) لكن Animal.initialize يقبل name فقط
+    # خطأ! يُمرر (name, breed) لكن Animal.initialize يقبل name فقط
+    super
     @breed = breed
   end
 end
@@ -678,7 +707,8 @@ end
 
 **الصحيح:**
 ```ruby
-super(name)  # نُمرر فقط ما يحتاجه الأب
+# نُمرر فقط ما يحتاجه الأب
+super(name)
 ```
 
 ### 3. محاولة الوراثة المتعددة
@@ -713,7 +743,8 @@ class Dog < Animal
   end
 
   def bark
-    super  # خطأ! Animal ليس له bark
+    # خطأ! Animal ليس له bark
+    super
     puts "هاو!"
   end
 end
@@ -746,7 +777,8 @@ end
 
 ```ruby
 # خطأ: السيارة ليست نوعاً من المحركات
-# class Car < Engine  # سيء!
+# سيء!
+# class Car < Engine
 
 # الأفضل: السيارة تحتوي على محرك
 class Car

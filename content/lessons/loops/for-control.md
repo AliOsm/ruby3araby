@@ -202,12 +202,14 @@ end
 ```ruby
 counter = 0
 
-while true  # حلقة لا نهائية!
+# حلقة لا نهائية!
+while true
   counter += 1
   puts counter
 
   if counter >= 5
-    break  # نخرج عند 5
+    # نخرج عند 5
+    break
   end
 end
 
@@ -234,8 +236,10 @@ puts "خرجنا من الحلقة"
 puts "الأرقام الزوجية من 1 إلى 10:"
 
 for i in 1..10
-  if i % 2 != 0  # إذا كان الرقم فردياً
-    next  # تخطّه وانتقل للتالي
+  # إذا كان الرقم فردياً
+  if i % 2 != 0
+    # تخطّه وانتقل للتالي
+    next
   end
   puts i
 end
@@ -286,7 +290,8 @@ puts "الأسماء الصالحة:"
 
 for name in names
   if name.nil? || name.empty?
-    next  # تخطي الأسماء الفارغة أو nil
+    # تخطي الأسماء الفارغة أو nil
+    next
   end
   puts "مرحباً #{name}!"
 end
@@ -343,7 +348,8 @@ for num in 2..20
   for divisor in 2...num
     if num % divisor == 0
       is_prime = false
-      break  # لا حاجة للاستمرار
+      # لا حاجة للاستمرار
+      break
     end
   end
 
@@ -465,7 +471,8 @@ end
 for i in 1..3
   for j in 1..3
     if j == 2
-      break  # يخرج فقط من حلقة j
+      # يخرج فقط من حلقة j
+      break
     end
     puts "#{i}, #{j}"
   end
@@ -485,7 +492,8 @@ end
 # خطأ: الشيفرة بعد next لن يُنفذ أبداً
 for i in 1..5
   next
-  puts i  # لن يُطبع شيء!
+  # لن يُطبع شيء!
+  puts i
 end
 ```
 
@@ -495,7 +503,8 @@ end
 # خطأ: سيخرج من الحلقة كاملة
 for i in 1..10
   if i == 3
-    break  # نريد تخطي 3 فقط، لا الخروج!
+    # نريد تخطي 3 فقط، لا الخروج!
+    break
   end
   puts i
 end

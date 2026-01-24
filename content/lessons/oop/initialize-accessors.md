@@ -50,7 +50,8 @@ end
 
 # الآن نُمرر البيانات مباشرة عند الإنشاء
 person = Person.new("أحمد", 25)
-person.introduce  # أنا أحمد، عمري 25 سنة
+# أنا أحمد، عمري 25 سنة
+person.introduce
 ```
 
 **أفضل بكثير!** نُمرر كل البيانات دفعة واحدة.
@@ -94,14 +95,17 @@ end
 
 # استخدام كل المُعاملات
 s1 = Student.new("سارة", 95, "مدرسة النور")
-puts s1.info  # سارة - الدرجة: 95 - المدرسة: مدرسة النور
+# سارة - الدرجة: 95 - المدرسة: مدرسة النور
+puts s1.info
 
 # استخدام القيم الافتراضية
 s2 = Student.new("علي")
-puts s2.info  # علي - الدرجة: 0 - المدرسة: غير محدد
+# علي - الدرجة: 0 - المدرسة: غير محدد
+puts s2.info
 
 s3 = Student.new("مريم", 88)
-puts s3.info  # مريم - الدرجة: 88 - المدرسة: غير محدد
+# مريم - الدرجة: 88 - المدرسة: غير محدد
+puts s3.info
 ```
 
 ### 3. المُهيّئ لا يُرجع قيمة
@@ -112,12 +116,14 @@ puts s3.info  # مريم - الدرجة: 88 - المدرسة: غير محدد
 class Test
   def initialize(value)
     @value = value
-    return 100  # يُتجاهل تماماً
+    # يُتجاهل تماماً
+    return 100
   end
 end
 
 result = Test.new(5)
-puts result.class  # Test (وليس Integer)
+# Test (وليس Integer)
+puts result.class
 ```
 
 ### 4. استدعاء دوال أخرى في المُهيّئ
@@ -141,7 +147,8 @@ class Circle
 end
 
 circle = Circle.new(5)
-puts circle.info  # دائرة نصف قطرها 5، مساحتها 78.54
+# دائرة نصف قطرها 5، مساحتها 78.54
+puts circle.info
 ```
 
 ## مشكلة القراءة والكتابة
@@ -177,9 +184,12 @@ class Person
 end
 
 person = Person.new("أحمد", 25)
-puts person.name        # أحمد (قراءة)
-person.name = "محمد"    # محمد (كتابة)
-puts person.name        # محمد
+# أحمد (قراءة)
+puts person.name
+# محمد (كتابة)
+person.name = "محمد"
+# محمد
+puts person.name
 ```
 
 هذا **كثير من الشيفرة المتكرر**! هنا تأتي الموصّلات.
@@ -203,10 +213,12 @@ class Person
 end
 
 person = Person.new("سارة", 30)
-puts person.name  # سارة (يعمل!)
+# سارة (يعمل!)
+puts person.name
 puts person.age   # 30 (يعمل!)
 
-# person.name = "مريم"  # خطأ! لا يمكن الكتابة
+# خطأ! لا يمكن الكتابة
+# person.name = "مريم"
 ```
 
 `attr_reader :name` تُنشئ هذه الدالة تلقائياً:
@@ -235,11 +247,15 @@ class Settings
 end
 
 settings = Settings.new
-settings.theme = "dark"      # يعمل!
-settings.language = "en"     # يعمل!
-settings.show                # الثيم: dark، اللغة: en
+# يعمل!
+settings.theme = "dark"
+# يعمل!
+settings.language = "en"
+# الثيم: dark، اللغة: en
+settings.show
 
-# puts settings.theme  # خطأ! لا يمكن القراءة
+# خطأ! لا يمكن القراءة
+# puts settings.theme
 ```
 
 `attr_writer :theme` تُنشئ هذه الدالة تلقائياً:
@@ -271,7 +287,8 @@ end
 product = Product.new("هاتف", 2500, 10)
 
 # قراءة
-puts product.name      # هاتف
+# هاتف
+puts product.name
 puts product.price     # 2500
 puts product.quantity  # 10
 
@@ -334,19 +351,24 @@ end
 
 user = User.new(1, "أحمد", "ahmed@example.com")
 puts user.id          # 1
-puts user.name        # أحمد
-puts user.info        # أحمد (ahmed@example.com) - active
+# أحمد
+puts user.name
+# أحمد (ahmed@example.com) - active
+puts user.info
 
 user.name = "أحمد محمد"
 user.password = "secret123"
 user.status = "premium"
 
-puts user.name        # أحمد محمد
+# أحمد محمد
+puts user.name
 puts user.authenticate("secret123")  # true
 puts user.authenticate("wrong")      # false
 
-# user.id = 100       # خطأ! لا يمكن تغيير الـ id
-# puts user.password  # خطأ! لا يمكن قراءة كلمة المرور
+# خطأ! لا يمكن تغيير الـ id
+# user.id = 100
+# خطأ! لا يمكن قراءة كلمة المرور
+# puts user.password
 ```
 
 ## الجمع بين الموصّلات والدوال المُخصصة
@@ -391,10 +413,12 @@ end
 account = BankAccount.new("سارة", 1000)
 puts account.balance   # 1000
 
-account.balance = 500  # يعمل
+# يعمل
+account.balance = 500
 puts account.balance   # 500
 
-account.balance = -100 # خطأ: الرصيد لا يمكن أن يكون سالباً!
+# خطأ: الرصيد لا يمكن أن يكون سالباً!
+account.balance = -100
 puts account.balance   # 500 (لم يتغير)
 ```
 
@@ -451,13 +475,15 @@ puts car.info  # 2020 تويوتا كامري - أبيض - بدون مالك - 0
 
 car.owner = "محمد"
 car.color = "أسود"
-car.drive(150)  # قُدت 150 كم. المسافة الكلية: 150 كم
+# قُدت 150 كم. المسافة الكلية: 150 كم
+car.drive(150)
 
 puts car.info   # 2020 تويوتا كامري - أسود - محمد - 150 كم
 puts car.age    # 6 (أو العمر الفعلي)
 
 # محاولة تغيير الماركة
-# car.brand = "هوندا"  # خطأ! attr_reader لا يسمح بالكتابة
+# خطأ! attr_reader لا يسمح بالكتابة
+# car.brand = "هوندا"
 ```
 
 ## جدول مقارنة
@@ -500,7 +526,8 @@ class Example
   attr_accessor :value
 
   def initialize(v)
-    @value = v  # صحيح - استخدام @ مباشرة
+    # صحيح - استخدام @ مباشرة
+    @value = v
   end
 
   def double
@@ -509,7 +536,8 @@ class Example
   end
 
   def update_with_self
-    self.value = 100  # يعمل - يستدعي دالة الكتابة
+    # يعمل - يستدعي دالة الكتابة
+    self.value = 100
   end
 end
 ```

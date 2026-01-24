@@ -12,7 +12,8 @@
 
 ```ruby
 def add(a, b)
-  a + b  # هذه القيمة تُرجع تلقائياً
+  # هذه القيمة تُرجع تلقائياً
+  a + b
 end
 
 result = add(5, 3)
@@ -29,8 +30,10 @@ def divide(a, b)
   a.to_f / b
 end
 
-puts divide(10, 2)  # 5.0
-puts divide(10, 0)  # لا يمكن القسمة على صفر!
+# 5.0
+puts divide(10, 2)
+# لا يمكن القسمة على صفر!
+puts divide(10, 0)
 ```
 
 ### متى نستخدم return الصريح؟
@@ -41,7 +44,8 @@ def check_age(age)
   return "عمر غير صالح" if age < 0
   return "طفل" if age < 13
   return "مراهق" if age < 18
-  "بالغ"  # آخر قيمة - إرجاع ضمني
+  # آخر قيمة - إرجاع ضمني
+  "بالغ"
 end
 
 # 2. لإرجاع قيمة من داخل حلقة أو شرط
@@ -49,10 +53,12 @@ def find_first_even(numbers)
   numbers.each do |n|
     return n if n.even?
   end
-  nil  # لم يوجد رقم زوجي
+  # لم يوجد رقم زوجي
+  nil
 end
 
-puts find_first_even([1, 3, 4, 5, 6])  # 4
+# 4
+puts find_first_even([1, 3, 4, 5, 6])
 ```
 
 ### إرجاع قيم متعددة
@@ -94,7 +100,8 @@ end
 
 puts calculate(10, 5, :add)       # 15
 puts calculate(10, 5, :multiply)  # 50
-puts calculate(10, 0, :divide)    # خطأ: القسمة على صفر
+# خطأ: القسمة على صفر
+puts calculate(10, 0, :divide)
 ```
 
 ## عامل Splat (*args)
@@ -116,8 +123,10 @@ puts sum                 # 0
 
 ```ruby
 def show_args(*args)
-  p args        # المصفوفة
-  p args.class  # Array
+  # المصفوفة
+  p args
+  # Array
+  p args.class
   puts "عدد الوسائط: #{args.length}"
 end
 
@@ -182,7 +191,8 @@ def join_with(*strings, separator: ", ")
   strings.join(separator)
 end
 
-puts join_with("أحمد", "سارة", "علي")  # أحمد، سارة، علي
+# أحمد، سارة، علي
+puts join_with("أحمد", "سارة", "علي")
 ```
 
 ## عامل Double Splat (**kwargs)
@@ -300,7 +310,8 @@ def greet(name:, greeting: "مرحباً")
 end
 
 options = { name: "أحمد", greeting: "أهلاً" }
-greet(**options)  # أهلاً أحمد!
+# أهلاً أحمد!
+greet(**options)
 ```
 
 ## جدول ملخص
@@ -325,8 +336,10 @@ def wrong_add(a, b)
   puts a + b
 end
 
-result = wrong_add(5, 3)  # يطبع 8
-puts result               # nil! ليس 8
+# يطبع 8
+result = wrong_add(5, 3)
+# nil! ليس 8
+puts result
 
 # صحيح
 def correct_add(a, b)

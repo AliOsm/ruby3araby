@@ -80,8 +80,10 @@ end
 system_user = System::User.new("أحمد")
 db_user = Database::User.new(123)
 
-puts system_user.info  # مستخدم النظام: أحمد
-puts db_user.info      # سجل قاعدة البيانات: 123
+# مستخدم النظام: أحمد
+puts system_user.info
+# سجل قاعدة البيانات: 123
+puts db_user.info
 ```
 
 ### الوصول باستخدام ::
@@ -129,14 +131,16 @@ end
 # الطائرة تطير أيضاً
 class Airplane
   def fly
-    puts "أطير في السماء!"  # نفس الشيفرة مُكرر!
+    # نفس الشيفرة مُكرر!
+    puts "أطير في السماء!"
   end
 end
 
 # السوبرمان يطير أيضاً
 class Superman
   def fly
-    puts "أطير في السماء!"  # تكرار آخر!
+    # تكرار آخر!
+    puts "أطير في السماء!"
   end
 end
 ```
@@ -185,14 +189,20 @@ bird = Bird.new
 airplane = Airplane.new
 superman = Superman.new
 
-bird.fly      # أطير في السماء!
-airplane.fly  # أطير في السماء!
-superman.fly  # أطير في السماء!
+# أطير في السماء!
+bird.fly
+# أطير في السماء!
+airplane.fly
+# أطير في السماء!
+superman.fly
 
 # وكل واحد له سلوكه الخاص
-bird.chirp           # تغريد!
-airplane.take_off    # إقلاع!
-superman.save_world  # أنقذ العالم!
+# تغريد!
+bird.chirp
+# إقلاع!
+airplane.take_off
+# أنقذ العالم!
+superman.save_world
 ```
 
 ---
@@ -215,9 +225,11 @@ class Person
 end
 
 person = Person.new
-person.say_hello  # مرحباً! (على الكائن)
+# مرحباً! (على الكائن)
+person.say_hello
 
-# Person.say_hello  # خطأ! ليست دالة صنف
+# خطأ! ليست دالة صنف
+# Person.say_hello
 ```
 
 ### extend: دوال الصنف (Class Methods)
@@ -245,10 +257,12 @@ end
 
 Counter.increment
 Counter.increment
-Counter.current_count  # العدد الحالي: 2
+# العدد الحالي: 2
+Counter.current_count
 
+# خطأ! ليست دالة مثيل
 # counter = Counter.new
-# counter.current_count  # خطأ! ليست دالة مثيل
+# counter.current_count
 ```
 
 ### استخدام كليهما معاً
@@ -267,8 +281,10 @@ module ClassInfo
 end
 
 class Document
-  include Printable  # دوال مثيل
-  extend ClassInfo   # دوال صنف
+  # دوال مثيل
+  include Printable
+  # دوال صنف
+  extend ClassInfo
 
   def info
     "مستند"
@@ -276,11 +292,13 @@ class Document
 end
 
 # دالة صنف
-Document.class_name  # اسم الصنف: Document
+# اسم الصنف: Document
+Document.class_name
 
 # دالة مثيل
 doc = Document.new
-doc.print_info  # معلومات: مستند
+# معلومات: مستند
+doc.print_info
 ```
 
 ---
@@ -359,26 +377,40 @@ bird = Bird.new("تويتي")
 duck = Duck.new("دونالد")
 
 puts "--- الإنسان ---"
-human.describe  # أنا Human: أحمد
-human.walk      # أحمد يمشي...
-human.swim      # أحمد يسبح...
+# أنا Human: أحمد
+human.describe
+# أحمد يمشي...
+human.walk
+# أحمد يسبح...
+human.swim
 
 puts "\n--- السمكة ---"
-fish.describe  # أنا Fish: نيمو
-fish.swim      # نيمو يسبح...
-# fish.walk    # خطأ! السمكة لا تمشي
+# أنا Fish: نيمو
+fish.describe
+# نيمو يسبح...
+fish.swim
+# خطأ! السمكة لا تمشي
+# fish.walk
 
 puts "\n--- الطائر ---"
-bird.describe  # أنا Bird: تويتي
-bird.walk      # تويتي يمشي...
-bird.fly       # تويتي يطير...
-# bird.swim    # خطأ! هذا الطائر لا يسبح
+# أنا Bird: تويتي
+bird.describe
+# تويتي يمشي...
+bird.walk
+# تويتي يطير...
+bird.fly
+# خطأ! هذا الطائر لا يسبح
+# bird.swim
 
 puts "\n--- البطة ---"
-duck.describe  # أنا Duck: دونالد
-duck.walk      # دونالد يمشي...
-duck.swim      # دونالد يسبح...
-duck.fly       # دونالد يطير...
+# أنا Duck: دونالد
+duck.describe
+# دونالد يمشي...
+duck.walk
+# دونالد يسبح...
+duck.swim
+# دونالد يطير...
+duck.fly
 ```
 
 ---
@@ -408,8 +440,10 @@ class Person
 end
 
 person = Person.new("أحمد", "محمد")
-puts person.full_name  # أحمد محمد
-puts person.initials   # أ.م.
+# أحمد محمد
+puts person.full_name
+# أ.م.
+puts person.initials
 ```
 
 ---
@@ -493,7 +527,8 @@ class Child < Parent
 end
 
 child = Child.new
-child.hello  # من Child
+# من Child
+child.hello
 
 # ترتيب البحث:
 puts Child.ancestors.inspect
@@ -515,14 +550,16 @@ puts Child.ancestors.inspect
 module Timestamped
   def save
     puts "إضافة الوقت: #{Time.now}"
-    super  # يستدعي save من الصنف أو الوحدة التالية
+    # يستدعي save من الصنف أو الوحدة التالية
+    super
   end
 end
 
 module Validated
   def save
     puts "التحقق من البيانات..."
-    super  # يستدعي save من الوحدة أو الصنف التالي
+    # يستدعي save من الوحدة أو الصنف التالي
+    super
   end
 end
 
@@ -614,7 +651,8 @@ library.add("كتاب جافا")
 # الآن يمكن استخدام كل دوال Enumerable!
 library.each { |book| puts book }
 puts library.count        # 3
-puts library.first        # كتاب روبي
+# كتاب روبي
+puts library.first
 p library.select { |b| b.include?("روبي") }  # ["كتاب روبي"]
 ```
 
@@ -649,12 +687,15 @@ module Greeting
 end
 
 class Person
-  include Greeting  # دوال مثيل
+  # دوال مثيل
+  include Greeting
 end
 
-# Person.hello  # خطأ! hello ليست دالة صنف
+# خطأ! hello ليست دالة صنف
+# Person.hello
 person = Person.new
-puts person.hello  # مرحباً! (صحيح)
+# مرحباً! (صحيح)
+puts person.hello
 ```
 
 ### 2. محاولة إنشاء كائن من وحدة
@@ -666,7 +707,8 @@ module Utils
   end
 end
 
-# obj = Utils.new  # خطأ! لا يمكن إنشاء كائن من وحدة
+# خطأ! لا يمكن إنشاء كائن من وحدة
+# obj = Utils.new
 ```
 
 ### 3. نسيان :: للوصول للمحتويات
@@ -677,8 +719,10 @@ module MyApp
   end
 end
 
-# user = User.new  # خطأ! User غير معروف
-user = MyApp::User.new  # صحيح
+# خطأ! User غير معروف
+# user = User.new
+# صحيح
+user = MyApp::User.new
 ```
 
 ---
@@ -697,13 +741,18 @@ user = MyApp::User.new  # صحيح
 
 ```ruby
 # Mixin مناسب: قدرات يمكن أن تكون لأي شيء
-module Printable  # أي شيء يمكن طباعته
-module Searchable # أي شيء يمكن البحث فيه
-module Cacheable  # أي شيء يمكن تخزينه مؤقتاً
+# أي شيء يمكن طباعته
+module Printable
+# أي شيء يمكن البحث فيه
+module Searchable
+# أي شيء يمكن تخزينه مؤقتاً
+module Cacheable
 
 # وراثة مناسبة: علاقة "هو نوع من"
-class Dog < Animal    # الكلب هو حيوان
-class Manager < Employee  # المدير هو موظف
+# الكلب هو حيوان
+class Dog < Animal
+# المدير هو موظف
+class Manager < Employee
 ```
 
 ---

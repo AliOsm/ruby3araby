@@ -8,24 +8,28 @@
 
 ```ruby
 name = "ruby"
-puts name.upcase  # RUBY
+# RUBY
+puts name.upcase
 ```
 
 ### `downcase` - تحويل إلى أحرف صغيرة
 
 ```ruby
 title = "PROGRAMMING"
-puts title.downcase  # programming
+# programming
+puts title.downcase
 ```
 
 ### `capitalize` - تكبير الحرف الأول فقط
 
 ```ruby
 word = "hello"
-puts word.capitalize  # Hello
+# Hello
+puts word.capitalize
 
 sentence = "HELLO WORLD"
-puts sentence.capitalize  # Hello world
+# Hello world
+puts sentence.capitalize
 ```
 
 لاحظ أن `capitalize` تحول الحرف الأول إلى كبير وباقي الأحرف إلى صغيرة.
@@ -34,7 +38,8 @@ puts sentence.capitalize  # Hello world
 
 ```ruby
 text = "Hello World"
-puts text.swapcase  # hELLO wORLD
+# hELLO wORLD
+puts text.swapcase
 ```
 
 ## معلومات عن النص
@@ -43,10 +48,12 @@ puts text.swapcase  # hELLO wORLD
 
 ```ruby
 greeting = "مرحبا"
-puts greeting.length  # 5
+# 5
+puts greeting.length
 
 message = "Hello, World!"
-puts message.size  # 13 (size و length متطابقان)
+# 13 (size و length متطابقان)
+puts message.size
 ```
 
 ### `empty?` - هل النص فارغ؟
@@ -55,8 +62,10 @@ puts message.size  # 13 (size و length متطابقان)
 text1 = ""
 text2 = "مرحبا"
 
-puts text1.empty?  # true
-puts text2.empty?  # false
+# true
+puts text1.empty?
+# false
+puts text2.empty?
 ```
 
 ### `include?` - هل يحتوي على نص معين؟
@@ -64,8 +73,10 @@ puts text2.empty?  # false
 ```ruby
 sentence = "أنا أحب البرمجة بلغة روبي"
 
-puts sentence.include?("روبي")     # true
-puts sentence.include?("بايثون")   # false
+# true
+puts sentence.include?("روبي")
+# false
+puts sentence.include?("بايثون")
 ```
 
 ## تنظيف النصوص
@@ -74,22 +85,26 @@ puts sentence.include?("بايثون")   # false
 
 ```ruby
 text = "   مرحبا بالعالم   "
-puts text.strip  # "مرحبا بالعالم"
+# "مرحبا بالعالم"
+puts text.strip
 ```
 
 ### `lstrip` و `rstrip` - إزالة المسافات من جانب واحد
 
 ```ruby
 text = "   مرحبا   "
-puts text.lstrip  # "مرحبا   " (إزالة من اليسار)
-puts text.rstrip  # "   مرحبا" (إزالة من اليمين)
+# "مرحبا   " (إزالة من اليسار)
+puts text.lstrip
+# "   مرحبا" (إزالة من اليمين)
+puts text.rstrip
 ```
 
 ### `chomp` - إزالة سطر جديد من النهاية
 
 ```ruby
 line = "مرحبا\n"
-puts line.chomp  # "مرحبا"
+# "مرحبا"
+puts line.chomp
 ```
 
 هذه الدالة مفيدة جداً عند قراءة إدخال المستخدم بـ `gets`.
@@ -100,14 +115,16 @@ puts line.chomp  # "مرحبا"
 
 ```ruby
 word = "Ruby"
-puts word.reverse  # ybuR
+# ybuR
+puts word.reverse
 ```
 
 ### `*` - تكرار النص
 
 ```ruby
 pattern = "=-"
-puts pattern * 5  # =-=-=-=-=-=-=-
+# =-=-=-=-=-=-=-
+puts pattern * 5
 ```
 
 ## تقسيم ودمج النصوص
@@ -117,16 +134,19 @@ puts pattern * 5  # =-=-=-=-=-=-=-
 ```ruby
 sentence = "أحمد ومحمد وفاطمة"
 names = sentence.split(" و")
-puts names.inspect  # ["أحمد", "محمد", "فاطمة"]
+# ["أحمد", "محمد", "فاطمة"]
+puts names.inspect
 
 # التقسيم بفاصلة
 data = "تفاح,برتقال,موز"
 fruits = data.split(",")
-puts fruits.inspect  # ["تفاح", "برتقال", "موز"]
+# ["تفاح", "برتقال", "موز"]
+puts fruits.inspect
 
 # التقسيم بمسافة (الافتراضي)
 words = "hello world ruby".split
-puts words.inspect  # ["hello", "world", "ruby"]
+# ["hello", "world", "ruby"]
+puts words.inspect
 ```
 
 ### `join` - دمج مصفوفة إلى نص
@@ -134,9 +154,12 @@ puts words.inspect  # ["hello", "world", "ruby"]
 ```ruby
 colors = ["أحمر", "أخضر", "أزرق"]
 
-puts colors.join        # أحمرأخضرأزرق
-puts colors.join(", ")  # أحمر, أخضر, أزرق
-puts colors.join(" و ") # أحمر و أخضر و أزرق
+# أحمرأخضرأزرق
+puts colors.join
+# أحمر, أخضر, أزرق
+puts colors.join(", ")
+# أحمر و أخضر و أزرق
+puts colors.join(" و ")
 ```
 
 ## البحث والاستبدال
@@ -146,7 +169,8 @@ puts colors.join(" و ") # أحمر و أخضر و أزرق
 ```ruby
 text = "أنا أحب القهوة، القهوة لذيذة"
 new_text = text.gsub("القهوة", "الشاي")
-puts new_text  # أنا أحب الشاي، الشاي لذيذة
+# أنا أحب الشاي، الشاي لذيذة
+puts new_text
 ```
 
 ### `sub` - استبدال أول تطابق فقط
@@ -154,7 +178,8 @@ puts new_text  # أنا أحب الشاي، الشاي لذيذة
 ```ruby
 text = "أنا أحب القهوة، القهوة لذيذة"
 new_text = text.sub("القهوة", "الشاي")
-puts new_text  # أنا أحب الشاي، القهوة لذيذة
+# أنا أحب الشاي، القهوة لذيذة
+puts new_text
 ```
 
 ### `delete` - حذف أحرف معينة
@@ -162,7 +187,8 @@ puts new_text  # أنا أحب الشاي، القهوة لذيذة
 ```ruby
 phone = "123-456-7890"
 clean = phone.delete("-")
-puts clean  # 1234567890
+# 1234567890
+puts clean
 ```
 
 ## الوصول لأجزاء من النص
@@ -172,10 +198,14 @@ puts clean  # 1234567890
 ```ruby
 word = "Ruby"
 
-puts word[0]     # R (الحرف الأول)
-puts word[1]     # u (الحرف الثاني)
-puts word[-1]    # y (الحرف الأخير)
-puts word[-2]    # b (الحرف قبل الأخير)
+# R (الحرف الأول)
+puts word[0]
+# u (الحرف الثاني)
+puts word[1]
+# y (الحرف الأخير)
+puts word[-1]
+# b (الحرف قبل الأخير)
+puts word[-2]
 ```
 
 ### باستخدام النطاق (range)
@@ -183,9 +213,12 @@ puts word[-2]    # b (الحرف قبل الأخير)
 ```ruby
 text = "Hello, World!"
 
-puts text[0..4]   # Hello (من 0 إلى 4 شاملة)
-puts text[0...4]  # Hell (من 0 إلى 4 غير شاملة)
-puts text[7..-1]  # World! (من 7 إلى النهاية)
+# Hello (من 0 إلى 4 شاملة)
+puts text[0..4]
+# Hell (من 0 إلى 4 غير شاملة)
+puts text[0...4]
+# World! (من 7 إلى النهاية)
+puts text[7..-1]
 ```
 
 ## جدول ملخص الدوال
@@ -211,7 +244,8 @@ puts text[7..-1]  # World! (من 7 إلى النهاية)
 text = "   HELLO world   "
 
 result = text.strip.downcase.capitalize
-puts result  # Hello world
+# Hello world
+puts result
 ```
 
 هذا يسمى "سلسلة الدوال" ويجعل الشيفرة أكثر قابلية للقراءة.
@@ -223,7 +257,8 @@ puts result  # Hello world
 ```ruby
 input = "   Ahmed@Email.COM   "
 clean_email = input.strip.downcase
-puts clean_email  # ahmed@email.com
+# ahmed@email.com
+puts clean_email
 ```
 
 ### تحويل اسم ملف
@@ -231,7 +266,8 @@ puts clean_email  # ahmed@email.com
 ```ruby
 filename = "MY DOCUMENT.TXT"
 safe_name = filename.downcase.gsub(" ", "_")
-puts safe_name  # my_document.txt
+# my_document.txt
+puts safe_name
 ```
 
 ### استخراج الكلمات الفريدة
@@ -239,7 +275,8 @@ puts safe_name  # my_document.txt
 ```ruby
 sentence = "ruby is fun and ruby is easy"
 words = sentence.split(" ")
-puts words.length  # 7
+# 7
+puts words.length
 ```
 
 ## ملاحظة مهمة
@@ -249,11 +286,13 @@ puts words.length  # 7
 ```ruby
 name = "ahmed"
 name.upcase
-puts name  # ahmed (لم يتغير!)
+# ahmed (لم يتغير!)
+puts name
 
 # لتغيير المتغير، احفظ النتيجة:
 name = name.upcase
-puts name  # AHMED
+# AHMED
+puts name
 ```
 
 في الدرس القادم، سنتعلم عن الدوال التي تنتهي بـ `!` والتي تغير النص الأصلي مباشرة.

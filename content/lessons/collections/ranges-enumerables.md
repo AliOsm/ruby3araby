@@ -111,14 +111,16 @@ when 60..69  then "مقبول"
 else "راسب"
 end
 
-puts result  # جيد جداً
+# جيد جداً
+puts result
 ```
 
 ### قطع النصوص والمصفوفات
 
 ```ruby
 text = "مرحبا بالعالم"
-puts text[0..5]   # مرحبا
+# مرحبا
+puts text[0..5]
 
 numbers = [10, 20, 30, 40, 50]
 puts numbers[1..3].inspect  # [20, 30, 40]

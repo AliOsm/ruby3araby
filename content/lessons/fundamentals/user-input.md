@@ -17,7 +17,8 @@ puts "مرحباً #{name}"
 ```ruby
 puts "ما اسمك؟"
 name = gets
-puts name.inspect  # "أحمد\n" - لاحظ \n في النهاية!
+# "أحمد\n" - لاحظ \n في النهاية!
+puts name.inspect
 ```
 
 ## استخدام chomp لإزالة السطر الجديد
@@ -134,7 +135,8 @@ input = gets.chomp
 puts input.class  # String
 
 # للعمل بالأرقام، تحتاج تحويل النص
-number = input.to_i  # سنتعلم هذا في الدرس القادم
+# سنتعلم هذا في الدرس القادم
+number = input.to_i
 ```
 
 ## دوال مساعدة مع gets
@@ -143,10 +145,12 @@ number = input.to_i  # سنتعلم هذا في الدرس القادم
 
 ```ruby
 puts "أدخل اسمك:"
-name = gets.chomp.strip  # يزيل السطر الجديد والمسافات الإضافية
+# يزيل السطر الجديد والمسافات الإضافية
+name = gets.chomp.strip
 
 puts "أدخل بريدك الإلكتروني:"
-email = gets.chomp.downcase.strip  # تنظيف وتحويل لأحرف صغيرة
+# تنظيف وتحويل لأحرف صغيرة
+email = gets.chomp.downcase.strip
 ```
 
 ### التحقق من الإدخال الفارغ

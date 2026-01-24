@@ -105,7 +105,8 @@ puts letters.index("ب")     # 1
 puts letters.rindex("ب")    # 3
 
 # إذا لم يوجد العنصر
-puts letters.index("ج")     # لا شيء (nil)
+# لا شيء (nil)
+puts letters.index("ج")
 ```
 
 ## ترتيب المصفوفة
@@ -168,7 +169,8 @@ p numbers            # [5, 4, 3, 2, 1]
 ```ruby
 cards = ["1", "2", "3", "4", "5"]
 
-p cards.shuffle    # ترتيب عشوائي مختلف كل مرة
+# ترتيب عشوائي مختلف كل مرة
+p cards.shuffle
 ```
 
 ## تنظيف المصفوفة
@@ -289,8 +291,10 @@ puts "الأصغر: #{min}, الأكبر: #{max}"
 ```ruby
 colors = ["أحمر", "أخضر", "أزرق", "أصفر"]
 
-puts colors.sample       # لون عشوائي واحد
-p colors.sample(2)       # لونان عشوائيان
+# لون عشوائي واحد
+puts colors.sample
+# لونان عشوائيان
+p colors.sample(2)
 ```
 
 ### join
@@ -379,10 +383,14 @@ puts "الأسماء الأصلية:"
 p names
 
 # تنظيف وتجهيز القائمة
-clean_names = names.compact           # إزالة nil
-                   .map { |n| n.strip } # إزالة المسافات
-                   .uniq               # إزالة التكرار
-                   .sort               # ترتيب أبجدي
+# إزالة nil
+# إزالة المسافات
+# إزالة التكرار
+# ترتيب أبجدي
+clean_names = names.compact
+                   .map { |n| n.strip }
+                   .uniq
+                   .sort
 
 puts "الأسماء النظيفة:"
 p clean_names

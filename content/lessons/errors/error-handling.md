@@ -151,9 +151,12 @@ def divide(a, b)
   end
 end
 
-divide(10, 2)   # 10 / 2 = 5
-divide(10, 0)   # خطأ رياضي: divided by 0
-divide(10, "a") # خطأ في النوع: String can't be coerced into Integer
+# 10 / 2 = 5
+divide(10, 2)
+# خطأ رياضي: divided by 0
+divide(10, 0)
+# خطأ في النوع: String can't be coerced into Integer
+divide(10, "a")
 ```
 
 ---
@@ -504,7 +507,8 @@ end
 begin
   raise "فشل!"
 rescue
-  retry  # يعيد المحاولة للأبد!
+  # يعيد المحاولة للأبد!
+  retry
 end
 ```
 
@@ -513,9 +517,11 @@ end
 ```ruby
 # خطأ: يلتقط حتى الأخطاء البرمجية
 begin
-  undefined_variable  # NameError
+  # NameError
+  undefined_variable
 rescue
-  puts "خطأ في الإدخال"  # رسالة مضللة!
+  # رسالة مضللة!
+  puts "خطأ في الإدخال"
 end
 ```
 

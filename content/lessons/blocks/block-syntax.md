@@ -134,11 +134,13 @@ numbers = [1, 2, 3, 4, 5]
 
 # مضاعفة كل رقم
 doubled = numbers.map { |n| n * 2 }
-puts doubled.inspect  # [2, 4, 6, 8, 10]
+# [2, 4, 6, 8, 10]
+puts doubled.inspect
 
 # تحويل لنص
 strings = numbers.map { |n| "الرقم #{n}" }
-puts strings.inspect  # ["الرقم 1", "الرقم 2", ...]
+# ["الرقم 1", "الرقم 2", ...]
+puts strings.inspect
 
 # مع كتلة متعددة الأسطر
 grades = [85, 90, 78, 92]
@@ -151,7 +153,8 @@ results = grades.map do |grade|
     "جيد"
   end
 end
-puts results.inspect  # ["جيد جداً", "ممتاز", "جيد", "ممتاز"]
+# ["جيد جداً", "ممتاز", "جيد", "ممتاز"]
+puts results.inspect
 ```
 
 ## الكتل مع select
@@ -163,18 +166,21 @@ numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 # الأرقام الزوجية فقط
 evens = numbers.select { |n| n.even? }
-puts evens.inspect  # [2, 4, 6, 8, 10]
+# [2, 4, 6, 8, 10]
+puts evens.inspect
 
 # الأرقام الأكبر من 5
 big = numbers.select { |n| n > 5 }
-puts big.inspect  # [6, 7, 8, 9, 10]
+# [6, 7, 8, 9, 10]
+puts big.inspect
 
 # مع كتلة متعددة الأسطر
 words = ["تفاح", "برتقال", "موز", "عنب", "مانجو"]
 long_words = words.select do |word|
   word.length > 3
 end
-puts long_words.inspect  # ["برتقال", "مانجو"]
+# ["برتقال", "مانجو"]
+puts long_words.inspect
 ```
 
 ## الكتل مع reject
@@ -186,11 +192,13 @@ numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 # إزالة الأرقام الزوجية (الإبقاء على الفردية)
 odds = numbers.reject { |n| n.even? }
-puts odds.inspect  # [1, 3, 5, 7, 9]
+# [1, 3, 5, 7, 9]
+puts odds.inspect
 
 # إزالة الأرقام الصغيرة
 big = numbers.reject { |n| n <= 5 }
-puts big.inspect  # [6, 7, 8, 9, 10]
+# [6, 7, 8, 9, 10]
+puts big.inspect
 ```
 
 ## الكتل مع find
@@ -202,15 +210,18 @@ numbers = [1, 3, 5, 4, 7, 6]
 
 # أول رقم زوجي
 first_even = numbers.find { |n| n.even? }
-puts first_even  # 4
+# 4
+puts first_even
 
 # أول رقم أكبر من 5
 first_big = numbers.find { |n| n > 5 }
-puts first_big  # 7
+# 7
+puts first_big
 
 # إذا لم يوجد عنصر مطابق
 not_found = numbers.find { |n| n > 100 }
-puts not_found.nil?  # true
+# true
+puts not_found.nil?
 ```
 
 ## الكتل مع reduce
@@ -222,19 +233,24 @@ numbers = [1, 2, 3, 4, 5]
 
 # مجموع الأرقام
 sum = numbers.reduce(0) { |total, n| total + n }
-puts sum  # 15
+# 15
+puts sum
 
 # الحد الأقصى
 max = numbers.reduce { |biggest, n| n > biggest ? n : biggest }
-puts max  # 5
+# 5
+puts max
 
 # ضرب كل الأرقام
 product = numbers.reduce(1) { |result, n| result * n }
-puts product  # 120
+# 120
+puts product
 
 # صيغة مختصرة للعمليات البسيطة
-puts numbers.reduce(:+)  # 15 (مجموع)
-puts numbers.reduce(:*)  # 120 (ضرب)
+# 15 (مجموع)
+puts numbers.reduce(:+)
+# 120 (ضرب)
+puts numbers.reduce(:*)
 ```
 
 ## الكتل مع any? و all? و none?
@@ -245,23 +261,28 @@ puts numbers.reduce(:*)  # 120 (ضرب)
 numbers = [2, 4, 6, 8, 10]
 
 # هل يوجد رقم فردي؟
-puts numbers.any? { |n| n.odd? }   # false
+# false
+puts numbers.any? { |n| n.odd? }
 
 # هل كل الأرقام زوجية؟
-puts numbers.all? { |n| n.even? }  # true
+# true
+puts numbers.all? { |n| n.even? }
 
 # هل لا يوجد رقم سالب؟
-puts numbers.none? { |n| n < 0 }   # true
+# true
+puts numbers.none? { |n| n < 0 }
 ```
 
 ```ruby
 words = ["تفاح", "برتقال", "موز"]
 
 # هل توجد كلمة طويلة؟
-puts words.any? { |w| w.length > 5 }   # true (برتقال)
+# true (برتقال)
+puts words.any? { |w| w.length > 5 }
 
 # هل كل الكلمات قصيرة؟
-puts words.all? { |w| w.length < 10 }  # true
+# true
+puts words.all? { |w| w.length < 10 }
 ```
 
 ## تسلسل الدوال مع الكتل (Method Chaining)
@@ -273,11 +294,15 @@ numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 # الأرقام الزوجية، مضاعفة، ثم مجموعها
 result = numbers
-  .select { |n| n.even? }      # [2, 4, 6, 8, 10]
-  .map { |n| n * 2 }           # [4, 8, 12, 16, 20]
-  .reduce(:+)                  # 60
+  # [2, 4, 6, 8, 10]
+  .select { |n| n.even? }
+  # [4, 8, 12, 16, 20]
+  .map { |n| n * 2 }
+  # 60
+  .reduce(:+)
 
-puts result  # 60
+# 60
+puts result
 ```
 
 ```ruby
@@ -295,7 +320,8 @@ top_students = students
   .map { |s| s[:name] }
   .sort
 
-puts top_students.inspect  # ["أحمد", "سارة", "فاطمة"]
+# ["أحمد", "سارة", "فاطمة"]
+puts top_students.inspect
 ```
 
 ## الكتل مع times و upto و downto
@@ -324,12 +350,15 @@ puts top_students.inspect  # ["أحمد", "سارة", "فاطمة"]
 x = 10
 
 [1, 2, 3].each do |n|
-  y = n * 2  # y محلية للكتلة
+  # y محلية للكتلة
+  y = n * 2
   puts "n=#{n}, y=#{y}, x=#{x}"
 end
 
-puts x  # 10 (لم يتغير)
-# puts y  # خطأ! y غير معرّفة خارج الكتلة
+# 10 (لم يتغير)
+puts x
+# خطأ! y غير معرّفة خارج الكتلة
+# puts y
 ```
 
 لكن الكتلة **تستطيع** الوصول للمتغيرات الخارجية:
@@ -338,10 +367,12 @@ puts x  # 10 (لم يتغير)
 total = 0
 
 [1, 2, 3, 4, 5].each do |n|
-  total += n  # تعديل متغير خارجي
+  # تعديل متغير خارجي
+  total += n
 end
 
-puts total  # 15
+# 15
+puts total
 ```
 
 ## جدول ملخص
@@ -367,15 +398,18 @@ sales = [120, 80, 200, 150, 90, 180, 220]
 
 # حساب الإجمالي
 total = sales.reduce(:+)
-puts "إجمالي المبيعات: #{total}"  # 1040
+# 1040
+puts "إجمالي المبيعات: #{total}"
 
 # حساب المتوسط
 average = total.to_f / sales.length
-puts "متوسط المبيعات: #{average.round(2)}"  # 148.57
+# 148.57
+puts "متوسط المبيعات: #{average.round(2)}"
 
 # المبيعات فوق المتوسط
 above_avg = sales.select { |s| s > average }
-puts "فوق المتوسط: #{above_avg.inspect}"  # [200, 150, 180, 220]
+# [200, 150, 180, 220]
+puts "فوق المتوسط: #{above_avg.inspect}"
 ```
 
 ### مثال 2: معالجة قائمة أسماء
@@ -385,9 +419,12 @@ names = ["  أحمد  ", "سارة", "  علي", "فاطمة  "]
 
 # تنظيف وترتيب
 cleaned = names
-  .map { |name| name.strip }      # إزالة المسافات
-  .map { |name| name.upcase }     # (لو كانت إنجليزية)
-  .sort                           # ترتيب
+  # إزالة المسافات
+  .map { |name| name.strip }
+  # (لو كانت إنجليزية)
+  .map { |name| name.upcase }
+  # ترتيب
+  .sort
 
 puts cleaned.inspect
 ```

@@ -12,13 +12,16 @@
 # بدون علامة التعجب - لا تغير الأصل
 name = "ahmed"
 result = name.upcase
-puts result  # AHMED
-puts name    # ahmed (لم يتغير!)
+# AHMED
+puts result
+# ahmed (لم يتغير!)
+puts name
 
 # مع علامة التعجب - تغير الأصل
 name = "ahmed"
 name.upcase!
-puts name    # AHMED (تغير!)
+# AHMED (تغير!)
+puts name
 ```
 
 ### أمثلة على دوال البانج
@@ -28,25 +31,30 @@ text = "Hello World"
 
 # downcase!
 text.downcase!
-puts text  # hello world
+# hello world
+puts text
 
 # capitalize!
 text.capitalize!
-puts text  # Hello world
+# Hello world
+puts text
 
 # reverse!
 text.reverse!
-puts text  # dlrow olleH
+# dlrow olleH
+puts text
 
 # strip!
 message = "   مرحبا   "
 message.strip!
-puts message  # مرحبا
+# مرحبا
+puts message
 
 # gsub!
 sentence = "أنا أحب القهوة"
 sentence.gsub!("القهوة", "الشاي")
-puts sentence  # أنا أحب الشاي
+# أنا أحب الشاي
+puts sentence
 ```
 
 ### متى تستخدم دوال البانج؟
@@ -64,7 +72,8 @@ names.each do |name|
   name.strip!
 end
 
-puts names.inspect  # ["أحمد", "محمد", "فاطمة"]
+# ["أحمد", "محمد", "فاطمة"]
+puts names.inspect
 ```
 
 ### تحذير مهم!
@@ -73,12 +82,16 @@ puts names.inspect  # ["أحمد", "محمد", "فاطمة"]
 
 ```ruby
 text = "HELLO"
-result = text.upcase!  # لا يوجد تغيير لأن النص بالفعل كبير
-puts result.inspect    # nil
+# لا يوجد تغيير لأن النص بالفعل كبير
+result = text.upcase!
+# nil
+puts result.inspect
 
 text = "hello"
-result = text.upcase!  # حدث تغيير
-puts result            # HELLO
+# حدث تغيير
+result = text.upcase!
+# HELLO
+puts result
 ```
 
 لهذا السبب، لا تستخدم نتيجة دالة البانج في سلسلة دوال:
@@ -103,20 +116,28 @@ text.reverse!
 text = "Hello World"
 
 # empty? - هل النص فارغ؟
-puts "".empty?      # true
-puts text.empty?    # false
+# true
+puts "".empty?
+# false
+puts text.empty?
 
 # include? - هل يحتوي على نص معين؟
-puts text.include?("World")  # true
-puts text.include?("Ruby")   # false
+# true
+puts text.include?("World")
+# false
+puts text.include?("Ruby")
 
 # start_with? - هل يبدأ بنص معين؟
-puts text.start_with?("Hello")  # true
-puts text.start_with?("World")  # false
+# true
+puts text.start_with?("Hello")
+# false
+puts text.start_with?("World")
 
 # end_with? - هل ينتهي بنص معين؟
-puts text.end_with?("World")  # true
-puts text.end_with?("Hello")  # false
+# true
+puts text.end_with?("World")
+# false
+puts text.end_with?("Hello")
 ```
 
 ### أمثلة على دوال الاستعلام للأرقام
@@ -125,28 +146,40 @@ puts text.end_with?("Hello")  # false
 num = 42
 
 # even? - هل العدد زوجي؟
-puts num.even?  # true
-puts 7.even?    # false
+# true
+puts num.even?
+# false
+puts 7.even?
 
 # odd? - هل العدد فردي؟
-puts num.odd?   # false
-puts 7.odd?     # true
+# false
+puts num.odd?
+# true
+puts 7.odd?
 
 # zero? - هل العدد صفر؟
-puts 0.zero?    # true
-puts num.zero?  # false
+# true
+puts 0.zero?
+# false
+puts num.zero?
 
 # positive? - هل العدد موجب؟
-puts num.positive?   # true
-puts (-5).positive?  # false
+# true
+puts num.positive?
+# false
+puts (-5).positive?
 
 # negative? - هل العدد سالب؟
-puts (-5).negative?  # true
-puts num.negative?   # false
+# true
+puts (-5).negative?
+# false
+puts num.negative?
 
 # between? - هل العدد بين قيمتين؟
-puts num.between?(1, 50)   # true
-puts num.between?(50, 100) # false
+# true
+puts num.between?(1, 50)
+# false
+puts num.between?(50, 100)
 ```
 
 ### أمثلة على دوال الاستعلام للمصفوفات
@@ -155,16 +188,22 @@ puts num.between?(50, 100) # false
 fruits = ["تفاح", "برتقال", "موز"]
 
 # empty? - هل المصفوفة فارغة؟
-puts [].empty?      # true
-puts fruits.empty?  # false
+# true
+puts [].empty?
+# false
+puts fruits.empty?
 
 # include? - هل تحتوي على عنصر؟
-puts fruits.include?("تفاح")  # true
-puts fruits.include?("عنب")   # false
+# true
+puts fruits.include?("تفاح")
+# false
+puts fruits.include?("عنب")
 
 # any? - هل تحتوي على أي عناصر؟
-puts fruits.any?  # true
-puts [].any?      # false
+# true
+puts fruits.any?
+# false
+puts [].any?
 ```
 
 ### أمثلة على دوال الاستعلام للقيم
@@ -172,19 +211,28 @@ puts [].any?      # false
 ```ruby
 # nil? - هل القيمة nil؟
 value = nil
-puts value.nil?    # true
-puts "hello".nil?  # false
+# true
+puts value.nil?
+# false
+puts "hello".nil?
 
 # is_a? - هل من نوع معين؟
-puts "hello".is_a?(String)   # true
-puts "hello".is_a?(Integer)  # false
-puts 42.is_a?(Integer)       # true
-puts 42.is_a?(Numeric)       # true
+# true
+puts "hello".is_a?(String)
+# false
+puts "hello".is_a?(Integer)
+# true
+puts 42.is_a?(Integer)
+# true
+puts 42.is_a?(Numeric)
 
 # respond_to? - هل يستجيب لدالة؟
-puts "hello".respond_to?(:upcase)  # true
-puts "hello".respond_to?(:sort)    # false
-puts [1,2,3].respond_to?(:sort)    # true
+# true
+puts "hello".respond_to?(:upcase)
+# false
+puts "hello".respond_to?(:sort)
+# true
+puts [1,2,3].respond_to?(:sort)
 ```
 
 ## استخدام دوال الاستعلام مع الشروط
@@ -253,7 +301,8 @@ end
 username = "  Ahmed123  "
 username.strip!
 username.downcase!
-puts username  # ahmed123
+# ahmed123
+puts username
 
 # التحقق من صحة البيانات
 if username.empty?

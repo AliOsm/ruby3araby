@@ -14,8 +14,9 @@ person = {
   "city" => "القاهرة"
 }
 
-puts person["name"]  # أحمد
-puts person["age"]   # 25
+# أحمد
+puts person["name"]
+puts person["age"]
 ```
 
 ## إنشاء القواميس
@@ -69,7 +70,8 @@ person = {
   :city => "الرياض"
 }
 
-puts person[:name]  # أحمد
+# أحمد
+puts person[:name]
 ```
 
 ### الصيغة الحديثة (المفضلة): النقطتين بعد المفتاح
@@ -82,9 +84,12 @@ person = {
   city: "الرياض"
 }
 
-puts person[:name]  # أحمد
-puts person[:age]   # 30
-puts person[:city]  # الرياض
+# أحمد
+puts person[:name]
+# 30
+puts person[:age]
+# الرياض
+puts person[:city]
 ```
 
 ### مقارنة الصيغتين
@@ -102,12 +107,16 @@ puts person[:city]  # الرياض
 person = { name: "فاطمة", age: 28, job: "مهندسة" }
 
 # الوصول بالمفتاح
-puts person[:name]  # فاطمة
-puts person[:age]   # 28
-puts person[:job]   # مهندسة
+# فاطمة
+puts person[:name]
+# 28
+puts person[:age]
+# مهندسة
+puts person[:job]
 
 # مفتاح غير موجود يُرجع nil
-puts person[:salary]  # لا شيء (nil)
+# لا شيء (nil)
+puts person[:salary]
 ```
 
 ### باستخدام fetch (مع قيمة افتراضية)
@@ -119,8 +128,10 @@ person = { name: "محمد", age: 35 }
 # puts person.fetch(:salary)  # KeyError!
 
 # يمكن تحديد قيمة افتراضية
-puts person.fetch(:salary, "غير محدد")  # غير محدد
-puts person.fetch(:name, "مجهول")       # محمد (موجود)
+# غير محدد
+puts person.fetch(:salary, "غير محدد")
+# محمد (موجود)
+puts person.fetch(:name, "مجهول")
 ```
 
 ### باستخدام dig للقواميس المتداخلة
@@ -138,7 +149,8 @@ data = {
 }
 
 # dig يتنقل بأمان عبر المستويات
-puts data.dig(:user, :profile, :name)           # أحمد
+# أحمد
+puts data.dig(:user, :profile, :name)
 puts data.dig(:user, :profile, :contact, :email) # ahmed@example.com
 puts data.dig(:user, :settings, :theme)          # nil (لا خطأ)
 ```
@@ -168,7 +180,8 @@ puts person[:age]  # 23
 
 # التعديل يعمل بنفس طريقة الإضافة
 person[:name] = "سارة محمد"
-puts person[:name]  # سارة محمد
+# سارة محمد
+puts person[:name]
 ```
 
 ### باستخدام store
@@ -209,7 +222,8 @@ p person      # {:name=>"أحمد", :city=>"القاهرة"}
 
 # حذف مفتاح غير موجود يُرجع nil
 result = person.delete(:salary)
-puts result  # لا شيء (nil)
+# لا شيء (nil)
+puts result
 ```
 
 ### delete_if - حذف بشرط
@@ -314,7 +328,8 @@ total = 0
 scores.each_value do |score|
   total += score
 end
-puts "المجموع: #{total}"  # المجموع: 270
+# المجموع: 270
+puts "المجموع: #{total}"
 ```
 
 ## جدول ملخص: دوال القواميس الأساسية
@@ -463,9 +478,12 @@ company = {
 }
 
 # الوصول للبيانات المتداخلة
-puts company[:name]                        # شركة التقنية
-puts company[:employees][:ceo][:name]      # أحمد
-puts company[:departments][0]              # التطوير
+# شركة التقنية
+puts company[:name]
+# أحمد
+puts company[:employees][:ceo][:name]
+# التطوير
+puts company[:departments][0]
 
 # باستخدام dig (أكثر أماناً)
 puts company.dig(:employees, :cto, :salary)  # 45000
