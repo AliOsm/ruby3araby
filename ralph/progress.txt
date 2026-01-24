@@ -1286,9 +1286,44 @@ Last Updated: 2026-01-24
 
 ---
 
+### 2026-01-24 - US-043: Lesson: Classes and Objects
+
+**What was implemented:**
+- Created Classes and Objects lesson at `/content/lessons/oop/classes-objects.md`
+- Created the `oop` directory for Object-Oriented Programming lessons
+- Comprehensive Arabic explanations of:
+  - What is Object-Oriented Programming (البرمجة الكائنية)
+  - Everything in Ruby is an object (strings, numbers, arrays, etc.)
+  - Class definition syntax with `class`/`end`
+  - Creating objects with `.new`
+  - Instance variables (`@variable`) for storing object data
+  - Instance methods for object behavior
+  - Difference between class (blueprint) and object (instance)
+  - Why use classes: organization, reuse, encapsulation
+- Practical examples: Student, Rectangle, BankAccount, Book, Product, Player classes
+- Common errors: forgetting @, calling method on class instead of object, forgetting new
+- Summary table of key concepts
+- Exercise: create Person class with set_info, get_name, get_age, introduce methods
+- Added exercise configuration to course.json with hints
+- All typechecks, lint, and build pass
+- Browser verification confirmed: RTL layout, content rendering, code playground with exercise
+
+**Files changed:**
+- content/lessons/oop/classes-objects.md (new - lesson content)
+- content/course.json (added exercise configuration for classes-objects lesson)
+
+**Learnings for future iterations:**
+- Created new `oop` directory for OOP-related lessons (classes, initialize, inheritance)
+- Instance variables (@) are private to each object - need getter methods to access
+- The `.new` method creates new instances; calling method on class directly raises NoMethodError
+- This lesson introduces OOP basics without initialize - next lesson (US-044) will cover constructors
+- Exercise uses set_info pattern (manual setters) to prepare for accessor shortcuts in next lesson
+
+---
+
 ## Current Story
 
-(completed US-042, ready for next iteration)
+(completed US-043, ready for next iteration)
 
 ## Notes
 
