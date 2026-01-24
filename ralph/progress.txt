@@ -664,9 +664,41 @@ Last Updated: 2026-01-24
 
 ---
 
+### 2026-01-24 - US-024: Lesson: Common String Methods
+
+**What was implemented:**
+- Created Common String Methods lesson at `/content/lessons/fundamentals/string-methods.md`
+- Comprehensive Arabic explanations of string manipulation methods:
+  - Case conversion: upcase, downcase, capitalize, swapcase
+  - String info: length, size, empty?, include?
+  - Cleaning: strip, lstrip, rstrip, chomp
+  - Reversal and repetition: reverse, *
+  - Splitting and joining: split, join
+  - Search and replace: gsub, sub, delete
+  - Accessing parts: indexing [0], [-1], ranges [0..4]
+- Summary table with all 10 key methods
+- Method chaining examples (e.g., text.strip.downcase.capitalize)
+- Practical examples: cleaning email input, transforming filenames
+- Important note about methods not modifying original string
+- Exercise: transform name/email/address using strip, upcase, downcase, gsub, length
+- Added exercise configuration to course.json with hints
+- Browser verification confirmed: RTL layout, content rendering, exercise with code playground
+
+**Files changed:**
+- content/lessons/fundamentals/string-methods.md (new - lesson content)
+- content/course.json (added exercise configuration for string-methods lesson)
+
+**Learnings for future iterations:**
+- String methods in Ruby return new strings, don't modify the original
+- Method chaining is a common Ruby pattern: text.strip.downcase.capitalize
+- Exercise using real data (name, email, address) makes learning practical
+- gsub replaces all occurrences, sub replaces only the first
+
+---
+
 ## Current Story
 
-(completed US-023, ready for next iteration)
+(completed US-024, ready for next iteration)
 
 ## Notes
 
