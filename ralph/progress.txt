@@ -726,9 +726,39 @@ Last Updated: 2026-01-24
 
 ---
 
+### 2026-01-24 - US-026: Lesson: Getting User Input
+
+**What was implemented:**
+- Created user input lesson at `/content/lessons/fundamentals/user-input.md`
+- Comprehensive Arabic explanations of:
+  - `gets` command for reading user input
+  - `gets.chomp` to remove trailing newline character
+  - Difference between gets with and without chomp
+  - Special note about simulated input system in browser (ruby.wasm)
+  - How the simulated input works (pre-enter values, line-by-line reading)
+- Helper functions: strip for cleaning input, checking for empty input
+- Summary table of gets variants
+- Practical examples: greeting, collecting info, Q&A
+- Important reminder that gets always returns a string
+- Exercise: ask user name and greet them (using simulated input)
+- Added exercise configuration to course.json with defaultInput for pre-populated input
+- All typechecks, lint, and build pass
+
+**Files changed:**
+- content/lessons/fundamentals/user-input.md (new - lesson content)
+- content/course.json (added exercise configuration for user-input lesson)
+
+**Learnings for future iterations:**
+- Use `defaultInput` in exercise config to pre-populate the simulated input field
+- The simulated input system reads line-by-line, matching multiple gets calls
+- Always pair gets with chomp to avoid newline issues
+- Remind learners about browser-based input simulation vs real terminal
+
+---
+
 ## Current Story
 
-(completed US-025, ready for next iteration)
+(completed US-026, ready for next iteration)
 
 ## Notes
 
