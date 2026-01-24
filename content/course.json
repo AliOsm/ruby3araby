@@ -367,7 +367,21 @@
           "id": "arrays",
           "slug": "arrays",
           "title": "المصفوفات",
-          "contentPath": "/content/lessons/collections/arrays.md"
+          "contentPath": "/content/lessons/collections/arrays.md",
+          "exercise": {
+            "starterCode": "# قائمة التسوق\n# 1. أنشئ مصفوفة shopping تحتوي على: \"حليب\"، \"خبز\"، \"بيض\"\n\n\n# 2. أضف \"جبن\" في النهاية\n\n\n# 3. أضف \"ماء\" في البداية\n\n\n# 4. اطبع عدد العناصر\n\n\n# 5. اطبع العنصر الأول\n\n\n# 6. اطبع العنصر الأخير\n\n\n# 7. احذف \"خبز\" من القائمة\n\n\n# 8. اطبع المصفوفة النهائية باستخدام p\n",
+            "expectedOutput": "5\nماء\nجبن\n[\"ماء\", \"حليب\", \"بيض\", \"جبن\"]",
+            "hints": [
+              "لإنشاء المصفوفة: shopping = [\"حليب\", \"خبز\", \"بيض\"]",
+              "للإضافة في النهاية استخدم: shopping << \"جبن\"",
+              "للإضافة في البداية استخدم: shopping.unshift(\"ماء\")",
+              "لطباعة العدد: puts shopping.length",
+              "لطباعة الأول: puts shopping.first أو puts shopping[0]",
+              "لطباعة الأخير: puts shopping.last أو puts shopping[-1]",
+              "لحذف عنصر: shopping.delete(\"خبز\")",
+              "لطباعة المصفوفة: p shopping"
+            ]
+          }
         },
         {
           "id": "array-methods",
