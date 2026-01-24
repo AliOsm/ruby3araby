@@ -1,0 +1,424 @@
+{
+  "terms": [
+    {
+      "id": "algorithm",
+      "english": "Algorithm",
+      "arabic": "خوارزمية",
+      "definition": "مجموعة من الخطوات المحددة والمرتبة لحل مشكلة معينة أو تنفيذ مهمة محددة."
+    },
+    {
+      "id": "array",
+      "english": "Array",
+      "arabic": "مصفوفة",
+      "definition": "هيكل بيانات يخزن مجموعة مرتبة من العناصر، يمكن الوصول إليها عبر الفهرس."
+    },
+    {
+      "id": "assignment",
+      "english": "Assignment",
+      "arabic": "إسناد",
+      "definition": "عملية تخصيص قيمة لمتغير باستخدام عامل الإسناد (=)."
+    },
+    {
+      "id": "block",
+      "english": "Block",
+      "arabic": "كتلة",
+      "definition": "مجموعة من الأوامر المحاطة بـ do...end أو أقواس معقوصة {} تُمرر إلى دالة."
+    },
+    {
+      "id": "boolean",
+      "english": "Boolean",
+      "arabic": "منطقي",
+      "definition": "نوع بيانات يحتوي على قيمتين فقط: true (صحيح) أو false (خطأ)."
+    },
+    {
+      "id": "bug",
+      "english": "Bug",
+      "arabic": "خطأ برمجي",
+      "definition": "خطأ في البرنامج يؤدي إلى نتائج غير متوقعة أو غير صحيحة."
+    },
+    {
+      "id": "class",
+      "english": "Class",
+      "arabic": "صنف",
+      "definition": "قالب أو مخطط يُعرِّف خصائص وسلوكيات الكائنات المنشأة منه."
+    },
+    {
+      "id": "comment",
+      "english": "Comment",
+      "arabic": "تعليق",
+      "definition": "نص في الكود يتجاهله المُفسِّر، يُستخدم لشرح الكود أو تعطيله مؤقتاً."
+    },
+    {
+      "id": "comparison-operator",
+      "english": "Comparison Operator",
+      "arabic": "عامل مقارنة",
+      "definition": "عامل يُقارن بين قيمتين ويُرجع قيمة منطقية (==، !=، <، >، <=، >=)."
+    },
+    {
+      "id": "concatenation",
+      "english": "Concatenation",
+      "arabic": "سَلسَلة",
+      "definition": "عملية دمج نصين أو أكثر في نص واحد باستخدام عامل (+)."
+    },
+    {
+      "id": "conditional",
+      "english": "Conditional",
+      "arabic": "شرطي",
+      "definition": "بنية برمجية تُنفذ كوداً معيناً بناءً على شرط معين (if/else/elsif)."
+    },
+    {
+      "id": "constant",
+      "english": "Constant",
+      "arabic": "ثابت",
+      "definition": "متغير ذو قيمة ثابتة لا يُفترض تغييرها، يُكتب بحروف كبيرة في روبي."
+    },
+    {
+      "id": "constructor",
+      "english": "Constructor",
+      "arabic": "مُنشئ",
+      "definition": "دالة خاصة (initialize في روبي) تُستدعى تلقائياً عند إنشاء كائن جديد."
+    },
+    {
+      "id": "data-type",
+      "english": "Data Type",
+      "arabic": "نوع بيانات",
+      "definition": "تصنيف البيانات الذي يُحدد القيم الممكنة والعمليات المسموحة (نص، رقم، منطقي، إلخ)."
+    },
+    {
+      "id": "debugging",
+      "english": "Debugging",
+      "arabic": "تصحيح الأخطاء",
+      "definition": "عملية إيجاد وإصلاح الأخطاء البرمجية في الكود."
+    },
+    {
+      "id": "default-value",
+      "english": "Default Value",
+      "arabic": "قيمة افتراضية",
+      "definition": "قيمة تُستخدم تلقائياً عندما لا يتم توفير قيمة أخرى."
+    },
+    {
+      "id": "each",
+      "english": "Each",
+      "arabic": "لكل عنصر",
+      "definition": "دالة تكرارية في روبي تُمرر كل عنصر من مجموعة إلى كتلة كود."
+    },
+    {
+      "id": "enumerable",
+      "english": "Enumerable",
+      "arabic": "قابل للتعداد",
+      "definition": "وحدة في روبي توفر دوال للتكرار والمعالجة على المجموعات."
+    },
+    {
+      "id": "exception",
+      "english": "Exception",
+      "arabic": "استثناء",
+      "definition": "خطأ يحدث أثناء تنفيذ البرنامج يُمكن التقاطه ومعالجته."
+    },
+    {
+      "id": "expression",
+      "english": "Expression",
+      "arabic": "تعبير",
+      "definition": "مجموعة من القيم والعوامل التي تُقيَّم لتُنتج قيمة واحدة."
+    },
+    {
+      "id": "false",
+      "english": "False",
+      "arabic": "خطأ",
+      "definition": "قيمة منطقية تمثل عدم الصحة أو النفي."
+    },
+    {
+      "id": "float",
+      "english": "Float",
+      "arabic": "عدد عشري",
+      "definition": "نوع بيانات يمثل الأرقام ذات الفاصلة العشرية (مثل 3.14)."
+    },
+    {
+      "id": "function",
+      "english": "Function",
+      "arabic": "دالة",
+      "definition": "كتلة من الكود قابلة لإعادة الاستخدام تؤدي مهمة محددة. تُسمى method في روبي."
+    },
+    {
+      "id": "getter",
+      "english": "Getter",
+      "arabic": "جالب",
+      "definition": "دالة تُرجع قيمة متغير مثيل من كائن (attr_reader في روبي)."
+    },
+    {
+      "id": "hash",
+      "english": "Hash",
+      "arabic": "قاموس",
+      "definition": "هيكل بيانات يخزن أزواج من المفاتيح والقيم للوصول السريع."
+    },
+    {
+      "id": "identifier",
+      "english": "Identifier",
+      "arabic": "مُعرِّف",
+      "definition": "اسم يُستخدم للتعرف على متغير أو دالة أو صنف أو عنصر آخر في الكود."
+    },
+    {
+      "id": "index",
+      "english": "Index",
+      "arabic": "فهرس",
+      "definition": "رقم يُحدد موقع عنصر في مصفوفة أو نص، يبدأ من الصفر."
+    },
+    {
+      "id": "inheritance",
+      "english": "Inheritance",
+      "arabic": "وراثة",
+      "definition": "آلية تسمح لصنف بأن يرث خصائص وسلوكيات من صنف آخر."
+    },
+    {
+      "id": "initialize",
+      "english": "Initialize",
+      "arabic": "تهيئة",
+      "definition": "دالة المُنشئ في روبي التي تُستدعى عند إنشاء كائن جديد."
+    },
+    {
+      "id": "input",
+      "english": "Input",
+      "arabic": "إدخال",
+      "definition": "البيانات التي يُدخلها المستخدم أو تأتي من مصدر خارجي للبرنامج."
+    },
+    {
+      "id": "instance",
+      "english": "Instance",
+      "arabic": "مثيل",
+      "definition": "كائن مُنشأ من صنف معين، له قيم خاصة به لمتغيرات المثيل."
+    },
+    {
+      "id": "instance-variable",
+      "english": "Instance Variable",
+      "arabic": "متغير مثيل",
+      "definition": "متغير ينتمي لكائن معين ويبدأ بـ @ في روبي."
+    },
+    {
+      "id": "integer",
+      "english": "Integer",
+      "arabic": "عدد صحيح",
+      "definition": "نوع بيانات يمثل الأرقام الصحيحة بدون فاصلة عشرية."
+    },
+    {
+      "id": "interpolation",
+      "english": "Interpolation",
+      "arabic": "إقحام",
+      "definition": "إدراج قيم المتغيرات داخل نص باستخدام #{} في روبي."
+    },
+    {
+      "id": "iteration",
+      "english": "Iteration",
+      "arabic": "تكرار",
+      "definition": "تنفيذ كتلة كود عدة مرات، عادة باستخدام حلقات."
+    },
+    {
+      "id": "keyword",
+      "english": "Keyword",
+      "arabic": "كلمة محجوزة",
+      "definition": "كلمة لها معنى خاص في لغة البرمجة ولا يمكن استخدامها كمُعرِّف."
+    },
+    {
+      "id": "lambda",
+      "english": "Lambda",
+      "arabic": "لامدا",
+      "definition": "دالة مجهولة تتحقق من عدد المعاملات وتُرجع بشكل طبيعي."
+    },
+    {
+      "id": "loop",
+      "english": "Loop",
+      "arabic": "حلقة",
+      "definition": "بنية برمجية تُكرر تنفيذ كتلة كود حتى يتحقق شرط معين."
+    },
+    {
+      "id": "map",
+      "english": "Map",
+      "arabic": "تحويل",
+      "definition": "دالة تُطبق عملية على كل عنصر في مجموعة وتُرجع مجموعة جديدة."
+    },
+    {
+      "id": "method",
+      "english": "Method",
+      "arabic": "دالة",
+      "definition": "كتلة كود مُسماة يمكن استدعاؤها لتنفيذ مهمة محددة."
+    },
+    {
+      "id": "mixin",
+      "english": "Mixin",
+      "arabic": "مزيج",
+      "definition": "وحدة تُضاف إلى صنف لتوفير وظائف إضافية دون وراثة كاملة."
+    },
+    {
+      "id": "module",
+      "english": "Module",
+      "arabic": "وحدة",
+      "definition": "حاوية للدوال والثوابت يمكن خلطها مع أصناف أو استخدامها للتنظيم."
+    },
+    {
+      "id": "nil",
+      "english": "Nil",
+      "arabic": "عدم",
+      "definition": "قيمة خاصة في روبي تمثل غياب القيمة أو اللاشيء."
+    },
+    {
+      "id": "object",
+      "english": "Object",
+      "arabic": "كائن",
+      "definition": "مثيل من صنف يجمع بين البيانات (الخصائص) والسلوك (الدوال)."
+    },
+    {
+      "id": "oop",
+      "english": "Object-Oriented Programming",
+      "arabic": "برمجة كائنية التوجه",
+      "definition": "نموذج برمجي يُنظم البرامج حول الكائنات بدلاً من الإجراءات."
+    },
+    {
+      "id": "operator",
+      "english": "Operator",
+      "arabic": "عامل",
+      "definition": "رمز يُنفذ عملية على قيمة أو أكثر (+، -، *، /، ==، إلخ)."
+    },
+    {
+      "id": "output",
+      "english": "Output",
+      "arabic": "إخراج",
+      "definition": "البيانات التي يُنتجها البرنامج ويُظهرها للمستخدم أو يُرسلها لمكان آخر."
+    },
+    {
+      "id": "parameter",
+      "english": "Parameter",
+      "arabic": "معامل",
+      "definition": "متغير في تعريف الدالة يستقبل القيمة المُمررة عند الاستدعاء."
+    },
+    {
+      "id": "proc",
+      "english": "Proc",
+      "arabic": "إجراء",
+      "definition": "كائن يُغلف كتلة كود يمكن تخزينها واستدعاؤها لاحقاً."
+    },
+    {
+      "id": "puts",
+      "english": "Puts",
+      "arabic": "طباعة",
+      "definition": "دالة في روبي تطبع نصاً على الشاشة مع سطر جديد في النهاية."
+    },
+    {
+      "id": "range",
+      "english": "Range",
+      "arabic": "نطاق",
+      "definition": "تسلسل من القيم بين نقطة بداية ونهاية (مثل 1..10)."
+    },
+    {
+      "id": "reduce",
+      "english": "Reduce",
+      "arabic": "تجميع",
+      "definition": "دالة تُجمع عناصر مجموعة في قيمة واحدة باستخدام عملية تراكمية."
+    },
+    {
+      "id": "refactoring",
+      "english": "Refactoring",
+      "arabic": "إعادة هيكلة",
+      "definition": "تحسين بنية الكود دون تغيير سلوكه الخارجي."
+    },
+    {
+      "id": "return",
+      "english": "Return",
+      "arabic": "إرجاع",
+      "definition": "كلمة محجوزة تُنهي تنفيذ الدالة وتُرجع قيمة اختيارية."
+    },
+    {
+      "id": "ruby",
+      "english": "Ruby",
+      "arabic": "روبي",
+      "definition": "لغة برمجة ديناميكية كائنية التوجه صُممت لسعادة المبرمج."
+    },
+    {
+      "id": "scope",
+      "english": "Scope",
+      "arabic": "نطاق",
+      "definition": "المنطقة في الكود التي يمكن فيها الوصول إلى متغير معين."
+    },
+    {
+      "id": "select",
+      "english": "Select",
+      "arabic": "اختيار",
+      "definition": "دالة تُرشح عناصر مجموعة بناءً على شرط وتُرجع العناصر المطابقة."
+    },
+    {
+      "id": "setter",
+      "english": "Setter",
+      "arabic": "مُعيِّن",
+      "definition": "دالة تُعيِّن قيمة لمتغير مثيل في كائن (attr_writer في روبي)."
+    },
+    {
+      "id": "splat",
+      "english": "Splat Operator",
+      "arabic": "عامل التفريق",
+      "definition": "عامل (*) يجمع عدة معاملات في مصفوفة أو يُفرق مصفوفة إلى معاملات."
+    },
+    {
+      "id": "statement",
+      "english": "Statement",
+      "arabic": "جملة",
+      "definition": "تعليمة برمجية كاملة تُنفذ إجراءً معيناً."
+    },
+    {
+      "id": "string",
+      "english": "String",
+      "arabic": "نص",
+      "definition": "تسلسل من الأحرف محاط بعلامات اقتباس، يُستخدم لتمثيل النصوص."
+    },
+    {
+      "id": "super",
+      "english": "Super",
+      "arabic": "أعلى",
+      "definition": "كلمة محجوزة تستدعي نفس الدالة من الصنف الأب."
+    },
+    {
+      "id": "symbol",
+      "english": "Symbol",
+      "arabic": "رمز",
+      "definition": "مُعرِّف خفيف الوزن وثابت يبدأ بنقطتين (:) في روبي."
+    },
+    {
+      "id": "syntax",
+      "english": "Syntax",
+      "arabic": "صياغة",
+      "definition": "قواعد كتابة الكود الصحيح في لغة برمجة معينة."
+    },
+    {
+      "id": "ternary",
+      "english": "Ternary Operator",
+      "arabic": "العامل الثلاثي",
+      "definition": "عامل شرطي مختصر: شرط ? قيمة_صحيح : قيمة_خطأ"
+    },
+    {
+      "id": "true",
+      "english": "True",
+      "arabic": "صحيح",
+      "definition": "قيمة منطقية تمثل الصحة أو الإيجاب."
+    },
+    {
+      "id": "type-conversion",
+      "english": "Type Conversion",
+      "arabic": "تحويل النوع",
+      "definition": "تغيير نوع البيانات من نوع إلى آخر (مثل to_i، to_s، to_f)."
+    },
+    {
+      "id": "variable",
+      "english": "Variable",
+      "arabic": "متغير",
+      "definition": "حاوية مُسماة تخزن قيمة يمكن تغييرها أثناء تنفيذ البرنامج."
+    },
+    {
+      "id": "while",
+      "english": "While Loop",
+      "arabic": "حلقة طالما",
+      "definition": "حلقة تُكرر تنفيذ الكود طالما الشرط صحيح."
+    },
+    {
+      "id": "yield",
+      "english": "Yield",
+      "arabic": "تنفيذ الكتلة",
+      "definition": "كلمة محجوزة تُنفذ الكتلة الممررة للدالة وتُرجع نتيجتها."
+    }
+  ]
+}
