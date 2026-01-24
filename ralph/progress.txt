@@ -1043,9 +1043,41 @@ Last Updated: 2026-01-24
 
 ---
 
+### 2026-01-24 - US-036: Lesson: Hashes
+
+**What was implemented:**
+- Created Hashes lesson at `/content/lessons/collections/hashes.md`
+- Comprehensive Arabic explanations of:
+  - Hash creation: `{}`, `Hash.new`, and default values
+  - Symbol keys: old syntax (`:key =>`) and modern syntax (`key:`)
+  - Accessing values: `[]`, `fetch`, `dig` for nested hashes
+  - Adding/modifying: direct assignment, `store`, `merge`
+  - Deleting: `delete`, `delete_if`, `clear`
+  - Hash info: `length`, `empty?`, `key?`, `value?`, `keys`, `values`
+  - Iteration: `each`, `each_key`, `each_value`
+- Comparison table of array vs hash
+- Practical examples: person data, word counter, student grades, app settings
+- Nested hashes with `dig` for safe access
+- Exercise: create person hash, access values, add key, check key existence
+- Added exercise configuration to course.json with hints
+- All typechecks, lint, and build pass
+
+**Files changed:**
+- content/lessons/collections/hashes.md (new - lesson content)
+- content/course.json (added exercise configuration for hashes lesson)
+
+**Learnings for future iterations:**
+- Symbol keys with modern syntax (`key: value`) are preferred in Ruby
+- `Hash.new(0)` is useful for counters - avoids nil checks
+- `fetch` with default value is safer than `[]` which returns nil
+- `dig` is essential for nested hashes - prevents NoMethodError on nil
+- Hashes maintain insertion order since Ruby 1.9
+
+---
+
 ## Current Story
 
-(completed US-035, ready for next iteration)
+(completed US-036, ready for next iteration)
 
 ## Notes
 
