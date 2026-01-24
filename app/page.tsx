@@ -1,7 +1,6 @@
 "use client";
 
-import CodeEditor from "@/components/CodeEditor";
-import { useState } from "react";
+import CodePlayground from "@/components/CodePlayground";
 
 const sampleCode = `# مرحبا بك في روبي بالعربي!
 # Welcome to Ruby3araby!
@@ -24,8 +23,6 @@ end
 `;
 
 export default function Home() {
-  const [code, setCode] = useState(sampleCode);
-
   return (
     <div className="min-h-screen bg-background text-foreground">
       <main className="mx-auto max-w-4xl px-6 py-12">
@@ -42,13 +39,14 @@ export default function Home() {
           </button>
         </section>
 
-        {/* Code Editor Section */}
+        {/* Code Playground Section */}
         <section className="mb-12">
-          <h2 className="mb-6 text-2xl font-semibold">محرر الأكواد</h2>
+          <h2 className="mb-6 text-2xl font-semibold">جرب البرمجة الآن</h2>
           <p className="mb-4 text-foreground/80">
-            جرب كتابة كود روبي في المحرر التفاعلي أدناه:
+            اكتب كود روبي في المحرر التفاعلي أدناه واضغط على &quot;تشغيل&quot;
+            لرؤية النتيجة:
           </p>
-          <CodeEditor value={code} onChange={setCode} height="400px" />
+          <CodePlayground starterCode={sampleCode} editorHeight="350px" />
         </section>
 
         {/* RTL Test Section */}
