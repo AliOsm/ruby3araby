@@ -635,7 +635,17 @@
           "id": "error-handling",
           "slug": "error-handling",
           "title": "التعامل مع الأخطاء",
-          "contentPath": "/content/lessons/errors/error-handling.md"
+          "contentPath": "/content/lessons/errors/error-handling.md",
+          "exercise": {
+            "starterCode": "# اكتب دالة safe_divide هنا\ndef safe_divide(a, b)\n  # استخدم begin/rescue/end\n  # حاول قسمة a على b\n  # إذا حدث خطأ ZeroDivisionError اطبع رسالة خطأ وأرجع nil\n  # إذا نجحت، أرجع الناتج\nend\n\n# اختبر الدالة\nresult1 = safe_divide(10, 2)\nputs \"الناتج: #{result1}\" if result1\n\nresult2 = safe_divide(10, 0)\nputs \"الناتج: #{result2}\" if result2",
+            "expectedOutput": "الناتج: 5\nخطأ: لا يمكن القسمة على صفر!",
+            "hints": [
+              "ابدأ بـ begin ثم اكتب result = a / b",
+              "استخدم rescue ZeroDivisionError لالتقاط خطأ القسمة على صفر",
+              "داخل rescue اطبع: puts \"خطأ: لا يمكن القسمة على صفر!\"",
+              "بعد rescue أرجع nil وبعد begin أرجع result"
+            ]
+          }
         }
       ]
     },
