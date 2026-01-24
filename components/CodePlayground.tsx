@@ -231,6 +231,14 @@ export default function CodePlayground({
     }
   }, [starterCode, defaultInput, lessonId]);
 
+  // Handle Ctrl/Cmd + S to prevent browser save and trigger auto-save
+  const handleSave = useCallback(() => {
+    // Trigger immediate save if auto-save is enabled
+    if (lessonId && shouldAutoSave) {
+      ProgressService.saveCode(lessonId, code);
+    }
+  }, [lessonId, shouldAutoSave, code]);
+
   // Update code and input when props change
   useEffect(() => {
     setCode(starterCode);
@@ -282,56 +290,67 @@ export default function CodePlayground({
       )}
 
       {/* Code Editor */}
-      <CodeEditor value={code} onChange={handleCodeChange} height={editorHeight} />
+      <CodeEditor
+        value={code}
+        onChange={handleCodeChange}
+        height={editorHeight}
+        onRun={handleRun}
+        onSave={handleSave}
+      />
 
       {/* Control Buttons */}
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap items-center gap-2">
         {/* Run Button */}
-        <button
-          onClick={handleRun}
-          disabled={isLoading}
-          className="flex items-center gap-2 rounded-lg bg-emerald-600 px-4 py-2 font-medium text-white transition-colors hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-50"
-        >
-          {isLoading ? (
-            <>
-              <svg
-                className="h-4 w-4 animate-spin"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                <circle
-                  className="opacity-25"
-                  cx="12"
-                  cy="12"
-                  r="10"
-                  stroke="currentColor"
-                  strokeWidth="4"
-                />
-                <path
-                  className="opacity-75"
+        <div className="flex flex-col items-center gap-1">
+          <button
+            onClick={handleRun}
+            disabled={isLoading}
+            className="flex items-center gap-2 rounded-lg bg-emerald-600 px-4 py-2 font-medium text-white transition-colors hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            {isLoading ? (
+              <>
+                <svg
+                  className="h-4 w-4 animate-spin"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  />
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  />
+                </svg>
+                <span>{loadingText}</span>
+              </>
+            ) : (
+              <>
+                <svg
+                  className="h-4 w-4"
                   fill="currentColor"
-                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                />
-              </svg>
-              <span>{loadingText}</span>
-            </>
-          ) : (
-            <>
-              <svg
-                className="h-4 w-4"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              <span>تشغيل</span>
-            </>
-          )}
-        </button>
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                <span>تشغيل</span>
+              </>
+            )}
+          </button>
+          <span className="text-xs text-foreground/40" dir="ltr">
+            Ctrl+Enter
+          </span>
+        </div>
 
         {/* Check Answer Button - only shown when expectedOutput is provided */}
         {hasValidation && (
@@ -413,6 +432,13 @@ export default function CodePlayground({
           </svg>
           <span>إعادة تعيين</span>
         </button>
+
+        {/* Keyboard Shortcut Hint for Save */}
+        {shouldAutoSave && (
+          <span className="mr-auto text-xs text-foreground/40" dir="ltr">
+            Ctrl+S لحفظ الكود
+          </span>
+        )}
       </div>
 
       {/* Validation Feedback */}

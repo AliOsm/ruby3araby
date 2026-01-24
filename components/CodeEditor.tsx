@@ -1,8 +1,8 @@
 "use client";
 
-import Editor, { OnChange, OnMount } from "@monaco-editor/react";
-import { editor } from "monaco-editor";
-import { useCallback, useRef, useMemo } from "react";
+import Editor, { OnChange, OnMount, Monaco } from "@monaco-editor/react";
+import type { editor } from "monaco-editor";
+import { useCallback, useRef, useMemo, useEffect } from "react";
 import { useTheme } from "@/lib/theme";
 
 export interface CodeEditorProps {
@@ -10,6 +10,10 @@ export interface CodeEditorProps {
   onChange?: (value: string) => void;
   height?: string;
   readOnly?: boolean;
+  /** Callback when Ctrl/Cmd + Enter is pressed */
+  onRun?: () => void;
+  /** Callback when Ctrl/Cmd + S is pressed (also triggers auto-save) */
+  onSave?: () => void;
 }
 
 export default function CodeEditor({
@@ -17,9 +21,21 @@ export default function CodeEditor({
   onChange,
   height = "300px",
   readOnly = false,
+  onRun,
+  onSave,
 }: CodeEditorProps) {
   const editorRef = useRef<editor.IStandaloneCodeEditor | null>(null);
   const { resolvedTheme } = useTheme();
+
+  // Store callbacks in refs to avoid re-registering actions
+  const onRunRef = useRef(onRun);
+  const onSaveRef = useRef(onSave);
+
+  // Update refs when callbacks change
+  useEffect(() => {
+    onRunRef.current = onRun;
+    onSaveRef.current = onSave;
+  }, [onRun, onSave]);
 
   // Derive Monaco theme from resolved theme (no state needed)
   const monacoTheme = useMemo<"vs-dark" | "light">(
@@ -27,9 +43,39 @@ export default function CodeEditor({
     [resolvedTheme]
   );
 
-  const handleEditorDidMount: OnMount = useCallback((mountedEditor) => {
-    editorRef.current = mountedEditor;
-  }, []);
+  const handleEditorDidMount: OnMount = useCallback(
+    (mountedEditor, monaco: Monaco) => {
+      editorRef.current = mountedEditor;
+
+      // Get KeyMod and KeyCode from the monaco instance to avoid SSR issues
+      const { KeyMod, KeyCode } = monaco;
+
+      // Add Ctrl/Cmd + Enter action to run code
+      mountedEditor.addAction({
+        id: "ruby3araby-run-code",
+        label: "Run Code",
+        keybindings: [KeyMod.CtrlCmd | KeyCode.Enter],
+        run: () => {
+          if (onRunRef.current) {
+            onRunRef.current();
+          }
+        },
+      });
+
+      // Add Ctrl/Cmd + S action to save (prevent browser save dialog)
+      mountedEditor.addAction({
+        id: "ruby3araby-save-code",
+        label: "Save Code",
+        keybindings: [KeyMod.CtrlCmd | KeyCode.KeyS],
+        run: () => {
+          if (onSaveRef.current) {
+            onSaveRef.current();
+          }
+        },
+      });
+    },
+    []
+  );
 
   const handleChange: OnChange = useCallback(
     (newValue) => {
