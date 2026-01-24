@@ -1700,9 +1700,32 @@ Last Updated: 2026-01-24
 
 ---
 
+### 2026-01-24 - US-055: Performance: Lazy Load ruby.wasm
+
+**What was implemented:**
+- Added WASM caching using the Cache API for faster subsequent loads
+- Created `fetchWasmWithCache()` function in `ruby-runner.ts`
+- WASM binary is cached with key `ruby3araby-wasm-cache-v1`
+- Graceful fallback to regular fetch if Cache API is unavailable
+- Verified that lazy loading was already implemented (WASM only loads when user clicks Run)
+- Verified that loading indicator was already implemented ("جارٍ تحميل Ruby...")
+- Verified homepage does not import CodePlayground or ruby-runner (no WASM download)
+- All typechecks and build pass
+
+**Files changed:**
+- lib/ruby-runner.ts (added Cache API caching, updated documentation)
+
+**Learnings for future iterations:**
+- Cache API is available in modern browsers; always check `typeof caches !== 'undefined'`
+- Response can only be consumed once; use `response.clone()` before caching
+- The existing implementation was already lazy - WASM only fetches when `initialize()` is called
+- Loading indicator shows different text for WASM init vs code execution
+
+---
+
 ## Current Story
 
-(completed US-054, ready for next iteration)
+(completed US-055, ready for next iteration)
 
 ## Notes
 
