@@ -789,9 +789,41 @@ Last Updated: 2026-01-24
 
 ---
 
+### 2026-01-24 - US-028: Lesson: Multiple Assignment and Nil Handling
+
+**What was implemented:**
+- Created Multiple Assignment and Nil Handling lesson at `/content/lessons/fundamentals/multiple-assignment.md`
+- Comprehensive Arabic explanations of:
+  - Parallel assignment: a, b = 1, 2 for assigning multiple values in one line
+  - Swapping values: a, b = b, a without temporary variables
+  - Unequal variable/value counts (extra values ignored, extra variables become nil)
+  - Splat operator (*) for collecting remaining values
+  - What nil is and when it occurs (unassigned variables, missing array elements, missing hash keys)
+  - Safe navigation operator (&.) to prevent NoMethodError on nil
+  - Default values using || and ||= operators
+  - Checking for nil with nil? and unless
+- Summary table comparing all techniques
+- Practical examples: user data processing, value sorting, extracting first/last elements
+- Exercise: use parallel assignment, swapping, &., and || operators
+- Added exercise configuration to course.json with hints
+- All typechecks, lint, and build pass
+- Browser verification confirmed: RTL layout, content rendering, code playground works
+
+**Files changed:**
+- content/lessons/fundamentals/multiple-assignment.md (new - lesson content)
+- content/course.json (added exercise configuration for multiple-assignment lesson)
+
+**Learnings for future iterations:**
+- The safe navigation operator (&.) is Ruby 2.3+ feature - returns nil instead of raising error
+- Parallel assignment is useful for method returns: def coords; [x, y]; end -> x, y = coords
+- The splat (*) operator can appear at beginning, middle, or end of variable list
+- || returns second value if first is nil OR false; &. only handles nil
+
+---
+
 ## Current Story
 
-(completed US-027, ready for next iteration)
+(completed US-028, ready for next iteration)
 
 ## Notes
 
