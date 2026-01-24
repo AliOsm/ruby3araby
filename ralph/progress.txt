@@ -635,9 +635,38 @@ Last Updated: 2026-01-24
 
 ---
 
+### 2026-01-24 - US-023: Lesson: String Interpolation
+
+**What was implemented:**
+- Created String Interpolation lesson at `/content/lessons/fundamentals/string-interpolation.md`
+- Comprehensive Arabic explanations of:
+  - `#{}` syntax for embedding variables and expressions in strings
+  - Difference between double quotes (interpolation works) and single quotes (no interpolation)
+  - Embedding arithmetic expressions and method calls inside `#{}`
+  - Comparison between interpolation and concatenation (+)
+  - Why interpolation is preferred (readability, auto type conversion, performance)
+- Comparison table: Interpolation vs Concatenation
+- Practical examples: greeting messages, product info, file paths, multi-line strings
+- Escaping `#{}` with backslash for literal output
+- Exercise: build weather report strings using interpolation with temperature conversion
+- Added exercise configuration to course.json with hints
+- Browser verification confirmed: RTL layout, content rendering, exercise starter code displayed
+
+**Files changed:**
+- content/lessons/fundamentals/string-interpolation.md (new - lesson content)
+- content/course.json (added exercise configuration for string-interpolation lesson)
+
+**Learnings for future iterations:**
+- String interpolation only works with double quotes, not single quotes
+- The `#{}` can contain any Ruby expression, not just variables
+- Ruby automatically calls `to_s` on values inside `#{}`
+- Temperature conversion formula: celsius * 9/5 + 32 = fahrenheit
+
+---
+
 ## Current Story
 
-(completed US-022, ready for next iteration)
+(completed US-023, ready for next iteration)
 
 ## Notes
 
