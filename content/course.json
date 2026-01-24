@@ -304,7 +304,17 @@
           "id": "ternary",
           "slug": "ternary",
           "title": "العامل الثلاثي",
-          "contentPath": "/content/lessons/control-flow/ternary.md"
+          "contentPath": "/content/lessons/control-flow/ternary.md",
+          "exercise": {
+            "starterCode": "# حوّل هذا الكود إلى عامل ثلاثي:\n# if number > 0\n#   puts \"موجب\"\n# else\n#   puts \"سالب أو صفر\"\n# end\n\nnumber = 10\n# اكتب الحل هنا باستخدام العامل الثلاثي\n",
+            "expectedOutput": "موجب",
+            "hints": [
+              "عرّف المتغير: number = 10",
+              "الصيغة: puts الشرط ? \"قيمة1\" : \"قيمة2\"",
+              "الشرط هو: number > 0",
+              "الحل: puts number > 0 ? \"موجب\" : \"سالب أو صفر\""
+            ]
+          }
         }
       ]
     },
