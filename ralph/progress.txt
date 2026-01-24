@@ -1177,9 +1177,48 @@ Last Updated: 2026-01-24
 
 ---
 
+### 2026-01-24 - US-040: Lesson: Blocks
+
+**What was implemented:**
+- Created Blocks lesson at `/content/lessons/blocks/block-syntax.md`
+- Created the `blocks` directory for block-related lessons
+- Comprehensive Arabic explanations of:
+  - `do...end` syntax for multi-line blocks
+  - `{ }` curly brace syntax for single-line blocks
+  - Block parameters with `|item|` notation
+  - Multiple block parameters (key, value) and (item, index)
+  - Blocks with `each`, `each_with_index`, `times`, `upto`, `downto`
+  - `map` for transforming collections
+  - `select` and `reject` for filtering
+  - `find` for finding first match
+  - `reduce` for aggregating values
+  - `any?`, `all?`, `none?` for boolean checks
+  - Method chaining with blocks
+  - Block variable scope (local vs outer variables)
+- Summary table of all key block methods
+- Practical examples: sales analysis, name processing, product filtering
+- Exercise: use select, map, reduce to process numbers array (expected output: 60)
+- Added exercise configuration to course.json with hints
+- All typechecks, lint, and build pass
+- Browser verification confirmed: RTL layout, content rendering, code playground with exercise
+
+**Files changed:**
+- content/lessons/blocks/block-syntax.md (new - lesson content)
+- content/course.json (added exercise configuration for block-syntax lesson)
+
+**Learnings for future iterations:**
+- Created new `blocks` directory for block-related lessons (blocks, yield, procs/lambdas)
+- Blocks are fundamental to Ruby - they enable functional-style programming
+- `do...end` is conventional for multi-line blocks, `{ }` for single-line
+- Method chaining (select/map/reduce) is idiomatic Ruby for data processing
+- Block variables defined inside blocks are local to the block
+- Blocks can access and modify outer variables (closures)
+
+---
+
 ## Current Story
 
-(completed US-039, ready for next iteration)
+(completed US-040, ready for next iteration)
 
 ## Notes
 
