@@ -229,14 +229,15 @@ export default function Home() {
                         <span className="w-8 select-none text-left text-zinc-600">
                           {i + 1}
                         </span>
-                        <code className="flex-1">
+                        <code className="flex-1 whitespace-pre">
                           {line.startsWith("#") ? (
                             <span className="text-zinc-500">{line}</span>
-                          ) : line.includes("puts") ? (
+                          ) : line.trimStart().startsWith("puts") ? (
                             <>
+                              <span className="text-zinc-300">{line.match(/^\s*/)?.[0]}</span>
                               <span className="text-purple-400">puts</span>
                               <span className="text-zinc-300">
-                                {line.replace("puts", "")}
+                                {line.trimStart().replace("puts", "")}
                               </span>
                             </>
                           ) : line.includes("times") ? (
