@@ -63,9 +63,9 @@ export default function CodeBlock({ code, language = "ruby" }: CodeBlockProps) {
   }, [cleanCode]);
 
   return (
-    <div className="group relative">
+    <div className="group relative min-w-0">
       <div
-        className="[&>pre]:rounded-lg [&>pre]:overflow-x-auto [&>pre]:text-sm [&>pre]:font-mono [&>pre]:p-4"
+        className="overflow-x-auto [&>pre]:rounded-lg [&>pre]:overflow-x-auto [&>pre]:text-sm [&>pre]:font-mono [&>pre]:p-4"
         dir="ltr"
         dangerouslySetInnerHTML={{ __html: highlightedHtml }}
       />

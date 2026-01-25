@@ -57,12 +57,12 @@ export default async function LessonPage({ params }: LessonPageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-background lg:flex lg:flex-row">
+    <div className="min-h-screen overflow-x-hidden bg-background lg:flex lg:flex-row">
       {/* Sidebar - right side in RTL (flex-row works because RTL reverses flex direction) */}
       <Sidebar course={course} hideToggleButton />
 
       {/* Main content wrapper */}
-      <div className="flex-1">
+      <div className="min-w-0 flex-1">
         {/* Header with breadcrumb - mobile-optimized with wrapping */}
         <header className="border-b border-foreground/10 bg-foreground/5">
           <div className="mx-auto max-w-5xl px-3 py-3 sm:px-4 sm:py-4">
@@ -96,7 +96,7 @@ export default async function LessonPage({ params }: LessonPageProps) {
           {/* In RTL with flex-row: first child appears on RIGHT, last child on LEFT */}
           <div className="flex flex-col gap-6 xl:flex-row">
             {/* Arabic content panel - appears on right in RTL */}
-            <article className="flex-1 xl:max-w-[50%]">
+            <article className="min-w-0 flex-1 xl:max-w-[50%]">
               <LessonContent
                 sectionSlug={section}
                 lessonSlug={lesson}
