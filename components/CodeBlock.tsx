@@ -73,7 +73,7 @@ export default function CodeBlock({ code, language = "ruby" }: CodeBlockProps) {
       <button
         onClick={handleCopy}
         aria-label={copySuccess ? "تم النسخ" : "نسخ الشيفرة"}
-        className="absolute top-2 left-2 flex h-8 w-8 items-center justify-center rounded-md bg-foreground/10 text-foreground/70 opacity-100 backdrop-blur-sm transition-all hover:bg-foreground/20 hover:text-foreground sm:opacity-0 sm:group-hover:opacity-100"
+        className="absolute top-2 right-2 flex h-8 w-8 items-center justify-center rounded-md bg-foreground/10 text-foreground/70 opacity-100 backdrop-blur-sm transition-all hover:bg-foreground/20 hover:text-foreground sm:opacity-0 sm:group-hover:opacity-100"
       >
         {copySuccess ? (
           <svg
