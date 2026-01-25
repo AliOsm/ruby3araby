@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useCallback } from "react";
-import { Highlight, themes, PrismTheme } from "prism-react-renderer";
+import { useState, useCallback, useEffect } from "react";
+import { codeToHtml } from "shiki";
 import { useTheme } from "@/lib/theme";
 
 interface CodeBlockProps {
@@ -10,20 +10,38 @@ interface CodeBlockProps {
 }
 
 /**
- * Syntax-highlighted code block component using prism-react-renderer
- * Supports Ruby and other languages with light/dark theme awareness
+ * Syntax-highlighted code block component using shiki
+ * Uses VS Code's Dark+/Light+ themes to match Monaco editor
  * Includes a copy button that appears on hover (desktop) or always visible (mobile)
  */
 export default function CodeBlock({ code, language = "ruby" }: CodeBlockProps) {
   const { resolvedTheme } = useTheme();
   const [copySuccess, setCopySuccess] = useState(false);
-
-  // Use oneDark for dark mode and oneLight for light mode (both are standard Prism themes)
-  const theme: PrismTheme =
-    resolvedTheme === "dark" ? themes.oneDark : themes.oneLight;
+  const [highlightedHtml, setHighlightedHtml] = useState<string>("");
 
   // Clean up the code (remove trailing newline if present)
   const cleanCode = code.replace(/\n$/, "");
+
+  // Highlight code with shiki
+  useEffect(() => {
+    const highlight = async () => {
+      try {
+        // Use VS Code themes to match Monaco editor
+        const theme = resolvedTheme === "dark" ? "dark-plus" : "light-plus";
+        const html = await codeToHtml(cleanCode, {
+          lang: language,
+          theme,
+        });
+        setHighlightedHtml(html);
+      } catch {
+        // Fallback to plain text if highlighting fails
+        setHighlightedHtml(
+          `<pre class="shiki"><code>${cleanCode.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</code></pre>`
+        );
+      }
+    };
+    highlight();
+  }, [cleanCode, language, resolvedTheme]);
 
   // Copy code to clipboard
   const handleCopy = useCallback(async () => {
@@ -46,23 +64,11 @@ export default function CodeBlock({ code, language = "ruby" }: CodeBlockProps) {
 
   return (
     <div className="group relative">
-      <Highlight theme={theme} code={cleanCode} language={language}>
-        {({ className, style, tokens, getLineProps, getTokenProps }) => (
-          <pre
-            className={`${className} rounded-lg overflow-x-auto text-sm font-mono p-4`}
-            style={style}
-            dir="ltr"
-          >
-            {tokens.map((line, i) => (
-              <div key={i} {...getLineProps({ line })}>
-                {line.map((token, key) => (
-                  <span key={key} {...getTokenProps({ token })} />
-                ))}
-              </div>
-            ))}
-          </pre>
-        )}
-      </Highlight>
+      <div
+        className="[&>pre]:rounded-lg [&>pre]:overflow-x-auto [&>pre]:text-sm [&>pre]:font-mono [&>pre]:p-4"
+        dir="ltr"
+        dangerouslySetInnerHTML={{ __html: highlightedHtml }}
+      />
       {/* Copy Button - always visible on mobile, hover on desktop */}
       <button
         onClick={handleCopy}

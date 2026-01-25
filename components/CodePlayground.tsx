@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState, useRef, useMemo } from "react";
 import CodeEditor from "./CodeEditor";
+import Tooltip from "./Tooltip";
 import {
   getRubyRunner,
   ExecutionResult,
@@ -336,7 +337,7 @@ export default function CodePlayground({
       {/* Control Buttons - touch-friendly with 44px min tap targets */}
       <div className="flex flex-wrap items-center gap-2">
         {/* Run Button with Tooltip */}
-        <div className="group relative">
+        <Tooltip content={<>تشغيل<span className="mx-1 text-background/60">|</span><span dir="ltr">Ctrl+Enter</span></>}>
           <button
             onClick={handleRun}
             disabled={isLoading}
@@ -391,18 +392,10 @@ export default function CodePlayground({
               </svg>
             )}
           </button>
-          {/* Tooltip */}
-          <div className="pointer-events-none absolute top-full right-1/2 z-10 mt-2 translate-x-1/2 whitespace-nowrap rounded bg-foreground px-2 py-1 text-xs text-background opacity-0 shadow-lg transition-opacity delay-300 group-hover:opacity-100" dir="rtl">
-            تشغيل
-            <span className="mx-1 text-background/60">|</span>
-            <span dir="ltr">Ctrl+Enter</span>
-            {/* Arrow */}
-            <div className="absolute bottom-full right-1/2 translate-x-1/2 border-4 border-transparent border-b-foreground" />
-          </div>
-        </div>
+        </Tooltip>
 
         {/* Copy Button with Tooltip */}
-        <div className="group relative">
+        <Tooltip content={copySuccess ? "تم النسخ!" : "نسخ الشيفرة"}>
           <button
             onClick={handleCopy}
             disabled={isLoading}
@@ -437,16 +430,10 @@ export default function CodePlayground({
               </svg>
             )}
           </button>
-          {/* Tooltip */}
-          <div className="pointer-events-none absolute top-full right-1/2 z-10 mt-2 translate-x-1/2 whitespace-nowrap rounded bg-foreground px-2 py-1 text-xs text-background opacity-0 shadow-lg transition-opacity delay-300 group-hover:opacity-100" dir="rtl">
-            {copySuccess ? "تم النسخ!" : "نسخ الشيفرة"}
-            {/* Arrow */}
-            <div className="absolute bottom-full right-1/2 translate-x-1/2 border-4 border-transparent border-b-foreground" />
-          </div>
-        </div>
+        </Tooltip>
 
         {/* Reset Button with Tooltip */}
-        <div className="group relative">
+        <Tooltip content="إعادة تعيين">
           <button
             onClick={handleReset}
             disabled={isLoading}
@@ -467,13 +454,7 @@ export default function CodePlayground({
               />
             </svg>
           </button>
-          {/* Tooltip */}
-          <div className="pointer-events-none absolute top-full right-1/2 z-10 mt-2 translate-x-1/2 whitespace-nowrap rounded bg-foreground px-2 py-1 text-xs text-background opacity-0 shadow-lg transition-opacity delay-300 group-hover:opacity-100" dir="rtl">
-            إعادة تعيين
-            {/* Arrow */}
-            <div className="absolute bottom-full right-1/2 translate-x-1/2 border-4 border-transparent border-b-foreground" />
-          </div>
-        </div>
+        </Tooltip>
 
         {/* Keyboard Shortcut Hint for Save */}
         {shouldAutoSave && (
@@ -491,9 +472,9 @@ export default function CodePlayground({
         <div className="border-b border-foreground/20 bg-foreground/5 px-3 py-2">
           <span className="text-sm font-medium text-foreground/80">المخرجات</span>
         </div>
-        <div className="min-h-[100px] p-3 font-mono text-sm" dir="ltr">
+        <div className="min-h-[100px] p-3 font-mono text-sm">
           {isLoading ? (
-            <div className="flex items-center gap-2 text-foreground/60">
+            <div className="flex items-center gap-2 text-foreground/60" dir="rtl">
               <svg
                 className="h-4 w-4 animate-spin"
                 fill="none"
@@ -516,14 +497,14 @@ export default function CodePlayground({
               <span>{loadingText}</span>
             </div>
           ) : error ? (
-            <div className="space-y-2">
+            <div className="space-y-2" dir="ltr">
               {output && (
                 <pre className="whitespace-pre-wrap text-foreground/80">{output}</pre>
               )}
               <pre className="whitespace-pre-wrap text-red-400">{error}</pre>
             </div>
           ) : output ? (
-            <pre className="whitespace-pre-wrap text-foreground/80">{output}</pre>
+            <pre className="whitespace-pre-wrap text-foreground/80" dir="ltr">{output}</pre>
           ) : (
             <span className="text-foreground/60" dir="rtl">
               اضغط على &quot;تشغيل&quot; لرؤية المخرجات
