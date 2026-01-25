@@ -3,6 +3,15 @@
 import { useCallback, useEffect, useState, useRef, useMemo } from "react";
 import CodeEditor from "./CodeEditor";
 import Tooltip from "./Tooltip";
+
+/** Detect if user is on Mac for keyboard shortcut display */
+function useIsMac() {
+  const [isMac, setIsMac] = useState(false);
+  useEffect(() => {
+    setIsMac(navigator.platform.toUpperCase().indexOf("MAC") >= 0);
+  }, []);
+  return isMac;
+}
 import {
   getRubyRunner,
   ExecutionResult,
@@ -71,6 +80,7 @@ export default function CodePlayground({
   const [showConfetti, setShowConfetti] = useState(false);
   const confettiRef = useRef<HTMLDivElement>(null);
   const [runStatus, setRunStatus] = useState<"idle" | "success" | "error">("idle");
+  const isMac = useIsMac();
 
   // Auto-save is enabled by default when lessonId is provided
   const shouldAutoSave = enableAutoSave ?? !!lessonId;
@@ -282,6 +292,19 @@ export default function CodePlayground({
     setShowConfetti(false);
   }, [starterCode, defaultInput]);
 
+  // Global keyboard shortcut for Cmd/Ctrl + Enter (fallback when editor not focused)
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Check for Cmd+Enter (Mac) or Ctrl+Enter (Windows/Linux)
+      if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        handleRun();
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [handleRun]);
+
   // Check if exercise has validation enabled
   const hasValidation = !!expectedOutput;
 
@@ -337,11 +360,11 @@ export default function CodePlayground({
       {/* Control Buttons - touch-friendly with 44px min tap targets */}
       <div className="flex flex-wrap items-center gap-2">
         {/* Run Button with Tooltip */}
-        <Tooltip content={<>تشغيل<span className="mx-1 text-background/60">|</span><span dir="ltr">Ctrl+Enter</span></>}>
+        <Tooltip content={<>تشغيل<span className="mx-1 text-background/60">|</span><span dir="ltr">{isMac ? "⌘" : "Ctrl"}+Enter</span></>}>
           <button
             onClick={handleRun}
             disabled={isLoading}
-            aria-label="تشغيل (Ctrl+Enter)"
+            aria-label={`تشغيل (${isMac ? "⌘" : "Ctrl"}+Enter)`}
             className={`flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg bg-ruby-primary p-2.5 text-white transition-colors hover:bg-ruby-secondary disabled:cursor-not-allowed disabled:opacity-50 ${
               runStatus === "success" ? "animate-run-success" : ""
             } ${runStatus === "error" ? "animate-run-error" : ""}`}
@@ -459,7 +482,7 @@ export default function CodePlayground({
         {/* Keyboard Shortcut Hint for Save */}
         {shouldAutoSave && (
           <span className="mr-auto hidden text-xs text-foreground/60 sm:block" dir="ltr">
-            Ctrl+S لحفظ الشيفرة
+            {isMac ? "⌘" : "Ctrl"}+S لحفظ الشيفرة
           </span>
         )}
       </div>
