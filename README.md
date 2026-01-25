@@ -25,6 +25,10 @@
   <img src="https://img.shields.io/badge/Ruby-WASM-CC342D?style=flat-square&logo=ruby" alt="Ruby WASM">
   <img src="https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript" alt="TypeScript 5">
   <img src="https://img.shields.io/badge/Tailwind-4-38B2AC?style=flat-square&logo=tailwind-css" alt="Tailwind CSS 4">
+  <br>
+  <a href="https://app.netlify.com/projects/ruby3araby/deploys">
+    <img src="https://api.netlify.com/api/v1/badges/f2c69f2c-2745-450c-aa8d-c01f128211bc/deploy-status" alt="Netlify Status">
+  </a>
 </p>
 
 ---
