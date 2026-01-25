@@ -10,6 +10,7 @@ import LessonContent from "./LessonContent";
 import LessonPlayground from "./LessonPlayground";
 import Sidebar from "@/components/Sidebar";
 import LessonActions from "@/components/LessonActions";
+import MobileMenuButton from "@/components/MobileMenuButton";
 
 interface LessonPageProps {
   params: Promise<{
@@ -58,14 +59,17 @@ export default async function LessonPage({ params }: LessonPageProps) {
   return (
     <div className="min-h-screen bg-background lg:flex lg:flex-row">
       {/* Sidebar - right side in RTL (flex-row works because RTL reverses flex direction) */}
-      <Sidebar course={course} />
+      <Sidebar course={course} hideToggleButton />
 
       {/* Main content wrapper */}
       <div className="flex-1">
         {/* Header with breadcrumb - mobile-optimized with wrapping */}
         <header className="border-b border-foreground/10 bg-foreground/5">
           <div className="mx-auto max-w-5xl px-3 py-3 sm:px-4 sm:py-4">
-            <nav className="flex flex-wrap items-center gap-1.5 text-xs text-foreground/60 sm:gap-2 sm:text-sm">
+            <div className="flex items-center gap-3">
+              {/* Mobile menu button - inside header */}
+              <MobileMenuButton />
+              <nav className="flex flex-wrap items-center gap-1.5 text-xs text-foreground/60 sm:gap-2 sm:text-sm">
               <Link href="/" className="hover:text-ruby-primary transition-colors shrink-0">
                 {course.title}
               </Link>
@@ -73,7 +77,8 @@ export default async function LessonPage({ params }: LessonPageProps) {
               <span className="shrink-0">{nav.current.section.title}</span>
               <span className="text-foreground/30">/</span>
               <span className="text-foreground break-words">{nav.current.lesson.title}</span>
-            </nav>
+              </nav>
+            </div>
           </div>
         </header>
 

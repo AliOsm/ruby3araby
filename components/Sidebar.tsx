@@ -9,6 +9,8 @@ import ThemeToggle from "./ThemeToggle";
 
 interface SidebarProps {
   course: CourseStructure;
+  /** Hide the fixed toggle button (when button is in the header instead) */
+  hideToggleButton?: boolean;
 }
 
 /**
@@ -19,7 +21,7 @@ interface SidebarProps {
  * - Scrollable for long curriculum
  * - Mobile hamburger menu toggle
  */
-export default function Sidebar({ course }: SidebarProps) {
+export default function Sidebar({ course, hideToggleButton = false }: SidebarProps) {
   const pathname = usePathname();
 
   // Extract current section and lesson from pathname
@@ -94,6 +96,13 @@ export default function Sidebar({ course }: SidebarProps) {
   const [openSections, setOpenSections] = useState<Set<string>>(initialOpenSections);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
 
+  // Listen for toggle-sidebar event from external buttons (e.g., in header)
+  useEffect(() => {
+    const handleToggle = () => setIsMobileOpen((prev) => !prev);
+    document.addEventListener("toggle-sidebar", handleToggle);
+    return () => document.removeEventListener("toggle-sidebar", handleToggle);
+  }, []);
+
   // Handle navigation changes - close mobile sidebar and expand new section
   // Using a ref-based approach to avoid setState in useEffect
   if (pathname !== prevPathnameRef.current) {
@@ -129,11 +138,12 @@ export default function Sidebar({ course }: SidebarProps) {
   return (
     <>
       {/* Mobile hamburger button - fixed position, touch-friendly (44px min) */}
-      <button
-        onClick={() => setIsMobileOpen(!isMobileOpen)}
-        className="fixed top-3 right-3 z-50 flex h-11 w-11 items-center justify-center rounded-lg bg-foreground/10 text-foreground shadow-lg backdrop-blur-sm lg:hidden"
-        aria-label={isMobileOpen ? "إغلاق القائمة" : "فتح القائمة"}
-      >
+      {!hideToggleButton && (
+        <button
+          onClick={() => setIsMobileOpen(!isMobileOpen)}
+          className="fixed top-3 right-3 z-50 flex h-11 w-11 items-center justify-center rounded-lg bg-foreground/10 text-foreground shadow-lg backdrop-blur-sm lg:hidden"
+          aria-label={isMobileOpen ? "إغلاق القائمة" : "فتح القائمة"}
+        >
         {isMobileOpen ? (
           // Close icon (X)
           <svg
@@ -165,7 +175,8 @@ export default function Sidebar({ course }: SidebarProps) {
             />
           </svg>
         )}
-      </button>
+        </button>
+      )}
 
       {/* Mobile overlay */}
       {isMobileOpen && (
