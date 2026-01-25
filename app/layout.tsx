@@ -1,7 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Noto_Sans_Arabic } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/lib/theme";
+import { PWAProvider } from "@/components/PWAProvider";
 
 const notoSansArabic = Noto_Sans_Arabic({
   variable: "--font-noto-sans-arabic",
@@ -72,6 +73,23 @@ export const metadata: Metadata = {
     canonical: siteUrl,
   },
   category: "education",
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "روبي عربي",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+  ],
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
 };
 
 // Inline script to apply theme before React hydrates (prevents flash)
@@ -108,14 +126,16 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl" suppressHydrationWarning>
       <head>
-        <meta name="theme-color" content="#ffffff" />
         <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+        <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body
         className={`${notoSansArabic.variable} antialiased font-sans`}
       >
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <PWAProvider>{children}</PWAProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -4,7 +4,7 @@
  * Helper functions to load course structure and lesson data
  */
 
-import courseData from "@/content/course.json";
+import courseData from "@/public/course.json";
 import { CourseStructure, LessonStub, SectionStub } from "./types";
 
 /**
