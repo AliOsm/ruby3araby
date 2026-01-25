@@ -155,3 +155,11 @@ html.theme-transition *::after {
   animation: run-error-shake 0.4s ease-out;
   background-color: rgb(239, 68, 68) !important;
 }
+
+/* iOS GPU stability for transformed elements */
+.backface-hidden {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
