@@ -53,7 +53,7 @@ class Dog
     @name = name
   end
 
-  # نفس الشيفرة مُكرر!
+  # نفس الشيفرة مُكررة!
   def eat
     puts "#{@name} يأكل"
   end

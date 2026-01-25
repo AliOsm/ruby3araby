@@ -37,10 +37,10 @@ puts unknown_variable
 
 ```ruby
 begin
-  # الشيفرة التي قد يسبب خطأ
+  # الشيفرة التي قد تسبب خطأ
   result = 10 / 0
 rescue
-  # الشيفرة التي يُنفذ عند حدوث خطأ
+  # الشيفرة التي تُنفذ عند حدوث خطأ
   puts "حدث خطأ!"
 end
 ```
@@ -96,7 +96,7 @@ end
 
 ```ruby
 begin
-  # شيفرة قد يسبب أخطاء مختلفة
+  # شيفرة قد تسبب أخطاء مختلفة
   number = Integer(gets.chomp)
   result = 100 / number
   puts "الناتج: #{result}"
@@ -319,7 +319,7 @@ end
 
 ```ruby
 begin
-  # الشيفرة التي قد يسبب خطأ
+  # الشيفرة التي قد تسبب خطأ
 rescue ErrorType1 => e
   # معالجة ErrorType1
 rescue ErrorType2 => e
