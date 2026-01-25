@@ -178,17 +178,17 @@ export default function Sidebar({ course, hideToggleButton = false }: SidebarPro
         </button>
       )}
 
-      {/* Mobile overlay */}
-      {isMobileOpen && (
-        <div
-          className="fixed inset-0 z-30 bg-black/50 lg:hidden"
-          onClick={() => setIsMobileOpen(false)}
-        />
-      )}
+      {/* Mobile overlay - always rendered, animated with opacity */}
+      <div
+        className={`fixed inset-0 z-30 bg-black/50 transition-opacity duration-300 lg:pointer-events-none lg:hidden ${
+          isMobileOpen ? "opacity-100" : "pointer-events-none opacity-0"
+        }`}
+        onClick={() => setIsMobileOpen(false)}
+      />
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 right-0 z-40 h-full w-72 overflow-y-auto border-l border-foreground/10 bg-background transition-transform duration-300 ease-in-out will-change-transform backface-hidden lg:sticky lg:top-0 lg:z-0 lg:h-screen lg:translate-x-0 ${
+        className={`fixed top-0 right-0 z-40 h-full w-72 overflow-y-auto border-l border-foreground/10 bg-background transition-transform duration-300 ease-in-out lg:sticky lg:top-0 lg:z-0 lg:h-screen lg:translate-x-0 ${
           isMobileOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
