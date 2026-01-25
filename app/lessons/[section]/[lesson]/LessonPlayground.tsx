@@ -1,7 +1,10 @@
 "use client";
 
+import { useEffect } from "react";
 import CodePlayground from "@/components/CodePlayground";
 import { ExerciseConfig } from "@/lib/types";
+import { preloadMonacoEditor } from "@/components/CodeEditor";
+import { preloadRubyWasm } from "@/lib/ruby-runner";
 
 interface LessonPlaygroundProps {
   /** Lesson ID for code persistence (format: "section-slug/lesson-slug") */
@@ -18,6 +21,14 @@ export default function LessonPlayground({
   lessonId,
   exercise,
 }: LessonPlaygroundProps) {
+  // Preload heavy resources on mount to reduce perceived latency
+  useEffect(() => {
+    preloadMonacoEditor();
+    // Slight delay for WASM to prioritize Monaco loading first
+    const timeoutId = setTimeout(preloadRubyWasm, 100);
+    return () => clearTimeout(timeoutId);
+  }, []);
+
   // Default starter code for lessons without exercises
   const defaultStarterCode = `# اكتب شيفرة روبي هنا
 puts "مرحبا بالعالم!"`;

@@ -1,3 +1,4 @@
+import { memo } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import CodeBlock from "@/components/CodeBlock";
@@ -148,9 +149,9 @@ const markdownComponents = {
 /**
  * Lesson content component that renders markdown with Arabic typography
  * Content is loaded server-side and passed as a prop (eliminates client-side waterfall)
+ * Wrapped in memo() to prevent re-renders when parent state changes
  */
-export default function LessonContent({ content }: LessonContentProps) {
-
+const LessonContent = memo(function LessonContent({ content }: LessonContentProps) {
   // Handle empty content gracefully
   if (!content) {
     return (
@@ -172,4 +173,6 @@ export default function LessonContent({ content }: LessonContentProps) {
       </ReactMarkdown>
     </div>
   );
-}
+});
+
+export default LessonContent;

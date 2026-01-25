@@ -3,9 +3,35 @@
 import dynamic from "next/dynamic";
 import type { OnChange, OnMount, Monaco } from "@monaco-editor/react";
 import type { editor } from "monaco-editor";
-import { useCallback, useRef, useMemo, useEffect } from "react";
-import { useTheme } from "@/lib/theme";
+import { useCallback, useRef, useMemo, useEffect, useSyncExternalStore } from "react";
 import type { SyntaxCheckResult } from "@/lib/ruby-runner";
+
+// Get theme directly from DOM (hydration-safe, avoids race conditions)
+function getThemeFromDOM(): "light" | "dark" {
+  if (typeof document === "undefined") return "dark";
+  return document.documentElement.classList.contains("dark") ? "dark" : "light";
+}
+
+// Subscribe to theme changes via class mutations
+function subscribeToTheme(callback: () => void) {
+  if (typeof window === "undefined") return () => {};
+
+  const observer = new MutationObserver((mutations) => {
+    for (const mutation of mutations) {
+      if (mutation.attributeName === "class") {
+        callback();
+      }
+    }
+  });
+
+  observer.observe(document.documentElement, { attributes: true });
+  window.addEventListener("themeChange", callback);
+
+  return () => {
+    observer.disconnect();
+    window.removeEventListener("themeChange", callback);
+  };
+}
 
 // Loading placeholder component for Monaco Editor
 function EditorLoadingPlaceholder() {
@@ -73,7 +99,14 @@ export default function CodeEditor({
 }: CodeEditorProps) {
   const editorRef = useRef<editor.IStandaloneCodeEditor | null>(null);
   const monacoRef = useRef<Monaco | null>(null);
-  const { resolvedTheme } = useTheme();
+
+  // Use useSyncExternalStore to get theme directly from DOM
+  // This is hydration-safe and avoids race conditions with ThemeProvider
+  const resolvedTheme = useSyncExternalStore(
+    subscribeToTheme,
+    getThemeFromDOM,
+    () => "dark" // Server snapshot
+  );
 
   // Store callbacks in refs to avoid re-registering actions
   const onRunRef = useRef(onRun);
@@ -281,3 +314,13 @@ export default function CodeEditor({
 }
 
 export { EditorLoadingPlaceholder };
+
+/**
+ * Preload Monaco Editor bundle without rendering
+ * Call on lesson page mount to reduce editor load time
+ */
+export function preloadMonacoEditor(): void {
+  if (typeof window !== 'undefined') {
+    void import("@monaco-editor/react");
+  }
+}

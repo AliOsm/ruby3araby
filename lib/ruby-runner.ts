@@ -378,6 +378,19 @@ export class RubyRunner {
     this.vm = null;
     await this.initialize();
   }
+
+  /**
+   * Preload the Ruby WASM binary without blocking
+   * Reduces first-run latency by starting fetch early
+   */
+  preload(): void {
+    if (this.initPromise || this.isInitialized) {
+      return;
+    }
+    this.initialize().catch(() => {
+      // Silently ignore - will retry on actual use
+    });
+  }
 }
 
 /**
@@ -385,4 +398,12 @@ export class RubyRunner {
  */
 export function getRubyRunner(): RubyRunner {
   return RubyRunner.getInstance();
+}
+
+/**
+ * Preload the Ruby WASM binary without blocking
+ * Call early to reduce first-run latency
+ */
+export function preloadRubyWasm(): void {
+  getRubyRunner().preload();
 }

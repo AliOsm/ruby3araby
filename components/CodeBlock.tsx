@@ -1,11 +1,18 @@
 "use client";
 
-import { useState, useCallback, useEffect, useSyncExternalStore } from "react";
+import { memo, useState, useCallback, useEffect, useSyncExternalStore } from "react";
 import { codeToHtml } from "shiki";
 
 interface CodeBlockProps {
   code: string;
   language?: string;
+}
+
+// Module-level cache for highlighted code to avoid redundant shiki calls
+const highlightCache = new Map<string, string>();
+
+function getCacheKey(code: string, language: string, theme: string): string {
+  return `${theme}:${language}:${code}`;
 }
 
 // Get the actual theme from the DOM (most reliable source of truth)
@@ -39,8 +46,9 @@ function subscribeToTheme(callback: () => void) {
  * Syntax-highlighted code block component using shiki
  * Uses VS Code's Dark+/Light+ themes to match Monaco editor
  * Includes a copy button that appears on hover (desktop) or always visible (mobile)
+ * Wrapped in memo() with highlight caching to minimize re-renders
  */
-export default function CodeBlock({ code, language = "ruby" }: CodeBlockProps) {
+const CodeBlock = memo(function CodeBlock({ code, language = "ruby" }: CodeBlockProps) {
   // Use useSyncExternalStore to reliably get theme from DOM
   const resolvedTheme = useSyncExternalStore(
     subscribeToTheme,
@@ -54,22 +62,32 @@ export default function CodeBlock({ code, language = "ruby" }: CodeBlockProps) {
   // Clean up the code (remove trailing newline if present)
   const cleanCode = code.replace(/\n$/, "");
 
-  // Highlight code with shiki
+  // Highlight code with shiki (check cache first)
   useEffect(() => {
+    const theme = resolvedTheme === "dark" ? "dark-plus" : "light-plus";
+    const cacheKey = getCacheKey(cleanCode, language, theme);
+
+    // Check cache first
+    const cached = highlightCache.get(cacheKey);
+    if (cached) {
+      setHighlightedHtml(cached);
+      return;
+    }
+
     const highlight = async () => {
       try {
         // Use VS Code themes to match Monaco editor
-        const theme = resolvedTheme === "dark" ? "dark-plus" : "light-plus";
         const html = await codeToHtml(cleanCode, {
           lang: language,
           theme,
         });
+        highlightCache.set(cacheKey, html);
         setHighlightedHtml(html);
       } catch {
         // Fallback to plain text if highlighting fails
-        setHighlightedHtml(
-          `<pre class="shiki"><code>${cleanCode.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</code></pre>`
-        );
+        const fallback = `<pre class="shiki"><code>${cleanCode.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</code></pre>`;
+        highlightCache.set(cacheKey, fallback);
+        setHighlightedHtml(fallback);
       }
     };
     highlight();
@@ -137,4 +155,6 @@ export default function CodeBlock({ code, language = "ruby" }: CodeBlockProps) {
       </button>
     </div>
   );
-}
+});
+
+export default CodeBlock;

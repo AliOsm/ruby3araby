@@ -107,6 +107,7 @@ const themeScript = `
   if (theme === 'system') {
     resolved = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   }
+  document.documentElement.classList.remove('light', 'dark');
   document.documentElement.classList.add(resolved);
   document.documentElement.setAttribute('data-theme', resolved);
   // Update theme-color meta tag
