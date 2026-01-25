@@ -192,7 +192,7 @@ export default function Sidebar({ course }: SidebarProps) {
             </Link>
             <ThemeToggle />
           </div>
-          <p className="mt-1 text-sm text-foreground/70">دورة تعلم روبي</p>
+          <p className="mt-1 text-sm text-foreground/70">تعلّم البرمجة بأناقة</p>
         </div>
 
         {/* Scrollable sections list */}
