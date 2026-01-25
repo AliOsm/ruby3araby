@@ -11,6 +11,7 @@ Ruby3araby is an interactive Arabic Ruby programming course that runs entirely i
 ```bash
 npm run dev       # Start development server
 npm run build     # Production build
+npm run start     # Start production server
 npm run lint      # Run ESLint
 npm run typecheck # Run TypeScript type checking
 ```
@@ -66,7 +67,7 @@ content/
 **Course Content Structure:**
 - `course.json` defines sections → lessons hierarchy with slugs
 - Lesson content is stored in markdown files under `content/lessons/`
-- Exercises have `starterCode`, `expectedOutput`, and progressive `hints`
+- Exercises have `starterCode`, `expectedOutput`, `hints`, and optional `defaultInput` for simulated `gets`
 - Output validation normalizes whitespace before comparison
 
 **Progress Persistence:**
