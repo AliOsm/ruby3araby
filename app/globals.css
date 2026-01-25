@@ -65,7 +65,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-cairo);
+  --font-sans: var(--font-noto-sans-arabic);
   --font-mono: "Kawkab Mono", "JetBrains Mono", "Fira Code", "Consolas", ui-monospace, monospace;
 
   /* Custom breakpoint for extra small screens (xs: 475px+) */
@@ -82,7 +82,7 @@ html,
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-noto-sans-arabic), Arial, Helvetica, sans-serif;
   overscroll-behavior: none;
 }
 
