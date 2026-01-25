@@ -10,6 +10,9 @@ interface BeforeInstallPromptEvent extends Event {
 const STORAGE_KEY = "ruby3araby_install_dismissed";
 const DISMISS_DURATION = 7 * 24 * 60 * 60 * 1000; // 7 days
 
+// Track if prompt was shown this session (prevents repeated showing on navigation)
+let shownThisSession = false;
+
 export function InstallPrompt() {
   const [deferredPrompt, setDeferredPrompt] =
     useState<BeforeInstallPromptEvent | null>(null);
@@ -21,6 +24,11 @@ export function InstallPrompt() {
     // Check if already installed
     if (window.matchMedia("(display-mode: standalone)").matches) {
       setIsInstalled(true);
+      return;
+    }
+
+    // Check if already shown this session
+    if (shownThisSession) {
       return;
     }
 
@@ -37,7 +45,10 @@ export function InstallPrompt() {
 
     if (isIOS) {
       // Show iOS guide after delay
-      const timer = setTimeout(() => setShowIOSGuide(true), 30000);
+      const timer = setTimeout(() => {
+        shownThisSession = true;
+        setShowIOSGuide(true);
+      }, 30000); // 30 seconds
       return () => clearTimeout(timer);
     }
 
@@ -45,8 +56,13 @@ export function InstallPrompt() {
     const handleBeforeInstallPrompt = (e: Event) => {
       e.preventDefault();
       setDeferredPrompt(e as BeforeInstallPromptEvent);
-      // Show prompt after delay
-      setTimeout(() => setShowPrompt(true), 30000);
+      // Show prompt after delay (only if not shown this session)
+      if (!shownThisSession) {
+        setTimeout(() => {
+          shownThisSession = true;
+          setShowPrompt(true);
+        }, 30000); // 30 seconds
+      }
     };
 
     window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
