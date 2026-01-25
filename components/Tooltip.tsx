@@ -41,6 +41,19 @@ export default function Tooltip({ content, children, delay = 300 }: TooltipProps
     }
   }, []);
 
+  // Update position on scroll/resize while tooltip is visible
+  useEffect(() => {
+    if (!isVisible) return;
+
+    window.addEventListener("scroll", updatePosition, true);
+    window.addEventListener("resize", updatePosition);
+
+    return () => {
+      window.removeEventListener("scroll", updatePosition, true);
+      window.removeEventListener("resize", updatePosition);
+    };
+  }, [isVisible, updatePosition]);
+
   const handleMouseEnter = useCallback(() => {
     timeoutRef.current = setTimeout(() => {
       updatePosition();
