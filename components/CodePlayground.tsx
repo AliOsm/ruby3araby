@@ -409,7 +409,8 @@ export default function CodePlayground({
             <textarea
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="أدخل قيمة لكل سطر..."
+              placeholder="أدخل قيمة لكل سطر…"
+              name="simulated-input"
               className="w-full resize-none rounded border border-foreground/20 bg-foreground/5 px-3 py-2 font-mono text-sm text-foreground placeholder-foreground/40 focus:border-ruby-primary focus:outline-none focus:ring-1 focus:ring-ruby-primary"
               rows={3}
               dir="ltr"
@@ -475,7 +476,7 @@ export default function CodePlayground({
               </svg>
             ) : (
               <svg
-                className="h-5 w-5"
+                className="h-5 w-5 rtl:rotate-180"
                 fill="currentColor"
                 viewBox="0 0 20 20"
               >

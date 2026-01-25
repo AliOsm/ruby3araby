@@ -157,6 +157,15 @@ export default function Sidebar({ course, hideToggleButton = false }: SidebarPro
           isMobileOpen ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
         onClick={() => setIsMobileOpen(false)}
+        onKeyDown={(e) => {
+          if (e.key === "Escape" || e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            setIsMobileOpen(false);
+          }
+        }}
+        role="button"
+        tabIndex={isMobileOpen ? 0 : -1}
+        aria-label="إغلاق القائمة"
       />
 
       {/* Sidebar */}

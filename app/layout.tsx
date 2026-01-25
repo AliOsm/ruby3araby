@@ -91,6 +91,12 @@ const themeScript = `
   }
   document.documentElement.classList.add(resolved);
   document.documentElement.setAttribute('data-theme', resolved);
+  // Update theme-color meta tag
+  var themeColor = resolved === 'dark' ? '#0a0a0a' : '#ffffff';
+  var metaThemeColor = document.querySelector('meta[name="theme-color"]');
+  if (metaThemeColor) {
+    metaThemeColor.setAttribute('content', themeColor);
+  }
 })();
 `;
 
@@ -102,6 +108,7 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl" suppressHydrationWarning>
       <head>
+        <meta name="theme-color" content="#ffffff" />
         <link rel="preconnect" href="https://cdn.jsdelivr.net" />
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>

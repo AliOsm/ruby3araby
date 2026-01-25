@@ -130,7 +130,8 @@ export default function GlossaryPage() {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="ابحث عن مصطلح..."
+                placeholder="ابحث عن مصطلح…"
+                autoComplete="off"
                 className="w-full rounded-lg border border-foreground/20 bg-foreground/5 px-4 py-2 pr-10 text-foreground placeholder-foreground/50 focus:border-ruby-primary focus:outline-none focus:ring-1 focus:ring-ruby-primary"
               />
               <svg

@@ -55,6 +55,15 @@ export default function Tooltip({ content, children, delay = 300 }: TooltipProps
     setIsVisible(false);
   }, []);
 
+  const handleFocus = useCallback(() => {
+    updatePosition();
+    setIsVisible(true);
+  }, [updatePosition]);
+
+  const handleBlur = useCallback(() => {
+    setIsVisible(false);
+  }, []);
+
   const tooltip = isVisible && mounted ? (
     createPortal(
       <div
@@ -76,6 +85,8 @@ export default function Tooltip({ content, children, delay = 300 }: TooltipProps
         ref={triggerRef}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
         className="inline-flex"
       >
         {children}
