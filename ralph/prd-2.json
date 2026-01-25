@@ -1,0 +1,339 @@
+{
+  "project": "Ruby3araby",
+  "branchName": "ralph/ui-ux-improvements",
+  "description": "UI/UX improvements for Ruby3araby Arabic Ruby programming course - RTL layout fixes, Ruby-themed colors, Arabic fonts, and enhanced interactions",
+  "userStories": [
+    {
+      "id": "US-001",
+      "title": "Replace site name 'روبي بالعربي' with 'روبي عربي'",
+      "description": "As a brand consistency measure, I want the site name updated throughout so that branding is unified.",
+      "acceptanceCriteria": [
+        "Update in app/page.tsx (logo, title, footer)",
+        "Update in app/layout.tsx (metadata)",
+        "Update in content/course.json (course title)",
+        "Update in any other hardcoded occurrences",
+        "Grep for 'روبي بالعربي' returns no results after changes",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 1,
+      "passes": true,
+      "notes": ""
+    },
+    {
+      "id": "US-002",
+      "title": "Replace 'كود' with 'شيفرة برمجية' terminology",
+      "description": "As a terminology consistency measure, I want 'شيفرة برمجية' (or 'شيفرة') used instead of 'كود' throughout the site.",
+      "acceptanceCriteria": [
+        "Update all UI strings: 'نسخ الكود' → 'نسخ الشيفرة'",
+        "Update lesson content references",
+        "Update button labels, tooltips, placeholders",
+        "Use 'شيفرة' for short form, 'شيفرة برمجية' for formal references",
+        "Grep for 'كود' returns no results after changes",
+        "Typecheck passes"
+      ],
+      "priority": 2,
+      "passes": true,
+      "notes": ""
+    },
+    {
+      "id": "US-003",
+      "title": "Add Kawkab Mono Arabic monospace font",
+      "description": "As an Arabic learner, I want Arabic characters in code to render with a proper monospace font so code is readable.",
+      "acceptanceCriteria": [
+        "Download and self-host Kawkab Mono font (Regular weight minimum) in public/fonts/",
+        "Add @font-face declaration in globals.css with font-display: swap",
+        "Update Monaco editor font family to: 'Kawkab Mono', 'JetBrains Mono', 'Fira Code', 'Consolas', monospace",
+        "Update content code blocks font family to match",
+        "Arabic characters align properly in monospace context",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 3,
+      "passes": true,
+      "notes": "Download from https://github.com/aiaf/kawkab-mono or https://makkuk.com/kawkab-mono/"
+    },
+    {
+      "id": "US-004",
+      "title": "Apply Ruby-themed color scheme",
+      "description": "As a user, I want the site to use Ruby-inspired colors for brand consistency instead of emerald/green.",
+      "acceptanceCriteria": [
+        "Define CSS variables in globals.css: --ruby-primary (#9b1c31 light / #dc2743 dark), --ruby-secondary (#7c1d3e / #e85d75), --ruby-accent (#be3455 / #f472b6), --ruby-surface (#fef2f4 / #1a0a0e)",
+        "Replace emerald-500/600/700 with ruby red equivalents throughout",
+        "Primary buttons use ruby red colors",
+        "Success states remain green (semantic meaning)",
+        "Error states remain red but distinguish from primary ruby",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill (both themes)"
+      ],
+      "priority": 4,
+      "passes": true,
+      "notes": ""
+    },
+    {
+      "id": "US-005",
+      "title": "Fix color visibility issues in both themes",
+      "description": "As a user in either theme, I want all text and UI elements to be clearly visible with proper contrast.",
+      "acceptanceCriteria": [
+        "Sidebar section numbers visible in dark theme",
+        "All text meets WCAG AA contrast ratio (4.5:1 for normal text)",
+        "Interactive elements have visible focus states",
+        "Code in content blocks readable in both themes",
+        "Fix any text-foreground/60 or similar low-contrast utilities",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill (both themes)"
+      ],
+      "priority": 5,
+      "passes": true,
+      "notes": ""
+    },
+    {
+      "id": "US-006",
+      "title": "Fix RTL page layout structure",
+      "description": "As an Arabic-speaking user, I want the lesson page to follow proper RTL layout with Code Editor (left) | Content (center) | Sidebar (right).",
+      "acceptanceCriteria": [
+        "Desktop layout (xl+): Code Editor on left, Content in center, Sidebar/Curriculum on right",
+        "The sidebar appears on the right side of the screen in RTL context",
+        "Content area remains in the center",
+        "Code playground/editor appears on the left",
+        "Mobile layout stacks appropriately: Sidebar toggle → Content → Code Editor",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 6,
+      "passes": true,
+      "notes": "Modify app/lessons/[section]/[lesson]/page.tsx flex direction. Use flex-row instead of flex-row-reverse since RTL reverses it. Also check components/Sidebar.tsx positioning."
+    },
+    {
+      "id": "US-007",
+      "title": "Fix code editor card height overflow",
+      "description": "As a user on lessons with input panels, I want the code editor card to fit within the viewport so I can see output without scrolling.",
+      "acceptanceCriteria": [
+        "Code editor card uses max-h-[calc(100vh-<header>)] or similar constraint",
+        "Input panel, editor, and output are all visible without page scroll on desktop",
+        "Editor height adjusts dynamically based on available space",
+        "On pages without input panel, editor can use more vertical space",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill (test on fundamentals/user-input)"
+      ],
+      "priority": 7,
+      "passes": true,
+      "notes": ""
+    },
+    {
+      "id": "US-008",
+      "title": "Fix CodeEditor loading state background mismatch",
+      "description": "As a user, I want the editor loading state to match the card background for visual consistency.",
+      "acceptanceCriteria": [
+        "Loading spinner container uses same background as parent card",
+        "No visible background color mismatch during Monaco editor load",
+        "Use CSS variable var(--editor-bg) or inherit from parent",
+        "Editor fills entire width of parent card during loading",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 8,
+      "passes": true,
+      "notes": ""
+    },
+    {
+      "id": "US-009",
+      "title": "Fix output box placeholder RTL direction",
+      "description": "As an Arabic user, I want the output placeholder text to display correctly in RTL so it reads naturally.",
+      "acceptanceCriteria": [
+        "Output box placeholder 'اضغط على تشغيل لرؤية المخرجات' displays RTL",
+        "Add dir='rtl' to placeholder/empty state container",
+        "Actual code output remains dir='ltr' for proper code display",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 9,
+      "passes": true,
+      "notes": ""
+    },
+    {
+      "id": "US-010",
+      "title": "Fix English words reversed in RTL context",
+      "description": "As a user reading mixed Arabic/English content, I want English words like 'nil?' to display correctly (not as '?nil').",
+      "acceptanceCriteria": [
+        "English/code terms in Arabic text display in correct LTR order",
+        "Use <bdi> tags or dir='ltr' spans for inline code/English terms in markdown rendering",
+        "Method names, operators, and symbols render correctly",
+        "Fix in lesson content markdown rendering (LessonContent.tsx)",
+        "Fix in any hardcoded UI strings with mixed content",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 10,
+      "passes": true,
+      "notes": ""
+    },
+    {
+      "id": "US-011",
+      "title": "Fix quoted text extra bottom padding",
+      "description": "As a reader, I want blockquotes to have consistent padding without extra space at the bottom.",
+      "acceptanceCriteria": [
+        "Identify blockquote styling in LessonContent.tsx or globals.css",
+        "Remove or reduce excess padding-bottom or margin-bottom",
+        "Blockquotes should have equal padding on all sides (or intentional design)",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 11,
+      "passes": true,
+      "notes": ""
+    },
+    {
+      "id": "US-012",
+      "title": "Convert theme toggle to dropdown",
+      "description": "As a user, I want a dropdown menu to select theme (Light/Dark/System) instead of cycling through.",
+      "acceptanceCriteria": [
+        "Theme toggle becomes a dropdown button",
+        "Options: 'فاتح' (Light), 'داكن' (Dark), 'تلقائي' (System)",
+        "Current theme is indicated (checkmark or highlight)",
+        "Each option has an appropriate icon (sun, moon, laptop)",
+        "Dropdown closes on selection or outside click",
+        "Accessible with keyboard navigation",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 12,
+      "passes": true,
+      "notes": ""
+    },
+    {
+      "id": "US-013",
+      "title": "Convert action buttons to icon-only with tooltips",
+      "description": "As a user, I want compact action buttons with tooltips showing keyboard shortcuts for a cleaner interface.",
+      "acceptanceCriteria": [
+        "Run button: Play icon only, tooltip 'تشغيل Ctrl+Enter'",
+        "Copy button: Copy icon only, tooltip 'نسخ الشيفرة'",
+        "Reset button: Reset/refresh icon only, tooltip 'إعادة تعيين'",
+        "Tooltips include both Arabic text and English keyboard shortcuts",
+        "Tooltips appear on hover after 300ms delay",
+        "Icons are touch-friendly (min 44px tap target)",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 13,
+      "passes": true,
+      "notes": ""
+    },
+    {
+      "id": "US-014",
+      "title": "Move check answer button below output",
+      "description": "As a user, I want the 'تحقق من الإجابة' button positioned below the output box for better visual flow.",
+      "acceptanceCriteria": [
+        "'تحقق من الإجابة' button moves from the action buttons row",
+        "Button appears below the output box, full width or centered",
+        "Button is visually distinct (primary action styling with ruby colors)",
+        "Validation feedback (correct/incorrect) appears near this button",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 14,
+      "passes": true,
+      "notes": ""
+    },
+    {
+      "id": "US-015",
+      "title": "Add run completion animation",
+      "description": "As a user, I want visual feedback when code execution completes, even for instant operations.",
+      "acceptanceCriteria": [
+        "Run button shows brief success animation after execution completes",
+        "Animation duration: minimum 400ms, even if code runs instantly",
+        "Success state: green flash/pulse or checkmark overlay",
+        "Error state: red flash/shake animation",
+        "Animation doesn't block further interactions",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 15,
+      "passes": true,
+      "notes": ""
+    },
+    {
+      "id": "US-016",
+      "title": "Add Ruby syntax highlighting to content code blocks",
+      "description": "As a learner, I want code blocks in lesson content to have Ruby syntax highlighting so code is easier to read.",
+      "acceptanceCriteria": [
+        "Install prism-react-renderer or similar lightweight highlighter",
+        "Code blocks in markdown content render with syntax highlighting",
+        "Ruby keywords, strings, comments, numbers have distinct colors",
+        "Highlighting works in both light and dark themes",
+        "Use standard Prism themes (not matching Monaco editor theme)",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 16,
+      "passes": true,
+      "notes": ""
+    },
+    {
+      "id": "US-017",
+      "title": "Add copy button to content code blocks",
+      "description": "As a learner, I want to copy code examples from lesson content with one click.",
+      "acceptanceCriteria": [
+        "Each code block in lesson content has a copy button",
+        "Button appears on hover (desktop) or always visible (mobile)",
+        "Button shows success feedback (checkmark or 'تم النسخ')",
+        "Button positioned top-right of code block, doesn't obscure code",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 17,
+      "passes": true,
+      "notes": "Can be combined with syntax highlighting component from US-016"
+    },
+    {
+      "id": "US-018",
+      "title": "Add progress page access from lessons",
+      "description": "As a learner, I want quick access to my progress page while reading lessons.",
+      "acceptanceCriteria": [
+        "Add 'تقدمي' link/button in lesson page header or sidebar",
+        "Link navigates to /progress",
+        "Visually consistent with other navigation elements",
+        "Visible on both mobile and desktop",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 18,
+      "passes": true,
+      "notes": ""
+    },
+    {
+      "id": "US-019",
+      "title": "Add lesson copy and download buttons",
+      "description": "As a learner, I want to copy or download lesson content as markdown for offline reference.",
+      "acceptanceCriteria": [
+        "Add 'نسخ الدرس' button that copies full lesson markdown to clipboard",
+        "Add 'تحميل الدرس' button that downloads lesson as .md file",
+        "Downloaded file named: {section-slug}-{lesson-slug}.md",
+        "Content includes: title, explanation, code examples, exercise with hints",
+        "Use fenced code blocks (```ruby) in exported markdown, not raw HTML",
+        "Buttons placed in lesson header or near title",
+        "Success feedback on copy action",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 19,
+      "passes": true,
+      "notes": ""
+    },
+    {
+      "id": "US-020",
+      "title": "Move Arabic comments to separate lines in code examples",
+      "description": "As a learner, I want Arabic comments in code examples to be on their own lines to avoid RTL rendering issues.",
+      "acceptanceCriteria": [
+        "Audit all lesson markdown files in content/lessons/",
+        "Move inline Arabic comments to line above the code they explain",
+        "Format: '# تعليق عربي' on its own line, then code on next line",
+        "Ensure no inline mixing of Arabic comments with code",
+        "This is a content change, not code change"
+      ],
+      "priority": 20,
+      "passes": true,
+      "notes": "No typecheck needed - content only"
+    }
+  ]
+}

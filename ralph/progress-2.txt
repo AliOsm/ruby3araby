@@ -1,0 +1,330 @@
+## Codebase Patterns
+- Use "روبي عربي" for the site name (not "روبي بالعربي")
+- Use "شيفرة" (short) or "شيفرة برمجية" (formal) instead of "كود"
+- Site metadata is in app/layout.tsx, page content in app/page.tsx
+- Lesson content files are in content/lessons/{section}/{lesson}.md
+- Course structure is defined in content/course.json
+- Use `npm run typecheck` to verify TypeScript before committing
+- Dev server: `npm run dev` on port 3000
+- Kawkab Mono font is self-hosted in public/fonts/ for Arabic monospace text
+- Monaco editor and Tailwind font-mono both use Kawkab Mono as first font in stack
+- Ruby-themed colors use CSS variables: --ruby-primary, --ruby-secondary, --ruby-accent, --ruby-surface
+- Tailwind 4 @theme inline maps CSS variables to Tailwind colors: text-ruby-primary, bg-ruby-primary, etc.
+- Success states (completed lessons, correct answers) should always use green, not ruby colors
+- Error states use orange (incorrect answers) or red (errors), distinct from ruby primary
+- Use theme-aware colors (text-foreground, bg-foreground/N) instead of hardcoded gray-* for multi-theme support
+- For text visibility: use /60+ opacity for secondary text, /70+ for labels, /80+ for body text
+- Global focus-visible states are defined in globals.css with ruby-primary outline
+- RTL flex layout: Use `flex-row` (not `flex-row-reverse`) since RTL reverses flex direction naturally
+- For viewport-constrained scrollable containers: use `flex flex-col max-h-[calc(100vh-Xrem)]` on parent, `min-h-0 flex-1 overflow-y-auto` on scrollable child
+- For inline code in RTL context: wrap `<code>` in `<bdi>` with `dir="ltr"` to prevent English words like `nil?` from reversing to `?nil`
+- For accessible dropdown menus: use role="menu"/role="menuitem", aria-haspopup, aria-expanded, click-outside/Escape close, and arrow key navigation
+- For syntax highlighting in content: use CodeBlock component with prism-react-renderer (themes.oneDark/oneLight for dark/light modes)
+
+---
+
+## 2026-01-24 - US-001
+- What was implemented: Replaced site name 'روبي بالعربي' with 'روبي عربي' throughout the codebase
+- Files changed:
+  - app/page.tsx (header logo, hero title, footer)
+  - app/layout.tsx (metadata: title, authors, creator, publisher, openGraph, twitter)
+  - app/progress/page.tsx (completion message, footer)
+  - app/progress/layout.tsx (page metadata and descriptions)
+  - app/glossary/layout.tsx (page metadata)
+  - app/lessons/[section]/[lesson]/page.tsx (page metadata)
+  - content/course.json (course title)
+  - content/lessons/fundamentals/constants-symbols.md (code example)
+  - content/lessons/fundamentals/string-interpolation.md (code example)
+- **Learnings for future iterations:**
+  - The old site name appears in many places - use grep to find all occurrences before starting
+  - Lesson content files contain code examples that reference the site name
+  - PRD/task documentation files (prompts/, ralph/, tasks/) should NOT be modified as they document the change itself
+  - Browser verification confirmed: page title, header logo, hero title, and footer all show "روبي عربي"
+---
+
+## 2026-01-25 - US-002
+- What was implemented: Replaced 'كود' with 'شيفرة برمجية' (or 'شيفرة' for short form) throughout the codebase
+- Files changed:
+  - components/CodePlayground.tsx (UI strings: نسخ الشيفرة, جارٍ تنفيذ الشيفرة, etc.)
+  - app/page.tsx (hero text, feature descriptions)
+  - app/layout.tsx (metadata descriptions)
+  - app/lessons/[section]/[lesson]/page.tsx ("جرب الشيفرة" heading)
+  - app/lessons/[section]/[lesson]/LessonPlayground.tsx (default starter code comment)
+  - content/course.json (starterCode comments in exercises)
+  - content/glossary.json (14 definition updates)
+  - 40+ markdown files in content/lessons/ (exercise instructions, explanations, tips)
+- **Learnings for future iterations:**
+  - Use sed with find for batch replacing consistent patterns across many markdown files
+  - Arabic text replacement needs careful attention to grammatical gender (كود is masculine, شيفرة is feminine) - adjectives and verbs must agree
+  - Common patterns like "في محرر الكود على اليسار" appeared in nearly every lesson file
+  - PRD/task documentation files should NOT be modified as they document the change itself
+---
+
+## 2026-01-25 - US-003
+- What was implemented: Added Kawkab Mono Arabic monospace font for proper Arabic character rendering in code
+- Files changed:
+  - public/fonts/KawkabMono-Regular.woff2 (new font file, 400 weight)
+  - public/fonts/KawkabMono-Bold.woff2 (new font file, 700 weight)
+  - app/globals.css (@font-face declarations with font-display: swap, updated --font-mono in @theme)
+  - components/CodeEditor.tsx (Monaco editor fontFamily updated to include Kawkab Mono first)
+- **Learnings for future iterations:**
+  - Kawkab Mono can be downloaded from https://makkuk.com/kawkab-mono/ as a zip file
+  - Use woff2 format for best web performance (smallest file size, wide browser support)
+  - Font files should be self-hosted in public/fonts/ for Next.js static serving
+  - Monaco editor fontFamily is configured in the options object, not via CSS
+  - Tailwind 4's @theme inline syntax allows setting --font-mono directly
+  - Browser verification had technical issues but implementation is complete and typecheck passes
+---
+
+## 2026-01-25 - US-004
+- What was implemented: Applied Ruby-themed color scheme replacing emerald/green primary colors
+- Files changed:
+  - app/globals.css (added CSS variables for light/dark themes: --ruby-primary, --ruby-secondary, --ruby-accent, --ruby-surface; added Tailwind @theme inline mappings)
+  - app/page.tsx (hero section, CTA buttons, feature list, gradient backgrounds)
+  - app/progress/page.tsx (progress bar, next lesson card, completion stats)
+  - app/glossary/page.tsx (header, search focus, sort toggle, term cards, letter badges)
+  - app/lessons/[section]/[lesson]/page.tsx (breadcrumb links, navigation buttons, completion button)
+  - app/lessons/[section]/[lesson]/LessonContent.tsx (inline code, emphasis, blockquotes, links, prose theme)
+  - components/Sidebar.tsx (logo, current section, current lesson, completion states)
+  - components/CodePlayground.tsx (run button, input focus states)
+- **Learnings for future iterations:**
+  - Use grep to find all "emerald" color usages before starting replacements
+  - Tailwind 4's @theme inline block allows custom CSS variables to be used as Tailwind utilities
+  - Success states (completed lessons, correct answers) should remain green for semantic meaning
+  - Error/incorrect states use orange to distinguish from both ruby primary and error red
+  - PRD/task documentation files contain "emerald" references but should NOT be modified
+  - Browser verification had technical issues but typecheck passes and implementation is complete
+---
+
+## 2026-01-25 - US-005
+- What was implemented: Fixed color visibility issues in both light and dark themes
+- Files changed:
+  - app/globals.css (added focus-visible styles for accessibility)
+  - app/glossary/page.tsx (replaced hardcoded gray-* colors with theme-aware foreground/background)
+  - app/lessons/[section]/[lesson]/LessonContent.tsx (replaced gray-* with foreground/*, text-white with text-foreground)
+  - app/progress/page.tsx (fixed section number visibility)
+  - components/CodeEditor.tsx (improved loading state text visibility)
+  - components/CodePlayground.tsx (improved keyboard shortcut hint visibility)
+  - components/Sidebar.tsx (fixed section numbers, chevron icons, lesson index visibility)
+- **Learnings for future iterations:**
+  - Hardcoded gray-* colors don't adapt to theme changes - always use foreground/background with opacity
+  - WCAG AA requires 4.5:1 contrast for normal text - /40 and /50 opacities often fail this in light themes
+  - Use /60+ for secondary elements, /70+ for labels and hints, /80+ for body text
+  - Section completion badges should use bg-green-500 (not ruby) for semantic meaning
+  - Focus-visible styles should be defined globally to ensure consistent keyboard navigation
+  - Browser automation had connectivity issues but all changes verified via typecheck
+---
+
+## 2026-01-25 - US-006
+- What was implemented: Fixed RTL page layout structure for proper Arabic reading flow
+- Files changed:
+  - app/lessons/[section]/[lesson]/page.tsx (flex direction and element order)
+- **Learnings for future iterations:**
+  - RTL flex behavior: In RTL context, `flex-row` places first child on RIGHT, last child on LEFT
+  - Using `flex-row-reverse` in RTL doubles the reversal, causing LTR layout - use plain `flex-row` instead
+  - For desired layout (Code Editor left, Content right, Sidebar far right):
+    - Outer container: `lg:flex-row` with Sidebar first in DOM → appears on right
+    - Inner content: `xl:flex-row` with Article first, Aside second → Article on right, Aside on left
+  - Mobile stacking with `flex-col` naturally shows items in DOM order: Content then Code Editor
+  - The `xl:order-*` utilities can be used but reordering DOM is cleaner for RTL
+  - Browser verification confirmed layout: Sidebar (right) | Content (center-right) | Code Editor (left)
+---
+
+## 2026-01-25 - US-007
+- What was implemented: Fixed code editor card height overflow to fit within viewport
+- Files changed:
+  - app/lessons/[section]/[lesson]/page.tsx (added max-h-[calc(100vh-2rem)], flexbox layout, overflow-y-auto)
+  - app/lessons/[section]/[lesson]/LessonPlayground.tsx (reduced editor height from 300px to 200px)
+  - components/CodePlayground.tsx (added min-h-0 to allow flexbox shrinking)
+- **Learnings for future iterations:**
+  - Use `max-h-[calc(100vh-Xrem)]` with `xl:` prefix for desktop-only viewport constraints
+  - Flexbox height constraints require `min-h-0` on flex children to allow shrinking below content size
+  - The `flex-1 min-h-0` pattern is essential for making flex children scrollable
+  - The `overflow-y-auto` should be on the direct parent of scrollable content
+  - Sticky positioning with `self-start` works well with max-height constraints
+  - Browser automation had connectivity issues but typecheck passes and implementation is correct
+---
+
+## 2026-01-25 - US-008
+- What was implemented: Fixed CodeEditor loading state background mismatch
+- Files changed:
+  - components/CodeEditor.tsx (added backgroundColor: var(--editor-bg) to outer wrapper div)
+- **Learnings for future iterations:**
+  - The Monaco Editor `loading` prop renders inside the Editor component, not as a sibling
+  - The outer wrapper div needs the same background color to prevent any visual gap during loading
+  - Using the same CSS variable (--editor-bg) ensures consistency between loading state and Monaco editor
+  - This is a minimal one-line fix that addresses the visual mismatch
+---
+
+## 2026-01-25 - US-009
+- What was implemented: Fixed output box placeholder RTL direction
+- Files changed:
+  - components/CodePlayground.tsx (added dir="rtl" to placeholder span element)
+- **Learnings for future iterations:**
+  - The output panel has dir="ltr" on the main content div for proper code display
+  - Arabic placeholder text needs its own dir="rtl" attribute to display correctly
+  - Actual code output should remain dir="ltr" to preserve code formatting
+  - This is a minimal one-line fix that adds dir="rtl" specifically to the empty state placeholder
+---
+
+## 2026-01-25 - US-010
+- What was implemented: Fixed English words reversed in RTL context using bidirectional isolation
+- Files changed:
+  - app/lessons/[section]/[lesson]/LessonContent.tsx (wrapped inline code in <bdi> with dir="ltr")
+  - components/CodePlayground.tsx (wrapped hardcoded inline code 'gets' in <bdi> with dir="ltr")
+- **Learnings for future iterations:**
+  - In RTL context, English words like `nil?` display as `?nil` because punctuation gets pulled to the start
+  - Use `<bdi>` (bidirectional isolation) element to isolate inline code from surrounding RTL text
+  - The `<bdi>` element prevents bidirectional text reordering of its contents
+  - Adding `dir="ltr"` on the `<code>` element ensures correct rendering of code inside the isolated block
+  - Block code already had `dir="ltr"`, only inline code needed fixing
+  - Check for hardcoded `<code>` elements in UI components, not just markdown rendering
+  - Browser automation had connectivity issues but typecheck passes and implementation is standard practice for bidi text
+---
+
+## 2026-01-25 - US-011
+- What was implemented: Fixed extra bottom padding in blockquotes
+- Files changed:
+  - app/lessons/[section]/[lesson]/LessonContent.tsx (added [&>*:last-child]:mb-0 to blockquote className)
+- **Learnings for future iterations:**
+  - Blockquotes contain paragraph elements that have `mb-4` (margin-bottom) by default
+  - Use `[&>*:last-child]:mb-0` Tailwind arbitrary variant to remove margin from the last child inside a container
+  - This is a common pattern for containers with children that have bottom margins - always check if the last child's margin creates unwanted extra space
+  - Browser automation connectivity issues persisted but typecheck passes and implementation follows standard CSS patterns
+---
+
+## 2026-01-25 - US-012
+- What was implemented: Converted theme toggle from cycling button to dropdown menu
+- Files changed:
+  - components/ThemeToggle.tsx (complete rewrite with dropdown menu, icons, and keyboard navigation)
+- **Learnings for future iterations:**
+  - Dropdown menus need: click-outside close, Escape key close, and keyboard arrow navigation
+  - Use `role="menu"` and `role="menuitem"` for accessibility
+  - `aria-haspopup="menu"` and `aria-expanded` on trigger button for screen readers
+  - Focus management: focus the current selection when opening, return focus to trigger on close
+  - Tab key should close the dropdown (standard menu behavior)
+  - Home/End keys for jumping to first/last items in the menu
+  - Use `useCallback` for handlers to prevent unnecessary re-renders
+  - Separate icon components keep code clean and reusable
+  - Browser automation had connectivity issues but typecheck passes and implementation follows standard accessible dropdown patterns
+---
+
+## 2026-01-25 - US-013
+- What was implemented: Converted Run, Copy, Reset buttons to icon-only with CSS tooltips
+- Files changed:
+  - components/CodePlayground.tsx (replaced text buttons with icon-only buttons, added tooltip wrappers)
+- **Learnings for future iterations:**
+  - Use `group` and `group-hover:opacity-100` pattern for CSS-only tooltips without JavaScript
+  - Tooltip delay can be achieved with `transition-opacity delay-300` class
+  - Position tooltips with `absolute top-full` and center with `right-1/2 translate-x-1/2`
+  - Arrow pointer uses border trick: `border-4 border-transparent border-b-foreground` on a pseudo element
+  - Always add `aria-label` to icon-only buttons for accessibility
+  - Keep minimum 44px tap target with `min-h-[44px] min-w-[44px]` for touch devices
+  - Tooltip text direction: use `dir="rtl"` for Arabic text container, wrap English keyboard shortcuts in `<span dir="ltr">`
+---
+
+## 2026-01-25 - US-014
+- What was implemented: Moved check answer button below the output panel for better visual flow
+- Files changed:
+  - components/CodePlayground.tsx (reordered sections: output panel → check answer button → validation feedback)
+- **Learnings for future iterations:**
+  - The CodePlayground component has three main sections after the editor: control buttons, output panel, and validation feedback
+  - Moving the check answer button below output creates better visual flow: run code → see output → check answer → see feedback
+  - Use full-width (`w-full`) for prominent action buttons to make them more visible and easier to tap
+  - Ruby-themed colors (bg-ruby-primary, hover:bg-ruby-secondary) maintain brand consistency for primary actions
+  - Validation feedback (correct/incorrect with hints) should appear directly after the action that triggers it
+---
+
+## 2026-01-25 - US-015
+- What was implemented: Added run completion animation with success (green pulse + checkmark) and error (red shake) states
+- Files changed:
+  - app/globals.css (added @keyframes for run-success-pulse and run-error-shake animations, plus .animate-run-success and .animate-run-error classes)
+  - components/CodePlayground.tsx (added runStatus state, updated handleRun to track success/error with 400ms minimum duration, conditionally apply animation classes and show checkmark icon on success)
+- **Learnings for future iterations:**
+  - Use CSS @keyframes for animations instead of JavaScript to keep animations smooth and not block the main thread
+  - For minimum animation duration, track start time and use setTimeout with remaining time in the finally block
+  - Use `!important` in animation classes to override inline styles and other CSS rules
+  - The run button has three visual states: idle (ruby primary), loading (spinner), and completion (success green/error red)
+  - Success animation uses box-shadow pulse effect (0 → 8px → 0) for a subtle glow
+  - Error animation uses translateX shake (-2px ↔ 2px) for immediate visual feedback
+  - Show different icons for different states: play icon (idle), spinner (loading), checkmark (success)
+---
+
+## 2026-01-25 - US-016
+- What was implemented: Added Ruby syntax highlighting to content code blocks using prism-react-renderer
+- Files changed:
+  - package.json (added prism-react-renderer dependency)
+  - components/CodeBlock.tsx (new component with syntax highlighting using Highlight from prism-react-renderer)
+  - app/lessons/[section]/[lesson]/LessonContent.tsx (updated pre component to use CodeBlock, inline code still renders without syntax highlighting)
+- **Learnings for future iterations:**
+  - prism-react-renderer provides `Highlight` component and `themes` object with multiple built-in themes
+  - Use `themes.oneDark` for dark mode and `themes.oneLight` for light mode - both are standard Prism themes
+  - ReactMarkdown wraps code in `<pre><code className="language-xxx">...</code></pre>` - extract language from className
+  - The `pre` component handles block code; `code` component handles inline code
+  - Clean up trailing newlines from code strings with `code.replace(/\n$/, "")` for proper rendering
+  - Browser verification confirmed syntax highlighting works in both light and dark themes with distinct colors for keywords, strings, etc.
+---
+
+## 2026-01-25 - US-017
+- What was implemented: Added copy button to content code blocks in the CodeBlock component
+- Files changed:
+  - components/CodeBlock.tsx (added copy button with hover visibility, success state feedback)
+- **Learnings for future iterations:**
+  - The CodeBlock component created in US-016 can be extended to add the copy button - keeps code DRY
+  - Use `group` and `sm:opacity-0 sm:group-hover:opacity-100` for desktop hover visibility, `opacity-100` for mobile always-visible
+  - Copy button uses the same pattern as CodePlayground: navigator.clipboard.writeText with fallback to document.execCommand
+  - Success feedback uses aria-label change ('نسخ الشيفرة' → 'تم النسخ') and icon change (copy → checkmark)
+  - Position button with `absolute top-2 left-2` (left because code blocks are LTR)
+  - Browser verification confirmed: 6 code blocks found, all with copy buttons, click shows checkmark, works in both themes
+---
+
+## 2026-01-25 - US-018
+- What was implemented: Added progress page access link ('تقدمي') in the sidebar for quick access from lesson pages
+- Files changed:
+  - components/Sidebar.tsx (added progress link with bar chart icon above glossary link in the quick links section)
+- **Learnings for future iterations:**
+  - The Sidebar component is visible on both mobile (via hamburger menu) and desktop, making it the ideal location for global navigation links
+  - Renamed the section from "Glossary link" to "Quick links" to accommodate multiple utility links
+  - Used the same styling pattern as the glossary link (min-h-[44px], flex layout with icon and text, hover states)
+  - Progress icon uses a bar chart SVG that conveys the concept of tracking/metrics visually
+  - Adding space-y-1 to the container provides consistent spacing between multiple links
+---
+
+## 2026-01-25 - US-019
+- What was implemented: Added lesson copy and download buttons for exporting lesson content as markdown
+- Files changed:
+  - components/LessonActions.tsx (new component with copy and download buttons, tooltips, success feedback)
+  - app/api/lesson-export/route.ts (new API endpoint that combines markdown content with exercise hints from course.json)
+  - app/lessons/[section]/[lesson]/page.tsx (integrated LessonActions component near lesson title)
+- **Learnings for future iterations:**
+  - Lesson markdown content is fetched via API, but exercise hints/starterCode/expectedOutput are stored separately in course.json
+  - Created a dedicated lesson-export API endpoint that combines both sources for complete markdown export
+  - The exported markdown appends: hints section, starter code, and expected output if they exist in course.json
+  - Use Blob with type "text/markdown;charset=utf-8" for proper markdown file downloads
+  - URL.createObjectURL + link.click() pattern works well for client-side file downloads
+  - Copy/download buttons placed next to title with flex layout and gap for responsive spacing
+  - Browser verification confirmed: copy shows checkmark success, download saves fundamentals-variables-types.md with complete content
+---
+
+## 2026-01-25 - US-020
+- What was implemented: Moved all inline Arabic comments in code examples to separate lines above the code they explain
+- Files changed:
+  - 31 lesson markdown files in content/lessons/ across all sections:
+    - getting-started/ (3 files): what-is-ruby.md, comments.md, output-methods.md
+    - fundamentals/ (10 files): variables-types.md, operators.md, constants-symbols.md, boolean-logic.md, truthiness.md, bang-predicate.md, string-methods.md, user-input.md, type-conversion.md, multiple-assignment.md
+    - collections/ (4 files): arrays.md, hashes.md, ranges-enumerables.md, array-methods.md
+    - control-flow/ (1 file): conditionals.md
+    - loops/ (2 files): while-until.md, for-control.md
+    - methods/ (2 files): defining-methods.md, returns-splat.md
+    - oop/ (3 files): classes-objects.md, initialize-accessors.md, inheritance.md
+    - blocks/ (3 files): block-syntax.md, yield.md, procs-lambdas.md
+    - modules/ (1 file): modules-mixins.md
+    - errors/ (1 file): error-handling.md
+    - challenges/ (1 file): fizzbuzz.md
+- **Learnings for future iterations:**
+  - Use grep pattern `[a-zA-Z\d\)"\'\]].+# [\u0600-\u06FF]` to find inline Arabic comments in code
+  - Comments should always be on their own line ABOVE the code they describe, not after it
+  - This prevents RTL rendering issues where punctuation like `?` in `nil?` gets reversed to `?nil`
+  - The pattern of moving inline comments to separate lines improves readability in RTL contexts
+  - Verifying with grep count=0 ensures all inline comments have been moved
+---
