@@ -179,9 +179,10 @@ export default function Sidebar({ course, hideToggleButton = false }: SidebarPro
           <div className="flex items-center justify-between">
             <Link
               href="/"
-              className="block text-xl font-bold text-ruby-primary hover:text-ruby-secondary transition-colors"
+              className="flex items-center gap-2 text-xl font-bold text-ruby-primary hover:text-ruby-secondary transition-colors"
             >
-              {course.title}
+              <img src="/ruby-logo.svg" alt="Ruby" className="h-7 w-7" />
+              <span>{course.title}</span>
             </Link>
             <ThemeToggle />
           </div>

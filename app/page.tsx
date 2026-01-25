@@ -45,9 +45,10 @@ export default function Home() {
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
           <Link
             href="/"
-            className="text-xl font-bold text-ruby-primary hover:text-ruby-secondary transition-colors"
+            className="flex items-center gap-2 text-xl font-bold text-ruby-primary hover:text-ruby-secondary transition-colors"
           >
-            روبي عربي
+            <img src="/ruby-logo.svg" alt="Ruby" className="h-7 w-7" />
+            <span>روبي عربي</span>
           </Link>
           <div className="flex items-center gap-4">
             <Link
@@ -73,6 +74,13 @@ export default function Home() {
         <section className="relative overflow-hidden border-b border-foreground/10 bg-linear-to-b from-ruby-surface to-background">
         <div className="mx-auto max-w-6xl px-6 py-20 lg:py-32">
           <div className="text-center">
+            {/* Ruby Logo */}
+            <img
+              src="/ruby-logo.svg"
+              alt="Ruby"
+              className="mx-auto mb-6 h-24 w-24 lg:h-32 lg:w-32"
+            />
+
             {/* Main Title */}
             <h1 className="mb-6 text-5xl font-bold tracking-tight text-foreground lg:text-7xl">
               روبي عربي

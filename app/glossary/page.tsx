@@ -114,7 +114,8 @@ export default function GlossaryPage() {
                   d="M10 19l-7-7m0 0l7-7m-7 7h18"
                 />
               </svg>
-              الصفحة الرئيسية
+              <img src="/ruby-logo.svg" alt="" className="h-5 w-5" />
+              <span>الصفحة الرئيسية</span>
             </Link>
           </div>
         </div>

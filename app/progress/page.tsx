@@ -82,7 +82,7 @@ export default function ProgressPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Header */}
-      <header className="border-b border-foreground/10 bg-gradient-to-b from-ruby-surface to-background">
+      <header className="border-b border-foreground/10 bg-linear-to-b from-ruby-surface to-background">
         <div className="mx-auto max-w-4xl px-6 py-8">
           {/* Back to Home */}
           <Link
@@ -101,6 +101,7 @@ export default function ProgressPage() {
                 clipRule="evenodd"
               />
             </svg>
+            <img src="/ruby-logo.svg" alt="" className="h-4 w-4" />
             <span>العودة للرئيسية</span>
           </Link>
 

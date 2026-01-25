@@ -39,12 +39,12 @@ export async function generateMetadata({
 
   if (!nav) {
     return {
-      title: "الدرس غير موجود | روبي عربي",
+      title: "الدرس غير موجود",
     };
   }
 
   return {
-    title: `${nav.current.lesson.title} | روبي عربي`,
+    title: nav.current.lesson.title,
     description: `تعلم ${nav.current.lesson.title} في لغة روبي - ${nav.current.section.title}`,
   };
 }
@@ -87,8 +87,9 @@ export default async function LessonPage({ params }: LessonPageProps) {
               {/* Mobile menu button - inside header */}
               <MobileMenuButton />
               <nav className="flex flex-wrap items-center gap-1.5 text-xs text-foreground/60 sm:gap-2 sm:text-sm">
-              <Link href="/" className="hover:text-ruby-primary transition-colors shrink-0">
-                {course.title}
+              <Link href="/" className="flex items-center gap-1.5 hover:text-ruby-primary transition-colors shrink-0">
+                <img src="/ruby-logo.svg" alt="" className="h-4 w-4 sm:h-5 sm:w-5" />
+                <span>{course.title}</span>
               </Link>
               <span className="text-foreground/30">/</span>
               <span className="shrink-0">{nav.current.section.title}</span>
