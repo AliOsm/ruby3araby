@@ -109,7 +109,6 @@ export default function CodePlayground({
     status: "idle",
   });
   const [showConfetti, setShowConfetti] = useState(false);
-  const [showExpectedOutput, setShowExpectedOutput] = useState(false);
   const confettiRef = useRef<HTMLDivElement>(null);
   const [runStatus, setRunStatus] = useState<"idle" | "success" | "error">(
     "idle"
@@ -553,38 +552,6 @@ export default function CodePlayground({
           </span>
         )}
       </div>
-
-      {/* Expected Output Toggle - shown only for exercises */}
-      {expectedOutput && (
-        <button
-          onClick={() => setShowExpectedOutput((prev) => !prev)}
-          className="flex flex-row-reverse items-center gap-2 text-sm text-ruby-primary hover:text-ruby-secondary transition-colors self-start"
-        >
-          <svg
-            className={`h-4 w-4 transition-transform ${showExpectedOutput ? "rotate-90" : "rotate-180"}`}
-            fill="currentColor"
-            viewBox="0 0 20 20"
-          >
-            <path
-              fillRule="evenodd"
-              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-              clipRule="evenodd"
-            />
-          </svg>
-          <span>{showExpectedOutput ? "إخفاء الناتج المتوقع" : "عرض الناتج المتوقع"}</span>
-        </button>
-      )}
-
-      {/* Expected Output Panel - collapsible */}
-      {expectedOutput && showExpectedOutput && (
-        <div
-          className="overflow-hidden rounded-lg border border-ruby-primary/30 bg-ruby-primary/5"
-        >
-          <pre className="p-3 font-mono text-sm whitespace-pre-wrap text-foreground/80" dir="ltr">
-            {expectedOutput}
-          </pre>
-        </div>
-      )}
 
       {/* Output Panel */}
       <div

@@ -529,6 +529,15 @@ puts company.dig(:employees, :cto, :salary)  # 45000
 - لإضافة مفتاح جديد: `person[:job] = "مبرمجة"`
 - لعدد المفاتيح: `person.length` أو `person.keys.length`
 
+الناتج المتوقع:
+```
+فاطمة
+دبي
+5
+[:name, :age, :city, :skills, :job]
+false
+```
+
 ---
 
 > **تذكّر:** القواميس مثالية لتخزين البيانات المُسمّاة، والرموز هي أفضل خيار للمفاتيح!
