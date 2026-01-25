@@ -128,16 +128,22 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
     const handleChange = () => {
-      if (theme === "system") {
+      // Check current theme preference - this handler captures the latest setters
+      const storedTheme = getStoredTheme();
+      if (storedTheme === "system") {
         const resolved = getSystemTheme();
         setResolvedTheme(resolved);
-        applyTheme(resolved);
+        // Apply theme directly since we're inside an effect callback
+        const root = document.documentElement;
+        root.classList.remove("light", "dark");
+        root.classList.add(resolved);
+        root.setAttribute("data-theme", resolved);
       }
     };
 
     mediaQuery.addEventListener("change", handleChange);
     return () => mediaQuery.removeEventListener("change", handleChange);
-  }, [theme, applyTheme]);
+  }, []);
 
   const value = {
     theme,

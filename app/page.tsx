@@ -1,9 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { ProgressService } from "@/lib/progress";
 import { getCourseStructure } from "@/lib/course-loader";
+import { useLastLesson, useCompletedCount } from "@/lib/useProgress";
 import ThemeToggle from "@/components/ThemeToggle";
 
 // Static code preview for the mockup
@@ -22,10 +21,9 @@ const previewOutput = `مرحبا يا أحمد!
 العد: 3`;
 
 export default function Home() {
-  const [lastLesson, setLastLesson] = useState<string | null>(null);
-  const [completedCount, setCompletedCount] = useState(0);
-  const [mounted, setMounted] = useState(false);
-  const initialLoadRef = useRef(false);
+  // Use hydration-safe hooks from useProgress
+  const lastLesson = useLastLesson();
+  const completedCount = useCompletedCount();
 
   // Get course structure for total lesson count
   const course = getCourseStructure();
@@ -33,19 +31,6 @@ export default function Home() {
     (acc, section) => acc + section.lessons.length,
     0
   );
-
-  useEffect(() => {
-    if (initialLoadRef.current) return;
-    initialLoadRef.current = true;
-
-    // Use setTimeout to avoid ESLint set-state-in-effect rule
-    setTimeout(() => {
-      setMounted(true);
-      const last = ProgressService.getLastLesson();
-      setLastLesson(last);
-      setCompletedCount(ProgressService.getCompletedCount());
-    }, 0);
-  }, []);
 
   // First lesson path
   const firstLessonPath = "/lessons/getting-started/what-is-ruby";
@@ -85,7 +70,7 @@ export default function Home() {
       {/* Main Content */}
       <main>
         {/* Hero Section */}
-        <section className="relative overflow-hidden border-b border-foreground/10 bg-gradient-to-b from-ruby-surface to-background">
+        <section className="relative overflow-hidden border-b border-foreground/10 bg-linear-to-b from-ruby-surface to-background">
         <div className="mx-auto max-w-6xl px-6 py-20 lg:py-32">
           <div className="text-center">
             {/* Main Title */}
@@ -121,16 +106,17 @@ export default function Home() {
               </Link>
 
               {/* Continue Button - Only show if user has progress */}
-              {mounted && continuePath && (
+              {continuePath && (
                 <Link
                   href={continuePath}
                   className="inline-flex items-center gap-2 rounded-lg border border-foreground/20 bg-foreground/5 px-8 py-4 text-lg font-semibold text-foreground transition-colors hover:bg-foreground/10"
                 >
+                  <span>أكمل من حيث توقفت</span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                     fill="currentColor"
-                    className="h-5 w-5"
+                    className="h-5 w-5 rtl:rotate-180"
                   >
                     <path
                       fillRule="evenodd"
@@ -138,13 +124,12 @@ export default function Home() {
                       clipRule="evenodd"
                     />
                   </svg>
-                  <span>أكمل من حيث توقفت</span>
                 </Link>
               )}
             </div>
 
             {/* Progress indicator if user has some progress */}
-            {mounted && completedCount > 0 && (
+            {completedCount > 0 && (
               <div className="mt-8 text-sm text-foreground/60">
                 أكملت {completedCount} من {totalLessons} درس
               </div>
@@ -357,7 +342,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="border-t border-foreground/10 bg-gradient-to-b from-ruby-surface to-background py-16 lg:py-24">
+      <section className="border-t border-foreground/10 bg-linear-to-b from-ruby-surface to-background py-16 lg:py-24">
         <div className="mx-auto max-w-3xl px-6 text-center">
           <h2 className="mb-6 text-3xl font-bold lg:text-4xl">
             ابدأ رحلتك في البرمجة اليوم

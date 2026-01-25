@@ -353,23 +353,29 @@ export default function CodePlayground({
     }
   }, [lessonId, code]);
 
-  // Global keyboard shortcuts
+  // Refs for handlers to avoid re-registering keyboard listener
+  const handleRunRef = useRef(handleRun);
+  const handleSaveRef = useRef(handleSave);
+  handleRunRef.current = handleRun;
+  handleSaveRef.current = handleSave;
+
+  // Global keyboard shortcuts (stable effect with refs)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.metaKey || e.ctrlKey) {
         if (e.key === "Enter") {
           e.preventDefault();
-          handleRun();
+          handleRunRef.current();
         } else if (e.key === "s") {
           e.preventDefault();
-          handleSave();
+          handleSaveRef.current();
         }
       }
     };
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [handleRun, handleSave]);
+  }, []);
 
   // Check if exercise has validation enabled
   const hasValidation = !!expectedOutput;

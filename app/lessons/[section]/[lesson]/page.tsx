@@ -93,7 +93,7 @@ export default async function LessonPage({ params }: LessonPageProps) {
               <span className="text-foreground/30">/</span>
               <span className="shrink-0">{nav.current.section.title}</span>
               <span className="text-foreground/30">/</span>
-              <span className="text-foreground break-words">{nav.current.lesson.title}</span>
+              <span className="text-foreground wrap-break-word">{nav.current.lesson.title}</span>
               </nav>
             </div>
           </div>

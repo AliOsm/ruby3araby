@@ -28,6 +28,11 @@ interface ProgressData {
 let localStorageAvailable: boolean | null = null;
 
 /**
+ * In-memory cache for progress data to avoid repeated localStorage reads/parses
+ */
+let progressDataCache: ProgressData | null = null;
+
+/**
  * Check if localStorage is available (cached)
  */
 function isLocalStorageAvailable(): boolean {
@@ -46,9 +51,22 @@ function isLocalStorageAvailable(): boolean {
 }
 
 /**
- * Get progress data from localStorage
+ * Invalidate the in-memory progress data cache
+ * Called after writes to ensure consistency
+ */
+function invalidateProgressCache(): void {
+  progressDataCache = null;
+}
+
+/**
+ * Get progress data from localStorage (with caching)
  */
 function getProgressData(): ProgressData {
+  // Return cached data if available
+  if (progressDataCache) {
+    return progressDataCache;
+  }
+
   if (!isLocalStorageAvailable()) {
     return { completedLessons: [], lastUpdated: new Date().toISOString() };
   }
@@ -56,13 +74,16 @@ function getProgressData(): ProgressData {
   try {
     const stored = localStorage.getItem(COMPLETED_KEY);
     if (stored) {
-      return JSON.parse(stored) as ProgressData;
+      progressDataCache = JSON.parse(stored) as ProgressData;
+      return progressDataCache;
     }
   } catch {
     // Invalid JSON, reset
   }
 
-  return { completedLessons: [], lastUpdated: new Date().toISOString() };
+  const defaultData = { completedLessons: [], lastUpdated: new Date().toISOString() };
+  progressDataCache = defaultData;
+  return defaultData;
 }
 
 /**
@@ -75,8 +96,12 @@ function saveProgressData(data: ProgressData): void {
 
   try {
     localStorage.setItem(COMPLETED_KEY, JSON.stringify(data));
+    // Update cache with the new data
+    progressDataCache = data;
   } catch {
     // Storage quota exceeded or other error, fail silently
+    // Invalidate cache on error to ensure consistency
+    invalidateProgressCache();
   }
 }
 
@@ -225,6 +250,8 @@ export const ProgressService = {
     try {
       // Remove completed lessons
       localStorage.removeItem(COMPLETED_KEY);
+      // Invalidate cache since we're clearing data
+      invalidateProgressCache();
       // Remove last lesson
       localStorage.removeItem(LAST_LESSON_KEY);
       // Remove all saved code

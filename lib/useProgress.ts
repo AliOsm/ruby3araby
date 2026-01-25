@@ -20,16 +20,22 @@ function subscribe(callback: () => void): () => void {
 
 // Cache for completed lessons to avoid creating new arrays on every call
 let completedLessonsCache: string[] = [];
-let completedLessonsCacheKey = "";
 
 function getCompletedLessonsSnapshot(): string[] {
   const lessons = ProgressService.getCompletedLessons();
-  const key = lessons.join(",");
 
-  // Only return a new array if the content changed
-  if (key !== completedLessonsCacheKey) {
+  // Fast path: length changed = definitely different
+  if (lessons.length !== completedLessonsCache.length) {
     completedLessonsCache = lessons;
-    completedLessonsCacheKey = key;
+    return completedLessonsCache;
+  }
+
+  // Slow path: compare contents only if lengths match
+  for (let i = 0; i < lessons.length; i++) {
+    if (lessons[i] !== completedLessonsCache[i]) {
+      completedLessonsCache = lessons;
+      return completedLessonsCache;
+    }
   }
 
   return completedLessonsCache;

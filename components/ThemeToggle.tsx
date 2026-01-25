@@ -146,16 +146,19 @@ export default function ThemeToggle() {
     return () => document.removeEventListener("keydown", handleEscape);
   }, [isOpen]);
 
+  // Focus menu item when dropdown opens or focus changes
+  useEffect(() => {
+    if (isOpen && focusedIndex >= 0) {
+      menuItemRefs.current[focusedIndex]?.focus();
+    }
+  }, [isOpen, focusedIndex]);
+
   const handleToggle = useCallback(() => {
     setIsOpen((prev) => {
       if (!prev) {
         // When opening, focus the current theme option
         const currentIndex = themeOptions.findIndex((opt) => opt.value === theme);
         setFocusedIndex(currentIndex);
-        // Focus the menu item after state update
-        setTimeout(() => {
-          menuItemRefs.current[currentIndex]?.focus();
-        }, 0);
       }
       return !prev;
     });
