@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useMemo, useRef, useEffect, useCallback } from "react";
+import { useState, useMemo, useEffect, useCallback, memo } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { CourseStructure, SectionStub } from "@/lib/types";
-import { ProgressService } from "@/lib/progress";
+import { useCompletedLessons } from "@/lib/useProgress";
 import ThemeToggle from "./ThemeToggle";
 
 interface SidebarProps {
@@ -29,41 +29,12 @@ export default function Sidebar({ course, hideToggleButton = false }: SidebarPro
   const currentSectionSlug = pathParts[2]; // /lessons/[section]/[lesson]
   const currentLessonSlug = pathParts[3];
 
-  // Track the previous pathname to detect navigation
-  const prevPathnameRef = useRef(pathname);
-
-  // Track completed lessons from ProgressService
-  const [completedLessons, setCompletedLessons] = useState<Set<string>>(new Set());
-
-  // Load completed lessons on mount and listen for changes
-  useEffect(() => {
-    const loadCompletedLessons = () => {
-      const completed = ProgressService.getCompletedLessons();
-      setCompletedLessons(new Set(completed));
-    };
-
-    // Initial load
-    loadCompletedLessons();
-
-    // Listen for storage changes (other tabs) and custom progress events
-    const handleStorageChange = (e: StorageEvent) => {
-      if (e.key?.startsWith("ruby3araby_")) {
-        loadCompletedLessons();
-      }
-    };
-
-    const handleProgressUpdate = () => {
-      loadCompletedLessons();
-    };
-
-    window.addEventListener("storage", handleStorageChange);
-    window.addEventListener("progressUpdate", handleProgressUpdate);
-
-    return () => {
-      window.removeEventListener("storage", handleStorageChange);
-      window.removeEventListener("progressUpdate", handleProgressUpdate);
-    };
-  }, []);
+  // Track completed lessons using hydration-safe hook
+  const completedLessonsList = useCompletedLessons();
+  const completedLessons = useMemo(
+    () => new Set(completedLessonsList),
+    [completedLessonsList]
+  );
 
   // Function to check if a lesson is completed
   const isLessonCompleted = useCallback(
@@ -74,16 +45,20 @@ export default function Sidebar({ course, hideToggleButton = false }: SidebarPro
     [completedLessons]
   );
 
-  // Calculate section completion stats
-  const getSectionCompletionStats = useCallback(
-    (section: SectionStub) => {
-      const completedCount = section.lessons.filter((lesson) =>
-        completedLessons.has(`${section.slug}/${lesson.slug}`)
-      ).length;
-      return { completed: completedCount, total: section.lessons.length };
-    },
-    [completedLessons]
-  );
+  // Pre-compute all section completion stats - avoids recalculating during render
+  const sectionStats = useMemo(() => {
+    return new Map(
+      course.sections.map((section) => [
+        section.slug,
+        {
+          completed: section.lessons.filter((lesson) =>
+            completedLessons.has(`${section.slug}/${lesson.slug}`)
+          ).length,
+          total: section.lessons.length,
+        },
+      ])
+    );
+  }, [completedLessons, course.sections]);
 
   // Initialize open sections with current section already expanded
   const initialOpenSections = useMemo(
@@ -104,20 +79,18 @@ export default function Sidebar({ course, hideToggleButton = false }: SidebarPro
   }, []);
 
   // Handle navigation changes - close mobile sidebar and expand new section
-  // Using a ref-based approach to avoid setState in useEffect
-  if (pathname !== prevPathnameRef.current) {
-    prevPathnameRef.current = pathname;
+  useEffect(() => {
+    // Close mobile sidebar on navigation
     if (isMobileOpen) {
-      // Schedule state update during render (React 18+ supported pattern)
-      setTimeout(() => setIsMobileOpen(false), 0);
+      setIsMobileOpen(false);
     }
-    // Auto-expand new section if changed
+    // Auto-expand new section if not already open
     if (currentSectionSlug && !openSections.has(currentSectionSlug)) {
-      setTimeout(() => {
-        setOpenSections((prev) => new Set(prev).add(currentSectionSlug));
-      }, 0);
+      setOpenSections((prev) => new Set(prev).add(currentSectionSlug));
     }
-  }
+    // Only pathname as dependency - we want this to run on navigation
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname]);
 
   const toggleSection = (sectionSlug: string) => {
     setOpenSections((prev) => {
@@ -219,7 +192,7 @@ export default function Sidebar({ course, hideToggleButton = false }: SidebarPro
                 isCurrentLesson={isCurrentLesson}
                 currentSectionSlug={currentSectionSlug}
                 isLessonCompleted={isLessonCompleted}
-                completionStats={getSectionCompletionStats(section)}
+                completionStats={sectionStats.get(section.slug)!}
               />
             ))}
           </ul>
@@ -282,7 +255,8 @@ interface SectionAccordionProps {
   completionStats: { completed: number; total: number };
 }
 
-function SectionAccordion({
+// Memoize SectionAccordion to prevent re-renders when other sections' progress updates
+const SectionAccordion = memo(function SectionAccordion({
   section,
   sectionIndex,
   isOpen,
@@ -403,4 +377,4 @@ function SectionAccordion({
       </ul>
     </li>
   );
-}
+});

@@ -224,26 +224,33 @@ export default function ThemeToggle() {
     [isOpen, focusedIndex, handleToggle, handleSelect]
   );
 
-  // Get the icon for the trigger button based on current state
-  const getCurrentIcon = () => {
+  // Icon for trigger button - uses CSS to switch based on actual theme class
+  // This avoids hydration mismatch since CSS reads from DOM, not React state
+  const ThemeIcon = () => {
     if (theme === "system") {
       return <SystemIcon className="h-5 w-5" />;
     }
-    if (resolvedTheme === "dark") {
-      return <MoonIcon className="h-5 w-5" />;
-    }
-    return <SunIcon className="h-5 w-5" />;
+    // Use CSS-based switching to avoid flash during hydration
+    return (
+      <>
+        <SunIcon className="h-5 w-5 dark:hidden" />
+        <MoonIcon className="h-5 w-5 hidden dark:block" />
+      </>
+    );
   };
 
-  // Show placeholder during SSR to avoid hydration mismatch
+  // Show placeholder during SSR with CSS-based icon switching
+  // The inline script in layout.tsx sets the theme class before React hydrates
   if (!mounted) {
     return (
       <button
-        className="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-700 bg-gray-800 text-gray-400 transition-colors"
+        className="flex h-10 w-10 items-center justify-center rounded-lg border border-foreground/20 bg-foreground/5 text-foreground transition-colors"
         aria-label="تغيير المظهر"
         disabled
       >
-        <MoonIcon className="h-5 w-5" />
+        {/* Show sun in light mode, moon in dark mode via CSS */}
+        <SunIcon className="h-5 w-5 dark:hidden" />
+        <MoonIcon className="h-5 w-5 hidden dark:block" />
       </button>
     );
   }
@@ -259,7 +266,7 @@ export default function ThemeToggle() {
         aria-haspopup="menu"
         aria-expanded={isOpen}
       >
-        {getCurrentIcon()}
+        <ThemeIcon />
       </button>
 
       {isOpen && (

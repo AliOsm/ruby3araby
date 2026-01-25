@@ -79,6 +79,26 @@ export const metadata: Metadata = {
   category: "education",
 };
 
+// Inline script to apply theme before React hydrates (prevents flash)
+const themeScript = `
+(function() {
+  var STORAGE_KEY = 'ruby3araby_theme';
+  var theme = 'system';
+  try {
+    var stored = localStorage.getItem(STORAGE_KEY);
+    if (stored === 'light' || stored === 'dark' || stored === 'system') {
+      theme = stored;
+    }
+  } catch (e) {}
+  var resolved = theme;
+  if (theme === 'system') {
+    resolved = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+  document.documentElement.classList.add(resolved);
+  document.documentElement.setAttribute('data-theme', resolved);
+})();
+`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -86,6 +106,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ar" dir="rtl" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body
         className={`${notoSansArabic.variable} ${geistMono.variable} antialiased font-sans`}
       >

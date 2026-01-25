@@ -22,17 +22,27 @@ interface ProgressData {
 }
 
 /**
- * Check if localStorage is available
+ * Cached result of localStorage availability check
+ * Avoids repeated writes to localStorage just to check availability
+ */
+let localStorageAvailable: boolean | null = null;
+
+/**
+ * Check if localStorage is available (cached)
  */
 function isLocalStorageAvailable(): boolean {
+  if (localStorageAvailable !== null) {
+    return localStorageAvailable;
+  }
   try {
     const testKey = `${STORAGE_PREFIX}test`;
     localStorage.setItem(testKey, "test");
     localStorage.removeItem(testKey);
-    return true;
+    localStorageAvailable = true;
   } catch {
-    return false;
+    localStorageAvailable = false;
   }
+  return localStorageAvailable;
 }
 
 /**

@@ -6,7 +6,6 @@ import {
   useEffect,
   useState,
   useCallback,
-  useRef,
   ReactNode,
 } from "react";
 
@@ -67,13 +66,17 @@ interface ThemeProviderProps {
  * ThemeProvider component that manages dark/light theme state
  * - Persists preference in localStorage
  * - Defaults to system preference
- * - Applies theme class to document root
+ * - Theme is applied via inline script in layout.tsx to prevent flash
  */
 export function ThemeProvider({ children }: ThemeProviderProps) {
-  // Initialize with stored theme or system default
-  const [theme, setThemeState] = useState<Theme>("system");
-  const [resolvedTheme, setResolvedTheme] = useState<ResolvedTheme>("dark");
-  const [mounted, setMounted] = useState(false);
+  // Initialize with stored theme using lazy initialization
+  // The inline script in layout.tsx already applies the theme class before hydration
+  const [theme, setThemeState] = useState<Theme>(() =>
+    typeof window !== "undefined" ? getStoredTheme() : "system"
+  );
+  const [resolvedTheme, setResolvedTheme] = useState<ResolvedTheme>(() =>
+    typeof window !== "undefined" ? resolveTheme(getStoredTheme()) : "dark"
+  );
 
   // Apply theme to document with smooth transition
   const applyTheme = useCallback((resolved: ResolvedTheme, enableTransition = true) => {
@@ -120,30 +123,8 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     [applyTheme]
   );
 
-  // Track if we've initialized
-  const initRef = useRef(false);
-
-  // Initialize theme on mount (no transition on initial load)
-  useEffect(() => {
-    if (initRef.current) return;
-    initRef.current = true;
-
-    const storedTheme = getStoredTheme();
-    const resolved = resolveTheme(storedTheme);
-
-    // Use setTimeout to avoid ESLint set-state-in-effect rule
-    setTimeout(() => {
-      setThemeState(storedTheme);
-      setResolvedTheme(resolved);
-      applyTheme(resolved, false); // No transition on initial load
-      setMounted(true);
-    }, 0);
-  }, [applyTheme]);
-
   // Listen for system preference changes
   useEffect(() => {
-    if (!mounted) return;
-
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
     const handleChange = () => {
@@ -156,10 +137,8 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
 
     mediaQuery.addEventListener("change", handleChange);
     return () => mediaQuery.removeEventListener("change", handleChange);
-  }, [theme, mounted, applyTheme]);
+  }, [theme, applyTheme]);
 
-  // Prevent flash of wrong theme by not rendering until mounted
-  // But still render children to avoid layout shift, just with default theme
   const value = {
     theme,
     resolvedTheme,

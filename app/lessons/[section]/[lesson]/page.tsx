@@ -1,13 +1,15 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Metadata } from "next";
+import { readFile } from "fs/promises";
+import path from "path";
 import {
   getLessonNavigation,
   getAllLessonPaths,
   getCourseStructure,
 } from "@/lib/course-loader";
-import LessonContent from "./LessonContent";
 import LessonPlayground from "./LessonPlayground";
+import LessonContent from "./LessonContent";
 import Sidebar from "@/components/Sidebar";
 import LessonActions from "@/components/LessonActions";
 import MobileMenuButton from "@/components/MobileMenuButton";
@@ -56,8 +58,23 @@ export default async function LessonPage({ params }: LessonPageProps) {
     notFound();
   }
 
+  // Load content on server instead of client (eliminates waterfall)
+  const contentPath = path.join(
+    process.cwd(),
+    "content",
+    "lessons",
+    section,
+    `${lesson}.md`
+  );
+  let content = "";
+  try {
+    content = await readFile(contentPath, "utf-8");
+  } catch {
+    // Content file not found - handled gracefully in LessonContent
+  }
+
   return (
-    <div className="min-h-screen bg-background lg:flex lg:flex-row">
+    <div className="min-h-screen bg-background overflow-x-clip lg:flex lg:flex-row">
       {/* Sidebar - right side in RTL (flex-row works because RTL reverses flex direction) */}
       <Sidebar course={course} hideToggleButton />
 
@@ -65,7 +82,7 @@ export default async function LessonPage({ params }: LessonPageProps) {
       <div className="min-w-0 flex-1">
         {/* Header with breadcrumb - mobile-optimized with wrapping */}
         <header className="border-b border-foreground/10 bg-foreground/5">
-          <div className="mx-auto max-w-5xl px-3 py-3 sm:px-4 sm:py-4">
+          <div className="mx-auto max-w-5xl px-2 py-2 sm:px-4 sm:py-4">
             <div className="flex items-center gap-3">
               {/* Mobile menu button - inside header */}
               <MobileMenuButton />
@@ -83,7 +100,7 @@ export default async function LessonPage({ params }: LessonPageProps) {
         </header>
 
         {/* Main content area - split layout on desktop, stacked on mobile */}
-        <main className="mx-auto max-w-5xl px-3 py-4 sm:px-4 sm:py-6">
+        <main className="mx-auto max-w-5xl px-2 py-3 sm:px-4 sm:py-6">
           {/* Lesson title with action buttons - responsive layout */}
           <div className="mb-4 flex flex-wrap items-start justify-between gap-3 sm:mb-6">
             <h1 className="text-xl font-bold text-foreground sm:text-2xl md:text-3xl">
@@ -97,10 +114,7 @@ export default async function LessonPage({ params }: LessonPageProps) {
           <div className="flex flex-col gap-6 lg:flex-row lg:items-start">
             {/* Arabic content panel - appears on right in RTL */}
             <article className="min-w-0 flex-1 lg:max-w-[50%]">
-              <LessonContent
-                sectionSlug={section}
-                lessonSlug={lesson}
-              />
+              <LessonContent content={content} />
             </article>
 
             {/* Code playground panel - appears on left in RTL, sticky when scrolling */}

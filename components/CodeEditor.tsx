@@ -1,10 +1,53 @@
 "use client";
 
-import Editor, { OnChange, OnMount, Monaco } from "@monaco-editor/react";
+import dynamic from "next/dynamic";
+import type { OnChange, OnMount, Monaco } from "@monaco-editor/react";
 import type { editor } from "monaco-editor";
 import { useCallback, useRef, useMemo, useEffect } from "react";
 import { useTheme } from "@/lib/theme";
 import type { SyntaxCheckResult } from "@/lib/ruby-runner";
+
+// Loading placeholder component for Monaco Editor
+function EditorLoadingPlaceholder() {
+  return (
+    <div
+      className="flex h-full items-center justify-center text-foreground/70"
+      style={{ backgroundColor: "var(--editor-bg)", minHeight: "200px" }}
+    >
+      <div className="flex items-center gap-2">
+        <svg
+          className="h-5 w-5 animate-spin"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <circle
+            className="opacity-25"
+            cx="12"
+            cy="12"
+            r="10"
+            stroke="currentColor"
+            strokeWidth="4"
+          />
+          <path
+            className="opacity-75"
+            fill="currentColor"
+            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+          />
+        </svg>
+        <span>جارٍ تحميل المحرر...</span>
+      </div>
+    </div>
+  );
+}
+
+// Dynamically import Monaco Editor to reduce initial bundle size (~2-3MB)
+const MonacoEditor = dynamic(
+  () => import("@monaco-editor/react").then((mod) => mod.default),
+  {
+    ssr: false,
+    loading: EditorLoadingPlaceholder,
+  }
+);
 
 export interface CodeEditorProps {
   value: string;
@@ -39,6 +82,16 @@ export default function CodeEditor({
   const syntaxCheckTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(
     null
   );
+
+  // Track mounted state to prevent setState on unmounted component
+  const mountedRef = useRef(true);
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      mountedRef.current = false;
+    };
+  }, []);
 
   // Update refs when callbacks change
   useEffect(() => {
@@ -118,36 +171,30 @@ export default function CodeEditor({
       // Initial syntax check if checker is available
       if (syntaxCheckerRef.current) {
         // Use setTimeout to ensure the model is ready
+        // Check mountedRef to prevent setState on unmounted component
         setTimeout(() => {
-          checkSyntaxAndUpdateMarkers(mountedEditor.getValue());
+          if (mountedRef.current) {
+            checkSyntaxAndUpdateMarkers(mountedEditor.getValue());
+          }
         }, 100);
       }
 
       // Get KeyMod and KeyCode from the monaco instance to avoid SSR issues
       const { KeyMod, KeyCode } = monaco;
 
-      // Add Ctrl/Cmd + Enter action to run code
-      mountedEditor.addAction({
-        id: "ruby3araby-run-code",
-        label: "Run Code",
-        keybindings: [KeyMod.CtrlCmd | KeyCode.Enter],
-        run: () => {
-          if (onRunRef.current) {
-            onRunRef.current();
-          }
-        },
+      // Add Ctrl/Cmd + Enter command to run code
+      // Using addCommand for more reliable keybinding
+      mountedEditor.addCommand(KeyMod.CtrlCmd | KeyCode.Enter, () => {
+        if (onRunRef.current) {
+          onRunRef.current();
+        }
       });
 
-      // Add Ctrl/Cmd + S action to save (prevent browser save dialog)
-      mountedEditor.addAction({
-        id: "ruby3araby-save-code",
-        label: "Save Code",
-        keybindings: [KeyMod.CtrlCmd | KeyCode.KeyS],
-        run: () => {
-          if (onSaveRef.current) {
-            onSaveRef.current();
-          }
-        },
+      // Add Ctrl/Cmd + S command to save (prevent browser save dialog)
+      mountedEditor.addCommand(KeyMod.CtrlCmd | KeyCode.KeyS, () => {
+        if (onSaveRef.current) {
+          onSaveRef.current();
+        }
       });
     },
     [checkSyntaxAndUpdateMarkers]
@@ -168,13 +215,14 @@ export default function CodeEditor({
       style={{ backgroundColor: "var(--editor-bg)" }}
       dir="ltr"
     >
-      <Editor
+      <MonacoEditor
         height={height}
         language="ruby"
         theme={monacoTheme}
         value={value}
         onChange={handleChange}
         onMount={handleEditorDidMount}
+        loading={<EditorLoadingPlaceholder />}
         options={{
           // Font settings - Kawkab Mono for Arabic monospace support
           fontFamily:
@@ -227,36 +275,9 @@ export default function CodeEditor({
             indentation: true,
           },
         }}
-        loading={
-          <div
-            className="flex h-full items-center justify-center text-foreground/70"
-            style={{ backgroundColor: "var(--editor-bg)" }}
-          >
-            <div className="flex items-center gap-2">
-              <svg
-                className="h-5 w-5 animate-spin"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                <circle
-                  className="opacity-25"
-                  cx="12"
-                  cy="12"
-                  r="10"
-                  stroke="currentColor"
-                  strokeWidth="4"
-                />
-                <path
-                  className="opacity-75"
-                  fill="currentColor"
-                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                />
-              </svg>
-              <span>جارٍ تحميل المحرر...</span>
-            </div>
-          </div>
-        }
       />
     </div>
   );
 }
+
+export { EditorLoadingPlaceholder };

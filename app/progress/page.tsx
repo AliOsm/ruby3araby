@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useMemo, memo, useState } from "react";
 import Link from "next/link";
-import { ProgressService } from "@/lib/progress";
+import { useCompletedLessons } from "@/lib/useProgress";
 import { getCourseStructure } from "@/lib/course-loader";
 import { SectionStub, LessonStub } from "@/lib/types";
 
@@ -15,9 +15,8 @@ interface SectionProgress {
 }
 
 export default function ProgressPage() {
-  const [mounted, setMounted] = useState(false);
-  const [completedLessonIds, setCompletedLessonIds] = useState<string[]>([]);
-  const initialLoadRef = useRef(false);
+  // Use hydration-safe hook for completed lessons (no setTimeout workaround needed)
+  const completedLessonIds = useCompletedLessons();
 
   // Get course structure
   const course = getCourseStructure();
@@ -28,50 +27,34 @@ export default function ProgressPage() {
     0
   );
 
-  useEffect(() => {
-    if (initialLoadRef.current) return;
-    initialLoadRef.current = true;
+  // Create Set for O(1) lookups instead of O(n) array.includes()
+  const completedSet = useMemo(
+    () => new Set(completedLessonIds),
+    [completedLessonIds]
+  );
 
-    // Use setTimeout to avoid ESLint set-state-in-effect rule
-    setTimeout(() => {
-      setMounted(true);
-      setCompletedLessonIds(ProgressService.getCompletedLessons());
-    }, 0);
+  // Calculate section progress with memoization
+  const sectionsProgress: SectionProgress[] = useMemo(() => {
+    return course.sections.map((section) => {
+      const completedLessons = section.lessons.filter((lesson) =>
+        completedSet.has(`${section.slug}/${lesson.slug}`)
+      );
+      const remainingLessons = section.lessons.filter(
+        (lesson) => !completedSet.has(`${section.slug}/${lesson.slug}`)
+      );
+      const completionPercentage =
+        section.lessons.length > 0
+          ? Math.round((completedLessons.length / section.lessons.length) * 100)
+          : 0;
 
-    // Listen for progress updates
-    const handleProgressUpdate = () => {
-      setCompletedLessonIds(ProgressService.getCompletedLessons());
-    };
-
-    window.addEventListener("progressUpdate", handleProgressUpdate);
-    window.addEventListener("storage", handleProgressUpdate);
-
-    return () => {
-      window.removeEventListener("progressUpdate", handleProgressUpdate);
-      window.removeEventListener("storage", handleProgressUpdate);
-    };
-  }, []);
-
-  // Calculate section progress
-  const sectionsProgress: SectionProgress[] = course.sections.map((section) => {
-    const completedLessons = section.lessons.filter((lesson) =>
-      completedLessonIds.includes(`${section.slug}/${lesson.slug}`)
-    );
-    const remainingLessons = section.lessons.filter(
-      (lesson) => !completedLessonIds.includes(`${section.slug}/${lesson.slug}`)
-    );
-    const completionPercentage =
-      section.lessons.length > 0
-        ? Math.round((completedLessons.length / section.lessons.length) * 100)
-        : 0;
-
-    return {
-      section,
-      completedLessons,
-      remainingLessons,
-      completionPercentage,
-    };
-  });
+      return {
+        section,
+        completedLessons,
+        remainingLessons,
+        completionPercentage,
+      };
+    });
+  }, [course.sections, completedSet]);
 
   // Calculate overall progress
   const completedCount = completedLessonIds.length;
@@ -79,6 +62,7 @@ export default function ProgressPage() {
     totalLessons > 0 ? Math.round((completedCount / totalLessons) * 100) : 0;
 
   // Find next incomplete lesson
+  // Using a helper function that the React Compiler can optimize
   const findNextIncompleteLesson = (): {
     section: SectionStub;
     lesson: LessonStub;
@@ -86,34 +70,14 @@ export default function ProgressPage() {
     for (const section of course.sections) {
       for (const lesson of section.lessons) {
         const lessonId = `${section.slug}/${lesson.slug}`;
-        if (!completedLessonIds.includes(lessonId)) {
+        if (!completedSet.has(lessonId)) {
           return { section, lesson };
         }
       }
     }
     return null;
   };
-
   const nextLesson = findNextIncompleteLesson();
-
-  // Loading state
-  if (!mounted) {
-    return (
-      <div className="min-h-screen bg-background text-foreground">
-        <div className="mx-auto max-w-4xl px-6 py-12">
-          <div className="animate-pulse">
-            <div className="mb-8 h-10 w-48 rounded bg-foreground/10" />
-            <div className="mb-12 h-6 w-full rounded bg-foreground/10" />
-            <div className="space-y-4">
-              {[1, 2, 3].map((i) => (
-                <div key={i} className="h-24 rounded-lg bg-foreground/10" />
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -240,7 +204,8 @@ export default function ProgressPage() {
 }
 
 // Section Progress Card Component
-function SectionProgressCard({
+// Memoize to prevent re-renders when other sections' progress updates
+const SectionProgressCard = memo(function SectionProgressCard({
   sectionProgress,
   index,
 }: {
@@ -403,4 +368,4 @@ function SectionProgressCard({
       )}
     </div>
   );
-}
+});

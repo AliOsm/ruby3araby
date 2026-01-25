@@ -1,17 +1,48 @@
 "use client";
 
-import { useCallback, useEffect, useState, useRef, useMemo } from "react";
+import {
+  useCallback,
+  useEffect,
+  useState,
+  useRef,
+  useMemo,
+  useSyncExternalStore,
+} from "react";
 import CodeEditor from "./CodeEditor";
 import Tooltip from "./Tooltip";
 
-/** Detect if user is on Mac for keyboard shortcut display */
+/** Detect if user is on Mac for keyboard shortcut display
+ * Uses useSyncExternalStore for hydration-safe client-only values
+ */
 function useIsMac() {
-  const [isMac, setIsMac] = useState(false);
-  useEffect(() => {
-    setIsMac(navigator.platform.toUpperCase().indexOf("MAC") >= 0);
-  }, []);
-  return isMac;
+  return useSyncExternalStore(
+    // Subscribe function - navigator.platform never changes, so no-op
+    () => () => {},
+    // Client snapshot
+    () => navigator.platform.toUpperCase().indexOf("MAC") >= 0,
+    // Server snapshot - always false for SSR
+    () => false
+  );
 }
+
+// Pre-generate confetti particles at module level to prevent recreation on every render
+const CONFETTI_COLORS = [
+  "#10b981",
+  "#3b82f6",
+  "#f59e0b",
+  "#ef4444",
+  "#8b5cf6",
+  "#ec4899",
+];
+
+const CONFETTI_PARTICLES = Array.from({ length: 50 }, (_, i) => ({
+  id: i,
+  left: `${Math.random() * 100}%`,
+  animationDelay: `${Math.random() * 0.5}s`,
+  backgroundColor: CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)],
+  width: `${Math.random() * 8 + 4}px`,
+  height: `${Math.random() * 8 + 4}px`,
+}));
 import {
   getRubyRunner,
   ExecutionResult,
@@ -78,9 +109,36 @@ export default function CodePlayground({
     status: "idle",
   });
   const [showConfetti, setShowConfetti] = useState(false);
+  const [showExpectedOutput, setShowExpectedOutput] = useState(false);
   const confettiRef = useRef<HTMLDivElement>(null);
-  const [runStatus, setRunStatus] = useState<"idle" | "success" | "error">("idle");
+  const [runStatus, setRunStatus] = useState<"idle" | "success" | "error">(
+    "idle"
+  );
   const isMac = useIsMac();
+
+  // Track timeout IDs for cleanup on unmount to prevent memory leaks
+  const timeoutIdsRef = useRef<Set<ReturnType<typeof setTimeout>>>(new Set());
+
+  // Safe setTimeout that tracks IDs for cleanup
+  const safeSetTimeout = useCallback(
+    (fn: () => void, delay: number): ReturnType<typeof setTimeout> => {
+      const id = setTimeout(() => {
+        timeoutIdsRef.current.delete(id);
+        fn();
+      }, delay);
+      timeoutIdsRef.current.add(id);
+      return id;
+    },
+    []
+  );
+
+  // Cleanup all timeouts on unmount
+  useEffect(() => {
+    const timeoutIds = timeoutIdsRef.current;
+    return () => {
+      timeoutIds.forEach(clearTimeout);
+    };
+  }, []);
 
   // Auto-save is enabled by default when lessonId is provided
   const shouldAutoSave = enableAutoSave ?? !!lessonId;
@@ -93,19 +151,33 @@ export default function CodePlayground({
     return null;
   }, [lessonId, shouldAutoSave]);
 
-  // Load saved code and track last lesson on mount
-  useEffect(() => {
-    if (lessonId) {
-      // Track this as the last visited lesson
-      ProgressService.setLastLesson(lessonId);
+  // Track previous lessonId to detect lesson changes
+  // Initialize to null so first mount triggers code loading
+  const prevLessonIdRef = useRef<string | undefined>(undefined);
 
-      // Load saved code if available
+  // Consolidated effect: handle lesson changes and prop updates
+  // This replaces two separate effects that could conflict when navigating between lessons
+  useEffect(() => {
+    const lessonChanged = prevLessonIdRef.current !== lessonId;
+    prevLessonIdRef.current = lessonId;
+
+    if (lessonChanged && lessonId) {
+      // New lesson - load saved code or use starter
+      ProgressService.setLastLesson(lessonId);
       const savedCode = ProgressService.loadCode(lessonId);
-      if (savedCode !== null) {
-        setCode(savedCode);
-      }
+      setCode(savedCode ?? starterCode);
+      // Reset all other state for new lesson
+      setInput(defaultInput);
+      setOutput("");
+      setError(undefined);
+      setValidation({ status: "idle" });
+      setShowConfetti(false);
+    } else if (!lessonChanged) {
+      // Same lesson but props changed (e.g., hot reload) - just update to starterCode
+      // This handles the case where the component re-renders with new props
+      // without an actual lesson navigation
     }
-  }, [lessonId]);
+  }, [lessonId, starterCode, defaultInput]);
 
   // Show input panel if explicitly set, or if defaultInput is provided
   const shouldShowInputPanel = showInputPanel ?? defaultInput.length > 0;
@@ -180,14 +252,14 @@ export default function CodePlayground({
       const minDuration = 400;
       const remaining = Math.max(0, minDuration - elapsed);
 
-      setTimeout(() => {
+      safeSetTimeout(() => {
         setIsRunning(false);
         setRunStatus(hasError ? "error" : "success");
         // Clear the status after animation completes
-        setTimeout(() => setRunStatus("idle"), 400);
+        safeSetTimeout(() => setRunStatus("idle"), 400);
       }, remaining);
     }
-  }, [code, input, initializeRunner]);
+  }, [code, input, initializeRunner, safeSetTimeout]);
 
   // Check answer against expected output
   const handleCheckAnswer = useCallback(async () => {
@@ -220,7 +292,7 @@ export default function CodePlayground({
             ProgressService.markComplete(lessonId);
           }
           // Stop confetti after 3 seconds
-          setTimeout(() => setShowConfetti(false), 3000);
+          safeSetTimeout(() => setShowConfetti(false), 3000);
         } else {
           setValidation((prev) => ({
             status: "incorrect",
@@ -239,14 +311,14 @@ export default function CodePlayground({
     } finally {
       setIsRunning(false);
     }
-  }, [code, input, expectedOutput, hints.length, initializeRunner, lessonId]);
+  }, [code, input, expectedOutput, hints.length, initializeRunner, lessonId, safeSetTimeout]);
 
   // Copy code to clipboard
   const handleCopy = useCallback(async () => {
     try {
       await navigator.clipboard.writeText(code);
       setCopySuccess(true);
-      setTimeout(() => setCopySuccess(false), 2000);
+      safeSetTimeout(() => setCopySuccess(false), 2000);
     } catch {
       // Fallback for older browsers
       const textArea = document.createElement("textarea");
@@ -256,9 +328,9 @@ export default function CodePlayground({
       document.execCommand("copy");
       document.body.removeChild(textArea);
       setCopySuccess(true);
-      setTimeout(() => setCopySuccess(false), 2000);
+      safeSetTimeout(() => setCopySuccess(false), 2000);
     }
-  }, [code]);
+  }, [code, safeSetTimeout]);
 
   // Reset to starter code and default input
   const handleReset = useCallback(() => {
@@ -276,34 +348,29 @@ export default function CodePlayground({
 
   // Handle Ctrl/Cmd + S to prevent browser save and trigger auto-save
   const handleSave = useCallback(() => {
-    // Trigger immediate save if auto-save is enabled
-    if (lessonId && shouldAutoSave) {
+    // Save code to localStorage
+    if (lessonId) {
       ProgressService.saveCode(lessonId, code);
     }
-  }, [lessonId, shouldAutoSave, code]);
+  }, [lessonId, code]);
 
-  // Update code and input when props change
-  useEffect(() => {
-    setCode(starterCode);
-    setInput(defaultInput);
-    setOutput("");
-    setError(undefined);
-    setValidation({ status: "idle" });
-    setShowConfetti(false);
-  }, [starterCode, defaultInput]);
-
-  // Global keyboard shortcut for Cmd/Ctrl + Enter (fallback when editor not focused)
+  // Global keyboard shortcuts
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      // Check for Cmd+Enter (Mac) or Ctrl+Enter (Windows/Linux)
-      if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) {
-        e.preventDefault();
-        handleRun();
+      if (e.metaKey || e.ctrlKey) {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          handleRun();
+        } else if (e.key === "s") {
+          e.preventDefault();
+          handleSave();
+        }
       }
     };
-    document.addEventListener("keydown", handleKeyDown);
-    return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [handleRun]);
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [handleRun, handleSave]);
 
   // Check if exercise has validation enabled
   const hasValidation = !!expectedOutput;
@@ -487,6 +554,38 @@ export default function CodePlayground({
         )}
       </div>
 
+      {/* Expected Output Toggle - shown only for exercises */}
+      {expectedOutput && (
+        <button
+          onClick={() => setShowExpectedOutput((prev) => !prev)}
+          className="flex flex-row-reverse items-center gap-2 text-sm text-ruby-primary hover:text-ruby-secondary transition-colors self-start"
+        >
+          <svg
+            className={`h-4 w-4 transition-transform ${showExpectedOutput ? "rotate-90" : "rotate-180"}`}
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path
+              fillRule="evenodd"
+              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+              clipRule="evenodd"
+            />
+          </svg>
+          <span>{showExpectedOutput ? "إخفاء الناتج المتوقع" : "عرض الناتج المتوقع"}</span>
+        </button>
+      )}
+
+      {/* Expected Output Panel - collapsible */}
+      {expectedOutput && showExpectedOutput && (
+        <div
+          className="overflow-hidden rounded-lg border border-ruby-primary/30 bg-ruby-primary/5"
+        >
+          <pre className="p-3 font-mono text-sm whitespace-pre-wrap text-foreground/80" dir="ltr">
+            {expectedOutput}
+          </pre>
+        </div>
+      )}
+
       {/* Output Panel */}
       <div
         className="overflow-hidden rounded-lg border border-foreground/20"
@@ -563,23 +662,16 @@ export default function CodePlayground({
           {/* Confetti Animation */}
           {showConfetti && (
             <div className="pointer-events-none absolute inset-0">
-              {[...Array(50)].map((_, i) => (
+              {CONFETTI_PARTICLES.map((particle) => (
                 <div
-                  key={i}
+                  key={particle.id}
                   className="absolute animate-confetti"
                   style={{
-                    left: `${Math.random() * 100}%`,
-                    animationDelay: `${Math.random() * 0.5}s`,
-                    backgroundColor: [
-                      "#10b981",
-                      "#3b82f6",
-                      "#f59e0b",
-                      "#ef4444",
-                      "#8b5cf6",
-                      "#ec4899",
-                    ][Math.floor(Math.random() * 6)],
-                    width: `${Math.random() * 8 + 4}px`,
-                    height: `${Math.random() * 8 + 4}px`,
+                    left: particle.left,
+                    animationDelay: particle.animationDelay,
+                    backgroundColor: particle.backgroundColor,
+                    width: particle.width,
+                    height: particle.height,
                   }}
                 />
               ))}

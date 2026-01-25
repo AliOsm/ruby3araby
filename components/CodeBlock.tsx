@@ -1,12 +1,38 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useSyncExternalStore } from "react";
 import { codeToHtml } from "shiki";
-import { useTheme } from "@/lib/theme";
 
 interface CodeBlockProps {
   code: string;
   language?: string;
+}
+
+// Get the actual theme from the DOM (most reliable source of truth)
+function getThemeFromDOM(): "light" | "dark" {
+  if (typeof document === "undefined") return "dark";
+  return document.documentElement.classList.contains("dark") ? "dark" : "light";
+}
+
+// Subscribe to theme changes via class mutations
+function subscribeToTheme(callback: () => void) {
+  if (typeof window === "undefined") return () => {};
+
+  const observer = new MutationObserver((mutations) => {
+    for (const mutation of mutations) {
+      if (mutation.attributeName === "class") {
+        callback();
+      }
+    }
+  });
+
+  observer.observe(document.documentElement, { attributes: true });
+  window.addEventListener("themeChange", callback);
+
+  return () => {
+    observer.disconnect();
+    window.removeEventListener("themeChange", callback);
+  };
 }
 
 /**
@@ -15,7 +41,13 @@ interface CodeBlockProps {
  * Includes a copy button that appears on hover (desktop) or always visible (mobile)
  */
 export default function CodeBlock({ code, language = "ruby" }: CodeBlockProps) {
-  const { resolvedTheme } = useTheme();
+  // Use useSyncExternalStore to reliably get theme from DOM
+  const resolvedTheme = useSyncExternalStore(
+    subscribeToTheme,
+    getThemeFromDOM,
+    () => "dark" // Server snapshot
+  );
+
   const [copySuccess, setCopySuccess] = useState(false);
   const [highlightedHtml, setHighlightedHtml] = useState<string>("");
 
@@ -65,7 +97,7 @@ export default function CodeBlock({ code, language = "ruby" }: CodeBlockProps) {
   return (
     <div className="group relative min-w-0">
       <div
-        className="overflow-x-auto [&>pre]:rounded-lg [&>pre]:overflow-x-auto [&>pre]:text-sm [&>pre]:font-mono [&>pre]:p-4"
+        className="overflow-x-auto rounded-lg [&>pre]:rounded-lg [&>pre]:overflow-x-auto [&>pre]:text-sm [&>pre]:font-mono [&>pre]:p-4 [&>pre]:border [&>pre]:border-gray-200 [&>pre]:dark:border-transparent"
         dir="ltr"
         dangerouslySetInnerHTML={{ __html: highlightedHtml }}
       />

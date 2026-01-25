@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import fs from "fs";
+import { readFile } from "fs/promises";
 import path from "path";
 
 export async function GET(request: NextRequest) {
@@ -29,8 +29,15 @@ export async function GET(request: NextRequest) {
   );
 
   try {
-    const content = fs.readFileSync(contentPath, "utf-8");
-    return NextResponse.json({ content });
+    const content = await readFile(contentPath, "utf-8");
+    return NextResponse.json(
+      { content },
+      {
+        headers: {
+          "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400",
+        },
+      }
+    );
   } catch {
     return NextResponse.json(
       { error: "Lesson content not found" },
