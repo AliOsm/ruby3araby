@@ -225,16 +225,29 @@ async function staleWhileRevalidate(request, cacheName) {
   const cache = await caches.open(cacheName);
   const cachedResponse = await cache.match(request);
 
-  // Fetch from network and update cache in background
-  const fetchPromise = fetch(request).then((networkResponse) => {
-    if (networkResponse.ok) {
-      cache.put(request, networkResponse.clone());
-    }
-    return networkResponse;
-  }).catch(() => null);
+  // Start fetch in background to update cache
+  const fetchPromise = fetch(request)
+    .then((networkResponse) => {
+      if (networkResponse.ok) {
+        cache.put(request, networkResponse.clone());
+      }
+      return networkResponse;
+    })
+    .catch(() => null);
 
-  // Return cached response immediately if available, otherwise wait for network
-  return cachedResponse || fetchPromise || new Response('Offline', { status: 503 });
+  // Return cached response immediately if available
+  if (cachedResponse) {
+    return cachedResponse;
+  }
+
+  // Otherwise wait for network response
+  const networkResponse = await fetchPromise;
+  if (networkResponse) {
+    return networkResponse;
+  }
+
+  // Fallback to offline response
+  return new Response('Offline', { status: 503 });
 }
 
 // Handle messages from the main thread
