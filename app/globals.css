@@ -66,7 +66,7 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-cairo);
-  --font-mono: "Kawkab Mono", var(--font-geist-mono);
+  --font-mono: "Kawkab Mono", "JetBrains Mono", "Fira Code", "Consolas", ui-monospace, monospace;
 
   /* Custom breakpoint for extra small screens (xs: 475px+) */
   --breakpoint-xs: 475px;
