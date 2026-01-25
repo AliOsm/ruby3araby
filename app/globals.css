@@ -92,15 +92,6 @@ body {
   overflow-x: clip;
 }
 
-/* Smooth theme transition - only apply to key elements, not everything */
-html.theme-transition {
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-html.theme-transition body {
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-
 /* Confetti animation for correct answers */
 @keyframes confetti-fall {
   0% {
