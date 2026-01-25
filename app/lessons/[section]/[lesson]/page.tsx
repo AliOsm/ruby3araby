@@ -57,7 +57,7 @@ export default async function LessonPage({ params }: LessonPageProps) {
   }
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-background lg:flex lg:flex-row">
+    <div className="min-h-screen bg-background lg:flex lg:flex-row">
       {/* Sidebar - right side in RTL (flex-row works because RTL reverses flex direction) */}
       <Sidebar course={course} hideToggleButton />
 
@@ -94,22 +94,22 @@ export default async function LessonPage({ params }: LessonPageProps) {
 
           {/* Split layout: Content on right (RTL), Playground on left */}
           {/* In RTL with flex-row: first child appears on RIGHT, last child on LEFT */}
-          <div className="flex flex-col gap-6 xl:flex-row">
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-start">
             {/* Arabic content panel - appears on right in RTL */}
-            <article className="min-w-0 flex-1 xl:max-w-[50%]">
+            <article className="min-w-0 flex-1 lg:max-w-[50%]">
               <LessonContent
                 sectionSlug={section}
                 lessonSlug={lesson}
               />
             </article>
 
-            {/* Code playground panel - appears on left in RTL */}
-            <aside className="min-w-0 flex-1 xl:max-w-[50%] xl:sticky xl:top-4 xl:self-start">
-              <div className="flex flex-col rounded-lg border border-foreground/10 bg-foreground/5 p-3 sm:p-4 xl:max-h-[calc(100vh-2rem)]">
+            {/* Code playground panel - appears on left in RTL, sticky when scrolling */}
+            <aside className="min-w-0 flex-1 lg:max-w-[50%] lg:sticky lg:top-4 lg:self-start">
+              <div className="flex flex-col rounded-lg border border-foreground/10 bg-foreground/5 p-3 sm:p-4 lg:max-h-[calc(100vh-2rem)]">
                 <h2 className="mb-3 shrink-0 text-base font-semibold text-foreground sm:mb-4 sm:text-lg">
                   {nav.current.lesson.exercise ? "التمرين" : "جرب الشيفرة"}
                 </h2>
-                <div className="min-h-0 flex-1 xl:overflow-y-auto">
+                <div className="min-h-0 flex-1 lg:overflow-y-auto">
                   <LessonPlayground
                     lessonId={`${section}/${lesson}`}
                     exercise={nav.current.lesson.exercise}

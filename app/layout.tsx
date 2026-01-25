@@ -87,7 +87,7 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl" suppressHydrationWarning>
       <body
-        className={`${cairo.variable} ${geistMono.variable} overflow-x-hidden antialiased font-sans`}
+        className={`${cairo.variable} ${geistMono.variable} antialiased font-sans`}
       >
         <ThemeProvider>{children}</ThemeProvider>
       </body>
