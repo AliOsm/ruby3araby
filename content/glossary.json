@@ -388,7 +388,7 @@
       "id": "ternary",
       "english": "Ternary Operator",
       "arabic": "العامل الثلاثي",
-      "definition": "عامل شرطي مختصر: شرط ? قيمة_صحيح : قيمة_خطأ"
+      "definition": "عامل شرطي مختصر: شرط ? قيمة_صحيح : قيمة_خطأ."
     },
     {
       "id": "true",

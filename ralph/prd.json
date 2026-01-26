@@ -298,8 +298,8 @@
         "Typecheck passes"
       ],
       "priority": 20,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Applied 1 punctuation correction to ternary definition (added missing period). The glossary only had 1 grammar issue (GI-037)."
     },
     {
       "id": "US-021",

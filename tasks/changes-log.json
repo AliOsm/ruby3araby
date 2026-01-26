@@ -376,14 +376,25 @@
       "after": "الأخطاء أمر **حتمي**.",
       "category": "punctuation",
       "storyId": "US-019"
+    },
+    {
+      "id": "CH-038",
+      "issueId": "GI-037",
+      "file": "content/glossary.json",
+      "termId": "ternary",
+      "field": "definition",
+      "before": "عامل شرطي مختصر: شرط ? قيمة_صحيح : قيمة_خطأ",
+      "after": "عامل شرطي مختصر: شرط ? قيمة_صحيح : قيمة_خطأ.",
+      "category": "punctuation",
+      "storyId": "US-020"
     }
   ],
   "summary": {
-    "totalChanges": 37,
-    "filesModified": 16,
+    "totalChanges": 38,
+    "filesModified": 17,
     "byCategory": {
       "consistency": 24,
-      "punctuation": 13
+      "punctuation": 14
     },
     "byFile": {
       "content/lessons/getting-started/what-is-ruby.md": 2,
@@ -401,12 +412,13 @@
       "content/lessons/blocks/block-syntax.md": 1,
       "content/lessons/oop/classes-objects.md": 2,
       "content/lessons/modules/modules-mixins.md": 1,
-      "content/lessons/errors/error-handling.md": 1
+      "content/lessons/errors/error-handling.md": 1,
+      "content/glossary.json": 1
     }
   },
   "metadata": {
     "createdAt": "2026-01-26",
     "lastUpdated": "2026-01-26",
-    "completedStories": ["US-016", "US-017", "US-018", "US-019"]
+    "completedStories": ["US-016", "US-017", "US-018", "US-019", "US-020"]
   }
 }
