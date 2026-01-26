@@ -8,6 +8,7 @@ import {
   useMemo,
   useSyncExternalStore,
 } from "react";
+import { createPortal } from "react-dom";
 import CodeEditor from "./CodeEditor";
 import Tooltip from "./Tooltip";
 
@@ -113,6 +114,7 @@ export default function CodePlayground({
   const [runStatus, setRunStatus] = useState<"idle" | "success" | "error">(
     "idle"
   );
+  const [isFullscreen, setIsFullscreen] = useState(false);
   const isMac = useIsMac();
 
   // Track timeout IDs for cleanup on unmount to prevent memory leaks
@@ -138,6 +140,33 @@ export default function CodePlayground({
       timeoutIds.forEach(clearTimeout);
     };
   }, []);
+
+  // Body scroll lock when in fullscreen mode
+  useEffect(() => {
+    if (isFullscreen) {
+      document.documentElement.classList.add("fullscreen-active");
+      document.body.classList.add("fullscreen-active");
+      return () => {
+        document.documentElement.classList.remove("fullscreen-active");
+        document.body.classList.remove("fullscreen-active");
+      };
+    }
+  }, [isFullscreen]);
+
+  // Escape key to exit fullscreen
+  useEffect(() => {
+    if (!isFullscreen) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        setIsFullscreen(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isFullscreen]);
 
   // Auto-save is enabled by default when lessonId is provided
   const shouldAutoSave = enableAutoSave ?? !!lessonId;
@@ -385,12 +414,13 @@ export default function CodePlayground({
     ? "جارٍ تحميل Ruby..."
     : "جارٍ تنفيذ الشيفرة...";
 
-  return (
-    <div className="flex min-h-0 flex-col gap-3">
+  // Playground content - shared between normal and fullscreen modes
+  const playgroundContent = (
+    <>
       {/* Simulated Input Panel */}
       {shouldShowInputPanel && (
         <div
-          className="overflow-hidden rounded-lg border border-foreground/20"
+          className={`overflow-hidden rounded-lg border border-foreground/20 ${isFullscreen ? "shrink-0" : ""}`}
           style={{ backgroundColor: "var(--editor-bg)" }}
         >
           <div className="border-b border-foreground/20 bg-foreground/5 px-3 py-2">
@@ -420,11 +450,11 @@ export default function CodePlayground({
         </div>
       )}
 
-      {/* Code Editor */}
+      {/* Code Editor - use calc() for fullscreen to fill available space */}
       <CodeEditor
         value={code}
         onChange={handleCodeChange}
-        height={editorHeight}
+        height={isFullscreen ? "calc(100vh - 280px)" : editorHeight}
         onRun={handleRun}
         onSave={handleSave}
         syntaxChecker={syntaxChecker}
@@ -552,6 +582,31 @@ export default function CodePlayground({
           </button>
         </Tooltip>
 
+        {/* Fullscreen Toggle Button - hidden on mobile and when already in fullscreen */}
+        {!isFullscreen && (
+          <Tooltip content="ملء الشاشة">
+            <button
+              onClick={() => setIsFullscreen(true)}
+              aria-label="ملء الشاشة"
+              className="hidden min-h-[44px] min-w-[44px] items-center justify-center rounded-lg border border-foreground/20 bg-foreground/10 p-2.5 text-foreground transition-colors hover:bg-foreground/20 md:flex"
+            >
+              <svg
+                className="h-5 w-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
+                />
+              </svg>
+            </button>
+          </Tooltip>
+        )}
+
         {/* Keyboard Shortcut Hint for Save */}
         {shouldAutoSave && (
           <span className="mr-auto hidden text-xs text-foreground/60 sm:block" dir="ltr">
@@ -562,13 +617,13 @@ export default function CodePlayground({
 
       {/* Output Panel */}
       <div
-        className="overflow-hidden rounded-lg border border-foreground/20"
+        className="rounded-lg border border-foreground/20"
         style={{ backgroundColor: "var(--editor-bg)" }}
       >
         <div className="border-b border-foreground/20 bg-foreground/5 px-3 py-2">
           <span className="text-sm font-medium text-foreground/80">المخرجات</span>
         </div>
-        <div className="min-h-[100px] p-3 font-mono text-sm">
+        <div className={`min-h-[100px] p-3 font-mono text-sm ${isFullscreen ? "max-h-[30vh] overflow-y-auto" : ""}`}>
           {isLoading ? (
             <div className="flex items-center gap-2 text-foreground/60" dir="rtl">
               <svg
@@ -779,6 +834,62 @@ export default function CodePlayground({
           )}
         </div>
       )}
+    </>
+  );
+
+  // Fullscreen mode: render via portal
+  if (isFullscreen) {
+    return createPortal(
+      <div
+        className="fixed inset-0 z-60 flex flex-col bg-background animate-fullscreen-enter"
+        dir="rtl"
+        role="dialog"
+        aria-modal="true"
+        aria-label="محرر الشيفرة بملء الشاشة"
+      >
+        {/* Header bar - fixed at top */}
+        <div className="flex shrink-0 items-center justify-between p-2 md:px-4 md:pt-4 lg:px-8 lg:pt-8" dir="rtl">
+          {/* Close button (positioned on the right for RTL) */}
+          <button
+            onClick={() => setIsFullscreen(false)}
+            className="flex min-h-[44px] min-w-[44px] items-center justify-center gap-2 rounded-lg border border-foreground/20 bg-foreground/10 px-3 text-foreground transition-colors hover:bg-foreground/20"
+            aria-label="إغلاق ملء الشاشة"
+          >
+            <svg
+              className="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+            <span className="hidden sm:inline">إغلاق</span>
+          </button>
+
+          {/* Keyboard hint */}
+          <span className="text-sm text-foreground/60" dir="ltr">
+            Esc للخروج
+          </span>
+        </div>
+
+        {/* Main content area */}
+        <div className="flex min-h-0 flex-1 flex-col gap-3 p-2 md:px-4 md:pb-4 lg:px-8 lg:pb-8">
+          {playgroundContent}
+        </div>
+      </div>,
+      document.body
+    );
+  }
+
+  // Normal mode: render inline
+  return (
+    <div className="flex min-h-0 flex-col gap-3">
+      {playgroundContent}
     </div>
   );
 }
