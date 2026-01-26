@@ -109,19 +109,140 @@
       "issue": "استخدام علامة تعجب في نهاية جملة توضيحية - يمكن استخدام نقطة بدلاً منها",
       "suggestion": "هذه الشيفرة تطبع \"مرحباً!\" خمس مرات - واضح وبسيط.",
       "category": "punctuation"
+    },
+    {
+      "id": "GI-013",
+      "file": "content/lessons/fundamentals/variables-types.md",
+      "line": 7,
+      "original": "روبي تكتشفه تلقائياً!",
+      "issue": "استخدام علامة تعجب في نهاية جملة توضيحية",
+      "suggestion": "روبي تكتشفه تلقائياً.",
+      "category": "punctuation"
+    },
+    {
+      "id": "GI-014",
+      "file": "content/lessons/fundamentals/variables-types.md",
+      "line": 111,
+      "original": "لاحظ أن `1_000_000` تساوي مليون - الشرطة السفلية للقراءة فقط ولا تؤثر على القيمة!",
+      "issue": "استخدام علامة تعجب في نهاية جملة توضيحية",
+      "suggestion": "لاحظ أن `1_000_000` تساوي مليون - الشرطة السفلية للقراءة فقط ولا تؤثر على القيمة.",
+      "category": "punctuation"
+    },
+    {
+      "id": "GI-015",
+      "file": "content/lessons/fundamentals/variables-types.md",
+      "line": 298,
+      "original": "`\"مرحبا\"`",
+      "issue": "الكلمة 'مرحبا' في جدول أنواع البيانات مكتوبة بدون ألف التنوين",
+      "suggestion": "`\"مرحباً\"`",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-016",
+      "file": "content/lessons/fundamentals/string-methods.md",
+      "line": 50,
+      "original": "greeting = \"مرحبا\"",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين",
+      "suggestion": "greeting = \"مرحباً\"",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-017",
+      "file": "content/lessons/fundamentals/string-methods.md",
+      "line": 87,
+      "original": "text = \"   مرحبا بالعالم   \"",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين",
+      "suggestion": "text = \"   مرحباً بالعالم   \"",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-018",
+      "file": "content/lessons/fundamentals/string-methods.md",
+      "line": 89,
+      "original": "# \"مرحبا بالعالم\"",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين في التعليق",
+      "suggestion": "# \"مرحباً بالعالم\"",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-019",
+      "file": "content/lessons/fundamentals/bang-predicate.md",
+      "line": 49,
+      "original": "message = \"   مرحبا   \"",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين",
+      "suggestion": "message = \"   مرحباً   \"",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-020",
+      "file": "content/lessons/fundamentals/bang-predicate.md",
+      "line": 51,
+      "original": "# مرحبا",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين في التعليق",
+      "suggestion": "# مرحباً",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-021",
+      "file": "content/lessons/fundamentals/truthiness.md",
+      "line": 10,
+      "original": "value = \"مرحبا\"",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين",
+      "suggestion": "value = \"مرحباً\"",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-022",
+      "file": "content/lessons/fundamentals/truthiness.md",
+      "line": 73,
+      "original": "puts \"الصفر صادق في روبي!\"",
+      "issue": "استخدام علامة تعجب في نهاية جملة توضيحية داخل كود",
+      "suggestion": "puts \"الصفر صادق في روبي.\"",
+      "category": "punctuation"
+    },
+    {
+      "id": "GI-023",
+      "file": "content/lessons/fundamentals/truthiness.md",
+      "line": 87,
+      "original": "puts \"النص الفارغ صادق في روبي!\"",
+      "issue": "استخدام علامة تعجب في نهاية جملة توضيحية داخل كود",
+      "suggestion": "puts \"النص الفارغ صادق في روبي.\"",
+      "category": "punctuation"
+    },
+    {
+      "id": "GI-024",
+      "file": "content/lessons/fundamentals/truthiness.md",
+      "line": 101,
+      "original": "puts \"المصفوفة الفارغة صادقة في روبي!\"",
+      "issue": "استخدام علامة تعجب في نهاية جملة توضيحية داخل كود",
+      "suggestion": "puts \"المصفوفة الفارغة صادقة في روبي.\"",
+      "category": "punctuation"
+    },
+    {
+      "id": "GI-025",
+      "file": "content/lessons/fundamentals/truthiness.md",
+      "line": 115,
+      "original": "puts \"القاموس الفارغ صادق في روبي!\"",
+      "issue": "استخدام علامة تعجب في نهاية جملة توضيحية داخل كود",
+      "suggestion": "puts \"القاموس الفارغ صادق في روبي.\"",
+      "category": "punctuation"
     }
   ],
   "summary": {
-    "totalIssues": 12,
+    "totalIssues": 25,
     "byCategory": {
-      "consistency": 10,
-      "punctuation": 2
+      "consistency": 16,
+      "punctuation": 9
     },
     "byFile": {
       "content/lessons/getting-started/what-is-ruby.md": 2,
       "content/lessons/getting-started/hello-world.md": 4,
       "content/lessons/getting-started/comments.md": 1,
-      "content/lessons/getting-started/output-methods.md": 5
+      "content/lessons/getting-started/output-methods.md": 5,
+      "content/lessons/fundamentals/variables-types.md": 3,
+      "content/lessons/fundamentals/string-methods.md": 3,
+      "content/lessons/fundamentals/bang-predicate.md": 2,
+      "content/lessons/fundamentals/truthiness.md": 5
     }
   },
   "metadata": {
@@ -130,8 +251,19 @@
       "content/lessons/getting-started/what-is-ruby.md",
       "content/lessons/getting-started/hello-world.md",
       "content/lessons/getting-started/output-methods.md",
-      "content/lessons/getting-started/comments.md"
+      "content/lessons/getting-started/comments.md",
+      "content/lessons/fundamentals/variables-types.md",
+      "content/lessons/fundamentals/string-interpolation.md",
+      "content/lessons/fundamentals/operators.md",
+      "content/lessons/fundamentals/boolean-logic.md",
+      "content/lessons/fundamentals/truthiness.md",
+      "content/lessons/fundamentals/constants-symbols.md",
+      "content/lessons/fundamentals/string-methods.md",
+      "content/lessons/fundamentals/bang-predicate.md",
+      "content/lessons/fundamentals/user-input.md",
+      "content/lessons/fundamentals/type-conversion.md",
+      "content/lessons/fundamentals/multiple-assignment.md"
     ],
-    "storyId": "US-001"
+    "storyId": "US-002"
   }
 }
