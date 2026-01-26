@@ -325,13 +325,23 @@
       "issue": "استخدام علامة تعجب في نهاية جملة توضيحية",
       "suggestion": "الأخطاء أمر **حتمي**.",
       "category": "punctuation"
+    },
+    {
+      "id": "GI-037",
+      "file": "content/glossary.json",
+      "termId": "ternary",
+      "field": "definition",
+      "original": "عامل شرطي مختصر: شرط ? قيمة_صحيح : قيمة_خطأ",
+      "issue": "التعريف لا ينتهي بنقطة بينما جميع التعريفات الأخرى تنتهي بنقطة",
+      "suggestion": "عامل شرطي مختصر: شرط ? قيمة_صحيح : قيمة_خطأ.",
+      "category": "punctuation"
     }
   ],
   "summary": {
-    "totalIssues": 36,
+    "totalIssues": 37,
     "byCategory": {
       "consistency": 22,
-      "punctuation": 14
+      "punctuation": 15
     },
     "byFile": {
       "content/lessons/getting-started/what-is-ruby.md": 2,
@@ -349,7 +359,8 @@
       "content/lessons/blocks/block-syntax.md": 1,
       "content/lessons/oop/classes-objects.md": 2,
       "content/lessons/modules/modules-mixins.md": 1,
-      "content/lessons/errors/error-handling.md": 1
+      "content/lessons/errors/error-handling.md": 1,
+      "content/glossary.json": 1
     }
   },
   "metadata": {
@@ -391,8 +402,9 @@
       "content/lessons/errors/error-handling.md",
       "content/lessons/challenges/fizzbuzz.md",
       "content/lessons/challenges/calculator.md",
-      "content/lessons/challenges/guessing-game.md"
+      "content/lessons/challenges/guessing-game.md",
+      "content/glossary.json"
     ],
-    "storyId": "US-006"
+    "storyId": "US-007"
   }
 }
