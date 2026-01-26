@@ -1,0 +1,137 @@
+{
+  "issues": [
+    {
+      "id": "GI-001",
+      "file": "content/lessons/getting-started/what-is-ruby.md",
+      "line": 70,
+      "original": "\"مرحبا\".length",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين، بينما في باقي الملف تُكتب 'مرحباً' بالتنوين",
+      "suggestion": "\"مرحباً\".length",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-002",
+      "file": "content/lessons/getting-started/hello-world.md",
+      "line": 1,
+      "original": "# مرحبا بالعالم",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين، يُفضل كتابتها 'مرحباً' للتناسق",
+      "suggestion": "# مرحباً بالعالم",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-003",
+      "file": "content/lessons/getting-started/hello-world.md",
+      "line": 3,
+      "original": "برنامج \"مرحبا بالعالم\"",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين",
+      "suggestion": "برنامج \"مرحباً بالعالم\"",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-004",
+      "file": "content/lessons/getting-started/hello-world.md",
+      "line": 71,
+      "original": "مرحبا بالعالم",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين (في قسم الناتج المتوقع)",
+      "suggestion": "مرحباً بالعالم",
+      "category": "consistency",
+      "note": "هذا الناتج المتوقع للتمرين - يجب تحديث التمرين ليتوقع 'مرحباً' مع التنوين"
+    },
+    {
+      "id": "GI-005",
+      "file": "content/lessons/getting-started/hello-world.md",
+      "line": 77,
+      "original": "مرحبا بالعالم",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين (في قسم الناتج المتوقع)",
+      "suggestion": "مرحباً بالعالم",
+      "category": "consistency",
+      "note": "هذا الناتج المتوقع للتمرين - يجب تحديث التمرين ليتوقع 'مرحباً' مع التنوين"
+    },
+    {
+      "id": "GI-006",
+      "file": "content/lessons/getting-started/comments.md",
+      "line": 19,
+      "original": "puts \"مرحبا\"",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين",
+      "suggestion": "puts \"مرحباً\"",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-007",
+      "file": "content/lessons/getting-started/output-methods.md",
+      "line": 78,
+      "original": "p \"مرحبا\"",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين",
+      "suggestion": "p \"مرحباً\"",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-008",
+      "file": "content/lessons/getting-started/output-methods.md",
+      "line": 79,
+      "original": "puts \"مرحبا\"",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين",
+      "suggestion": "puts \"مرحباً\"",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-009",
+      "file": "content/lessons/getting-started/output-methods.md",
+      "line": 84,
+      "original": "\"مرحبا\"",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين (في قسم الناتج)",
+      "suggestion": "\"مرحباً\"",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-010",
+      "file": "content/lessons/getting-started/output-methods.md",
+      "line": 85,
+      "original": "مرحبا",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين (في قسم الناتج)",
+      "suggestion": "مرحباً",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-011",
+      "file": "content/lessons/getting-started/output-methods.md",
+      "line": 88,
+      "original": "لاحظ أن `p` يُظهر علامات الاقتباس، بينما `puts` لا يُظهرها!",
+      "issue": "استخدام علامة تعجب في نهاية جملة توضيحية - الأفضل استخدام نقطة",
+      "suggestion": "لاحظ أن `p` يُظهر علامات الاقتباس، بينما `puts` لا يُظهرها.",
+      "category": "punctuation"
+    },
+    {
+      "id": "GI-012",
+      "file": "content/lessons/getting-started/what-is-ruby.md",
+      "line": 30,
+      "original": "هذه الشيفرة تطبع \"مرحباً!\" خمس مرات - واضح وبسيط!",
+      "issue": "استخدام علامة تعجب في نهاية جملة توضيحية - يمكن استخدام نقطة بدلاً منها",
+      "suggestion": "هذه الشيفرة تطبع \"مرحباً!\" خمس مرات - واضح وبسيط.",
+      "category": "punctuation"
+    }
+  ],
+  "summary": {
+    "totalIssues": 12,
+    "byCategory": {
+      "consistency": 10,
+      "punctuation": 2
+    },
+    "byFile": {
+      "content/lessons/getting-started/what-is-ruby.md": 2,
+      "content/lessons/getting-started/hello-world.md": 4,
+      "content/lessons/getting-started/comments.md": 1,
+      "content/lessons/getting-started/output-methods.md": 5
+    }
+  },
+  "metadata": {
+    "scannedAt": "2026-01-26",
+    "filesScanned": [
+      "content/lessons/getting-started/what-is-ruby.md",
+      "content/lessons/getting-started/hello-world.md",
+      "content/lessons/getting-started/output-methods.md",
+      "content/lessons/getting-started/comments.md"
+    ],
+    "storyId": "US-001"
+  }
+}
