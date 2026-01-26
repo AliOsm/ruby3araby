@@ -121,8 +121,8 @@
         "Typecheck passes"
       ],
       "priority": 8,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Found 6 new issues: 5 consistency issues (tanween usage in hello-world lesson title and exercise), 1 punctuation issue (exclamation mark in truthiness hint). The course.json has 10 sections with 32 lessons, all scanned."
     },
     {
       "id": "US-009",

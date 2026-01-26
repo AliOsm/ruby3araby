@@ -7,6 +7,32 @@
 - The challenges section (fizzbuzz.md, calculator.md, guessing-game.md) is very clean with no grammar issues
 - The modules section (modules-mixins.md) uses "مرحباً" correctly in code blocks
 - The errors section (error-handling.md) has no tanween issues
+- The course.json file uses a nested structure: sections[].lessons[].exercise{starterCode, expectedOutput, hints[], defaultInput?}
+- Lesson title "مرحبا بالعالم" needs tanween for consistency - affects validation when corrected
+
+---
+
+## 2026-01-26 - US-008
+- What was implemented: Scanned public/course.json for Arabic grammar issues (10 sections, 32 lessons)
+- Files changed:
+  - Updated: tasks/grammar-issues.json (added 6 new issues, GI-038 to GI-043)
+  - Updated: ralph/prd.json (marked US-008 as passes: true)
+- Findings: 6 new issues identified (total now 43)
+  - 5 consistency issues (tanween usage - "مرحبا" vs "مرحباً" in hello-world lesson)
+  - 1 punctuation issue (exclamation mark in truthiness hint)
+- Areas scanned:
+  - Section titles (10 total) - all clean
+  - Lesson titles (32 total) - 1 issue (hello-world)
+  - Exercise starterCode comments - 1 issue
+  - Exercise expectedOutput fields - 1 issue
+  - Exercise hints arrays - 3 issues
+- **Learnings for future iterations:**
+  - The course.json file structure: sections[].lessons[].exercise{starterCode, expectedOutput, hints[], defaultInput?}
+  - Most exercises have excellent Arabic grammar - only the hello-world lesson has consistency issues
+  - The "مرحبا بالعالم" issue appears in multiple places (title, starterCode, expectedOutput, hints) - all need to be fixed together
+  - When fixing expectedOutput, the lesson content (hello-world.md) must also be updated to match
+  - Most hints use proper punctuation - only 1 exclamation mark issue found
+  - The hints array uses Arabic text for explanations, Ruby code samples are embedded inline
 
 ---
 

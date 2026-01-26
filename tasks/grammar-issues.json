@@ -335,13 +335,74 @@
       "issue": "التعريف لا ينتهي بنقطة بينما جميع التعريفات الأخرى تنتهي بنقطة",
       "suggestion": "عامل شرطي مختصر: شرط ? قيمة_صحيح : قيمة_خطأ.",
       "category": "punctuation"
+    },
+    {
+      "id": "GI-038",
+      "file": "public/course.json",
+      "path": "sections[0].lessons[1].title",
+      "line": 20,
+      "original": "مرحبا بالعالم",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين في عنوان الدرس",
+      "suggestion": "مرحباً بالعالم",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-039",
+      "file": "public/course.json",
+      "path": "sections[0].lessons[1].exercise.starterCode",
+      "line": 23,
+      "original": "# اكتب شيفرة تطبع: مرحبا بالعالم",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين في تعليق الكود",
+      "suggestion": "# اكتب شيفرة تطبع: مرحباً بالعالم",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-040",
+      "file": "public/course.json",
+      "path": "sections[0].lessons[1].exercise.expectedOutput",
+      "line": 24,
+      "original": "مرحبا بالعالم",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين في الناتج المتوقع",
+      "suggestion": "مرحباً بالعالم",
+      "category": "consistency",
+      "note": "هذا الناتج المتوقع للتمرين - يجب تحديث الدرس والتمرين معاً للتناسق"
+    },
+    {
+      "id": "GI-041",
+      "file": "public/course.json",
+      "path": "sections[0].lessons[1].exercise.hints[1]",
+      "line": 27,
+      "original": "ضع النص داخل علامات اقتباس: puts \"مرحبا بالعالم\"",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين في التلميح",
+      "suggestion": "ضع النص داخل علامات اقتباس: puts \"مرحباً بالعالم\"",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-042",
+      "file": "public/course.json",
+      "path": "sections[0].lessons[1].exercise.hints[2]",
+      "line": 28,
+      "original": "تأكد من كتابة النص بالضبط: مرحبا بالعالم (بدون علامة تعجب)",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين في التلميح",
+      "suggestion": "تأكد من كتابة النص بالضبط: مرحباً بالعالم (بدون علامة تعجب)",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-043",
+      "file": "public/course.json",
+      "path": "sections[1].lessons[4].exercise.hints[3]",
+      "line": 151,
+      "original": "الصفر والنص الفارغ والمصفوفة الفارغة كلها صادقة!",
+      "issue": "استخدام علامة تعجب في نهاية جملة توضيحية في التلميح",
+      "suggestion": "الصفر والنص الفارغ والمصفوفة الفارغة كلها صادقة.",
+      "category": "punctuation"
     }
   ],
   "summary": {
-    "totalIssues": 37,
+    "totalIssues": 43,
     "byCategory": {
-      "consistency": 22,
-      "punctuation": 15
+      "consistency": 27,
+      "punctuation": 16
     },
     "byFile": {
       "content/lessons/getting-started/what-is-ruby.md": 2,
@@ -360,7 +421,8 @@
       "content/lessons/oop/classes-objects.md": 2,
       "content/lessons/modules/modules-mixins.md": 1,
       "content/lessons/errors/error-handling.md": 1,
-      "content/glossary.json": 1
+      "content/glossary.json": 1,
+      "public/course.json": 6
     }
   },
   "metadata": {
@@ -403,8 +465,9 @@
       "content/lessons/challenges/fizzbuzz.md",
       "content/lessons/challenges/calculator.md",
       "content/lessons/challenges/guessing-game.md",
-      "content/glossary.json"
+      "content/glossary.json",
+      "public/course.json"
     ],
-    "storyId": "US-007"
+    "storyId": "US-008"
   }
 }
