@@ -31,7 +31,7 @@ export default function LessonPlayground({
 
   // Default starter code for lessons without exercises
   const defaultStarterCode = `# اكتب شيفرة روبي هنا
-puts "مرحبا بالعالم!"`;
+puts "مرحباً بالعالم!"`;
 
   return (
     <CodePlayground

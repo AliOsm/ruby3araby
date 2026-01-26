@@ -89,7 +89,7 @@ function normalizeOutput(text: string): string {
 }
 
 export default function CodePlayground({
-  starterCode = '# اكتب شيفرة روبي هنا\nputs "مرحبا بالعالم!"',
+  starterCode = '# اكتب شيفرة روبي هنا\nputs "مرحباً بالعالم!"',
   editorHeight = "250px",
   defaultInput = "",
   showInputPanel,

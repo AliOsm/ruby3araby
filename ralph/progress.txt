@@ -1,3 +1,23 @@
+## 2026-01-26 - US-022
+- What was implemented: Applied grammar corrections to UI components and app pages (6 issues: 5 tanween, 1 punctuation)
+- Files changed:
+  - components/CodePlayground.tsx (1 fix: GI-044 - tanween in default starter code)
+  - components/CodeEditor.tsx (1 fix: GI-045 - ellipsis placement in loading text)
+  - app/page.tsx (3 fixes: GI-046, GI-047, GI-048 - tanween in preview code and output)
+  - app/lessons/[section]/[lesson]/LessonPlayground.tsx (1 fix: GI-049 - tanween in default starter code)
+  - tasks/changes-log.json (added CH-045 through CH-050)
+  - ralph/prd.json (marked US-022 as passes: true)
+- Corrections applied: 6 total (5 consistency, 1 punctuation)
+  - Consistency: Fixed tanween 'مرحبا' → 'مرحباً' in starter code, preview code, and output (5 instances)
+  - Punctuation: Moved ellipsis from start to end of loading text '...جارٍ تحميل المحرر' → 'جارٍ تحميل المحرر...'
+- **Learnings for future iterations:**
+  - The CodePlayground.tsx and LessonPlayground.tsx both have default starter code as fallback when no exercise is defined
+  - The CodeEditor.tsx loading placeholder has Arabic text that needed RTL-appropriate punctuation
+  - The app/page.tsx homepage preview code is displayed to users - needs consistency with lesson content
+  - Arabic ellipsis convention: place dots at the end of text, not at the beginning (unlike some Latin-influenced styles)
+  - All grammar issues from US-009 (components) and US-010 (app pages) are now fixed
+---
+
 ## 2026-01-26 - US-021
 - What was implemented: Applied grammar corrections to public/course.json (6 issues: 5 tanween, 1 punctuation)
 - Files changed:

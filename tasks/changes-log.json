@@ -448,14 +448,74 @@
       "after": "الصفر والنص الفارغ والمصفوفة الفارغة كلها صادقة.",
       "category": "punctuation",
       "storyId": "US-021"
+    },
+    {
+      "id": "CH-045",
+      "issueId": "GI-044",
+      "file": "components/CodePlayground.tsx",
+      "line": 92,
+      "before": "puts \"مرحبا بالعالم!\"",
+      "after": "puts \"مرحباً بالعالم!\"",
+      "category": "consistency",
+      "storyId": "US-022"
+    },
+    {
+      "id": "CH-046",
+      "issueId": "GI-045",
+      "file": "components/CodeEditor.tsx",
+      "line": 63,
+      "before": "...جارٍ تحميل المحرر",
+      "after": "جارٍ تحميل المحرر...",
+      "category": "punctuation",
+      "storyId": "US-022"
+    },
+    {
+      "id": "CH-047",
+      "issueId": "GI-046",
+      "file": "app/page.tsx",
+      "line": 9,
+      "before": "# مرحبا بك في روبي!",
+      "after": "# مرحباً بك في روبي!",
+      "category": "consistency",
+      "storyId": "US-022"
+    },
+    {
+      "id": "CH-048",
+      "issueId": "GI-047",
+      "file": "app/page.tsx",
+      "line": 11,
+      "before": "puts \"مرحبا يا #{name}!\"",
+      "after": "puts \"مرحباً يا #{name}!\"",
+      "category": "consistency",
+      "storyId": "US-022"
+    },
+    {
+      "id": "CH-049",
+      "issueId": "GI-048",
+      "file": "app/page.tsx",
+      "line": 18,
+      "before": "مرحبا يا أحمد!",
+      "after": "مرحباً يا أحمد!",
+      "category": "consistency",
+      "storyId": "US-022"
+    },
+    {
+      "id": "CH-050",
+      "issueId": "GI-049",
+      "file": "app/lessons/[section]/[lesson]/LessonPlayground.tsx",
+      "line": 34,
+      "before": "puts \"مرحبا بالعالم!\"",
+      "after": "puts \"مرحباً بالعالم!\"",
+      "category": "consistency",
+      "storyId": "US-022"
     }
   ],
   "summary": {
-    "totalChanges": 44,
-    "filesModified": 18,
+    "totalChanges": 50,
+    "filesModified": 22,
     "byCategory": {
-      "consistency": 29,
-      "punctuation": 15
+      "consistency": 34,
+      "punctuation": 16
     },
     "byFile": {
       "content/lessons/getting-started/what-is-ruby.md": 2,
@@ -475,12 +535,16 @@
       "content/lessons/modules/modules-mixins.md": 1,
       "content/lessons/errors/error-handling.md": 1,
       "content/glossary.json": 1,
-      "public/course.json": 6
+      "public/course.json": 6,
+      "components/CodePlayground.tsx": 1,
+      "components/CodeEditor.tsx": 1,
+      "app/page.tsx": 3,
+      "app/lessons/[section]/[lesson]/LessonPlayground.tsx": 1
     }
   },
   "metadata": {
     "createdAt": "2026-01-26",
     "lastUpdated": "2026-01-26",
-    "completedStories": ["US-016", "US-017", "US-018", "US-019", "US-020", "US-021"]
+    "completedStories": ["US-016", "US-017", "US-018", "US-019", "US-020", "US-021", "US-022"]
   }
 }
