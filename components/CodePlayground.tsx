@@ -54,6 +54,22 @@ import {
   createDebouncedCodeSaver,
 } from "@/lib/progress";
 
+/**
+ * Render output text with per-line bidi support
+ * Each line uses dir="auto" so Arabic lines display RTL
+ */
+function BidiOutput({ text }: { text: string }) {
+  return (
+    <div className="font-mono text-sm whitespace-pre-wrap text-foreground/80">
+      {text.split('\n').map((line, i) => (
+        <div key={i} dir="auto" className="bidi-line">
+          {line || '\u200B'}
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export interface CodePlaygroundProps {
   /** Initial/starter code to display in the editor */
   starterCode?: string;
@@ -648,14 +664,12 @@ export default function CodePlayground({
               <span>{loadingText}</span>
             </div>
           ) : error ? (
-            <div className="space-y-2" dir="ltr">
-              {output && (
-                <pre className="whitespace-pre-wrap text-foreground/80">{output}</pre>
-              )}
-              <pre className="whitespace-pre-wrap text-red-400">{error}</pre>
+            <div className="space-y-2">
+              {output && <BidiOutput text={output} />}
+              <pre className="whitespace-pre-wrap text-red-400" dir="ltr">{error}</pre>
             </div>
           ) : output ? (
-            <pre className="whitespace-pre-wrap text-foreground/80" dir="ltr">{output}</pre>
+            <BidiOutput text={output} />
           ) : (
             <span className="text-foreground/60" dir="rtl">
               اضغط على &quot;تشغيل&quot; لرؤية المخرجات

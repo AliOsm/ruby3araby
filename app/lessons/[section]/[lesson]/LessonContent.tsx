@@ -82,8 +82,9 @@ const markdownComponents = {
     const code = codeElement?.props?.children || "";
 
     // Extract language from className (e.g., "language-ruby" -> "ruby")
+    // Default to "text" for output blocks (no language) to enable RTL support
     const languageMatch = className.match(/language-(\w+)/);
-    const language = languageMatch ? languageMatch[1] : "ruby";
+    const language = languageMatch ? languageMatch[1] : "text";
 
     // Get the code string
     const codeString = typeof code === "string" ? code : String(code || "");
