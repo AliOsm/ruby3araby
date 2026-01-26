@@ -196,8 +196,8 @@
         "Typecheck passes"
       ],
       "priority": 13,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "All 27 remaining terms (mixin through yield) verified against authoritative Arabic programming resources. All translations are accurate and consistent with industry standards. Total glossary now fully verified: 67 terms, 0 issues, 2 suggestions (hash and method alternatives noted)."
     },
     {
       "id": "US-014",

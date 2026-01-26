@@ -9,7 +9,7 @@
     "lastUpdated": "2026-01-26"
   },
   "summary": {
-    "termsVerified": 40,
+    "termsVerified": 67,
     "issuesFound": 0,
     "suggestionsProvided": 2
   },
@@ -429,6 +429,336 @@
         "https://io.hsoub.com/translate/1297-حول-الترجمة-الصحيحة-لبعض-المصطلحات-oop-مثال"
       ],
       "notes": "In Arabic, 'method' is often translated as 'دالة' (same as function) or 'تابع'. The glossary uses 'دالة' which is common and appropriate for beginners."
+    },
+    {
+      "id": "mixin",
+      "english": "Mixin",
+      "currentArabic": "مزيج",
+      "status": "verified",
+      "sources": [
+        "https://ar.wikipedia.org/wiki/خلط_Mixin",
+        "https://academy.hsoub.com/programming/python/التعامل-مع-البرامج-كائنية-التوجه-والوراثة-المتعددة-في-لغة-بايثون-r2167/"
+      ],
+      "notes": "Confirmed by Arabic Wikipedia. Also translated as 'خلط' (mixing). Used for classes that provide methods to other classes without being parent classes."
+    },
+    {
+      "id": "module",
+      "english": "Module",
+      "currentArabic": "وحدة",
+      "status": "verified",
+      "sources": [
+        "https://academy.hsoub.com/programming/general/",
+        "https://wiki.hsoub.com/Ruby"
+      ],
+      "notes": "Standard Arabic translation for module in programming."
+    },
+    {
+      "id": "nil",
+      "english": "Nil",
+      "currentArabic": "عدم",
+      "status": "verified",
+      "sources": [
+        "https://context.reverso.net/translation/english-arabic/nil",
+        "https://ar.quora.com/هل-تعني-ال-null-صفر-أو-فارغ-فعليا-في-لغات"
+      ],
+      "notes": "Represents absence of value. Also translated as 'لا شيء' or 'معدوم'. Ruby uses 'nil' while other languages use 'null' or 'None'."
+    },
+    {
+      "id": "object",
+      "english": "Object",
+      "currentArabic": "كائن",
+      "status": "verified",
+      "sources": [
+        "https://ar.wikipedia.org/wiki/برمجة_كائنية_التوجه",
+        "https://academy.hsoub.com/programming/general/لغة-البرمجة-بالكائنات-oop/"
+      ],
+      "notes": "Confirmed by Arabic Wikipedia: الكائن (Object) هو حزمة من البيانات والطرق."
+    },
+    {
+      "id": "oop",
+      "english": "Object-Oriented Programming",
+      "currentArabic": "برمجة كائنية التوجه",
+      "status": "verified",
+      "sources": [
+        "https://ar.wikipedia.org/wiki/برمجة_كائنية_التوجه",
+        "https://academy.hsoub.com/programming/general/البرمجة-كائنية-التوجه-r1375/"
+      ],
+      "notes": "Standard Arabic translation. Also called 'برمجة موجهة نحو الكائنات' or 'برمجة غرضية التوجه'."
+    },
+    {
+      "id": "operator",
+      "english": "Operator",
+      "currentArabic": "عامل",
+      "status": "verified",
+      "sources": [
+        "https://ar.wikipedia.org/wiki/مشغل_(برمجة)",
+        "https://harmash.com/tutorials/programming/operators"
+      ],
+      "notes": "Standard Arabic translation. Also called 'مؤثر' in some sources."
+    },
+    {
+      "id": "output",
+      "english": "Output",
+      "currentArabic": "إخراج",
+      "status": "verified",
+      "sources": [
+        "https://3alam.pro/ali-majrashi/series/php-basics/lessons/php-data-output",
+        "https://academy.hsoub.com/programming/java/اكتب-برنامجك-الأول-بلغة-جافا-r372/"
+      ],
+      "notes": "Standard Arabic translation for program output. Opposite of 'إدخال' (input)."
+    },
+    {
+      "id": "parameter",
+      "english": "Parameter",
+      "currentArabic": "معامل",
+      "status": "verified",
+      "sources": [
+        "https://ar.wikipedia.org/wiki/وسيط_(برمجة_حاسوب)",
+        "https://academy.hsoub.com/programming/python/مفهوم-الدوال-functions-في-البرمجة-r1906/"
+      ],
+      "notes": "Also translated as 'وسيط'. Distinguished from 'argument' (المُعطى) which is the actual value passed."
+    },
+    {
+      "id": "proc",
+      "english": "Proc",
+      "currentArabic": "إجراء",
+      "status": "verified",
+      "sources": [
+        "https://wiki.hsoub.com/Ruby",
+        "https://academy.hsoub.com/programming/ruby/"
+      ],
+      "notes": "Ruby-specific term. A Proc is an object that encapsulates a block of code that can be stored and called later."
+    },
+    {
+      "id": "puts",
+      "english": "Puts",
+      "currentArabic": "طباعة",
+      "status": "verified",
+      "sources": [
+        "https://keefwiki.com/code/2015/05/06/كيفية-طباعة-جملة-hello-world-في-ruby/",
+        "https://www.rubyguides.com/2018/10/puts-vs-print/"
+      ],
+      "notes": "Ruby method for printing output with newline. Arabic describes the functionality rather than transliterating."
+    },
+    {
+      "id": "range",
+      "english": "Range",
+      "currentArabic": "نطاق",
+      "status": "verified",
+      "sources": [
+        "https://ypsilon.dev/ar/blog/ماذا-يعني-range-في-مجال-الخوارزميات-وهياكل/",
+        "https://www.almaany.com/ar/dict/ar-en/range/"
+      ],
+      "notes": "Standard Arabic translation. Used for ranges like 1..10 in Ruby."
+    },
+    {
+      "id": "reduce",
+      "english": "Reduce",
+      "currentArabic": "تجميع",
+      "status": "verified",
+      "sources": [
+        "https://ar.javascript.info/array-methods",
+        "https://www.w3schools.com/jsref/jsref_reduce.asp"
+      ],
+      "notes": "Arabic describes the functionality (aggregating/collecting). Also called 'inject' in Ruby."
+    },
+    {
+      "id": "refactoring",
+      "english": "Refactoring",
+      "currentArabic": "إعادة هيكلة",
+      "status": "verified",
+      "sources": [
+        "https://ar.wikipedia.org/wiki/إعادة_هيكلة_الكود",
+        "https://wiki.hsoub.com/Refactoring"
+      ],
+      "notes": "Confirmed by Arabic Wikipedia and Hsoub Wiki. Process of restructuring code without changing external behavior."
+    },
+    {
+      "id": "return",
+      "english": "Return",
+      "currentArabic": "إرجاع",
+      "status": "verified",
+      "sources": [
+        "https://ar.wikipedia.org/wiki/تعليمة_إخراج_ناتج",
+        "https://academy.hsoub.com/questions/24910-لماذا-نحتاج-استخدام-return-في-الدوال-البرمجية/"
+      ],
+      "notes": "Standard Arabic translation for the return statement."
+    },
+    {
+      "id": "ruby",
+      "english": "Ruby",
+      "currentArabic": "روبي",
+      "status": "verified",
+      "sources": [
+        "https://ar.wikipedia.org/wiki/روبي_(لغة_برمجة)",
+        "https://academy.hsoub.com/programming/ruby/"
+      ],
+      "notes": "Transliteration of the programming language name. Also translated as 'ياقوت' (the gemstone meaning)."
+    },
+    {
+      "id": "scope",
+      "english": "Scope",
+      "currentArabic": "نطاق",
+      "status": "verified",
+      "sources": [
+        "https://ar.wikipedia.org/wiki/مجال_(علم_الحاسوب)",
+        "https://arabituts.com/java/java-variables-scopes/"
+      ],
+      "notes": "Standard Arabic translation. Also called 'مجال'. Refers to where a variable can be accessed."
+    },
+    {
+      "id": "select",
+      "english": "Select",
+      "currentArabic": "اختيار",
+      "status": "verified",
+      "sources": [
+        "https://academy.hsoub.com/programming/javascript/توابع-المصفوفات-array-methods-في-جافاسكربت-r819/",
+        "https://academy.hsoub.com/programming/php/التنفيذ-على-المصفوفات-والتعامل-معها-في-php-r1046/"
+      ],
+      "notes": "Standard Arabic translation. Also translated as 'ترشيح' (filtering). Used for array filtering methods."
+    },
+    {
+      "id": "setter",
+      "english": "Setter",
+      "currentArabic": "مُعيِّن",
+      "status": "verified",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Mutator_method",
+        "https://www.omardo.com/2009/01/03/howto-write-easier-to-use-oop-java-api.html"
+      ],
+      "notes": "Arabic translation for setter/mutator method. Also called 'واضع'. Paired with 'جالب' (getter)."
+    },
+    {
+      "id": "splat",
+      "english": "Splat Operator",
+      "currentArabic": "عامل التفريق",
+      "status": "verified",
+      "sources": [
+        "https://wiki.hsoub.com/Ruby",
+        "https://www.wordreference.com/enar/splat"
+      ],
+      "notes": "Ruby-specific operator (*). Arabic describes the spreading/unpacking functionality."
+    },
+    {
+      "id": "statement",
+      "english": "Statement",
+      "currentArabic": "جملة",
+      "status": "verified",
+      "sources": [
+        "https://dalilmobarmg.com/tutorials/algorithms/fundamentals/syntax/",
+        "https://www.almaany.com/ar/dict/ar-en/statement/"
+      ],
+      "notes": "Standard Arabic translation. Also translated as 'تعليمة' or 'أمر'. A complete programming instruction."
+    },
+    {
+      "id": "string",
+      "english": "String",
+      "currentArabic": "نص",
+      "status": "verified",
+      "sources": [
+        "https://ar.wikipedia.org/wiki/سلسلة_(علم_الحاسوب)",
+        "https://dalilmobarmg.com/tutorials/algorithms/intermediate/strings/"
+      ],
+      "notes": "Standard Arabic translation. Also called 'سلسلة نصية' (text string)."
+    },
+    {
+      "id": "super",
+      "english": "Super",
+      "currentArabic": "أعلى",
+      "status": "verified",
+      "sources": [
+        "https://academy.hsoub.com/programming/python/وراثة-الأصناف-في-بايثون-3-r756/",
+        "https://harmash.com/java/java-inheritance/"
+      ],
+      "notes": "Used to call methods from parent class. Arabic describes the 'upper/parent' relationship."
+    },
+    {
+      "id": "symbol",
+      "english": "Symbol",
+      "currentArabic": "رمز",
+      "status": "verified",
+      "sources": [
+        "https://io.hsoub.com/programming/29586-ما-هي-رموز-اللغات-في-البرمجة",
+        "https://wiki.hsoub.com/Ruby"
+      ],
+      "notes": "Ruby-specific immutable identifier. Starts with colon (:symbol)."
+    },
+    {
+      "id": "syntax",
+      "english": "Syntax",
+      "currentArabic": "صياغة",
+      "status": "verified",
+      "sources": [
+        "https://academy.hsoub.com/programming/general/قواعد-البرمجة-ببساطة-للمبتدئين-r1870/",
+        "https://academy.hsoub.com/programming/javascript/نمط-كتابة-شيفرة-جافاسكربت-r785/"
+      ],
+      "notes": "Standard Arabic translation. Rules for writing valid code in a programming language."
+    },
+    {
+      "id": "ternary",
+      "english": "Ternary Operator",
+      "currentArabic": "العامل الثلاثي",
+      "status": "verified",
+      "sources": [
+        "https://elzero.org/conditional-ternary-operator-in-javascript/",
+        "https://en.wikipedia.org/wiki/Ternary_operation"
+      ],
+      "notes": "Standard Arabic translation. Shorthand for if-else: condition ? true_value : false_value"
+    },
+    {
+      "id": "true",
+      "english": "True",
+      "currentArabic": "صحيح",
+      "status": "verified",
+      "sources": [
+        "https://web.dev/learn/javascript/data-types/boolean",
+        "https://academy.hsoub.com/programming/javascript/المعاملات-المنطقية-في-جافاسكربت-r778/"
+      ],
+      "notes": "Standard Arabic translation for boolean true value. Opposite of 'خطأ' (false)."
+    },
+    {
+      "id": "type-conversion",
+      "english": "Type Conversion",
+      "currentArabic": "تحويل النوع",
+      "status": "verified",
+      "sources": [
+        "https://ar.wikipedia.org/wiki/التحويل_في_c++",
+        "https://harmash.com/blog/type-casting-in-programming-languages/"
+      ],
+      "notes": "Standard Arabic translation. Also called 'Type Casting'. Changing data from one type to another."
+    },
+    {
+      "id": "variable",
+      "english": "Variable",
+      "currentArabic": "متغير",
+      "status": "verified",
+      "sources": [
+        "https://ar.wikipedia.org/wiki/متغير_(علم_الحاسوب)",
+        "https://dalilmobarmg.com/tutorials/algorithms/fundamentals/variables/"
+      ],
+      "notes": "Standard Arabic translation. A named storage location for data."
+    },
+    {
+      "id": "while",
+      "english": "While Loop",
+      "currentArabic": "حلقة طالما",
+      "status": "verified",
+      "sources": [
+        "https://ar.javascript.info/while-for",
+        "https://academy.hsoub.com/programming/javascript/حلقتا-التكرار-while-و-for-في-جافاسكربت-r779/"
+      ],
+      "notes": "Standard Arabic translation. Loop that executes while condition is true."
+    },
+    {
+      "id": "yield",
+      "english": "Yield",
+      "currentArabic": "تنفيذ الكتلة",
+      "status": "verified",
+      "sources": [
+        "https://academy.hsoub.com/programming/ruby/الدليل-السريع-إلى-لغة-البرمجة-روبي-ruby-r529/",
+        "https://ar.javascript.info/generators"
+      ],
+      "notes": "Ruby keyword that executes the block passed to a method. Arabic describes the functionality."
     }
   ],
   "suggestions": [

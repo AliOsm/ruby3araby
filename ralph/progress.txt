@@ -1,7 +1,10 @@
 ## Codebase Patterns
 - Translation verification uses tasks/translation-issues.json with structured format (verifiedTerms[], suggestions[], issues[])
 - Authoritative Arabic programming sources: Hsoub Academy (academy.hsoub.com), Arabic Wikipedia (ar.wikipedia.org), Hsoub Wiki (wiki.hsoub.com)
-- All 20 first glossary terms verified accurate: algorithm, array, assignment, block, boolean, bug, class, comment, comparison-operator, concatenation, conditional, constant, constructor, data-type, debugging, default-value, each, enumerable, exception, expression
+- All 67 glossary terms fully verified accurate - translation phase complete
+- First 20 terms verified: algorithm, array, assignment, block, boolean, bug, class, comment, comparison-operator, concatenation, conditional, constant, constructor, data-type, debugging, default-value, each, enumerable, exception, expression
+- Second 20 terms verified: false, float, function, getter, identifier, index, inheritance, initialize, input, instance, instance-variable, integer, interpolation, iteration, keyword, lambda, loop, map, method
+- Remaining 27 terms verified: mixin, module, nil, object, oop, operator, output, parameter, proc, puts, range, reduce, refactoring, return, ruby, scope, select, setter, splat, statement, string, super, symbol, syntax, ternary, true, type-conversion, variable, while, yield
 - The glossary.json file has excellent Arabic quality - only 1 minor issue (missing period) found across 67 terms
 - Glossary definitions should consistently end with periods
 - The blocks section (yield.md, procs-lambdas.md) has excellent tanween consistency
@@ -15,6 +18,94 @@
 - App pages with Arabic text: layout.tsx (metadata), page.tsx (preview code), glossary/page.tsx (search UI), progress/page.tsx (progress UI), lessons/[section]/[lesson]/LessonPlayground.tsx (default code)
 - Most app page files have clean Arabic text - only app/page.tsx and LessonPlayground.tsx have tanween issues
 
+---
+
+## 2026-01-26 - US-013
+- What was implemented: Verified remaining 27 glossary terms (mixin through yield) against authoritative Arabic programming resources
+- Files changed:
+  - Updated: tasks/translation-issues.json (added 27 verified terms, summary updated to 67 total)
+  - Updated: ralph/prd.json (marked US-013 as passes: true)
+- Findings: All 27 terms verified as accurate
+  - 27 verified terms with consistent industry-standard translations
+  - 0 translation issues requiring changes
+  - Total glossary verification complete: 67 terms, 0 issues, 2 suggestions (hash and method alternatives)
+- Terms verified:
+  - mixin (مزيج) - confirmed by Arabic Wikipedia خلط_Mixin article
+  - module (وحدة) - standard Arabic translation
+  - nil (عدم) - Ruby-specific null value, also 'لا شيء' or 'معدوم'
+  - object (كائن) - confirmed by Arabic Wikipedia برمجة_كائنية_التوجه
+  - oop (برمجة كائنية التوجه) - standard translation
+  - operator (عامل) - confirmed by Wikipedia and harmash.com
+  - output (إخراج) - standard translation, opposite of إدخال (input)
+  - parameter (معامل) - confirmed by Wikipedia وسيط_(برمجة_حاسوب)
+  - proc (إجراء) - Ruby-specific, object wrapping block
+  - puts (طباعة) - Ruby output method
+  - range (نطاق) - standard translation for sequences
+  - reduce (تجميع) - aggregation method
+  - refactoring (إعادة هيكلة) - confirmed by Wikipedia and Hsoub Wiki
+  - return (إرجاع) - standard translation
+  - ruby (روبي) - transliteration, also 'ياقوت'
+  - scope (نطاق) - variable visibility, confirmed by Wikipedia
+  - select (اختيار) - filtering method
+  - setter (مُعيِّن) - OOP mutator method
+  - splat (عامل التفريق) - Ruby * operator
+  - statement (جملة) - programming instruction
+  - string (نص) - standard translation
+  - super (أعلى) - parent class call
+  - symbol (رمز) - Ruby immutable identifier
+  - syntax (صياغة) - code writing rules
+  - ternary (العامل الثلاثي) - conditional shorthand
+  - true (صحيح) - boolean value
+  - type-conversion (تحويل النوع) - data type casting
+  - variable (متغير) - confirmed by Wikipedia
+  - while (حلقة طالما) - loop structure
+  - yield (تنفيذ الكتلة) - Ruby block execution
+- **Learnings for future iterations:**
+  - All 67 glossary terms are now verified against authoritative Arabic programming sources
+  - Ruby-specific terms (nil, proc, puts, yield, splat) use descriptive Arabic rather than transliterations
+  - The glossary uses beginner-friendly translations consistently (e.g., قاموس for hash, دالة for method)
+  - OOP concepts are well-documented in Arabic Wikipedia with dedicated articles
+  - Translation verification phase is complete - no terminology changes needed
+  - Next phase will focus on detecting terminology inconsistencies across content files
+---
+
+## 2026-01-26 - US-012
+- What was implemented: Verified second 20 glossary terms (false through method) against authoritative Arabic programming resources
+- Files changed:
+  - Updated: tasks/translation-issues.json (added 20 verified terms, 1 additional suggestion)
+  - Updated: ralph/prd.json (marked US-012 as passes: true)
+- Findings: All 20 terms verified as accurate
+  - 20 verified terms with consistent industry-standard translations
+  - 0 translation issues requiring changes
+  - 1 suggestion noted (method uses 'دالة' which is common, though 'تابع' is used by some sources)
+- Terms verified:
+  - false (خطأ) - confirmed by Microsoft Learn and web.dev
+  - float (عدد عشري) - confirmed by Hsoub Wiki Arduino documentation
+  - function (دالة) - confirmed by multiple Hsoub Academy articles
+  - getter (جالب) - confirmed by Arabic programming resources
+  - identifier (مُعرِّف) - confirmed by technical translation sources
+  - index (فهرس) - confirmed by JavaScript.info Arabic
+  - inheritance (وراثة) - confirmed by Arabic Wikipedia
+  - initialize (تهيئة) - standard Arabic translation
+  - input (إدخال) - standard Arabic translation
+  - instance (مثيل) - confirmed by Arabic Wikipedia OOP article
+  - instance-variable (متغير مثيل) - compound term from verified components
+  - integer (عدد صحيح) - standard Arabic translation
+  - interpolation (إقحام) - confirmed by technical dictionaries
+  - iteration (تكرار) - confirmed by multiple sources
+  - keyword (كلمة محجوزة) - confirmed by PONS dictionary
+  - lambda (لامدا) - confirmed by Hsoub Academy
+  - loop (حلقة) - confirmed by multiple Hsoub Academy articles
+  - map (تحويل) - confirmed by JavaScript.info Arabic
+  - method (دالة) - confirmed, though 'تابع' is also used
+- **Learnings for future iterations:**
+  - Hsoub Academy has extensive documentation on loops, functions, and OOP concepts in Arabic
+  - Arabic Wikipedia has a dedicated article on "مثيل (برمجة كائنية التوجه)" for OOP instance concept
+  - The 'method' vs 'function' distinction is debated in Arabic programming communities
+  - Some sources use 'تابع' for method to distinguish from standalone 'دالة' (function)
+  - The glossary choice of 'دالة' for both is acceptable for beginners
+  - The term 'إقحام' for interpolation is used in technical contexts
+  - Lambda is kept as 'لامدا' (transliteration) which is standard in Arabic programming
 ---
 
 ## 2026-01-26 - US-011
