@@ -9,9 +9,9 @@
     "lastUpdated": "2026-01-26"
   },
   "summary": {
-    "termsVerified": 20,
+    "termsVerified": 40,
     "issuesFound": 0,
-    "suggestionsProvided": 1
+    "suggestionsProvided": 2
   },
   "verifiedTerms": [
     {
@@ -221,6 +221,214 @@
         "https://academy.hsoub.com/programming/general/مقدمة-إلى-البرمجة-الوظيفية-functional-programming-r1391/"
       ],
       "notes": "Confirmed by Hsoub Academy: التعبير هو تجميعة من العمليات والمتغيرات التي ينتج عنها قيمة واحدة"
+    },
+    {
+      "id": "false",
+      "english": "False",
+      "currentArabic": "خطأ",
+      "status": "verified",
+      "sources": [
+        "https://learn.microsoft.com/ar-sa/power-platform/power-fx/reference/function-boolean",
+        "https://web.dev/learn/javascript/data-types/boolean"
+      ],
+      "notes": "Standard Arabic translation for boolean false value. Also commonly written as 'خاطئ' in some contexts."
+    },
+    {
+      "id": "float",
+      "english": "Float",
+      "currentArabic": "عدد عشري",
+      "status": "verified",
+      "sources": [
+        "https://wiki.hsoub.com/Arduino/float",
+        "https://academy.hsoub.com/programming/c/"
+      ],
+      "notes": "Confirmed by Hsoub Wiki: يستعمل النوع float مع الأعداد العشرية"
+    },
+    {
+      "id": "function",
+      "english": "Function",
+      "currentArabic": "دالة",
+      "status": "verified",
+      "sources": [
+        "https://academy.hsoub.com/programming/javascript/الدوال-functions-في-جافاسكريبت-r620/",
+        "https://academy.hsoub.com/programming/python/مفهوم-الدوال-functions-في-البرمجة-r1906/"
+      ],
+      "notes": "Standard Arabic translation for function. Confirmed by multiple Hsoub Academy articles."
+    },
+    {
+      "id": "getter",
+      "english": "Getter",
+      "currentArabic": "جالب",
+      "status": "verified",
+      "sources": [
+        "https://www.arabicprogrammer.com/article/74761720052/",
+        "https://ar.wikipedia.org/wiki/برمجة_كائنية_التوجه"
+      ],
+      "notes": "Arabic translation for getter method in OOP. Also known as 'accessor' in some contexts."
+    },
+    {
+      "id": "identifier",
+      "english": "Identifier",
+      "currentArabic": "مُعرِّف",
+      "status": "verified",
+      "sources": [
+        "https://www.proz.com/kudoz/arabic-to-english/law-general/1195515-معرف.html",
+        "https://github.com/MarounMaroun/arabic-technical-terms"
+      ],
+      "notes": "Standard Arabic translation for identifier in programming contexts."
+    },
+    {
+      "id": "index",
+      "english": "Index",
+      "currentArabic": "فهرس",
+      "status": "verified",
+      "sources": [
+        "https://ar.javascript.info/array-methods",
+        "https://arabic.britannicaenglish.com/en/index"
+      ],
+      "notes": "Standard Arabic translation. Example: فهرس المصفوفة (array index)."
+    },
+    {
+      "id": "inheritance",
+      "english": "Inheritance",
+      "currentArabic": "وراثة",
+      "status": "verified",
+      "sources": [
+        "https://ar.wikipedia.org/wiki/وراثة_(حوسبة)",
+        "https://teracourses.com/en/blogs/oop-inheritance"
+      ],
+      "notes": "Confirmed by Arabic Wikipedia: في البرمجة كائنية التوجه، الوراثة خاصية أساسية في اللغات البرمجية كائنية التوجه"
+    },
+    {
+      "id": "initialize",
+      "english": "Initialize",
+      "currentArabic": "تهيئة",
+      "status": "verified",
+      "sources": [
+        "https://context.reverso.net/translation/english-arabic/initialize",
+        "https://www.english-arabic.org/english-to-arabic-meaning-initialize"
+      ],
+      "notes": "Standard Arabic translation. Example: يجب تهيئة المؤشر قبل محاولة استخدامه في برنامجك"
+    },
+    {
+      "id": "input",
+      "english": "Input",
+      "currentArabic": "إدخال",
+      "status": "verified",
+      "sources": [
+        "https://context.reverso.net/translation/english-arabic/input",
+        "https://www.almaany.com/en/dict/ar-en/input/"
+      ],
+      "notes": "Standard Arabic translation for input. Example: جهاز إدخال (input device)."
+    },
+    {
+      "id": "instance",
+      "english": "Instance",
+      "currentArabic": "مثيل",
+      "status": "verified",
+      "sources": [
+        "https://ar.wikipedia.org/wiki/مثيل_(برمجة_كائنية_التوجه)",
+        "https://ar.wikipedia.org/wiki/برمجة_كائنية_التوجه"
+      ],
+      "notes": "Confirmed by Arabic Wikipedia: المثيل في برمجة كائنية التوجه هو وجود ملموس لأي كائن"
+    },
+    {
+      "id": "instance-variable",
+      "english": "Instance Variable",
+      "currentArabic": "متغير مثيل",
+      "status": "verified",
+      "sources": [
+        "https://www.almaany.com/ar/dict/ar-en/instance-variable/",
+        "https://ar.wikipedia.org/wiki/برمجة_كائنية_التوجه"
+      ],
+      "notes": "Compound term combining 'متغير' (variable) and 'مثيل' (instance)."
+    },
+    {
+      "id": "integer",
+      "english": "Integer",
+      "currentArabic": "عدد صحيح",
+      "status": "verified",
+      "sources": [
+        "https://context.reverso.net/translation/english-arabic/integer",
+        "https://glosbe.com/en/ar/integer"
+      ],
+      "notes": "Standard Arabic translation for integer data type. Also: أعداد صحيحة (plural)."
+    },
+    {
+      "id": "interpolation",
+      "english": "Interpolation",
+      "currentArabic": "إقحام",
+      "status": "verified",
+      "sources": [
+        "https://www.proz.com/kudoz/english-to-arabic/tech-engineering/266048-interpolation.html",
+        "https://www.almaany.com/en/dict/ar-en/interpolation/"
+      ],
+      "notes": "Used for string interpolation in programming. Also translated as 'استيفاء' in mathematical contexts."
+    },
+    {
+      "id": "iteration",
+      "english": "Iteration",
+      "currentArabic": "تكرار",
+      "status": "verified",
+      "sources": [
+        "https://www.proz.com/kudoz/english-to-arabic/it-information-technology/3035647-iteration.html",
+        "https://arabic.britannicaenglish.com/en/iteration"
+      ],
+      "notes": "Standard Arabic translation. Example: بعد عشرة تكرارات، خرج البرنامج من الحلقة"
+    },
+    {
+      "id": "keyword",
+      "english": "Keyword",
+      "currentArabic": "كلمة محجوزة",
+      "status": "verified",
+      "sources": [
+        "https://en.pons.com/translate/arabic-english/محجوزة",
+        "https://context.reverso.net/translation/english-arabic/keyword"
+      ],
+      "notes": "Standard translation for reserved keyword. Example: الأصناف البدائية مُسَمَّاة بكلمة محجوزة"
+    },
+    {
+      "id": "lambda",
+      "english": "Lambda",
+      "currentArabic": "لامدا",
+      "status": "verified",
+      "sources": [
+        "https://academy.hsoub.com/programming/general/مقدمة-إلى-البرمجة-الوظيفية-functional-programming-r1391/",
+        "https://academy.hsoub.com/questions/21580-ما-فائدة-دالة-lambda-في-بايثون-ومتى-أستعملها/"
+      ],
+      "notes": "Confirmed by Hsoub Academy: تعابير لامدا هي كتل من الشيفرات المجهولة التي لا تحمل اسمًا"
+    },
+    {
+      "id": "loop",
+      "english": "Loop",
+      "currentArabic": "حلقة",
+      "status": "verified",
+      "sources": [
+        "https://academy.hsoub.com/programming/python/حلقات-التكرار-loops-في-بايثون-r291/",
+        "https://academy.hsoub.com/programming/javascript/حلقتا-التكرار-while-و-for-في-جافاسكربت-r779/"
+      ],
+      "notes": "Confirmed by Hsoub Academy. Also called 'حلقة تكرارية' (iterative loop)."
+    },
+    {
+      "id": "map",
+      "english": "Map",
+      "currentArabic": "تحويل",
+      "status": "verified",
+      "sources": [
+        "https://ar.javascript.info/array-methods"
+      ],
+      "notes": "Used for the map method that transforms array elements. يُعدّ التابِع arr.map أكثرها استخدامًا وفائدةً"
+    },
+    {
+      "id": "method",
+      "english": "Method",
+      "currentArabic": "دالة",
+      "status": "verified",
+      "sources": [
+        "https://academy.hsoub.com/questions/20464-ما-الفرق-بين-الدالة-function-والتابع-method-في-البرمجة-الكائنية-oop/",
+        "https://io.hsoub.com/translate/1297-حول-الترجمة-الصحيحة-لبعض-المصطلحات-oop-مثال"
+      ],
+      "notes": "In Arabic, 'method' is often translated as 'دالة' (same as function) or 'تابع'. The glossary uses 'دالة' which is common and appropriate for beginners."
     }
   ],
   "suggestions": [
@@ -235,6 +443,18 @@
         "https://wiki.hsoub.com/Ruby"
       ],
       "notes": "The glossary uses 'قاموس' (dictionary) which is user-friendly for beginners. Technical sources use 'جدول تجزئة' (hash table). Both are acceptable; 'قاموس' is appropriate for an introductory Ruby course as it emphasizes the key-value dictionary-like nature of Ruby hashes."
+    },
+    {
+      "id": "method",
+      "english": "Method",
+      "currentArabic": "دالة",
+      "alternativeArabic": "تابع",
+      "status": "acceptable",
+      "sources": [
+        "https://academy.hsoub.com/questions/20464-ما-الفرق-بين-الدالة-function-والتابع-method-في-البرمجة-الكائنية-oop/",
+        "https://io.hsoub.com/translate/1297-حول-الترجمة-الصحيحة-لبعض-المصطلحات-oop-مثال"
+      ],
+      "notes": "The glossary uses 'دالة' for both 'function' and 'method', which is common in Arabic programming resources. Some sources prefer 'تابع' for method to distinguish from standalone functions. The choice of 'دالة' is acceptable for an introductory course as it simplifies the terminology for beginners."
     }
   ],
   "issues": []
