@@ -253,12 +253,39 @@
       "issue": "استخدام علامة تعجب في نهاية جملة توضيحية",
       "suggestion": "كلا الطريقتين تعطي نفس النتيجة، لكن العامل الثلاثي أقصر بكثير.",
       "category": "punctuation"
+    },
+    {
+      "id": "GI-029",
+      "file": "content/lessons/collections/arrays.md",
+      "line": 32,
+      "original": "mixed = [42, \"مرحبا\", true, 3.14, nil]",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين",
+      "suggestion": "mixed = [42, \"مرحباً\", true, 3.14, nil]",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-030",
+      "file": "content/lessons/collections/ranges-enumerables.md",
+      "line": 122,
+      "original": "text = \"مرحبا بالعالم\"",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين",
+      "suggestion": "text = \"مرحباً بالعالم\"",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-031",
+      "file": "content/lessons/collections/ranges-enumerables.md",
+      "line": 123,
+      "original": "# مرحبا",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين في التعليق",
+      "suggestion": "# مرحباً",
+      "category": "consistency"
     }
   ],
   "summary": {
-    "totalIssues": 28,
+    "totalIssues": 31,
     "byCategory": {
-      "consistency": 16,
+      "consistency": 19,
       "punctuation": 12
     },
     "byFile": {
@@ -271,7 +298,9 @@
       "content/lessons/fundamentals/bang-predicate.md": 2,
       "content/lessons/fundamentals/truthiness.md": 5,
       "content/lessons/control-flow/case-when.md": 1,
-      "content/lessons/control-flow/ternary.md": 2
+      "content/lessons/control-flow/ternary.md": 2,
+      "content/lessons/collections/arrays.md": 1,
+      "content/lessons/collections/ranges-enumerables.md": 2
     }
   },
   "metadata": {
@@ -296,8 +325,14 @@
       "content/lessons/control-flow/case-when.md",
       "content/lessons/control-flow/ternary.md",
       "content/lessons/loops/while-until.md",
-      "content/lessons/loops/for-control.md"
+      "content/lessons/loops/for-control.md",
+      "content/lessons/collections/arrays.md",
+      "content/lessons/collections/array-methods.md",
+      "content/lessons/collections/hashes.md",
+      "content/lessons/collections/ranges-enumerables.md",
+      "content/lessons/methods/defining-methods.md",
+      "content/lessons/methods/returns-splat.md"
     ],
-    "storyId": "US-003"
+    "storyId": "US-004"
   }
 }
