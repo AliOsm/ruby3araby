@@ -552,15 +552,26 @@
       "category": "terminology-standardization",
       "storyId": "US-024",
       "note": "Standardized to glossary term 'مزيج' for Mixin"
+    },
+    {
+      "id": "CH-055",
+      "issueId": "TI-mixin-5",
+      "file": "public/course.json",
+      "path": "sections[8].lessons[0].title",
+      "before": "الوحدات والخلط",
+      "after": "الوحدات والمزيج",
+      "category": "terminology-standardization",
+      "storyId": "US-025",
+      "note": "Standardized to glossary term 'مزيج' for Mixin in course.json lesson title"
     }
   ],
   "summary": {
-    "totalChanges": 54,
+    "totalChanges": 55,
     "filesModified": 22,
     "byCategory": {
       "consistency": 34,
       "punctuation": 16,
-      "terminology-standardization": 4
+      "terminology-standardization": 5
     },
     "byFile": {
       "content/lessons/getting-started/what-is-ruby.md": 2,
@@ -580,7 +591,7 @@
       "content/lessons/modules/modules-mixins.md": 1,
       "content/lessons/errors/error-handling.md": 1,
       "content/glossary.json": 1,
-      "public/course.json": 6,
+      "public/course.json": 7,
       "components/CodePlayground.tsx": 1,
       "components/CodeEditor.tsx": 1,
       "app/page.tsx": 3,
@@ -590,7 +601,7 @@
   "metadata": {
     "createdAt": "2026-01-26",
     "lastUpdated": "2026-01-26",
-    "completedStories": ["US-016", "US-017", "US-018", "US-019", "US-020", "US-021", "US-022", "US-023", "US-024"]
+    "completedStories": ["US-016", "US-017", "US-018", "US-019", "US-020", "US-021", "US-022", "US-023", "US-024", "US-025"]
   },
   "translationVerification": {
     "storyId": "US-023",

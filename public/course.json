@@ -610,7 +610,7 @@
         {
           "id": "modules-mixins",
           "slug": "modules-mixins",
-          "title": "الوحدات والخلط",
+          "title": "الوحدات والمزيج",
           "contentPath": "/content/lessons/modules/modules-mixins.md",
           "exercise": {
             "starterCode": "# 1. أنشئ وحدة Speakable تحتوي على دالة speak تطبع \"أتكلم!\"\n\n\n# 2. أنشئ صنف Robot يتضمن الوحدة Speakable\n# مع attr_reader :name و initialize(name)\n\n\n# 3. أنشئ صنف Animal يتضمن الوحدة Speakable\n# مع attr_reader :name و initialize(name)\n\n\n# 4. أنشئ روبوت اسمه \"روبي\" وحيوان اسمه \"بوبي\"\n# اطبع اسم كل كائن ثم استدعِ speak\n",
