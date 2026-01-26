@@ -45,9 +45,9 @@ text.reverse!
 puts text
 
 # strip!
-message = "   مرحبا   "
+message = "   مرحباً   "
 message.strip!
-# مرحبا
+# مرحباً
 puts message
 
 # gsub!

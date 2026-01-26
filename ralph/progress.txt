@@ -1,3 +1,44 @@
+## 2026-01-26 - US-017
+- What was implemented: Applied grammar corrections to all 4 fundamentals lesson files
+- Files changed:
+  - content/lessons/fundamentals/variables-types.md (3 fixes: GI-013, GI-014, GI-015)
+  - content/lessons/fundamentals/string-methods.md (3 fixes: GI-016, GI-017, GI-018)
+  - content/lessons/fundamentals/bang-predicate.md (2 fixes: GI-019, GI-020)
+  - content/lessons/fundamentals/truthiness.md (5 fixes: GI-021 to GI-025)
+  - Updated: tasks/changes-log.json (added 13 new corrections, CH-014 to CH-026)
+  - Updated: ralph/prd.json (marked US-017 as passes: true)
+- Corrections applied: 13 total (7 consistency, 6 punctuation)
+  - Consistency: Changed 'مرحبا' to 'مرحباً' (tanween) in code examples and outputs
+  - Punctuation: Changed '!' to '.' in explanatory sentences inside code blocks
+- **Learnings for future iterations:**
+  - The truthiness.md file has multiple puts statements with exclamation marks in both code and output sections - must update both
+  - The bang-predicate.md example uses the same Arabic text in code and output comment - both need to be updated together
+  - The fundamentals section has 7 files with no issues: string-interpolation.md, operators.md, boolean-logic.md, constants-symbols.md, user-input.md, type-conversion.md, multiple-assignment.md
+  - The string-methods.md has comments that show expected output (e.g., `# "مرحباً بالعالم"`) - these also need tanween correction
+
+---
+
+## 2026-01-26 - US-016
+- What was implemented: Applied grammar corrections to all 4 getting-started lesson files
+- Files changed:
+  - content/lessons/getting-started/what-is-ruby.md (2 fixes: GI-001, GI-012)
+  - content/lessons/getting-started/hello-world.md (4 fixes: GI-002, GI-003, GI-004, GI-005)
+  - content/lessons/getting-started/comments.md (2 fixes: GI-006 + corresponding output)
+  - content/lessons/getting-started/output-methods.md (5 fixes: GI-007 to GI-011)
+  - Created: tasks/changes-log.json (tracking all corrections)
+  - Updated: ralph/prd.json (marked US-016 as passes: true)
+- Corrections applied: 13 total (11 consistency, 2 punctuation)
+  - Consistency: Changed 'مرحبا' to 'مرحباً' (tanween) in code examples and outputs
+  - Punctuation: Changed '!' to '.' in explanatory sentences
+- **Learnings for future iterations:**
+  - When fixing code examples, also update corresponding output sections to match
+  - The hello-world.md exercise expected output now says 'مرحباً بالعالم' - course.json needs to be updated in US-021 to match
+  - The changes-log.json tracks all corrections with before/after for audit trail
+  - Code blocks inside markdown preserve their tanween fixes correctly
+  - Markdown formatting and code block structure is preserved when editing
+
+---
+
 ## 2026-01-26 - US-015
 - What was implemented: Generated comprehensive bilingual proofreading report consolidating all findings
 - Files changed:
@@ -53,6 +94,8 @@
 ---
 
 ## Codebase Patterns
+- Grammar corrections are logged in tasks/changes-log.json with: id, issueId, file, line, before, after, category, storyId
+- When editing markdown lesson files, update both code examples AND their corresponding output sections to match
 - Translation verification uses tasks/translation-issues.json with structured format (verifiedTerms[], suggestions[], issues[])
 - Authoritative Arabic programming sources: Hsoub Academy (academy.hsoub.com), Arabic Wikipedia (ar.wikipedia.org), Hsoub Wiki (wiki.hsoub.com)
 - All 67 glossary terms fully verified accurate - translation phase complete

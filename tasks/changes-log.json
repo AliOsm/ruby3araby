@@ -132,25 +132,163 @@
       "after": "لاحظ أن `p` يُظهر علامات الاقتباس، بينما `puts` لا يُظهرها.",
       "category": "punctuation",
       "storyId": "US-016"
+    },
+    {
+      "id": "CH-014",
+      "issueId": "GI-013",
+      "file": "content/lessons/fundamentals/variables-types.md",
+      "line": 7,
+      "before": "روبي تكتشفه تلقائياً!",
+      "after": "روبي تكتشفه تلقائياً.",
+      "category": "punctuation",
+      "storyId": "US-017"
+    },
+    {
+      "id": "CH-015",
+      "issueId": "GI-014",
+      "file": "content/lessons/fundamentals/variables-types.md",
+      "line": 111,
+      "before": "لاحظ أن `1_000_000` تساوي مليون - الشرطة السفلية للقراءة فقط ولا تؤثر على القيمة!",
+      "after": "لاحظ أن `1_000_000` تساوي مليون - الشرطة السفلية للقراءة فقط ولا تؤثر على القيمة.",
+      "category": "punctuation",
+      "storyId": "US-017"
+    },
+    {
+      "id": "CH-016",
+      "issueId": "GI-015",
+      "file": "content/lessons/fundamentals/variables-types.md",
+      "line": 298,
+      "before": "`\"مرحبا\"`",
+      "after": "`\"مرحباً\"`",
+      "category": "consistency",
+      "storyId": "US-017"
+    },
+    {
+      "id": "CH-017",
+      "issueId": "GI-016",
+      "file": "content/lessons/fundamentals/string-methods.md",
+      "line": 50,
+      "before": "greeting = \"مرحبا\"",
+      "after": "greeting = \"مرحباً\"",
+      "category": "consistency",
+      "storyId": "US-017"
+    },
+    {
+      "id": "CH-018",
+      "issueId": "GI-017",
+      "file": "content/lessons/fundamentals/string-methods.md",
+      "line": 87,
+      "before": "text = \"   مرحبا بالعالم   \"",
+      "after": "text = \"   مرحباً بالعالم   \"",
+      "category": "consistency",
+      "storyId": "US-017"
+    },
+    {
+      "id": "CH-019",
+      "issueId": "GI-018",
+      "file": "content/lessons/fundamentals/string-methods.md",
+      "line": 89,
+      "before": "# \"مرحبا بالعالم\"",
+      "after": "# \"مرحباً بالعالم\"",
+      "category": "consistency",
+      "storyId": "US-017"
+    },
+    {
+      "id": "CH-020",
+      "issueId": "GI-019",
+      "file": "content/lessons/fundamentals/bang-predicate.md",
+      "line": 49,
+      "before": "message = \"   مرحبا   \"",
+      "after": "message = \"   مرحباً   \"",
+      "category": "consistency",
+      "storyId": "US-017"
+    },
+    {
+      "id": "CH-021",
+      "issueId": "GI-020",
+      "file": "content/lessons/fundamentals/bang-predicate.md",
+      "line": 51,
+      "before": "# مرحبا",
+      "after": "# مرحباً",
+      "category": "consistency",
+      "storyId": "US-017"
+    },
+    {
+      "id": "CH-022",
+      "issueId": "GI-021",
+      "file": "content/lessons/fundamentals/truthiness.md",
+      "line": 10,
+      "before": "value = \"مرحبا\"",
+      "after": "value = \"مرحباً\"",
+      "category": "consistency",
+      "storyId": "US-017"
+    },
+    {
+      "id": "CH-023",
+      "issueId": "GI-022",
+      "file": "content/lessons/fundamentals/truthiness.md",
+      "line": 73,
+      "before": "puts \"الصفر صادق في روبي!\"",
+      "after": "puts \"الصفر صادق في روبي.\"",
+      "category": "punctuation",
+      "storyId": "US-017",
+      "note": "Updated both code and output section"
+    },
+    {
+      "id": "CH-024",
+      "issueId": "GI-023",
+      "file": "content/lessons/fundamentals/truthiness.md",
+      "line": 87,
+      "before": "puts \"النص الفارغ صادق في روبي!\"",
+      "after": "puts \"النص الفارغ صادق في روبي.\"",
+      "category": "punctuation",
+      "storyId": "US-017",
+      "note": "Updated both code and output section"
+    },
+    {
+      "id": "CH-025",
+      "issueId": "GI-024",
+      "file": "content/lessons/fundamentals/truthiness.md",
+      "line": 101,
+      "before": "puts \"المصفوفة الفارغة صادقة في روبي!\"",
+      "after": "puts \"المصفوفة الفارغة صادقة في روبي.\"",
+      "category": "punctuation",
+      "storyId": "US-017",
+      "note": "Updated both code and output section"
+    },
+    {
+      "id": "CH-026",
+      "issueId": "GI-025",
+      "file": "content/lessons/fundamentals/truthiness.md",
+      "line": 115,
+      "before": "puts \"القاموس الفارغ صادق في روبي!\"",
+      "after": "puts \"القاموس الفارغ صادق في روبي.\"",
+      "category": "punctuation",
+      "storyId": "US-017",
+      "note": "Updated both code and output section"
     }
   ],
   "summary": {
-    "totalChanges": 13,
-    "filesModified": 4,
+    "totalChanges": 26,
+    "filesModified": 8,
     "byCategory": {
-      "consistency": 11,
-      "punctuation": 2
+      "consistency": 18,
+      "punctuation": 8
     },
     "byFile": {
       "content/lessons/getting-started/what-is-ruby.md": 2,
       "content/lessons/getting-started/hello-world.md": 4,
       "content/lessons/getting-started/comments.md": 2,
-      "content/lessons/getting-started/output-methods.md": 5
+      "content/lessons/getting-started/output-methods.md": 5,
+      "content/lessons/fundamentals/variables-types.md": 3,
+      "content/lessons/fundamentals/string-methods.md": 3,
+      "content/lessons/fundamentals/bang-predicate.md": 2,
+      "content/lessons/fundamentals/truthiness.md": 5
     }
   },
   "metadata": {
     "createdAt": "2026-01-26",
     "lastUpdated": "2026-01-26",
-    "completedStories": ["US-016"]
+    "completedStories": ["US-016", "US-017"]
   }
 }

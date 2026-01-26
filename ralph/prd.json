@@ -241,8 +241,8 @@
         "Typecheck passes"
       ],
       "priority": 16,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Applied 13 corrections (11 consistency, 2 punctuation) to 4 files: what-is-ruby.md, hello-world.md, comments.md, output-methods.md. All fixes logged to changes-log.json."
     },
     {
       "id": "US-017",
@@ -255,8 +255,8 @@
         "Typecheck passes"
       ],
       "priority": 17,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Applied 13 corrections (7 consistency, 6 punctuation) to 4 files: variables-types.md, string-methods.md, bang-predicate.md, truthiness.md. All fixes logged to changes-log.json."
     },
     {
       "id": "US-018",
