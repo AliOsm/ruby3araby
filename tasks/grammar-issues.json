@@ -307,13 +307,31 @@
       "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين",
       "suggestion": "puts \"مرحباً\".length   # 5",
       "category": "consistency"
+    },
+    {
+      "id": "GI-035",
+      "file": "content/lessons/modules/modules-mixins.md",
+      "line": 3,
+      "original": "هنا تأتي **الوحدات** (Modules)!",
+      "issue": "استخدام علامة تعجب في نهاية جملة توضيحية",
+      "suggestion": "هنا تأتي **الوحدات** (Modules).",
+      "category": "punctuation"
+    },
+    {
+      "id": "GI-036",
+      "file": "content/lessons/errors/error-handling.md",
+      "line": 3,
+      "original": "الأخطاء أمر **حتمي**!",
+      "issue": "استخدام علامة تعجب في نهاية جملة توضيحية",
+      "suggestion": "الأخطاء أمر **حتمي**.",
+      "category": "punctuation"
     }
   ],
   "summary": {
-    "totalIssues": 34,
+    "totalIssues": 36,
     "byCategory": {
       "consistency": 22,
-      "punctuation": 12
+      "punctuation": 14
     },
     "byFile": {
       "content/lessons/getting-started/what-is-ruby.md": 2,
@@ -329,7 +347,9 @@
       "content/lessons/collections/arrays.md": 1,
       "content/lessons/collections/ranges-enumerables.md": 2,
       "content/lessons/blocks/block-syntax.md": 1,
-      "content/lessons/oop/classes-objects.md": 2
+      "content/lessons/oop/classes-objects.md": 2,
+      "content/lessons/modules/modules-mixins.md": 1,
+      "content/lessons/errors/error-handling.md": 1
     }
   },
   "metadata": {
@@ -366,8 +386,13 @@
       "content/lessons/blocks/procs-lambdas.md",
       "content/lessons/oop/classes-objects.md",
       "content/lessons/oop/initialize-accessors.md",
-      "content/lessons/oop/inheritance.md"
+      "content/lessons/oop/inheritance.md",
+      "content/lessons/modules/modules-mixins.md",
+      "content/lessons/errors/error-handling.md",
+      "content/lessons/challenges/fizzbuzz.md",
+      "content/lessons/challenges/calculator.md",
+      "content/lessons/challenges/guessing-game.md"
     ],
-    "storyId": "US-005"
+    "storyId": "US-006"
   }
 }

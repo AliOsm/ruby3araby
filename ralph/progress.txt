@@ -2,6 +2,32 @@
 - The blocks section (yield.md, procs-lambdas.md) has excellent tanween consistency
 - The oop section (initialize-accessors.md, inheritance.md) is very clean with no grammar issues
 - The block-syntax.md file has issues in the each_char example section
+- The challenges section (fizzbuzz.md, calculator.md, guessing-game.md) is very clean with no grammar issues
+- The modules section (modules-mixins.md) uses "مرحباً" correctly in code blocks
+- The errors section (error-handling.md) has no tanween issues
+
+---
+
+## 2026-01-26 - US-006
+- What was implemented: Scanned 1 modules, 1 errors, and 3 challenges lesson markdown files for Arabic grammar issues
+- Files changed:
+  - Updated: tasks/grammar-issues.json (added 2 new issues, GI-035 to GI-036)
+  - Updated: ralph/prd.json (marked US-006 as passes: true)
+- Findings: 2 new issues identified (total now 36)
+  - 0 consistency issues (tanween usage is correct in all files)
+  - 2 punctuation issues (exclamation marks in intro text)
+- Files scanned:
+  - content/lessons/modules/modules-mixins.md (1 issue)
+  - content/lessons/errors/error-handling.md (1 issue)
+  - content/lessons/challenges/fizzbuzz.md (0 issues)
+  - content/lessons/challenges/calculator.md (0 issues)
+  - content/lessons/challenges/guessing-game.md (0 issues)
+- **Learnings for future iterations:**
+  - The challenges section is very clean - all 3 files have no grammar issues
+  - Exclamation marks in game outputs (e.g., "أعلى!", "أقل!", "مبروك!") are appropriate as feedback
+  - Exclamation marks with emojis at the end (e.g., "حظاً موفقاً! 🎯") are acceptable as encouraging endings
+  - The modules-mixins.md and error-handling.md both have similar intro patterns "هنا تأتي X!" that should be periods
+  - This completes the grammar scanning of ALL 37 lesson files
 
 ---
 
