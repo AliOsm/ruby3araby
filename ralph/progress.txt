@@ -1,3 +1,57 @@
+## 2026-01-26 - US-015
+- What was implemented: Generated comprehensive bilingual proofreading report consolidating all findings
+- Files changed:
+  - Created: tasks/proofreading-report.md (comprehensive report with all issues)
+  - Updated: ralph/prd.json (marked US-015 as passes: true)
+- Report structure:
+  - Executive summary with key metrics (49 grammar issues, 67 verified translations, 5 terminology variations)
+  - Grammar Issues section organized by directory/file with line numbers and suggested fixes
+  - Translation Issues section with verification results and 2 suggestions (hash, method)
+  - Terminology Inconsistencies section (3 actual inconsistencies, 2 acceptable variations)
+  - Prioritized recommendations (P1: tanween, punctuation, mixin; P2: range/scope, accessor; P3: block alternatives)
+  - Clean files list (21 lesson files, 16 component/page files with no issues)
+  - Next steps roadmap linking to US-016 through US-026
+- Report is bilingual (Arabic headers, mixed Arabic/English content) for maintainer usability
+- **Learnings for future iterations:**
+  - Consolidating JSON reports into a markdown format makes the data actionable
+  - Bilingual reports (Arabic + English) work well for Arabic programming courses
+  - Organizing grammar issues by directory/file makes batch corrections easier
+  - Including clean files list helps maintainers know what's already good
+  - The report serves as a work order for the correction phase (US-016 through US-026)
+
+---
+
+## 2026-01-26 - US-014
+- What was implemented: Detected terminology inconsistencies by building glossary map and scanning all lesson files
+- Files changed:
+  - Created: tasks/terminology-inconsistencies.json (terminology analysis report)
+  - Updated: ralph/prd.json (marked US-014 as passes: true)
+- Findings: 5 terminology variations identified (3 actual inconsistencies)
+  - Range/Scope ambiguity: Both concepts translate to 'نطاق'
+  - Mixin terminology: Glossary uses 'مزيج', lessons use 'الخلط'
+  - Constructor/Initialize overlap: Glossary has 'مُنشئ', lessons use 'المُهيّئ'
+  - Block variation: Acceptable - 'كتلة' (glossary) vs 'كتلة برمجية' (lessons - more descriptive)
+  - Accessor terminology: 'موصّلات' used in lessons but not in glossary - good collective term
+- Terms verified as consistent across all content:
+  - Method/Function (دالة), Class (صنف), Object (كائن), Variable (متغير)
+  - Array (مصفوفة), Hash (قاموس), String (نص), Module (وحدة)
+  - Loop (حلقة), Inheritance (وراثة), Parameter (معامل), Return (إرجاع)
+  - Instance (مثيل), Proc (Proc), Lambda (Lambda)
+- Recommendations generated:
+  - P1: Update glossary to add 'الخلط' as alternative for Mixin
+  - P1: Distinguish Range (نطاق القيم) and Scope (نطاق المتغير or مجال)
+  - P2: Add 'Accessor/موصّل' to glossary
+  - P2: Clarify Constructor vs Initialize terminology
+  - P3: Add 'كتلة برمجية' as alternative to 'كتلة' for Block
+- **Learnings for future iterations:**
+  - Most terminology is highly consistent across all 37 lesson files
+  - Ruby-specific terms (Proc, Lambda) are kept in English with Arabic explanations
+  - Lessons often use more descriptive forms than glossary (e.g., كتلة برمجية vs كتلة)
+  - The glossary could benefit from adding collective terms used in lessons (موصّلات)
+  - Some English-Arabic mappings have inherent ambiguity (Range and Scope both → نطاق)
+
+---
+
 ## Codebase Patterns
 - Translation verification uses tasks/translation-issues.json with structured format (verifiedTerms[], suggestions[], issues[])
 - Authoritative Arabic programming sources: Hsoub Academy (academy.hsoub.com), Arabic Wikipedia (ar.wikipedia.org), Hsoub Wiki (wiki.hsoub.com)

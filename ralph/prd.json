@@ -211,8 +211,8 @@
         "Typecheck passes"
       ],
       "priority": 14,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Scanned all 67 glossary terms against 37 lesson files. Found 5 terminology variations (3 actual inconsistencies): Range/Scope ambiguity, Mixin terminology (glossary: مزيج, lessons: الخلط), Constructor/Initialize overlap. Most terms are consistently translated. Report includes prioritized recommendations for glossary updates."
     },
     {
       "id": "US-015",
@@ -227,8 +227,8 @@
         "Typecheck passes"
       ],
       "priority": 15,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Generated comprehensive bilingual report with executive summary (49 grammar issues, 67 verified translations, 5 terminology variations). Report organized by: Grammar Issues (by file with line numbers), Translation Issues (verification results + suggestions), Terminology Inconsistencies (3 actual + 2 acceptable). Includes recommendations prioritized P1-P3 and list of clean files."
     },
     {
       "id": "US-016",
