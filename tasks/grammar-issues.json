@@ -414,12 +414,48 @@
       "issue": "النقاط الثلاث في بداية النص غير تقليدية في العربية - الأفضل وضعها في النهاية",
       "suggestion": "جارٍ تحميل المحرر...",
       "category": "punctuation"
+    },
+    {
+      "id": "GI-046",
+      "file": "app/page.tsx",
+      "line": 9,
+      "original": "# مرحبا بك في روبي!",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين في تعليق الشيفرة المعروضة",
+      "suggestion": "# مرحباً بك في روبي!",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-047",
+      "file": "app/page.tsx",
+      "line": 11,
+      "original": "puts \"مرحبا يا #{name}!\"",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين في الشيفرة المعروضة",
+      "suggestion": "puts \"مرحباً يا #{name}!\"",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-048",
+      "file": "app/page.tsx",
+      "line": 18,
+      "original": "مرحبا يا أحمد!",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين في ناتج الشيفرة المعروض",
+      "suggestion": "مرحباً يا أحمد!",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-049",
+      "file": "app/lessons/[section]/[lesson]/LessonPlayground.tsx",
+      "line": 34,
+      "original": "puts \"مرحبا بالعالم!\"",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين في الشيفرة الافتراضية",
+      "suggestion": "puts \"مرحباً بالعالم!\"",
+      "category": "consistency"
     }
   ],
   "summary": {
-    "totalIssues": 45,
+    "totalIssues": 49,
     "byCategory": {
-      "consistency": 28,
+      "consistency": 32,
       "punctuation": 17
     },
     "byFile": {
@@ -442,7 +478,9 @@
       "content/glossary.json": 1,
       "public/course.json": 6,
       "components/CodePlayground.tsx": 1,
-      "components/CodeEditor.tsx": 1
+      "components/CodeEditor.tsx": 1,
+      "app/page.tsx": 3,
+      "app/lessons/[section]/[lesson]/LessonPlayground.tsx": 1
     }
   },
   "metadata": {
@@ -497,8 +535,17 @@
       "components/PWAProvider.tsx",
       "components/OfflineIndicator.tsx",
       "components/CodeEditor.tsx",
-      "components/CodePlayground.tsx"
+      "components/CodePlayground.tsx",
+      "app/layout.tsx",
+      "app/page.tsx",
+      "app/glossary/layout.tsx",
+      "app/glossary/page.tsx",
+      "app/progress/layout.tsx",
+      "app/progress/page.tsx",
+      "app/lessons/[section]/[lesson]/page.tsx",
+      "app/lessons/[section]/[lesson]/LessonContent.tsx",
+      "app/lessons/[section]/[lesson]/LessonPlayground.tsx"
     ],
-    "storyId": "US-009"
+    "storyId": "US-010"
   }
 }

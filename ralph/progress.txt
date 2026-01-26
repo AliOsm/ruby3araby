@@ -9,6 +9,36 @@
 - The errors section (error-handling.md) has no tanween issues
 - The course.json file uses a nested structure: sections[].lessons[].exercise{starterCode, expectedOutput, hints[], defaultInput?}
 - Lesson title "مرحبا بالعالم" needs tanween for consistency - affects validation when corrected
+- App pages with Arabic text: layout.tsx (metadata), page.tsx (preview code), glossary/page.tsx (search UI), progress/page.tsx (progress UI), lessons/[section]/[lesson]/LessonPlayground.tsx (default code)
+- Most app page files have clean Arabic text - only app/page.tsx and LessonPlayground.tsx have tanween issues
+
+---
+
+## 2026-01-26 - US-010
+- What was implemented: Scanned all 9 .tsx files in app/ directory for Arabic grammar issues
+- Files changed:
+  - tasks/grammar-issues.json (added GI-046 to GI-049, updated summary and metadata)
+  - ralph/prd.json (marked US-010 as passes: true)
+- Findings: 4 new issues identified (total now 49)
+  - 4 consistency issues (tanween usage - 'مرحبا' vs 'مرحباً')
+  - 0 punctuation issues
+- Files scanned:
+  - app/layout.tsx (0 issues) - metadata only, clean Arabic
+  - app/page.tsx (3 issues) - preview code in homepage has tanween issues
+  - app/glossary/layout.tsx (0 issues) - metadata only
+  - app/glossary/page.tsx (0 issues) - search UI text is clean
+  - app/progress/layout.tsx (0 issues) - metadata only
+  - app/progress/page.tsx (0 issues) - progress UI text is clean
+  - app/lessons/[section]/[lesson]/page.tsx (0 issues) - breadcrumb/navigation only
+  - app/lessons/[section]/[lesson]/LessonContent.tsx (0 issues) - no hardcoded Arabic text
+  - app/lessons/[section]/[lesson]/LessonPlayground.tsx (1 issue) - default starter code
+- **Learnings for future iterations:**
+  - Most app page files have clean Arabic metadata and UI text
+  - The app/page.tsx homepage has preview code displayed to users - this code has 3 tanween issues
+  - The LessonPlayground.tsx has default starter code that shows when no exercise is defined
+  - Layout files only contain metadata descriptions - generally very clean
+  - The progress/page.tsx has celebratory exclamation marks in the "completed all lessons" message - these are appropriate
+  - Arabic aria-labels and button text in app pages are well-written
 
 ---
 
