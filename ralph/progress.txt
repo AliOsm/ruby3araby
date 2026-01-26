@@ -1,3 +1,36 @@
+## 2026-01-26 - US-021
+- What was implemented: Applied grammar corrections to public/course.json (6 issues: 5 tanween, 1 punctuation)
+- Files changed:
+  - public/course.json (6 fixes: GI-038 to GI-043)
+  - tasks/changes-log.json (added CH-039 to CH-044)
+  - ralph/prd.json (marked US-021 as passes: true)
+- Corrections applied: 6 total (5 consistency, 1 punctuation)
+  - Consistency: Fixed tanween in hello-world lesson title, starterCode comment, expectedOutput, and 2 hints (مرحبا → مرحباً)
+  - Punctuation: Changed exclamation mark to period in truthiness hints[3]
+- **Learnings for future iterations:**
+  - The course.json has a nested structure: sections[].lessons[].exercise{starterCode, expectedOutput, hints[], defaultInput?}
+  - The hello-world lesson had tanween issues in 5 places that all needed to be fixed together for consistency
+  - The expectedOutput in course.json must match the corrected lesson content in hello-world.md
+  - Changes to course.json are now synchronized with the lesson file corrections from US-016
+
+---
+
+## 2026-01-26 - US-020
+- What was implemented: Applied grammar correction to glossary.json (ternary definition missing period)
+- Files changed:
+  - content/glossary.json (1 punctuation fix: added period to ternary definition)
+  - tasks/changes-log.json (added CH-038)
+  - ralph/prd.json (marked US-020 as passes: true)
+- Corrections applied: 1 total (0 consistency, 1 punctuation)
+  - Punctuation: Added period to ternary definition to match other glossary definitions
+- **Learnings for future iterations:**
+  - The glossary.json only had 1 grammar issue identified (GI-037) - all other 66 terms are clean
+  - All glossary definitions should consistently end with periods
+  - The glossary is well-maintained with proper Arabic text and diacritics
+  - No tanween issues in glossary - all Arabic translations use correct forms
+
+---
+
 ## 2026-01-26 - US-018
 - What was implemented: Applied grammar corrections to control-flow and collections lesson files
 - Files changed:

@@ -313,8 +313,8 @@
         "Typecheck passes"
       ],
       "priority": 21,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Applied 6 corrections (5 consistency, 1 punctuation) to public/course.json: Fixed tanween in hello-world lesson title, starterCode, expectedOutput, and hints. Fixed exclamation mark in truthiness hint."
     },
     {
       "id": "US-022",

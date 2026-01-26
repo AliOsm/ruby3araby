@@ -387,14 +387,75 @@
       "after": "عامل شرطي مختصر: شرط ? قيمة_صحيح : قيمة_خطأ.",
       "category": "punctuation",
       "storyId": "US-020"
+    },
+    {
+      "id": "CH-039",
+      "issueId": "GI-038",
+      "file": "public/course.json",
+      "path": "sections[0].lessons[1].title",
+      "before": "مرحبا بالعالم",
+      "after": "مرحباً بالعالم",
+      "category": "consistency",
+      "storyId": "US-021"
+    },
+    {
+      "id": "CH-040",
+      "issueId": "GI-039",
+      "file": "public/course.json",
+      "path": "sections[0].lessons[1].exercise.starterCode",
+      "before": "# اكتب شيفرة تطبع: مرحبا بالعالم",
+      "after": "# اكتب شيفرة تطبع: مرحباً بالعالم",
+      "category": "consistency",
+      "storyId": "US-021"
+    },
+    {
+      "id": "CH-041",
+      "issueId": "GI-040",
+      "file": "public/course.json",
+      "path": "sections[0].lessons[1].exercise.expectedOutput",
+      "before": "مرحبا بالعالم",
+      "after": "مرحباً بالعالم",
+      "category": "consistency",
+      "storyId": "US-021",
+      "note": "This update synchronizes expectedOutput with the corrected lesson content in hello-world.md"
+    },
+    {
+      "id": "CH-042",
+      "issueId": "GI-041",
+      "file": "public/course.json",
+      "path": "sections[0].lessons[1].exercise.hints[1]",
+      "before": "ضع النص داخل علامات اقتباس: puts \"مرحبا بالعالم\"",
+      "after": "ضع النص داخل علامات اقتباس: puts \"مرحباً بالعالم\"",
+      "category": "consistency",
+      "storyId": "US-021"
+    },
+    {
+      "id": "CH-043",
+      "issueId": "GI-042",
+      "file": "public/course.json",
+      "path": "sections[0].lessons[1].exercise.hints[2]",
+      "before": "تأكد من كتابة النص بالضبط: مرحبا بالعالم (بدون علامة تعجب)",
+      "after": "تأكد من كتابة النص بالضبط: مرحباً بالعالم (بدون علامة تعجب)",
+      "category": "consistency",
+      "storyId": "US-021"
+    },
+    {
+      "id": "CH-044",
+      "issueId": "GI-043",
+      "file": "public/course.json",
+      "path": "sections[1].lessons[4].exercise.hints[3]",
+      "before": "الصفر والنص الفارغ والمصفوفة الفارغة كلها صادقة!",
+      "after": "الصفر والنص الفارغ والمصفوفة الفارغة كلها صادقة.",
+      "category": "punctuation",
+      "storyId": "US-021"
     }
   ],
   "summary": {
-    "totalChanges": 38,
-    "filesModified": 17,
+    "totalChanges": 44,
+    "filesModified": 18,
     "byCategory": {
-      "consistency": 24,
-      "punctuation": 14
+      "consistency": 29,
+      "punctuation": 15
     },
     "byFile": {
       "content/lessons/getting-started/what-is-ruby.md": 2,
@@ -413,12 +474,13 @@
       "content/lessons/oop/classes-objects.md": 2,
       "content/lessons/modules/modules-mixins.md": 1,
       "content/lessons/errors/error-handling.md": 1,
-      "content/glossary.json": 1
+      "content/glossary.json": 1,
+      "public/course.json": 6
     }
   },
   "metadata": {
     "createdAt": "2026-01-26",
     "lastUpdated": "2026-01-26",
-    "completedStories": ["US-016", "US-017", "US-018", "US-019", "US-020"]
+    "completedStories": ["US-016", "US-017", "US-018", "US-019", "US-020", "US-021"]
   }
 }
