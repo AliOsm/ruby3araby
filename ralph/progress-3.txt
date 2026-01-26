@@ -1,0 +1,610 @@
+## 2026-01-26 - US-026
+- What was implemented: Generated comprehensive bilingual editing summary report at tasks/proofreading-changes.md
+- Files changed:
+  - tasks/proofreading-changes.md (created - comprehensive summary of all changes made)
+  - ralph/prd.json (marked US-026 as passes: true)
+- Report contents:
+  - Executive summary: 55 total corrections, 22 files modified, breakdown by category (34 consistency, 16 punctuation, 5 terminology)
+  - Changes by file: Each file listed with before/after table for all corrections
+  - Translation verification summary: 67 terms verified, 0 issues, 2 suggestions noted
+  - Clean files list: 17 lesson files that required no corrections
+  - Completed stories table: US-016 through US-025 with change counts
+- **Learnings for future iterations:**
+  - The changes-log.json has a well-structured format that made report generation straightforward
+  - Bilingual reports (Arabic + English) work well for Arabic programming courses
+  - The summary section in changes-log.json provides pre-computed metrics (totalChanges, filesModified, byCategory, byFile)
+  - Report organization by file makes it easy for maintainers to review changes
+  - Including both before/after text in tables provides full change traceability
+---
+
+## 2026-01-26 - US-025
+- What was implemented: Standardized terminology in course.json and UI files (scanned for Mixin/Constructor/Range/Scope terms)
+- Files changed:
+  - public/course.json (1 terminology fix: 'الوحدات والخلط' → 'الوحدات والمزيج' in modules lesson title)
+  - tasks/changes-log.json (added CH-055, updated summary counts)
+  - ralph/prd.json (marked US-025 as passes: true)
+- Corrections applied: 1 total (1 terminology-standardization)
+  - Lesson title for modules-mixins changed from 'الخلط' to 'المزيج' to match glossary term
+- Analysis completed:
+  - components/*.tsx: 0 terminology issues found (11 files scanned)
+  - app/*.tsx: 0 terminology issues found - "نطاق واسع" in app/page.tsx is a common phrase meaning "widely used", not the programming term Range/Scope
+- **Learnings for future iterations:**
+  - The course.json lesson titles must match the glossary terminology
+  - US-024 fixed 'الخلط' in the lesson content (modules-mixins.md), but the lesson title in course.json also needed updating
+  - Arabic phrases like "نطاق واسع" (widely used) should not be confused with the programming term "نطاق" (Range/Scope)
+  - All terminology corrections are now complete across all content types (lessons, course.json, UI files)
+---
+
+## 2026-01-26 - US-024
+- What was implemented: Standardized terminology across lesson files, replacing inconsistent Arabic translations with glossary canonical terms
+- Files changed:
+  - content/lessons/modules/modules-mixins.md (4 terminology fixes: الخلط → المزيج)
+  - tasks/changes-log.json (added CH-051 through CH-054, updated summary)
+  - ralph/prd.json (marked US-024 as passes: true)
+- Corrections applied: 4 total (all terminology-standardization)
+  - Line 1: Title changed from "الوحدات والخلط" to "الوحدات والمزيج"
+  - Line 30: List item changed from "الخلط (Mixins)" to "المزيج (Mixins)"
+  - Line 117: Section header changed from "الخلط (Mixins)" to "المزيج (Mixins)"
+  - Line 119: Body text changed from "الخلط هو" to "المزيج هو"
+- Analysis of other inconsistencies:
+  - Block (كتلة vs كتلة برمجية): Acceptable variation - longer form is more descriptive for educational content
+  - Constructor/Initialize (مُنشئ vs المُهيّئ): Conceptual overlap - Ruby uses 'initialize' as constructor, lesson terminology is accurate
+  - Range/Scope (نطاق): Inherent ambiguity - both concepts translate to same word, context clarifies meaning
+  - Accessor (جالب/مُعيِّن vs موصّلات): Acceptable - lessons use collective term 'موصّلات' consistently
+- **Learnings for future iterations:**
+  - The terminology-inconsistencies.json categorizes issues as "isActualInconsistency: true/false" - only true ones need changes
+  - Mixin was the only actual inconsistency requiring lesson file changes - glossary uses 'مزيج', lessons used 'الخلط'
+  - The definite article form 'المزيج' is used in Arabic sentences where grammatically appropriate
+  - English technical terms (Mixin, Namespacing) are kept in code comments and tables as reference
+  - Other identified variations are acceptable for educational purposes or require glossary updates instead
+---
+
+## 2026-01-26 - US-023
+- What was implemented: Reviewed translation verification results and determined glossary updates needed
+- Files changed:
+  - tasks/changes-log.json (added translationVerification section documenting review and decisions)
+  - ralph/prd.json (marked US-023 as passes: true)
+- Findings: No glossary updates required
+  - 67 terms verified against authoritative Arabic programming resources
+  - 0 translation issues requiring changes
+  - 2 suggestions noted but marked as "acceptable" for beginner course:
+    - hash: "قاموس" kept (user-friendly alternative to technical "جدول تجزئة")
+    - method: "دالة" kept (simplifies terminology vs "تابع" distinction)
+- **Learnings for future iterations:**
+  - Translation verification (US-011 through US-013) confirmed all glossary translations are accurate
+  - The "acceptable" suggestions in translation-issues.json don't require action - they note alternatives for reference
+  - For beginner-focused courses, simpler terminology is often preferable to more technically precise alternatives
+  - The changes-log.json now documents both grammar corrections AND translation verification decisions
+  - This story validates the glossary quality rather than making changes
+---
+
+## 2026-01-26 - US-022
+- What was implemented: Applied grammar corrections to UI components and app pages (6 issues: 5 tanween, 1 punctuation)
+- Files changed:
+  - components/CodePlayground.tsx (1 fix: GI-044 - tanween in default starter code)
+  - components/CodeEditor.tsx (1 fix: GI-045 - ellipsis placement in loading text)
+  - app/page.tsx (3 fixes: GI-046, GI-047, GI-048 - tanween in preview code and output)
+  - app/lessons/[section]/[lesson]/LessonPlayground.tsx (1 fix: GI-049 - tanween in default starter code)
+  - tasks/changes-log.json (added CH-045 through CH-050)
+  - ralph/prd.json (marked US-022 as passes: true)
+- Corrections applied: 6 total (5 consistency, 1 punctuation)
+  - Consistency: Fixed tanween 'مرحبا' → 'مرحباً' in starter code, preview code, and output (5 instances)
+  - Punctuation: Moved ellipsis from start to end of loading text '...جارٍ تحميل المحرر' → 'جارٍ تحميل المحرر...'
+- **Learnings for future iterations:**
+  - The CodePlayground.tsx and LessonPlayground.tsx both have default starter code as fallback when no exercise is defined
+  - The CodeEditor.tsx loading placeholder has Arabic text that needed RTL-appropriate punctuation
+  - The app/page.tsx homepage preview code is displayed to users - needs consistency with lesson content
+  - Arabic ellipsis convention: place dots at the end of text, not at the beginning (unlike some Latin-influenced styles)
+  - All grammar issues from US-009 (components) and US-010 (app pages) are now fixed
+---
+
+## 2026-01-26 - US-021
+- What was implemented: Applied grammar corrections to public/course.json (6 issues: 5 tanween, 1 punctuation)
+- Files changed:
+  - public/course.json (6 fixes: GI-038 to GI-043)
+  - tasks/changes-log.json (added CH-039 to CH-044)
+  - ralph/prd.json (marked US-021 as passes: true)
+- Corrections applied: 6 total (5 consistency, 1 punctuation)
+  - Consistency: Fixed tanween in hello-world lesson title, starterCode comment, expectedOutput, and 2 hints (مرحبا → مرحباً)
+  - Punctuation: Changed exclamation mark to period in truthiness hints[3]
+- **Learnings for future iterations:**
+  - The course.json has a nested structure: sections[].lessons[].exercise{starterCode, expectedOutput, hints[], defaultInput?}
+  - The hello-world lesson had tanween issues in 5 places that all needed to be fixed together for consistency
+  - The expectedOutput in course.json must match the corrected lesson content in hello-world.md
+  - Changes to course.json are now synchronized with the lesson file corrections from US-016
+
+---
+
+## 2026-01-26 - US-020
+- What was implemented: Applied grammar correction to glossary.json (ternary definition missing period)
+- Files changed:
+  - content/glossary.json (1 punctuation fix: added period to ternary definition)
+  - tasks/changes-log.json (added CH-038)
+  - ralph/prd.json (marked US-020 as passes: true)
+- Corrections applied: 1 total (0 consistency, 1 punctuation)
+  - Punctuation: Added period to ternary definition to match other glossary definitions
+- **Learnings for future iterations:**
+  - The glossary.json only had 1 grammar issue identified (GI-037) - all other 66 terms are clean
+  - All glossary definitions should consistently end with periods
+  - The glossary is well-maintained with proper Arabic text and diacritics
+  - No tanween issues in glossary - all Arabic translations use correct forms
+
+---
+
+## 2026-01-26 - US-018
+- What was implemented: Applied grammar corrections to control-flow and collections lesson files
+- Files changed:
+  - content/lessons/control-flow/case-when.md (1 fix: GI-026)
+  - content/lessons/control-flow/ternary.md (2 fixes: GI-027, GI-028)
+  - content/lessons/collections/arrays.md (1 fix: GI-029)
+  - content/lessons/collections/ranges-enumerables.md (2 fixes: GI-030, GI-031)
+  - Updated: tasks/changes-log.json (added 6 new corrections, CH-027 to CH-032)
+  - Updated: ralph/prd.json (marked US-018 as passes: true)
+- Corrections applied: 6 total (3 consistency, 3 punctuation)
+  - Consistency: Changed 'مرحبا' to 'مرحباً' (tanween) in code examples and comments
+  - Punctuation: Changed '!' to '.' in introductory explanatory sentences
+- No issues found in:
+  - content/lessons/loops/*.md (0 issues - confirmed in scanning phase US-003)
+  - content/lessons/methods/*.md (0 issues - confirmed in scanning phase US-004)
+- **Learnings for future iterations:**
+  - The control-flow intro pattern "هنا يأتي دور X!" consistently needs changing to periods
+  - The ternary.md file has two punctuation issues (intro line and comparison statement)
+  - The arrays.md mixed array example uses "مرحبا" without tanween
+  - The ranges-enumerables.md has tanween issues in the string slicing example (both code and comment)
+  - Loops and methods directories are clean - no grammar issues found during scanning
+
+---
+
+## 2026-01-26 - US-017
+- What was implemented: Applied grammar corrections to all 4 fundamentals lesson files
+- Files changed:
+  - content/lessons/fundamentals/variables-types.md (3 fixes: GI-013, GI-014, GI-015)
+  - content/lessons/fundamentals/string-methods.md (3 fixes: GI-016, GI-017, GI-018)
+  - content/lessons/fundamentals/bang-predicate.md (2 fixes: GI-019, GI-020)
+  - content/lessons/fundamentals/truthiness.md (5 fixes: GI-021 to GI-025)
+  - Updated: tasks/changes-log.json (added 13 new corrections, CH-014 to CH-026)
+  - Updated: ralph/prd.json (marked US-017 as passes: true)
+- Corrections applied: 13 total (7 consistency, 6 punctuation)
+  - Consistency: Changed 'مرحبا' to 'مرحباً' (tanween) in code examples and outputs
+  - Punctuation: Changed '!' to '.' in explanatory sentences inside code blocks
+- **Learnings for future iterations:**
+  - The truthiness.md file has multiple puts statements with exclamation marks in both code and output sections - must update both
+  - The bang-predicate.md example uses the same Arabic text in code and output comment - both need to be updated together
+  - The fundamentals section has 7 files with no issues: string-interpolation.md, operators.md, boolean-logic.md, constants-symbols.md, user-input.md, type-conversion.md, multiple-assignment.md
+  - The string-methods.md has comments that show expected output (e.g., `# "مرحباً بالعالم"`) - these also need tanween correction
+
+---
+
+## 2026-01-26 - US-016
+- What was implemented: Applied grammar corrections to all 4 getting-started lesson files
+- Files changed:
+  - content/lessons/getting-started/what-is-ruby.md (2 fixes: GI-001, GI-012)
+  - content/lessons/getting-started/hello-world.md (4 fixes: GI-002, GI-003, GI-004, GI-005)
+  - content/lessons/getting-started/comments.md (2 fixes: GI-006 + corresponding output)
+  - content/lessons/getting-started/output-methods.md (5 fixes: GI-007 to GI-011)
+  - Created: tasks/changes-log.json (tracking all corrections)
+  - Updated: ralph/prd.json (marked US-016 as passes: true)
+- Corrections applied: 13 total (11 consistency, 2 punctuation)
+  - Consistency: Changed 'مرحبا' to 'مرحباً' (tanween) in code examples and outputs
+  - Punctuation: Changed '!' to '.' in explanatory sentences
+- **Learnings for future iterations:**
+  - When fixing code examples, also update corresponding output sections to match
+  - The hello-world.md exercise expected output now says 'مرحباً بالعالم' - course.json needs to be updated in US-021 to match
+  - The changes-log.json tracks all corrections with before/after for audit trail
+  - Code blocks inside markdown preserve their tanween fixes correctly
+  - Markdown formatting and code block structure is preserved when editing
+
+---
+
+## 2026-01-26 - US-015
+- What was implemented: Generated comprehensive bilingual proofreading report consolidating all findings
+- Files changed:
+  - Created: tasks/proofreading-report.md (comprehensive report with all issues)
+  - Updated: ralph/prd.json (marked US-015 as passes: true)
+- Report structure:
+  - Executive summary with key metrics (49 grammar issues, 67 verified translations, 5 terminology variations)
+  - Grammar Issues section organized by directory/file with line numbers and suggested fixes
+  - Translation Issues section with verification results and 2 suggestions (hash, method)
+  - Terminology Inconsistencies section (3 actual inconsistencies, 2 acceptable variations)
+  - Prioritized recommendations (P1: tanween, punctuation, mixin; P2: range/scope, accessor; P3: block alternatives)
+  - Clean files list (21 lesson files, 16 component/page files with no issues)
+  - Next steps roadmap linking to US-016 through US-026
+- Report is bilingual (Arabic headers, mixed Arabic/English content) for maintainer usability
+- **Learnings for future iterations:**
+  - Consolidating JSON reports into a markdown format makes the data actionable
+  - Bilingual reports (Arabic + English) work well for Arabic programming courses
+  - Organizing grammar issues by directory/file makes batch corrections easier
+  - Including clean files list helps maintainers know what's already good
+  - The report serves as a work order for the correction phase (US-016 through US-026)
+
+---
+
+## 2026-01-26 - US-014
+- What was implemented: Detected terminology inconsistencies by building glossary map and scanning all lesson files
+- Files changed:
+  - Created: tasks/terminology-inconsistencies.json (terminology analysis report)
+  - Updated: ralph/prd.json (marked US-014 as passes: true)
+- Findings: 5 terminology variations identified (3 actual inconsistencies)
+  - Range/Scope ambiguity: Both concepts translate to 'نطاق'
+  - Mixin terminology: Glossary uses 'مزيج', lessons use 'الخلط'
+  - Constructor/Initialize overlap: Glossary has 'مُنشئ', lessons use 'المُهيّئ'
+  - Block variation: Acceptable - 'كتلة' (glossary) vs 'كتلة برمجية' (lessons - more descriptive)
+  - Accessor terminology: 'موصّلات' used in lessons but not in glossary - good collective term
+- Terms verified as consistent across all content:
+  - Method/Function (دالة), Class (صنف), Object (كائن), Variable (متغير)
+  - Array (مصفوفة), Hash (قاموس), String (نص), Module (وحدة)
+  - Loop (حلقة), Inheritance (وراثة), Parameter (معامل), Return (إرجاع)
+  - Instance (مثيل), Proc (Proc), Lambda (Lambda)
+- Recommendations generated:
+  - P1: Update glossary to add 'الخلط' as alternative for Mixin
+  - P1: Distinguish Range (نطاق القيم) and Scope (نطاق المتغير or مجال)
+  - P2: Add 'Accessor/موصّل' to glossary
+  - P2: Clarify Constructor vs Initialize terminology
+  - P3: Add 'كتلة برمجية' as alternative to 'كتلة' for Block
+- **Learnings for future iterations:**
+  - Most terminology is highly consistent across all 37 lesson files
+  - Ruby-specific terms (Proc, Lambda) are kept in English with Arabic explanations
+  - Lessons often use more descriptive forms than glossary (e.g., كتلة برمجية vs كتلة)
+  - The glossary could benefit from adding collective terms used in lessons (موصّلات)
+  - Some English-Arabic mappings have inherent ambiguity (Range and Scope both → نطاق)
+
+---
+
+## Codebase Patterns
+- Grammar corrections are logged in tasks/changes-log.json with: id, issueId, file, line, before, after, category, storyId
+- When editing markdown lesson files, update both code examples AND their corresponding output sections to match
+- Translation verification uses tasks/translation-issues.json with structured format (verifiedTerms[], suggestions[], issues[])
+- Authoritative Arabic programming sources: Hsoub Academy (academy.hsoub.com), Arabic Wikipedia (ar.wikipedia.org), Hsoub Wiki (wiki.hsoub.com)
+- All 67 glossary terms fully verified accurate - translation phase complete
+- First 20 terms verified: algorithm, array, assignment, block, boolean, bug, class, comment, comparison-operator, concatenation, conditional, constant, constructor, data-type, debugging, default-value, each, enumerable, exception, expression
+- Second 20 terms verified: false, float, function, getter, identifier, index, inheritance, initialize, input, instance, instance-variable, integer, interpolation, iteration, keyword, lambda, loop, map, method
+- Remaining 27 terms verified: mixin, module, nil, object, oop, operator, output, parameter, proc, puts, range, reduce, refactoring, return, ruby, scope, select, setter, splat, statement, string, super, symbol, syntax, ternary, true, type-conversion, variable, while, yield
+- The glossary.json file has excellent Arabic quality - only 1 minor issue (missing period) found across 67 terms
+- Glossary definitions should consistently end with periods
+- The blocks section (yield.md, procs-lambdas.md) has excellent tanween consistency
+- The oop section (initialize-accessors.md, inheritance.md) is very clean with no grammar issues
+- The block-syntax.md file has issues in the each_char example section
+- The challenges section (fizzbuzz.md, calculator.md, guessing-game.md) is very clean with no grammar issues
+- The modules section (modules-mixins.md) uses "مرحباً" correctly in code blocks
+- The errors section (error-handling.md) has no tanween issues
+- The course.json file uses a nested structure: sections[].lessons[].exercise{starterCode, expectedOutput, hints[], defaultInput?}
+- Lesson title "مرحبا بالعالم" needs tanween for consistency - affects validation when corrected
+- App pages with Arabic text: layout.tsx (metadata), page.tsx (preview code), glossary/page.tsx (search UI), progress/page.tsx (progress UI), lessons/[section]/[lesson]/LessonPlayground.tsx (default code)
+- Most app page files have clean Arabic text - only app/page.tsx and LessonPlayground.tsx have tanween issues
+
+---
+
+## 2026-01-26 - US-013
+- What was implemented: Verified remaining 27 glossary terms (mixin through yield) against authoritative Arabic programming resources
+- Files changed:
+  - Updated: tasks/translation-issues.json (added 27 verified terms, summary updated to 67 total)
+  - Updated: ralph/prd.json (marked US-013 as passes: true)
+- Findings: All 27 terms verified as accurate
+  - 27 verified terms with consistent industry-standard translations
+  - 0 translation issues requiring changes
+  - Total glossary verification complete: 67 terms, 0 issues, 2 suggestions (hash and method alternatives)
+- Terms verified:
+  - mixin (مزيج) - confirmed by Arabic Wikipedia خلط_Mixin article
+  - module (وحدة) - standard Arabic translation
+  - nil (عدم) - Ruby-specific null value, also 'لا شيء' or 'معدوم'
+  - object (كائن) - confirmed by Arabic Wikipedia برمجة_كائنية_التوجه
+  - oop (برمجة كائنية التوجه) - standard translation
+  - operator (عامل) - confirmed by Wikipedia and harmash.com
+  - output (إخراج) - standard translation, opposite of إدخال (input)
+  - parameter (معامل) - confirmed by Wikipedia وسيط_(برمجة_حاسوب)
+  - proc (إجراء) - Ruby-specific, object wrapping block
+  - puts (طباعة) - Ruby output method
+  - range (نطاق) - standard translation for sequences
+  - reduce (تجميع) - aggregation method
+  - refactoring (إعادة هيكلة) - confirmed by Wikipedia and Hsoub Wiki
+  - return (إرجاع) - standard translation
+  - ruby (روبي) - transliteration, also 'ياقوت'
+  - scope (نطاق) - variable visibility, confirmed by Wikipedia
+  - select (اختيار) - filtering method
+  - setter (مُعيِّن) - OOP mutator method
+  - splat (عامل التفريق) - Ruby * operator
+  - statement (جملة) - programming instruction
+  - string (نص) - standard translation
+  - super (أعلى) - parent class call
+  - symbol (رمز) - Ruby immutable identifier
+  - syntax (صياغة) - code writing rules
+  - ternary (العامل الثلاثي) - conditional shorthand
+  - true (صحيح) - boolean value
+  - type-conversion (تحويل النوع) - data type casting
+  - variable (متغير) - confirmed by Wikipedia
+  - while (حلقة طالما) - loop structure
+  - yield (تنفيذ الكتلة) - Ruby block execution
+- **Learnings for future iterations:**
+  - All 67 glossary terms are now verified against authoritative Arabic programming sources
+  - Ruby-specific terms (nil, proc, puts, yield, splat) use descriptive Arabic rather than transliterations
+  - The glossary uses beginner-friendly translations consistently (e.g., قاموس for hash, دالة for method)
+  - OOP concepts are well-documented in Arabic Wikipedia with dedicated articles
+  - Translation verification phase is complete - no terminology changes needed
+  - Next phase will focus on detecting terminology inconsistencies across content files
+---
+
+## 2026-01-26 - US-012
+- What was implemented: Verified second 20 glossary terms (false through method) against authoritative Arabic programming resources
+- Files changed:
+  - Updated: tasks/translation-issues.json (added 20 verified terms, 1 additional suggestion)
+  - Updated: ralph/prd.json (marked US-012 as passes: true)
+- Findings: All 20 terms verified as accurate
+  - 20 verified terms with consistent industry-standard translations
+  - 0 translation issues requiring changes
+  - 1 suggestion noted (method uses 'دالة' which is common, though 'تابع' is used by some sources)
+- Terms verified:
+  - false (خطأ) - confirmed by Microsoft Learn and web.dev
+  - float (عدد عشري) - confirmed by Hsoub Wiki Arduino documentation
+  - function (دالة) - confirmed by multiple Hsoub Academy articles
+  - getter (جالب) - confirmed by Arabic programming resources
+  - identifier (مُعرِّف) - confirmed by technical translation sources
+  - index (فهرس) - confirmed by JavaScript.info Arabic
+  - inheritance (وراثة) - confirmed by Arabic Wikipedia
+  - initialize (تهيئة) - standard Arabic translation
+  - input (إدخال) - standard Arabic translation
+  - instance (مثيل) - confirmed by Arabic Wikipedia OOP article
+  - instance-variable (متغير مثيل) - compound term from verified components
+  - integer (عدد صحيح) - standard Arabic translation
+  - interpolation (إقحام) - confirmed by technical dictionaries
+  - iteration (تكرار) - confirmed by multiple sources
+  - keyword (كلمة محجوزة) - confirmed by PONS dictionary
+  - lambda (لامدا) - confirmed by Hsoub Academy
+  - loop (حلقة) - confirmed by multiple Hsoub Academy articles
+  - map (تحويل) - confirmed by JavaScript.info Arabic
+  - method (دالة) - confirmed, though 'تابع' is also used
+- **Learnings for future iterations:**
+  - Hsoub Academy has extensive documentation on loops, functions, and OOP concepts in Arabic
+  - Arabic Wikipedia has a dedicated article on "مثيل (برمجة كائنية التوجه)" for OOP instance concept
+  - The 'method' vs 'function' distinction is debated in Arabic programming communities
+  - Some sources use 'تابع' for method to distinguish from standalone 'دالة' (function)
+  - The glossary choice of 'دالة' for both is acceptable for beginners
+  - The term 'إقحام' for interpolation is used in technical contexts
+  - Lambda is kept as 'لامدا' (transliteration) which is standard in Arabic programming
+---
+
+## 2026-01-26 - US-011
+- What was implemented: Verified first 20 glossary terms (algorithm through expression) against authoritative Arabic programming resources
+- Files changed:
+  - Created: tasks/translation-issues.json (verification results for 20 terms)
+  - Updated: ralph/prd.json (marked US-011 as passes: true)
+- Findings: All 20 terms verified as accurate
+  - 20 verified terms with consistent industry-standard translations
+  - 0 translation issues requiring changes
+  - 1 suggestion noted (hash/قاموس is acceptable, though جدول تجزئة is more technical)
+- Terms verified:
+  - algorithm (خوارزمية) - confirmed by Hsoub Academy
+  - array (مصفوفة) - confirmed by Arabic Wikipedia and Hsoub
+  - block (كتلة) - confirmed by Hsoub Ruby documentation
+  - boolean (منطقي) - confirmed by Hsoub Wiki
+  - class (صنف) - confirmed by Arabic Wikipedia and Hsoub
+  - constructor (مُنشئ) - confirmed by multiple sources
+  - debugging (تصحيح الأخطاء) - confirmed by Arabic Wikipedia
+  - And 12 more terms all verified
+- **Learnings for future iterations:**
+  - Hsoub Academy (academy.hsoub.com) is the most comprehensive Arabic programming resource
+  - Arabic Wikipedia has dedicated pages for key CS terms (صنف, جدول تجزئة, نوع بيانات)
+  - The glossary translations are high quality and consistent with industry standards
+  - Some terms have multiple acceptable translations (e.g., concatenation: سلسلة/دمج, constructor: مُنشئ/الدالة البانية)
+  - User-friendly terms (قاموس for hash) are appropriate for beginner courses vs technical terms (جدول تجزئة)
+
+---
+
+## 2026-01-26 - US-010
+- What was implemented: Scanned all 9 .tsx files in app/ directory for Arabic grammar issues
+- Files changed:
+  - tasks/grammar-issues.json (added GI-046 to GI-049, updated summary and metadata)
+  - ralph/prd.json (marked US-010 as passes: true)
+- Findings: 4 new issues identified (total now 49)
+  - 4 consistency issues (tanween usage - 'مرحبا' vs 'مرحباً')
+  - 0 punctuation issues
+- Files scanned:
+  - app/layout.tsx (0 issues) - metadata only, clean Arabic
+  - app/page.tsx (3 issues) - preview code in homepage has tanween issues
+  - app/glossary/layout.tsx (0 issues) - metadata only
+  - app/glossary/page.tsx (0 issues) - search UI text is clean
+  - app/progress/layout.tsx (0 issues) - metadata only
+  - app/progress/page.tsx (0 issues) - progress UI text is clean
+  - app/lessons/[section]/[lesson]/page.tsx (0 issues) - breadcrumb/navigation only
+  - app/lessons/[section]/[lesson]/LessonContent.tsx (0 issues) - no hardcoded Arabic text
+  - app/lessons/[section]/[lesson]/LessonPlayground.tsx (1 issue) - default starter code
+- **Learnings for future iterations:**
+  - Most app page files have clean Arabic metadata and UI text
+  - The app/page.tsx homepage has preview code displayed to users - this code has 3 tanween issues
+  - The LessonPlayground.tsx has default starter code that shows when no exercise is defined
+  - Layout files only contain metadata descriptions - generally very clean
+  - The progress/page.tsx has celebratory exclamation marks in the "completed all lessons" message - these are appropriate
+  - Arabic aria-labels and button text in app pages are well-written
+
+---
+
+## 2026-01-26 - US-008
+- What was implemented: Scanned public/course.json for Arabic grammar issues (10 sections, 32 lessons)
+- Files changed:
+  - Updated: tasks/grammar-issues.json (added 6 new issues, GI-038 to GI-043)
+  - Updated: ralph/prd.json (marked US-008 as passes: true)
+- Findings: 6 new issues identified (total now 43)
+  - 5 consistency issues (tanween usage - "مرحبا" vs "مرحباً" in hello-world lesson)
+  - 1 punctuation issue (exclamation mark in truthiness hint)
+- Areas scanned:
+  - Section titles (10 total) - all clean
+  - Lesson titles (32 total) - 1 issue (hello-world)
+  - Exercise starterCode comments - 1 issue
+  - Exercise expectedOutput fields - 1 issue
+  - Exercise hints arrays - 3 issues
+- **Learnings for future iterations:**
+  - The course.json file structure: sections[].lessons[].exercise{starterCode, expectedOutput, hints[], defaultInput?}
+  - Most exercises have excellent Arabic grammar - only the hello-world lesson has consistency issues
+  - The "مرحبا بالعالم" issue appears in multiple places (title, starterCode, expectedOutput, hints) - all need to be fixed together
+  - When fixing expectedOutput, the lesson content (hello-world.md) must also be updated to match
+  - Most hints use proper punctuation - only 1 exclamation mark issue found
+  - The hints array uses Arabic text for explanations, Ruby code samples are embedded inline
+
+---
+
+## 2026-01-26 - US-007
+- What was implemented: Scanned content/glossary.json for Arabic grammar issues (67 terms, including arabic and definition fields)
+- Files changed:
+  - Updated: tasks/grammar-issues.json (added 1 new issue, GI-037)
+  - Updated: ralph/prd.json (marked US-007 as passes: true)
+- Findings: 1 new issue identified (total now 37)
+  - 0 consistency issues (tanween usage is excellent throughout)
+  - 1 punctuation issue (ternary definition missing period)
+- Terms scanned: All 67 glossary terms
+- Clean terms: 66 out of 67 terms have no issues
+- **Learnings for future iterations:**
+  - The glossary.json file is very well-maintained with consistent Arabic
+  - All definitions end with periods except one (ternary)
+  - Arabic translations use proper diacritics where needed (مُعرِّف، مُعيِّن، سَلسَلة)
+  - Tanween is used correctly in adverbs (مؤقتاً، لاحقاً)
+  - The glossary uses a simple structure: {id, english, arabic, definition}
+
+---
+
+## 2026-01-26 - US-006
+- What was implemented: Scanned 1 modules, 1 errors, and 3 challenges lesson markdown files for Arabic grammar issues
+- Files changed:
+  - Updated: tasks/grammar-issues.json (added 2 new issues, GI-035 to GI-036)
+  - Updated: ralph/prd.json (marked US-006 as passes: true)
+- Findings: 2 new issues identified (total now 36)
+  - 0 consistency issues (tanween usage is correct in all files)
+  - 2 punctuation issues (exclamation marks in intro text)
+- Files scanned:
+  - content/lessons/modules/modules-mixins.md (1 issue)
+  - content/lessons/errors/error-handling.md (1 issue)
+  - content/lessons/challenges/fizzbuzz.md (0 issues)
+  - content/lessons/challenges/calculator.md (0 issues)
+  - content/lessons/challenges/guessing-game.md (0 issues)
+- **Learnings for future iterations:**
+  - The challenges section is very clean - all 3 files have no grammar issues
+  - Exclamation marks in game outputs (e.g., "أعلى!", "أقل!", "مبروك!") are appropriate as feedback
+  - Exclamation marks with emojis at the end (e.g., "حظاً موفقاً! 🎯") are acceptable as encouraging endings
+  - The modules-mixins.md and error-handling.md both have similar intro patterns "هنا تأتي X!" that should be periods
+  - This completes the grammar scanning of ALL 37 lesson files
+
+---
+
+## 2026-01-26 - US-005
+- What was implemented: Scanned 3 blocks and 3 oop lesson markdown files for Arabic grammar issues
+- Files changed:
+  - Updated: tasks/grammar-issues.json (added 3 new issues, GI-032 to GI-034)
+  - Updated: ralph/prd.json (marked US-005 as passes: true)
+- Findings: 3 new issues identified (total now 34)
+  - 3 consistency issues (tanween usage - مرحبا vs مرحباً)
+  - 0 punctuation issues
+- Files scanned:
+  - content/lessons/blocks/block-syntax.md (1 issue)
+  - content/lessons/blocks/yield.md (0 issues)
+  - content/lessons/blocks/procs-lambdas.md (0 issues)
+  - content/lessons/oop/classes-objects.md (2 issues)
+  - content/lessons/oop/initialize-accessors.md (0 issues)
+  - content/lessons/oop/inheritance.md (0 issues)
+- **Learnings for future iterations:**
+  - The blocks section (yield.md, procs-lambdas.md) has excellent tanween consistency - uses "مرحباً" correctly throughout
+  - The oop section files (initialize-accessors.md, inheritance.md) are very clean with no issues
+  - The classes-objects.md file has issues in the "everything is an object" demonstration section (line 29-30)
+  - The block-syntax.md issue is in the each_char iteration example
+
+---
+
+
+- Grammar issues are tracked in tasks/grammar-issues.json with structured JSON format
+- Each issue has: id, file, line, original, issue (Arabic description), suggestion, category
+- Categories include: consistency, punctuation, spelling, grammar
+- The summary section tracks totals by category and file
+- Arabic content should use consistent tanween (التنوين) - prefer "مرحباً" over "مرحبا"
+- Exclamation marks in intro paragraphs (e.g., "هنا يأتي دور X!") should be periods
+- Exclamation marks are acceptable in: warnings, tips/reminders, code output (e.g., "انطلق!"), greetings
+- Methods section files (defining-methods.md, returns-splat.md) have excellent tanween consistency
+
+---
+
+## 2026-01-26 - US-004
+- What was implemented: Scanned 4 collections and 2 methods lesson markdown files for Arabic grammar issues
+- Files changed:
+  - Updated: tasks/grammar-issues.json (added 3 new issues, GI-029 to GI-031)
+- Findings: 3 new issues identified (total now 31)
+  - 3 consistency issues (tanween usage - مرحبا vs مرحباً)
+  - 0 punctuation issues
+- Files scanned:
+  - content/lessons/collections/arrays.md (1 issue)
+  - content/lessons/collections/array-methods.md (0 issues)
+  - content/lessons/collections/hashes.md (0 issues)
+  - content/lessons/collections/ranges-enumerables.md (2 issues)
+  - content/lessons/methods/defining-methods.md (0 issues)
+  - content/lessons/methods/returns-splat.md (0 issues)
+- **Learnings for future iterations:**
+  - The methods section has excellent tanween consistency - all instances use "مرحباً" correctly
+  - Exclamation marks in greetings (e.g., "مرحباً أحمد!") are appropriate and should NOT be flagged
+  - Collections section array-methods.md and hashes.md are very clean
+  - The ranges-enumerables.md has issues in the string slicing example section
+
+---
+
+## 2026-01-26 - US-003
+- What was implemented: Scanned 3 control-flow and 2 loops lesson markdown files for Arabic grammar issues
+- Files changed:
+  - Updated: tasks/grammar-issues.json (added 3 new issues, GI-026 to GI-028)
+- Findings: 3 new issues identified (total now 28)
+  - 0 consistency issues (tanween usage is correct in these files)
+  - 3 punctuation issues (exclamation marks in explanatory intro text)
+- Files scanned:
+  - content/lessons/control-flow/conditionals.md (0 issues)
+  - content/lessons/control-flow/case-when.md (1 issue)
+  - content/lessons/control-flow/ternary.md (2 issues)
+  - content/lessons/loops/while-until.md (0 issues)
+  - content/lessons/loops/for-control.md (0 issues)
+- **Learnings for future iterations:**
+  - Control-flow and loops sections have good tanween consistency (no issues found)
+  - Intro paragraphs tend to use exclamation marks like "هنا يأتي دور X!" - these should be periods
+  - Exclamation marks in code output (e.g., "انطلق!" in countdowns) are contextually appropriate
+  - Exclamation marks in warnings, tips, and error comments are acceptable
+  - The conditionals.md file is very clean with no grammar issues
+
+---
+
+## 2026-01-26 - US-002
+- What was implemented: Scanned 11 fundamentals lesson markdown files for Arabic grammar issues
+- Files changed:
+  - Updated: tasks/grammar-issues.json (added 13 new issues, GI-013 to GI-025)
+- Findings: 13 new issues identified (total now 25)
+  - 6 consistency issues (tanween usage - مرحبا vs مرحباً)
+  - 7 punctuation issues (exclamation marks in explanatory text)
+- Files scanned:
+  - content/lessons/fundamentals/variables-types.md (3 issues)
+  - content/lessons/fundamentals/string-interpolation.md (0 issues)
+  - content/lessons/fundamentals/operators.md (0 issues)
+  - content/lessons/fundamentals/boolean-logic.md (0 issues)
+  - content/lessons/fundamentals/truthiness.md (5 issues)
+  - content/lessons/fundamentals/constants-symbols.md (0 issues)
+  - content/lessons/fundamentals/string-methods.md (3 issues)
+  - content/lessons/fundamentals/bang-predicate.md (2 issues)
+  - content/lessons/fundamentals/user-input.md (0 issues)
+  - content/lessons/fundamentals/type-conversion.md (0 issues)
+  - content/lessons/fundamentals/multiple-assignment.md (0 issues)
+- **Learnings for future iterations:**
+  - The fundamentals section has better tanween consistency than getting-started
+  - truthiness.md has multiple exclamation marks in puts statements inside code blocks
+  - Some files like string-interpolation.md, operators.md, boolean-logic.md are clean
+  - Code block comments (# comment) should also be checked for consistency
+
+---
+
+## 2026-01-26 - US-001
+- What was implemented: Scanned 4 getting-started lesson markdown files for Arabic grammar issues
+- Files changed:
+  - Created: tasks/grammar-issues.json
+- Findings: 12 issues identified
+  - 10 consistency issues (tanween usage - مرحبا vs مرحباً)
+  - 2 punctuation issues (exclamation marks in explanatory text)
+- Files scanned:
+  - content/lessons/getting-started/what-is-ruby.md (2 issues)
+  - content/lessons/getting-started/hello-world.md (4 issues)
+  - content/lessons/getting-started/output-methods.md (5 issues)
+  - content/lessons/getting-started/comments.md (1 issue)
+- **Learnings for future iterations:**
+  - The codebase uses "مرحباً" with tanween as the preferred form in most places
+  - When scanning for issues, skip code blocks (```ruby ... ```) but DO check inline code within Arabic text
+  - Exercise expected outputs need special attention - changing them affects test validation
+  - The JSON structure in grammar-issues.json should include metadata about scan date and story ID
+
+---

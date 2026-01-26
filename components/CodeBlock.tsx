@@ -8,6 +8,23 @@ interface CodeBlockProps {
   language?: string;
 }
 
+/**
+ * Add per-line bidi support for output blocks (language="text")
+ * Each line gets dir="auto" so Arabic lines display RTL
+ */
+function addBidiSupport(html: string): string {
+  return html.replace(
+    /(<code[^>]*>)([\s\S]*?)(<\/code>)/,
+    (_, open, content, close) => {
+      const lines = content.split('\n');
+      const wrapped = lines.map((line: string) =>
+        `<div class="bidi-line" dir="auto">${line || '\u200B'}</div>`
+      ).join('');
+      return `${open}${wrapped}${close}`;
+    }
+  );
+}
+
 // Module-level cache for highlighted code to avoid redundant shiki calls
 const highlightCache = new Map<string, string>();
 
@@ -77,10 +94,14 @@ const CodeBlock = memo(function CodeBlock({ code, language = "ruby" }: CodeBlock
     const highlight = async () => {
       try {
         // Use VS Code themes to match Monaco editor
-        const html = await codeToHtml(cleanCode, {
+        let html = await codeToHtml(cleanCode, {
           lang: language,
           theme,
         });
+        // For output blocks (text), add per-line bidi support
+        if (language === 'text') {
+          html = addBidiSupport(html);
+        }
         highlightCache.set(cacheKey, html);
         setHighlightedHtml(html);
       } catch {

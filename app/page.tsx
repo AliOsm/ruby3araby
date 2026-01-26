@@ -6,16 +6,16 @@ import { useLastLesson, useCompletedCount } from "@/lib/useProgress";
 import ThemeToggle from "@/components/ThemeToggle";
 
 // Static code preview for the mockup
-const previewCode = `# مرحبا بك في روبي!
+const previewCode = `# مرحباً بك في روبي!
 name = "أحمد"
-puts "مرحبا يا #{name}!"
+puts "مرحباً يا #{name}!"
 
 # حلقة بسيطة
 3.times do |i|
   puts "العد: #{i + 1}"
 end`;
 
-const previewOutput = `مرحبا يا أحمد!
+const previewOutput = `مرحباً يا أحمد!
 العد: 1
 العد: 2
 العد: 3`;

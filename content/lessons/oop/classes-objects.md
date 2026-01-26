@@ -26,8 +26,8 @@ puts 5.class        # Integer
 puts 5.even?        # true
 
 # النصوص كائنات
-puts "مرحبا".class    # String
-puts "مرحبا".length   # 5
+puts "مرحباً".class    # String
+puts "مرحباً".length   # 5
 
 # المصفوفات كائنات
 puts [1, 2, 3].class  # Array

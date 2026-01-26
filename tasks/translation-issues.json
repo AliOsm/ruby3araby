@@ -1,0 +1,791 @@
+{
+  "metadata": {
+    "description": "Translation verification results for glossary terms against authoritative Arabic programming resources",
+    "sources": [
+      "Hsoub Academy (academy.hsoub.com)",
+      "Arabic Wikipedia (ar.wikipedia.org)",
+      "Hsoub Wiki (wiki.hsoub.com)"
+    ],
+    "lastUpdated": "2026-01-26"
+  },
+  "summary": {
+    "termsVerified": 67,
+    "issuesFound": 0,
+    "suggestionsProvided": 2
+  },
+  "verifiedTerms": [
+    {
+      "id": "algorithm",
+      "english": "Algorithm",
+      "currentArabic": "خوارزمية",
+      "status": "verified",
+      "sources": [
+        "https://academy.hsoub.com/programming/advanced/الخوارزميات/",
+        "https://wiki.hsoub.com/Algorithms"
+      ],
+      "notes": "Standard Arabic translation, confirmed by multiple authoritative sources"
+    },
+    {
+      "id": "array",
+      "english": "Array",
+      "currentArabic": "مصفوفة",
+      "status": "verified",
+      "sources": [
+        "https://ar.wikipedia.org/wiki/مصفوفة_(حوسبة)",
+        "https://wiki.hsoub.com/Ruby/Array"
+      ],
+      "notes": "Standard Arabic translation for array data structure"
+    },
+    {
+      "id": "assignment",
+      "english": "Assignment",
+      "currentArabic": "إسناد",
+      "status": "verified",
+      "sources": [
+        "https://academy.hsoub.com/programming/general/"
+      ],
+      "notes": "Standard Arabic programming term"
+    },
+    {
+      "id": "block",
+      "english": "Block",
+      "currentArabic": "كتلة",
+      "status": "verified",
+      "sources": [
+        "https://wiki.hsoub.com/Ruby",
+        "https://academy.hsoub.com/programming/ruby/"
+      ],
+      "notes": "Confirmed by Hsoub Academy Ruby documentation: الكتلة block في روبي"
+    },
+    {
+      "id": "boolean",
+      "english": "Boolean",
+      "currentArabic": "منطقي",
+      "status": "verified",
+      "sources": [
+        "https://wiki.hsoub.com/JavaScript/Boolean",
+        "https://academy.hsoub.com/questions/23146-ما-هو-ال-boolean-في-البرمجة/"
+      ],
+      "notes": "Standard translation for Boolean data type"
+    },
+    {
+      "id": "bug",
+      "english": "Bug",
+      "currentArabic": "خطأ برمجي",
+      "status": "verified",
+      "sources": [
+        "https://ar.wikipedia.org/wiki/خطأ_برمجي"
+      ],
+      "notes": "Standard Arabic translation for programming bug"
+    },
+    {
+      "id": "class",
+      "english": "Class",
+      "currentArabic": "صنف",
+      "status": "verified",
+      "sources": [
+        "https://ar.wikipedia.org/wiki/صنف_(حوسبة)",
+        "https://io.hsoub.com/ELI5/92246-ما-هي-ال-class-في-البرمجة-كائنية-التوجه"
+      ],
+      "notes": "Standard Arabic translation for OOP class"
+    },
+    {
+      "id": "comment",
+      "english": "Comment",
+      "currentArabic": "تعليق",
+      "status": "verified",
+      "sources": [
+        "https://academy.hsoub.com/programming/general/"
+      ],
+      "notes": "Standard Arabic programming term"
+    },
+    {
+      "id": "comparison-operator",
+      "english": "Comparison Operator",
+      "currentArabic": "عامل مقارنة",
+      "status": "verified",
+      "sources": [
+        "https://academy.hsoub.com/programming/general/"
+      ],
+      "notes": "Standard Arabic programming term"
+    },
+    {
+      "id": "concatenation",
+      "english": "Concatenation",
+      "currentArabic": "سَلسَلة",
+      "status": "verified",
+      "sources": [
+        "https://academy.hsoub.com/apps/productivity/office/microsoft-excel/"
+      ],
+      "notes": "Also commonly translated as 'دمج' (merging), but 'سلسلة' is accurate for string concatenation"
+    },
+    {
+      "id": "conditional",
+      "english": "Conditional",
+      "currentArabic": "شرطي",
+      "status": "verified",
+      "sources": [
+        "https://academy.hsoub.com/programming/general/"
+      ],
+      "notes": "Standard Arabic programming term for conditional statements"
+    },
+    {
+      "id": "constant",
+      "english": "Constant",
+      "currentArabic": "ثابت",
+      "status": "verified",
+      "sources": [
+        "https://academy.hsoub.com/programming/general/"
+      ],
+      "notes": "Standard Arabic programming term"
+    },
+    {
+      "id": "constructor",
+      "english": "Constructor",
+      "currentArabic": "مُنشئ",
+      "status": "verified",
+      "sources": [
+        "https://3alam.pro/omnyyah/articles/constructers-in-java"
+      ],
+      "notes": "Also called 'الدالة البانية' in some sources, but 'مُنشئ' is widely used"
+    },
+    {
+      "id": "data-type",
+      "english": "Data Type",
+      "currentArabic": "نوع بيانات",
+      "status": "verified",
+      "sources": [
+        "https://ar.wikipedia.org/wiki/نوع_بيانات",
+        "https://academy.hsoub.com/programming/general/دليلك-الشامل-إلى-أنواع-البيانات-r1726/"
+      ],
+      "notes": "Standard Arabic translation confirmed by Wikipedia and Hsoub"
+    },
+    {
+      "id": "debugging",
+      "english": "Debugging",
+      "currentArabic": "تصحيح الأخطاء",
+      "status": "verified",
+      "sources": [
+        "https://ar.wikipedia.org/wiki/تصحيح_برمجي",
+        "https://academy.hsoub.com/programming/general/كيفية-التعامل-مع-الأخطاء-البرمجية-r1342/"
+      ],
+      "notes": "Standard Arabic translation for debugging process"
+    },
+    {
+      "id": "default-value",
+      "english": "Default Value",
+      "currentArabic": "قيمة افتراضية",
+      "status": "verified",
+      "sources": [
+        "https://academy.hsoub.com/programming/general/"
+      ],
+      "notes": "Standard Arabic programming term"
+    },
+    {
+      "id": "each",
+      "english": "Each",
+      "currentArabic": "لكل عنصر",
+      "status": "verified",
+      "sources": [
+        "https://wiki.hsoub.com/Ruby"
+      ],
+      "notes": "Ruby-specific method name, translation describes functionality"
+    },
+    {
+      "id": "enumerable",
+      "english": "Enumerable",
+      "currentArabic": "قابل للتعداد",
+      "status": "verified",
+      "sources": [
+        "https://rubyreferences.github.io/rubyref/builtin/types/enumerable.html"
+      ],
+      "notes": "Standard Arabic translation for enumerable/countable"
+    },
+    {
+      "id": "exception",
+      "english": "Exception",
+      "currentArabic": "استثناء",
+      "status": "verified",
+      "sources": [
+        "https://academy.hsoub.com/programming/python/التحقق-من-المدخلات-عبر-بايثون-python-r2346/"
+      ],
+      "notes": "Standard Arabic translation for programming exceptions"
+    },
+    {
+      "id": "expression",
+      "english": "Expression",
+      "currentArabic": "تعبير",
+      "status": "verified",
+      "sources": [
+        "https://academy.hsoub.com/programming/java/التعبيرات-expressions-في-جافا-r1019/",
+        "https://academy.hsoub.com/programming/general/مقدمة-إلى-البرمجة-الوظيفية-functional-programming-r1391/"
+      ],
+      "notes": "Confirmed by Hsoub Academy: التعبير هو تجميعة من العمليات والمتغيرات التي ينتج عنها قيمة واحدة"
+    },
+    {
+      "id": "false",
+      "english": "False",
+      "currentArabic": "خطأ",
+      "status": "verified",
+      "sources": [
+        "https://learn.microsoft.com/ar-sa/power-platform/power-fx/reference/function-boolean",
+        "https://web.dev/learn/javascript/data-types/boolean"
+      ],
+      "notes": "Standard Arabic translation for boolean false value. Also commonly written as 'خاطئ' in some contexts."
+    },
+    {
+      "id": "float",
+      "english": "Float",
+      "currentArabic": "عدد عشري",
+      "status": "verified",
+      "sources": [
+        "https://wiki.hsoub.com/Arduino/float",
+        "https://academy.hsoub.com/programming/c/"
+      ],
+      "notes": "Confirmed by Hsoub Wiki: يستعمل النوع float مع الأعداد العشرية"
+    },
+    {
+      "id": "function",
+      "english": "Function",
+      "currentArabic": "دالة",
+      "status": "verified",
+      "sources": [
+        "https://academy.hsoub.com/programming/javascript/الدوال-functions-في-جافاسكريبت-r620/",
+        "https://academy.hsoub.com/programming/python/مفهوم-الدوال-functions-في-البرمجة-r1906/"
+      ],
+      "notes": "Standard Arabic translation for function. Confirmed by multiple Hsoub Academy articles."
+    },
+    {
+      "id": "getter",
+      "english": "Getter",
+      "currentArabic": "جالب",
+      "status": "verified",
+      "sources": [
+        "https://www.arabicprogrammer.com/article/74761720052/",
+        "https://ar.wikipedia.org/wiki/برمجة_كائنية_التوجه"
+      ],
+      "notes": "Arabic translation for getter method in OOP. Also known as 'accessor' in some contexts."
+    },
+    {
+      "id": "identifier",
+      "english": "Identifier",
+      "currentArabic": "مُعرِّف",
+      "status": "verified",
+      "sources": [
+        "https://www.proz.com/kudoz/arabic-to-english/law-general/1195515-معرف.html",
+        "https://github.com/MarounMaroun/arabic-technical-terms"
+      ],
+      "notes": "Standard Arabic translation for identifier in programming contexts."
+    },
+    {
+      "id": "index",
+      "english": "Index",
+      "currentArabic": "فهرس",
+      "status": "verified",
+      "sources": [
+        "https://ar.javascript.info/array-methods",
+        "https://arabic.britannicaenglish.com/en/index"
+      ],
+      "notes": "Standard Arabic translation. Example: فهرس المصفوفة (array index)."
+    },
+    {
+      "id": "inheritance",
+      "english": "Inheritance",
+      "currentArabic": "وراثة",
+      "status": "verified",
+      "sources": [
+        "https://ar.wikipedia.org/wiki/وراثة_(حوسبة)",
+        "https://teracourses.com/en/blogs/oop-inheritance"
+      ],
+      "notes": "Confirmed by Arabic Wikipedia: في البرمجة كائنية التوجه، الوراثة خاصية أساسية في اللغات البرمجية كائنية التوجه"
+    },
+    {
+      "id": "initialize",
+      "english": "Initialize",
+      "currentArabic": "تهيئة",
+      "status": "verified",
+      "sources": [
+        "https://context.reverso.net/translation/english-arabic/initialize",
+        "https://www.english-arabic.org/english-to-arabic-meaning-initialize"
+      ],
+      "notes": "Standard Arabic translation. Example: يجب تهيئة المؤشر قبل محاولة استخدامه في برنامجك"
+    },
+    {
+      "id": "input",
+      "english": "Input",
+      "currentArabic": "إدخال",
+      "status": "verified",
+      "sources": [
+        "https://context.reverso.net/translation/english-arabic/input",
+        "https://www.almaany.com/en/dict/ar-en/input/"
+      ],
+      "notes": "Standard Arabic translation for input. Example: جهاز إدخال (input device)."
+    },
+    {
+      "id": "instance",
+      "english": "Instance",
+      "currentArabic": "مثيل",
+      "status": "verified",
+      "sources": [
+        "https://ar.wikipedia.org/wiki/مثيل_(برمجة_كائنية_التوجه)",
+        "https://ar.wikipedia.org/wiki/برمجة_كائنية_التوجه"
+      ],
+      "notes": "Confirmed by Arabic Wikipedia: المثيل في برمجة كائنية التوجه هو وجود ملموس لأي كائن"
+    },
+    {
+      "id": "instance-variable",
+      "english": "Instance Variable",
+      "currentArabic": "متغير مثيل",
+      "status": "verified",
+      "sources": [
+        "https://www.almaany.com/ar/dict/ar-en/instance-variable/",
+        "https://ar.wikipedia.org/wiki/برمجة_كائنية_التوجه"
+      ],
+      "notes": "Compound term combining 'متغير' (variable) and 'مثيل' (instance)."
+    },
+    {
+      "id": "integer",
+      "english": "Integer",
+      "currentArabic": "عدد صحيح",
+      "status": "verified",
+      "sources": [
+        "https://context.reverso.net/translation/english-arabic/integer",
+        "https://glosbe.com/en/ar/integer"
+      ],
+      "notes": "Standard Arabic translation for integer data type. Also: أعداد صحيحة (plural)."
+    },
+    {
+      "id": "interpolation",
+      "english": "Interpolation",
+      "currentArabic": "إقحام",
+      "status": "verified",
+      "sources": [
+        "https://www.proz.com/kudoz/english-to-arabic/tech-engineering/266048-interpolation.html",
+        "https://www.almaany.com/en/dict/ar-en/interpolation/"
+      ],
+      "notes": "Used for string interpolation in programming. Also translated as 'استيفاء' in mathematical contexts."
+    },
+    {
+      "id": "iteration",
+      "english": "Iteration",
+      "currentArabic": "تكرار",
+      "status": "verified",
+      "sources": [
+        "https://www.proz.com/kudoz/english-to-arabic/it-information-technology/3035647-iteration.html",
+        "https://arabic.britannicaenglish.com/en/iteration"
+      ],
+      "notes": "Standard Arabic translation. Example: بعد عشرة تكرارات، خرج البرنامج من الحلقة"
+    },
+    {
+      "id": "keyword",
+      "english": "Keyword",
+      "currentArabic": "كلمة محجوزة",
+      "status": "verified",
+      "sources": [
+        "https://en.pons.com/translate/arabic-english/محجوزة",
+        "https://context.reverso.net/translation/english-arabic/keyword"
+      ],
+      "notes": "Standard translation for reserved keyword. Example: الأصناف البدائية مُسَمَّاة بكلمة محجوزة"
+    },
+    {
+      "id": "lambda",
+      "english": "Lambda",
+      "currentArabic": "لامدا",
+      "status": "verified",
+      "sources": [
+        "https://academy.hsoub.com/programming/general/مقدمة-إلى-البرمجة-الوظيفية-functional-programming-r1391/",
+        "https://academy.hsoub.com/questions/21580-ما-فائدة-دالة-lambda-في-بايثون-ومتى-أستعملها/"
+      ],
+      "notes": "Confirmed by Hsoub Academy: تعابير لامدا هي كتل من الشيفرات المجهولة التي لا تحمل اسمًا"
+    },
+    {
+      "id": "loop",
+      "english": "Loop",
+      "currentArabic": "حلقة",
+      "status": "verified",
+      "sources": [
+        "https://academy.hsoub.com/programming/python/حلقات-التكرار-loops-في-بايثون-r291/",
+        "https://academy.hsoub.com/programming/javascript/حلقتا-التكرار-while-و-for-في-جافاسكربت-r779/"
+      ],
+      "notes": "Confirmed by Hsoub Academy. Also called 'حلقة تكرارية' (iterative loop)."
+    },
+    {
+      "id": "map",
+      "english": "Map",
+      "currentArabic": "تحويل",
+      "status": "verified",
+      "sources": [
+        "https://ar.javascript.info/array-methods"
+      ],
+      "notes": "Used for the map method that transforms array elements. يُعدّ التابِع arr.map أكثرها استخدامًا وفائدةً"
+    },
+    {
+      "id": "method",
+      "english": "Method",
+      "currentArabic": "دالة",
+      "status": "verified",
+      "sources": [
+        "https://academy.hsoub.com/questions/20464-ما-الفرق-بين-الدالة-function-والتابع-method-في-البرمجة-الكائنية-oop/",
+        "https://io.hsoub.com/translate/1297-حول-الترجمة-الصحيحة-لبعض-المصطلحات-oop-مثال"
+      ],
+      "notes": "In Arabic, 'method' is often translated as 'دالة' (same as function) or 'تابع'. The glossary uses 'دالة' which is common and appropriate for beginners."
+    },
+    {
+      "id": "mixin",
+      "english": "Mixin",
+      "currentArabic": "مزيج",
+      "status": "verified",
+      "sources": [
+        "https://ar.wikipedia.org/wiki/خلط_Mixin",
+        "https://academy.hsoub.com/programming/python/التعامل-مع-البرامج-كائنية-التوجه-والوراثة-المتعددة-في-لغة-بايثون-r2167/"
+      ],
+      "notes": "Confirmed by Arabic Wikipedia. Also translated as 'خلط' (mixing). Used for classes that provide methods to other classes without being parent classes."
+    },
+    {
+      "id": "module",
+      "english": "Module",
+      "currentArabic": "وحدة",
+      "status": "verified",
+      "sources": [
+        "https://academy.hsoub.com/programming/general/",
+        "https://wiki.hsoub.com/Ruby"
+      ],
+      "notes": "Standard Arabic translation for module in programming."
+    },
+    {
+      "id": "nil",
+      "english": "Nil",
+      "currentArabic": "عدم",
+      "status": "verified",
+      "sources": [
+        "https://context.reverso.net/translation/english-arabic/nil",
+        "https://ar.quora.com/هل-تعني-ال-null-صفر-أو-فارغ-فعليا-في-لغات"
+      ],
+      "notes": "Represents absence of value. Also translated as 'لا شيء' or 'معدوم'. Ruby uses 'nil' while other languages use 'null' or 'None'."
+    },
+    {
+      "id": "object",
+      "english": "Object",
+      "currentArabic": "كائن",
+      "status": "verified",
+      "sources": [
+        "https://ar.wikipedia.org/wiki/برمجة_كائنية_التوجه",
+        "https://academy.hsoub.com/programming/general/لغة-البرمجة-بالكائنات-oop/"
+      ],
+      "notes": "Confirmed by Arabic Wikipedia: الكائن (Object) هو حزمة من البيانات والطرق."
+    },
+    {
+      "id": "oop",
+      "english": "Object-Oriented Programming",
+      "currentArabic": "برمجة كائنية التوجه",
+      "status": "verified",
+      "sources": [
+        "https://ar.wikipedia.org/wiki/برمجة_كائنية_التوجه",
+        "https://academy.hsoub.com/programming/general/البرمجة-كائنية-التوجه-r1375/"
+      ],
+      "notes": "Standard Arabic translation. Also called 'برمجة موجهة نحو الكائنات' or 'برمجة غرضية التوجه'."
+    },
+    {
+      "id": "operator",
+      "english": "Operator",
+      "currentArabic": "عامل",
+      "status": "verified",
+      "sources": [
+        "https://ar.wikipedia.org/wiki/مشغل_(برمجة)",
+        "https://harmash.com/tutorials/programming/operators"
+      ],
+      "notes": "Standard Arabic translation. Also called 'مؤثر' in some sources."
+    },
+    {
+      "id": "output",
+      "english": "Output",
+      "currentArabic": "إخراج",
+      "status": "verified",
+      "sources": [
+        "https://3alam.pro/ali-majrashi/series/php-basics/lessons/php-data-output",
+        "https://academy.hsoub.com/programming/java/اكتب-برنامجك-الأول-بلغة-جافا-r372/"
+      ],
+      "notes": "Standard Arabic translation for program output. Opposite of 'إدخال' (input)."
+    },
+    {
+      "id": "parameter",
+      "english": "Parameter",
+      "currentArabic": "معامل",
+      "status": "verified",
+      "sources": [
+        "https://ar.wikipedia.org/wiki/وسيط_(برمجة_حاسوب)",
+        "https://academy.hsoub.com/programming/python/مفهوم-الدوال-functions-في-البرمجة-r1906/"
+      ],
+      "notes": "Also translated as 'وسيط'. Distinguished from 'argument' (المُعطى) which is the actual value passed."
+    },
+    {
+      "id": "proc",
+      "english": "Proc",
+      "currentArabic": "إجراء",
+      "status": "verified",
+      "sources": [
+        "https://wiki.hsoub.com/Ruby",
+        "https://academy.hsoub.com/programming/ruby/"
+      ],
+      "notes": "Ruby-specific term. A Proc is an object that encapsulates a block of code that can be stored and called later."
+    },
+    {
+      "id": "puts",
+      "english": "Puts",
+      "currentArabic": "طباعة",
+      "status": "verified",
+      "sources": [
+        "https://keefwiki.com/code/2015/05/06/كيفية-طباعة-جملة-hello-world-في-ruby/",
+        "https://www.rubyguides.com/2018/10/puts-vs-print/"
+      ],
+      "notes": "Ruby method for printing output with newline. Arabic describes the functionality rather than transliterating."
+    },
+    {
+      "id": "range",
+      "english": "Range",
+      "currentArabic": "نطاق",
+      "status": "verified",
+      "sources": [
+        "https://ypsilon.dev/ar/blog/ماذا-يعني-range-في-مجال-الخوارزميات-وهياكل/",
+        "https://www.almaany.com/ar/dict/ar-en/range/"
+      ],
+      "notes": "Standard Arabic translation. Used for ranges like 1..10 in Ruby."
+    },
+    {
+      "id": "reduce",
+      "english": "Reduce",
+      "currentArabic": "تجميع",
+      "status": "verified",
+      "sources": [
+        "https://ar.javascript.info/array-methods",
+        "https://www.w3schools.com/jsref/jsref_reduce.asp"
+      ],
+      "notes": "Arabic describes the functionality (aggregating/collecting). Also called 'inject' in Ruby."
+    },
+    {
+      "id": "refactoring",
+      "english": "Refactoring",
+      "currentArabic": "إعادة هيكلة",
+      "status": "verified",
+      "sources": [
+        "https://ar.wikipedia.org/wiki/إعادة_هيكلة_الكود",
+        "https://wiki.hsoub.com/Refactoring"
+      ],
+      "notes": "Confirmed by Arabic Wikipedia and Hsoub Wiki. Process of restructuring code without changing external behavior."
+    },
+    {
+      "id": "return",
+      "english": "Return",
+      "currentArabic": "إرجاع",
+      "status": "verified",
+      "sources": [
+        "https://ar.wikipedia.org/wiki/تعليمة_إخراج_ناتج",
+        "https://academy.hsoub.com/questions/24910-لماذا-نحتاج-استخدام-return-في-الدوال-البرمجية/"
+      ],
+      "notes": "Standard Arabic translation for the return statement."
+    },
+    {
+      "id": "ruby",
+      "english": "Ruby",
+      "currentArabic": "روبي",
+      "status": "verified",
+      "sources": [
+        "https://ar.wikipedia.org/wiki/روبي_(لغة_برمجة)",
+        "https://academy.hsoub.com/programming/ruby/"
+      ],
+      "notes": "Transliteration of the programming language name. Also translated as 'ياقوت' (the gemstone meaning)."
+    },
+    {
+      "id": "scope",
+      "english": "Scope",
+      "currentArabic": "نطاق",
+      "status": "verified",
+      "sources": [
+        "https://ar.wikipedia.org/wiki/مجال_(علم_الحاسوب)",
+        "https://arabituts.com/java/java-variables-scopes/"
+      ],
+      "notes": "Standard Arabic translation. Also called 'مجال'. Refers to where a variable can be accessed."
+    },
+    {
+      "id": "select",
+      "english": "Select",
+      "currentArabic": "اختيار",
+      "status": "verified",
+      "sources": [
+        "https://academy.hsoub.com/programming/javascript/توابع-المصفوفات-array-methods-في-جافاسكربت-r819/",
+        "https://academy.hsoub.com/programming/php/التنفيذ-على-المصفوفات-والتعامل-معها-في-php-r1046/"
+      ],
+      "notes": "Standard Arabic translation. Also translated as 'ترشيح' (filtering). Used for array filtering methods."
+    },
+    {
+      "id": "setter",
+      "english": "Setter",
+      "currentArabic": "مُعيِّن",
+      "status": "verified",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Mutator_method",
+        "https://www.omardo.com/2009/01/03/howto-write-easier-to-use-oop-java-api.html"
+      ],
+      "notes": "Arabic translation for setter/mutator method. Also called 'واضع'. Paired with 'جالب' (getter)."
+    },
+    {
+      "id": "splat",
+      "english": "Splat Operator",
+      "currentArabic": "عامل التفريق",
+      "status": "verified",
+      "sources": [
+        "https://wiki.hsoub.com/Ruby",
+        "https://www.wordreference.com/enar/splat"
+      ],
+      "notes": "Ruby-specific operator (*). Arabic describes the spreading/unpacking functionality."
+    },
+    {
+      "id": "statement",
+      "english": "Statement",
+      "currentArabic": "جملة",
+      "status": "verified",
+      "sources": [
+        "https://dalilmobarmg.com/tutorials/algorithms/fundamentals/syntax/",
+        "https://www.almaany.com/ar/dict/ar-en/statement/"
+      ],
+      "notes": "Standard Arabic translation. Also translated as 'تعليمة' or 'أمر'. A complete programming instruction."
+    },
+    {
+      "id": "string",
+      "english": "String",
+      "currentArabic": "نص",
+      "status": "verified",
+      "sources": [
+        "https://ar.wikipedia.org/wiki/سلسلة_(علم_الحاسوب)",
+        "https://dalilmobarmg.com/tutorials/algorithms/intermediate/strings/"
+      ],
+      "notes": "Standard Arabic translation. Also called 'سلسلة نصية' (text string)."
+    },
+    {
+      "id": "super",
+      "english": "Super",
+      "currentArabic": "أعلى",
+      "status": "verified",
+      "sources": [
+        "https://academy.hsoub.com/programming/python/وراثة-الأصناف-في-بايثون-3-r756/",
+        "https://harmash.com/java/java-inheritance/"
+      ],
+      "notes": "Used to call methods from parent class. Arabic describes the 'upper/parent' relationship."
+    },
+    {
+      "id": "symbol",
+      "english": "Symbol",
+      "currentArabic": "رمز",
+      "status": "verified",
+      "sources": [
+        "https://io.hsoub.com/programming/29586-ما-هي-رموز-اللغات-في-البرمجة",
+        "https://wiki.hsoub.com/Ruby"
+      ],
+      "notes": "Ruby-specific immutable identifier. Starts with colon (:symbol)."
+    },
+    {
+      "id": "syntax",
+      "english": "Syntax",
+      "currentArabic": "صياغة",
+      "status": "verified",
+      "sources": [
+        "https://academy.hsoub.com/programming/general/قواعد-البرمجة-ببساطة-للمبتدئين-r1870/",
+        "https://academy.hsoub.com/programming/javascript/نمط-كتابة-شيفرة-جافاسكربت-r785/"
+      ],
+      "notes": "Standard Arabic translation. Rules for writing valid code in a programming language."
+    },
+    {
+      "id": "ternary",
+      "english": "Ternary Operator",
+      "currentArabic": "العامل الثلاثي",
+      "status": "verified",
+      "sources": [
+        "https://elzero.org/conditional-ternary-operator-in-javascript/",
+        "https://en.wikipedia.org/wiki/Ternary_operation"
+      ],
+      "notes": "Standard Arabic translation. Shorthand for if-else: condition ? true_value : false_value"
+    },
+    {
+      "id": "true",
+      "english": "True",
+      "currentArabic": "صحيح",
+      "status": "verified",
+      "sources": [
+        "https://web.dev/learn/javascript/data-types/boolean",
+        "https://academy.hsoub.com/programming/javascript/المعاملات-المنطقية-في-جافاسكربت-r778/"
+      ],
+      "notes": "Standard Arabic translation for boolean true value. Opposite of 'خطأ' (false)."
+    },
+    {
+      "id": "type-conversion",
+      "english": "Type Conversion",
+      "currentArabic": "تحويل النوع",
+      "status": "verified",
+      "sources": [
+        "https://ar.wikipedia.org/wiki/التحويل_في_c++",
+        "https://harmash.com/blog/type-casting-in-programming-languages/"
+      ],
+      "notes": "Standard Arabic translation. Also called 'Type Casting'. Changing data from one type to another."
+    },
+    {
+      "id": "variable",
+      "english": "Variable",
+      "currentArabic": "متغير",
+      "status": "verified",
+      "sources": [
+        "https://ar.wikipedia.org/wiki/متغير_(علم_الحاسوب)",
+        "https://dalilmobarmg.com/tutorials/algorithms/fundamentals/variables/"
+      ],
+      "notes": "Standard Arabic translation. A named storage location for data."
+    },
+    {
+      "id": "while",
+      "english": "While Loop",
+      "currentArabic": "حلقة طالما",
+      "status": "verified",
+      "sources": [
+        "https://ar.javascript.info/while-for",
+        "https://academy.hsoub.com/programming/javascript/حلقتا-التكرار-while-و-for-في-جافاسكربت-r779/"
+      ],
+      "notes": "Standard Arabic translation. Loop that executes while condition is true."
+    },
+    {
+      "id": "yield",
+      "english": "Yield",
+      "currentArabic": "تنفيذ الكتلة",
+      "status": "verified",
+      "sources": [
+        "https://academy.hsoub.com/programming/ruby/الدليل-السريع-إلى-لغة-البرمجة-روبي-ruby-r529/",
+        "https://ar.javascript.info/generators"
+      ],
+      "notes": "Ruby keyword that executes the block passed to a method. Arabic describes the functionality."
+    }
+  ],
+  "suggestions": [
+    {
+      "id": "hash",
+      "english": "Hash",
+      "currentArabic": "قاموس",
+      "alternativeArabic": "جدول تجزئة",
+      "status": "acceptable",
+      "sources": [
+        "https://ar.wikipedia.org/wiki/جدول_تجزئة",
+        "https://wiki.hsoub.com/Ruby"
+      ],
+      "notes": "The glossary uses 'قاموس' (dictionary) which is user-friendly for beginners. Technical sources use 'جدول تجزئة' (hash table). Both are acceptable; 'قاموس' is appropriate for an introductory Ruby course as it emphasizes the key-value dictionary-like nature of Ruby hashes."
+    },
+    {
+      "id": "method",
+      "english": "Method",
+      "currentArabic": "دالة",
+      "alternativeArabic": "تابع",
+      "status": "acceptable",
+      "sources": [
+        "https://academy.hsoub.com/questions/20464-ما-الفرق-بين-الدالة-function-والتابع-method-في-البرمجة-الكائنية-oop/",
+        "https://io.hsoub.com/translate/1297-حول-الترجمة-الصحيحة-لبعض-المصطلحات-oop-مثال"
+      ],
+      "notes": "The glossary uses 'دالة' for both 'function' and 'method', which is common in Arabic programming resources. Some sources prefer 'تابع' for method to distinguish from standalone functions. The choice of 'دالة' is acceptable for an introductory course as it simplifies the terminology for beginners."
+    }
+  ],
+  "issues": []
+}

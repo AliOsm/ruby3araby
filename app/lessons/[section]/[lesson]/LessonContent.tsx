@@ -59,7 +59,7 @@ const markdownComponents = {
       return (
         <bdi>
           <code
-            className="bg-foreground/10 text-ruby-accent px-1.5 py-0.5 rounded text-sm font-mono"
+            className="bg-foreground/10 text-ruby-accent px-1 rounded-sm font-mono text-xs"
             dir="ltr"
           >
             {children}
@@ -82,8 +82,9 @@ const markdownComponents = {
     const code = codeElement?.props?.children || "";
 
     // Extract language from className (e.g., "language-ruby" -> "ruby")
+    // Default to "text" for output blocks (no language) to enable RTL support
     const languageMatch = className.match(/language-(\w+)/);
-    const language = languageMatch ? languageMatch[1] : "ruby";
+    const language = languageMatch ? languageMatch[1] : "text";
 
     // Get the code string
     const codeString = typeof code === "string" ? code : String(code || "");
@@ -128,19 +129,19 @@ const markdownComponents = {
   hr: () => <hr className="border-foreground/20 my-6" />,
   // Tables
   table: ({ children }: { children?: React.ReactNode }) => (
-    <div className="overflow-x-auto mb-4">
+    <div className="overflow-x-auto mb-4 px-px">
       <table className="min-w-full border-collapse border border-foreground/20">
         {children}
       </table>
     </div>
   ),
   th: ({ children }: { children?: React.ReactNode }) => (
-    <th className="border border-foreground/20 bg-foreground/10 px-4 py-2 text-foreground font-semibold">
+    <th className="border border-foreground/20 bg-foreground/10 px-4 py-2 text-foreground font-semibold whitespace-nowrap">
       {children}
     </th>
   ),
   td: ({ children }: { children?: React.ReactNode }) => (
-    <td className="border border-foreground/20 px-4 py-2 text-foreground/90">
+    <td className="border border-foreground/20 px-4 py-2 text-foreground/90 whitespace-nowrap">
       {children}
     </td>
   ),

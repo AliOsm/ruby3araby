@@ -1,0 +1,279 @@
+{
+  "metadata": {
+    "generatedAt": "2026-01-26",
+    "userStory": "US-014",
+    "description": "Terminology inconsistencies detected across lesson content",
+    "totalTermsScanned": 67,
+    "totalLessonsScanned": 37,
+    "inconsistenciesFound": 5
+  },
+  "glossaryTerms": {
+    "count": 67,
+    "sourceFile": "content/glossary.json"
+  },
+  "inconsistencies": [
+    {
+      "id": "block-terminology",
+      "englishTerm": "Block",
+      "glossaryArabic": "كتلة",
+      "foundVariations": [
+        {
+          "term": "كتلة برمجية",
+          "occurrences": [
+            "content/lessons/blocks/block-syntax.md",
+            "content/lessons/blocks/yield.md",
+            "content/lessons/blocks/procs-lambdas.md"
+          ],
+          "context": "Used as full descriptive term 'الكتل البرمجية (Blocks)'"
+        },
+        {
+          "term": "كتلة",
+          "occurrences": [
+            "content/lessons/blocks/block-syntax.md (summary table)"
+          ],
+          "context": "Used in short form in tables"
+        }
+      ],
+      "severity": "low",
+      "recommendation": "Both forms are acceptable. 'كتلة برمجية' is more descriptive for educational content while 'كتلة' matches the glossary entry. Consider updating glossary to include 'كتلة برمجية' as an alternative.",
+      "isActualInconsistency": false,
+      "notes": "The variation is intentional - longer form for clarity in lessons, shorter form matches glossary"
+    },
+    {
+      "id": "constructor-vs-initializer",
+      "englishTerm": "Constructor",
+      "glossaryArabic": "مُنشئ",
+      "foundVariations": [
+        {
+          "term": "المُهيّئ",
+          "occurrences": [
+            "content/lessons/oop/initialize-accessors.md"
+          ],
+          "context": "Section title: 'دالة المُهيّئ (initialize)'"
+        },
+        {
+          "term": "تهيئة",
+          "occurrences": [
+            "content/lessons/oop/classes-objects.md"
+          ],
+          "context": "Related to initialization concept"
+        }
+      ],
+      "severity": "medium",
+      "recommendation": "Glossary uses 'مُنشئ' for Constructor but lessons use 'المُهيّئ' which aligns with 'Initialize' (تهيئة). Consider clarifying: Constructor = مُنشئ, while Initialize method = دالة التهيئة/المُهيّئ",
+      "isActualInconsistency": true,
+      "notes": "This is a conceptual overlap - Ruby uses 'initialize' as its constructor method name"
+    },
+    {
+      "id": "range-scope-ambiguity",
+      "englishTerm": "Range / Scope",
+      "glossaryArabic": "نطاق",
+      "foundVariations": [
+        {
+          "term": "نطاق",
+          "occurrences": [
+            "content/lessons/collections/ranges-enumerables.md (for Range)",
+            "content/lessons/methods/defining-methods.md (for variable scope)"
+          ],
+          "context": "Both Range (1..10) and Scope (variable scope) translate to 'نطاق'"
+        }
+      ],
+      "severity": "medium",
+      "recommendation": "Consider differentiating: Range = نطاق القيم, Scope = نطاق المتغير (or مجال)",
+      "isActualInconsistency": true,
+      "notes": "Same Arabic word used for two different programming concepts"
+    },
+    {
+      "id": "accessor-terminology",
+      "englishTerm": "Getter/Setter/Accessor",
+      "glossaryArabic": "جالب/مُعيِّن",
+      "foundVariations": [
+        {
+          "term": "موصّلات",
+          "occurrences": [
+            "content/lessons/oop/initialize-accessors.md"
+          ],
+          "context": "Section: 'الموصّلات (Attribute Accessors)'"
+        },
+        {
+          "term": "دالة قراءة (getter)",
+          "occurrences": [
+            "content/lessons/oop/initialize-accessors.md"
+          ],
+          "context": "Explanatory use in parentheses"
+        },
+        {
+          "term": "دالة كتابة (setter)",
+          "occurrences": [
+            "content/lessons/oop/initialize-accessors.md"
+          ],
+          "context": "Explanatory use in parentheses"
+        }
+      ],
+      "severity": "low",
+      "recommendation": "Lessons use 'موصّلات' as umbrella term which is clear. Consider adding to glossary: Accessor = موصّل",
+      "isActualInconsistency": false,
+      "notes": "The term 'موصّلات' is a good collective term not in glossary but consistently used"
+    },
+    {
+      "id": "mixin-terminology",
+      "englishTerm": "Mixin",
+      "glossaryArabic": "مزيج",
+      "foundVariations": [
+        {
+          "term": "الخلط",
+          "occurrences": [
+            "content/lessons/modules/modules-mixins.md"
+          ],
+          "context": "Section title: 'الخلط (Mixins)'"
+        },
+        {
+          "term": "مزيج",
+          "occurrences": [],
+          "context": "Glossary term not found in lessons"
+        }
+      ],
+      "severity": "medium",
+      "recommendation": "Glossary uses 'مزيج' but lessons use 'الخلط'. Update glossary to match lesson terminology or vice versa.",
+      "isActualInconsistency": true,
+      "notes": "Lesson uses 'الخلط' which may be clearer as it describes the action"
+    }
+  ],
+  "consistentTerms": [
+    {
+      "englishTerm": "Method",
+      "arabicTerm": "دالة",
+      "status": "consistent",
+      "notes": "Used consistently across all lessons"
+    },
+    {
+      "englishTerm": "Function",
+      "arabicTerm": "دالة",
+      "status": "consistent",
+      "notes": "Correctly unified with Method as 'دالة'"
+    },
+    {
+      "englishTerm": "Class",
+      "arabicTerm": "صنف",
+      "status": "consistent",
+      "notes": "Used consistently in OOP lessons"
+    },
+    {
+      "englishTerm": "Object",
+      "arabicTerm": "كائن",
+      "status": "consistent",
+      "notes": "Used consistently in OOP lessons"
+    },
+    {
+      "englishTerm": "Variable",
+      "arabicTerm": "متغير",
+      "status": "consistent",
+      "notes": "Used consistently across all lessons"
+    },
+    {
+      "englishTerm": "Array",
+      "arabicTerm": "مصفوفة",
+      "status": "consistent",
+      "notes": "Used consistently in collections lessons"
+    },
+    {
+      "englishTerm": "Hash",
+      "arabicTerm": "قاموس",
+      "status": "consistent",
+      "notes": "Used consistently in collections lessons"
+    },
+    {
+      "englishTerm": "String",
+      "arabicTerm": "نص",
+      "status": "consistent",
+      "notes": "Used consistently across all lessons"
+    },
+    {
+      "englishTerm": "Module",
+      "arabicTerm": "وحدة",
+      "status": "consistent",
+      "notes": "Used consistently in modules lesson"
+    },
+    {
+      "englishTerm": "Loop",
+      "arabicTerm": "حلقة",
+      "status": "consistent",
+      "notes": "Used consistently with variations like 'حلقة تكرارية'"
+    },
+    {
+      "englishTerm": "Inheritance",
+      "arabicTerm": "وراثة",
+      "status": "consistent",
+      "notes": "Used consistently in OOP lessons"
+    },
+    {
+      "englishTerm": "Exception",
+      "arabicTerm": "خطأ/استثناء",
+      "status": "consistent",
+      "notes": "Error handling lesson uses 'خطأ' which is more accessible"
+    },
+    {
+      "englishTerm": "Parameter",
+      "arabicTerm": "معامل",
+      "status": "consistent",
+      "notes": "Used consistently in methods lessons"
+    },
+    {
+      "englishTerm": "Return",
+      "arabicTerm": "إرجاع",
+      "status": "consistent",
+      "notes": "Used consistently in methods lessons"
+    },
+    {
+      "englishTerm": "Instance",
+      "arabicTerm": "مثيل",
+      "status": "consistent",
+      "notes": "Used consistently in OOP lessons"
+    },
+    {
+      "englishTerm": "Proc",
+      "arabicTerm": "Proc",
+      "status": "consistent",
+      "notes": "Kept as English term with Arabic explanation, common practice"
+    },
+    {
+      "englishTerm": "Lambda",
+      "arabicTerm": "Lambda",
+      "status": "consistent",
+      "notes": "Kept as English term with Arabic explanation, common practice"
+    }
+  ],
+  "summary": {
+    "totalInconsistencies": 5,
+    "severityBreakdown": {
+      "high": 0,
+      "medium": 3,
+      "low": 2
+    },
+    "actualInconsistencies": 3,
+    "acceptableVariations": 2,
+    "overallAssessment": "The terminology across lessons is largely consistent with the glossary. The identified inconsistencies are minor and mostly involve either acceptable variations (block/كتلة برمجية) or cases where the glossary could be updated to match clearer lesson terminology (mixin/الخلط). The most notable issue is the Range/Scope ambiguity where both concepts use 'نطاق'."
+  },
+  "recommendations": [
+    {
+      "priority": "P1",
+      "action": "Update glossary to add 'الخلط' as alternative for Mixin, or update lessons to use 'مزيج'"
+    },
+    {
+      "priority": "P1",
+      "action": "Consider adding distinction between Range (نطاق القيم) and Scope (نطاق المتغير or مجال)"
+    },
+    {
+      "priority": "P2",
+      "action": "Add 'Accessor/موصّل' to glossary as it's commonly used in lessons"
+    },
+    {
+      "priority": "P2",
+      "action": "Clarify Constructor vs Initialize terminology in glossary"
+    },
+    {
+      "priority": "P3",
+      "action": "Consider adding 'كتلة برمجية' as alternative to 'كتلة' for Block in glossary"
+    }
+  ]
+}

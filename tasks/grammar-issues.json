@@ -1,0 +1,551 @@
+{
+  "issues": [
+    {
+      "id": "GI-001",
+      "file": "content/lessons/getting-started/what-is-ruby.md",
+      "line": 70,
+      "original": "\"مرحبا\".length",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين، بينما في باقي الملف تُكتب 'مرحباً' بالتنوين",
+      "suggestion": "\"مرحباً\".length",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-002",
+      "file": "content/lessons/getting-started/hello-world.md",
+      "line": 1,
+      "original": "# مرحبا بالعالم",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين، يُفضل كتابتها 'مرحباً' للتناسق",
+      "suggestion": "# مرحباً بالعالم",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-003",
+      "file": "content/lessons/getting-started/hello-world.md",
+      "line": 3,
+      "original": "برنامج \"مرحبا بالعالم\"",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين",
+      "suggestion": "برنامج \"مرحباً بالعالم\"",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-004",
+      "file": "content/lessons/getting-started/hello-world.md",
+      "line": 71,
+      "original": "مرحبا بالعالم",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين (في قسم الناتج المتوقع)",
+      "suggestion": "مرحباً بالعالم",
+      "category": "consistency",
+      "note": "هذا الناتج المتوقع للتمرين - يجب تحديث التمرين ليتوقع 'مرحباً' مع التنوين"
+    },
+    {
+      "id": "GI-005",
+      "file": "content/lessons/getting-started/hello-world.md",
+      "line": 77,
+      "original": "مرحبا بالعالم",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين (في قسم الناتج المتوقع)",
+      "suggestion": "مرحباً بالعالم",
+      "category": "consistency",
+      "note": "هذا الناتج المتوقع للتمرين - يجب تحديث التمرين ليتوقع 'مرحباً' مع التنوين"
+    },
+    {
+      "id": "GI-006",
+      "file": "content/lessons/getting-started/comments.md",
+      "line": 19,
+      "original": "puts \"مرحبا\"",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين",
+      "suggestion": "puts \"مرحباً\"",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-007",
+      "file": "content/lessons/getting-started/output-methods.md",
+      "line": 78,
+      "original": "p \"مرحبا\"",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين",
+      "suggestion": "p \"مرحباً\"",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-008",
+      "file": "content/lessons/getting-started/output-methods.md",
+      "line": 79,
+      "original": "puts \"مرحبا\"",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين",
+      "suggestion": "puts \"مرحباً\"",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-009",
+      "file": "content/lessons/getting-started/output-methods.md",
+      "line": 84,
+      "original": "\"مرحبا\"",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين (في قسم الناتج)",
+      "suggestion": "\"مرحباً\"",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-010",
+      "file": "content/lessons/getting-started/output-methods.md",
+      "line": 85,
+      "original": "مرحبا",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين (في قسم الناتج)",
+      "suggestion": "مرحباً",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-011",
+      "file": "content/lessons/getting-started/output-methods.md",
+      "line": 88,
+      "original": "لاحظ أن `p` يُظهر علامات الاقتباس، بينما `puts` لا يُظهرها!",
+      "issue": "استخدام علامة تعجب في نهاية جملة توضيحية - الأفضل استخدام نقطة",
+      "suggestion": "لاحظ أن `p` يُظهر علامات الاقتباس، بينما `puts` لا يُظهرها.",
+      "category": "punctuation"
+    },
+    {
+      "id": "GI-012",
+      "file": "content/lessons/getting-started/what-is-ruby.md",
+      "line": 30,
+      "original": "هذه الشيفرة تطبع \"مرحباً!\" خمس مرات - واضح وبسيط!",
+      "issue": "استخدام علامة تعجب في نهاية جملة توضيحية - يمكن استخدام نقطة بدلاً منها",
+      "suggestion": "هذه الشيفرة تطبع \"مرحباً!\" خمس مرات - واضح وبسيط.",
+      "category": "punctuation"
+    },
+    {
+      "id": "GI-013",
+      "file": "content/lessons/fundamentals/variables-types.md",
+      "line": 7,
+      "original": "روبي تكتشفه تلقائياً!",
+      "issue": "استخدام علامة تعجب في نهاية جملة توضيحية",
+      "suggestion": "روبي تكتشفه تلقائياً.",
+      "category": "punctuation"
+    },
+    {
+      "id": "GI-014",
+      "file": "content/lessons/fundamentals/variables-types.md",
+      "line": 111,
+      "original": "لاحظ أن `1_000_000` تساوي مليون - الشرطة السفلية للقراءة فقط ولا تؤثر على القيمة!",
+      "issue": "استخدام علامة تعجب في نهاية جملة توضيحية",
+      "suggestion": "لاحظ أن `1_000_000` تساوي مليون - الشرطة السفلية للقراءة فقط ولا تؤثر على القيمة.",
+      "category": "punctuation"
+    },
+    {
+      "id": "GI-015",
+      "file": "content/lessons/fundamentals/variables-types.md",
+      "line": 298,
+      "original": "`\"مرحبا\"`",
+      "issue": "الكلمة 'مرحبا' في جدول أنواع البيانات مكتوبة بدون ألف التنوين",
+      "suggestion": "`\"مرحباً\"`",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-016",
+      "file": "content/lessons/fundamentals/string-methods.md",
+      "line": 50,
+      "original": "greeting = \"مرحبا\"",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين",
+      "suggestion": "greeting = \"مرحباً\"",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-017",
+      "file": "content/lessons/fundamentals/string-methods.md",
+      "line": 87,
+      "original": "text = \"   مرحبا بالعالم   \"",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين",
+      "suggestion": "text = \"   مرحباً بالعالم   \"",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-018",
+      "file": "content/lessons/fundamentals/string-methods.md",
+      "line": 89,
+      "original": "# \"مرحبا بالعالم\"",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين في التعليق",
+      "suggestion": "# \"مرحباً بالعالم\"",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-019",
+      "file": "content/lessons/fundamentals/bang-predicate.md",
+      "line": 49,
+      "original": "message = \"   مرحبا   \"",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين",
+      "suggestion": "message = \"   مرحباً   \"",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-020",
+      "file": "content/lessons/fundamentals/bang-predicate.md",
+      "line": 51,
+      "original": "# مرحبا",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين في التعليق",
+      "suggestion": "# مرحباً",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-021",
+      "file": "content/lessons/fundamentals/truthiness.md",
+      "line": 10,
+      "original": "value = \"مرحبا\"",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين",
+      "suggestion": "value = \"مرحباً\"",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-022",
+      "file": "content/lessons/fundamentals/truthiness.md",
+      "line": 73,
+      "original": "puts \"الصفر صادق في روبي!\"",
+      "issue": "استخدام علامة تعجب في نهاية جملة توضيحية داخل كود",
+      "suggestion": "puts \"الصفر صادق في روبي.\"",
+      "category": "punctuation"
+    },
+    {
+      "id": "GI-023",
+      "file": "content/lessons/fundamentals/truthiness.md",
+      "line": 87,
+      "original": "puts \"النص الفارغ صادق في روبي!\"",
+      "issue": "استخدام علامة تعجب في نهاية جملة توضيحية داخل كود",
+      "suggestion": "puts \"النص الفارغ صادق في روبي.\"",
+      "category": "punctuation"
+    },
+    {
+      "id": "GI-024",
+      "file": "content/lessons/fundamentals/truthiness.md",
+      "line": 101,
+      "original": "puts \"المصفوفة الفارغة صادقة في روبي!\"",
+      "issue": "استخدام علامة تعجب في نهاية جملة توضيحية داخل كود",
+      "suggestion": "puts \"المصفوفة الفارغة صادقة في روبي.\"",
+      "category": "punctuation"
+    },
+    {
+      "id": "GI-025",
+      "file": "content/lessons/fundamentals/truthiness.md",
+      "line": 115,
+      "original": "puts \"القاموس الفارغ صادق في روبي!\"",
+      "issue": "استخدام علامة تعجب في نهاية جملة توضيحية داخل كود",
+      "suggestion": "puts \"القاموس الفارغ صادق في روبي.\"",
+      "category": "punctuation"
+    },
+    {
+      "id": "GI-026",
+      "file": "content/lessons/control-flow/case-when.md",
+      "line": 3,
+      "original": "هنا يأتي دور `case/when`!",
+      "issue": "استخدام علامة تعجب في نهاية جملة توضيحية",
+      "suggestion": "هنا يأتي دور `case/when`.",
+      "category": "punctuation"
+    },
+    {
+      "id": "GI-027",
+      "file": "content/lessons/control-flow/ternary.md",
+      "line": 3,
+      "original": "هنا يأتي دور **العامل الثلاثي** (Ternary Operator)!",
+      "issue": "استخدام علامة تعجب في نهاية جملة توضيحية",
+      "suggestion": "هنا يأتي دور **العامل الثلاثي** (Ternary Operator).",
+      "category": "punctuation"
+    },
+    {
+      "id": "GI-028",
+      "file": "content/lessons/control-flow/ternary.md",
+      "line": 37,
+      "original": "كلا الطريقتين تعطي نفس النتيجة، لكن العامل الثلاثي أقصر بكثير!",
+      "issue": "استخدام علامة تعجب في نهاية جملة توضيحية",
+      "suggestion": "كلا الطريقتين تعطي نفس النتيجة، لكن العامل الثلاثي أقصر بكثير.",
+      "category": "punctuation"
+    },
+    {
+      "id": "GI-029",
+      "file": "content/lessons/collections/arrays.md",
+      "line": 32,
+      "original": "mixed = [42, \"مرحبا\", true, 3.14, nil]",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين",
+      "suggestion": "mixed = [42, \"مرحباً\", true, 3.14, nil]",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-030",
+      "file": "content/lessons/collections/ranges-enumerables.md",
+      "line": 122,
+      "original": "text = \"مرحبا بالعالم\"",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين",
+      "suggestion": "text = \"مرحباً بالعالم\"",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-031",
+      "file": "content/lessons/collections/ranges-enumerables.md",
+      "line": 123,
+      "original": "# مرحبا",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين في التعليق",
+      "suggestion": "# مرحباً",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-032",
+      "file": "content/lessons/blocks/block-syntax.md",
+      "line": 120,
+      "original": "\"مرحبا\".each_char { |char| puts char }",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين",
+      "suggestion": "\"مرحباً\".each_char { |char| puts char }",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-033",
+      "file": "content/lessons/oop/classes-objects.md",
+      "line": 29,
+      "original": "puts \"مرحبا\".class    # String",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين",
+      "suggestion": "puts \"مرحباً\".class    # String",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-034",
+      "file": "content/lessons/oop/classes-objects.md",
+      "line": 30,
+      "original": "puts \"مرحبا\".length   # 5",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين",
+      "suggestion": "puts \"مرحباً\".length   # 5",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-035",
+      "file": "content/lessons/modules/modules-mixins.md",
+      "line": 3,
+      "original": "هنا تأتي **الوحدات** (Modules)!",
+      "issue": "استخدام علامة تعجب في نهاية جملة توضيحية",
+      "suggestion": "هنا تأتي **الوحدات** (Modules).",
+      "category": "punctuation"
+    },
+    {
+      "id": "GI-036",
+      "file": "content/lessons/errors/error-handling.md",
+      "line": 3,
+      "original": "الأخطاء أمر **حتمي**!",
+      "issue": "استخدام علامة تعجب في نهاية جملة توضيحية",
+      "suggestion": "الأخطاء أمر **حتمي**.",
+      "category": "punctuation"
+    },
+    {
+      "id": "GI-037",
+      "file": "content/glossary.json",
+      "termId": "ternary",
+      "field": "definition",
+      "original": "عامل شرطي مختصر: شرط ? قيمة_صحيح : قيمة_خطأ",
+      "issue": "التعريف لا ينتهي بنقطة بينما جميع التعريفات الأخرى تنتهي بنقطة",
+      "suggestion": "عامل شرطي مختصر: شرط ? قيمة_صحيح : قيمة_خطأ.",
+      "category": "punctuation"
+    },
+    {
+      "id": "GI-038",
+      "file": "public/course.json",
+      "path": "sections[0].lessons[1].title",
+      "line": 20,
+      "original": "مرحبا بالعالم",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين في عنوان الدرس",
+      "suggestion": "مرحباً بالعالم",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-039",
+      "file": "public/course.json",
+      "path": "sections[0].lessons[1].exercise.starterCode",
+      "line": 23,
+      "original": "# اكتب شيفرة تطبع: مرحبا بالعالم",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين في تعليق الكود",
+      "suggestion": "# اكتب شيفرة تطبع: مرحباً بالعالم",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-040",
+      "file": "public/course.json",
+      "path": "sections[0].lessons[1].exercise.expectedOutput",
+      "line": 24,
+      "original": "مرحبا بالعالم",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين في الناتج المتوقع",
+      "suggestion": "مرحباً بالعالم",
+      "category": "consistency",
+      "note": "هذا الناتج المتوقع للتمرين - يجب تحديث الدرس والتمرين معاً للتناسق"
+    },
+    {
+      "id": "GI-041",
+      "file": "public/course.json",
+      "path": "sections[0].lessons[1].exercise.hints[1]",
+      "line": 27,
+      "original": "ضع النص داخل علامات اقتباس: puts \"مرحبا بالعالم\"",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين في التلميح",
+      "suggestion": "ضع النص داخل علامات اقتباس: puts \"مرحباً بالعالم\"",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-042",
+      "file": "public/course.json",
+      "path": "sections[0].lessons[1].exercise.hints[2]",
+      "line": 28,
+      "original": "تأكد من كتابة النص بالضبط: مرحبا بالعالم (بدون علامة تعجب)",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين في التلميح",
+      "suggestion": "تأكد من كتابة النص بالضبط: مرحباً بالعالم (بدون علامة تعجب)",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-043",
+      "file": "public/course.json",
+      "path": "sections[1].lessons[4].exercise.hints[3]",
+      "line": 151,
+      "original": "الصفر والنص الفارغ والمصفوفة الفارغة كلها صادقة!",
+      "issue": "استخدام علامة تعجب في نهاية جملة توضيحية في التلميح",
+      "suggestion": "الصفر والنص الفارغ والمصفوفة الفارغة كلها صادقة.",
+      "category": "punctuation"
+    },
+    {
+      "id": "GI-044",
+      "file": "components/CodePlayground.tsx",
+      "line": 92,
+      "original": "puts \"مرحبا بالعالم!\"",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين في الشيفرة الافتراضية",
+      "suggestion": "puts \"مرحباً بالعالم!\"",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-045",
+      "file": "components/CodeEditor.tsx",
+      "line": 63,
+      "original": "...جارٍ تحميل المحرر",
+      "issue": "النقاط الثلاث في بداية النص غير تقليدية في العربية - الأفضل وضعها في النهاية",
+      "suggestion": "جارٍ تحميل المحرر...",
+      "category": "punctuation"
+    },
+    {
+      "id": "GI-046",
+      "file": "app/page.tsx",
+      "line": 9,
+      "original": "# مرحبا بك في روبي!",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين في تعليق الشيفرة المعروضة",
+      "suggestion": "# مرحباً بك في روبي!",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-047",
+      "file": "app/page.tsx",
+      "line": 11,
+      "original": "puts \"مرحبا يا #{name}!\"",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين في الشيفرة المعروضة",
+      "suggestion": "puts \"مرحباً يا #{name}!\"",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-048",
+      "file": "app/page.tsx",
+      "line": 18,
+      "original": "مرحبا يا أحمد!",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين في ناتج الشيفرة المعروض",
+      "suggestion": "مرحباً يا أحمد!",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-049",
+      "file": "app/lessons/[section]/[lesson]/LessonPlayground.tsx",
+      "line": 34,
+      "original": "puts \"مرحبا بالعالم!\"",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين في الشيفرة الافتراضية",
+      "suggestion": "puts \"مرحباً بالعالم!\"",
+      "category": "consistency"
+    }
+  ],
+  "summary": {
+    "totalIssues": 49,
+    "byCategory": {
+      "consistency": 32,
+      "punctuation": 17
+    },
+    "byFile": {
+      "content/lessons/getting-started/what-is-ruby.md": 2,
+      "content/lessons/getting-started/hello-world.md": 4,
+      "content/lessons/getting-started/comments.md": 1,
+      "content/lessons/getting-started/output-methods.md": 5,
+      "content/lessons/fundamentals/variables-types.md": 3,
+      "content/lessons/fundamentals/string-methods.md": 3,
+      "content/lessons/fundamentals/bang-predicate.md": 2,
+      "content/lessons/fundamentals/truthiness.md": 5,
+      "content/lessons/control-flow/case-when.md": 1,
+      "content/lessons/control-flow/ternary.md": 2,
+      "content/lessons/collections/arrays.md": 1,
+      "content/lessons/collections/ranges-enumerables.md": 2,
+      "content/lessons/blocks/block-syntax.md": 1,
+      "content/lessons/oop/classes-objects.md": 2,
+      "content/lessons/modules/modules-mixins.md": 1,
+      "content/lessons/errors/error-handling.md": 1,
+      "content/glossary.json": 1,
+      "public/course.json": 6,
+      "components/CodePlayground.tsx": 1,
+      "components/CodeEditor.tsx": 1,
+      "app/page.tsx": 3,
+      "app/lessons/[section]/[lesson]/LessonPlayground.tsx": 1
+    }
+  },
+  "metadata": {
+    "scannedAt": "2026-01-26",
+    "filesScanned": [
+      "content/lessons/getting-started/what-is-ruby.md",
+      "content/lessons/getting-started/hello-world.md",
+      "content/lessons/getting-started/output-methods.md",
+      "content/lessons/getting-started/comments.md",
+      "content/lessons/fundamentals/variables-types.md",
+      "content/lessons/fundamentals/string-interpolation.md",
+      "content/lessons/fundamentals/operators.md",
+      "content/lessons/fundamentals/boolean-logic.md",
+      "content/lessons/fundamentals/truthiness.md",
+      "content/lessons/fundamentals/constants-symbols.md",
+      "content/lessons/fundamentals/string-methods.md",
+      "content/lessons/fundamentals/bang-predicate.md",
+      "content/lessons/fundamentals/user-input.md",
+      "content/lessons/fundamentals/type-conversion.md",
+      "content/lessons/fundamentals/multiple-assignment.md",
+      "content/lessons/control-flow/conditionals.md",
+      "content/lessons/control-flow/case-when.md",
+      "content/lessons/control-flow/ternary.md",
+      "content/lessons/loops/while-until.md",
+      "content/lessons/loops/for-control.md",
+      "content/lessons/collections/arrays.md",
+      "content/lessons/collections/array-methods.md",
+      "content/lessons/collections/hashes.md",
+      "content/lessons/collections/ranges-enumerables.md",
+      "content/lessons/methods/defining-methods.md",
+      "content/lessons/methods/returns-splat.md",
+      "content/lessons/blocks/block-syntax.md",
+      "content/lessons/blocks/yield.md",
+      "content/lessons/blocks/procs-lambdas.md",
+      "content/lessons/oop/classes-objects.md",
+      "content/lessons/oop/initialize-accessors.md",
+      "content/lessons/oop/inheritance.md",
+      "content/lessons/modules/modules-mixins.md",
+      "content/lessons/errors/error-handling.md",
+      "content/lessons/challenges/fizzbuzz.md",
+      "content/lessons/challenges/calculator.md",
+      "content/lessons/challenges/guessing-game.md",
+      "content/glossary.json",
+      "public/course.json",
+      "components/MobileMenuButton.tsx",
+      "components/ThemeToggle.tsx",
+      "components/Tooltip.tsx",
+      "components/LessonActions.tsx",
+      "components/CodeBlock.tsx",
+      "components/Sidebar.tsx",
+      "components/InstallPrompt.tsx",
+      "components/PWAProvider.tsx",
+      "components/OfflineIndicator.tsx",
+      "components/CodeEditor.tsx",
+      "components/CodePlayground.tsx",
+      "app/layout.tsx",
+      "app/page.tsx",
+      "app/glossary/layout.tsx",
+      "app/glossary/page.tsx",
+      "app/progress/layout.tsx",
+      "app/progress/page.tsx",
+      "app/lessons/[section]/[lesson]/page.tsx",
+      "app/lessons/[section]/[lesson]/LessonContent.tsx",
+      "app/lessons/[section]/[lesson]/LessonPlayground.tsx"
+    ],
+    "storyId": "US-010"
+  }
+}

@@ -200,3 +200,9 @@ body.fullscreen-active {
     animation-duration: 0.01ms !important;
   }
 }
+
+/* Bidirectional text support for output blocks */
+.bidi-line {
+  unicode-bidi: isolate;
+  text-align: start;
+}

@@ -47,7 +47,7 @@ puts text.swapcase
 ### `length` و `size` - طول النص
 
 ```ruby
-greeting = "مرحبا"
+greeting = "مرحباً"
 # 5
 puts greeting.length
 
@@ -84,8 +84,8 @@ puts sentence.include?("بايثون")
 ### `strip` - إزالة المسافات من الطرفين
 
 ```ruby
-text = "   مرحبا بالعالم   "
-# "مرحبا بالعالم"
+text = "   مرحباً بالعالم   "
+# "مرحباً بالعالم"
 puts text.strip
 ```
 
