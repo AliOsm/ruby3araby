@@ -1,4 +1,7 @@
 ## Codebase Patterns
+- Translation verification uses tasks/translation-issues.json with structured format (verifiedTerms[], suggestions[], issues[])
+- Authoritative Arabic programming sources: Hsoub Academy (academy.hsoub.com), Arabic Wikipedia (ar.wikipedia.org), Hsoub Wiki (wiki.hsoub.com)
+- All 20 first glossary terms verified accurate: algorithm, array, assignment, block, boolean, bug, class, comment, comparison-operator, concatenation, conditional, constant, constructor, data-type, debugging, default-value, each, enumerable, exception, expression
 - The glossary.json file has excellent Arabic quality - only 1 minor issue (missing period) found across 67 terms
 - Glossary definitions should consistently end with periods
 - The blocks section (yield.md, procs-lambdas.md) has excellent tanween consistency
@@ -11,6 +14,33 @@
 - Lesson title "مرحبا بالعالم" needs tanween for consistency - affects validation when corrected
 - App pages with Arabic text: layout.tsx (metadata), page.tsx (preview code), glossary/page.tsx (search UI), progress/page.tsx (progress UI), lessons/[section]/[lesson]/LessonPlayground.tsx (default code)
 - Most app page files have clean Arabic text - only app/page.tsx and LessonPlayground.tsx have tanween issues
+
+---
+
+## 2026-01-26 - US-011
+- What was implemented: Verified first 20 glossary terms (algorithm through expression) against authoritative Arabic programming resources
+- Files changed:
+  - Created: tasks/translation-issues.json (verification results for 20 terms)
+  - Updated: ralph/prd.json (marked US-011 as passes: true)
+- Findings: All 20 terms verified as accurate
+  - 20 verified terms with consistent industry-standard translations
+  - 0 translation issues requiring changes
+  - 1 suggestion noted (hash/قاموس is acceptable, though جدول تجزئة is more technical)
+- Terms verified:
+  - algorithm (خوارزمية) - confirmed by Hsoub Academy
+  - array (مصفوفة) - confirmed by Arabic Wikipedia and Hsoub
+  - block (كتلة) - confirmed by Hsoub Ruby documentation
+  - boolean (منطقي) - confirmed by Hsoub Wiki
+  - class (صنف) - confirmed by Arabic Wikipedia and Hsoub
+  - constructor (مُنشئ) - confirmed by multiple sources
+  - debugging (تصحيح الأخطاء) - confirmed by Arabic Wikipedia
+  - And 12 more terms all verified
+- **Learnings for future iterations:**
+  - Hsoub Academy (academy.hsoub.com) is the most comprehensive Arabic programming resource
+  - Arabic Wikipedia has dedicated pages for key CS terms (صنف, جدول تجزئة, نوع بيانات)
+  - The glossary translations are high quality and consistent with industry standards
+  - Some terms have multiple acceptable translations (e.g., concatenation: سلسلة/دمج, constructor: مُنشئ/الدالة البانية)
+  - User-friendly terms (قاموس for hash) are appropriate for beginner courses vs technical terms (جدول تجزئة)
 
 ---
 

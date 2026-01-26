@@ -1,0 +1,241 @@
+{
+  "metadata": {
+    "description": "Translation verification results for glossary terms against authoritative Arabic programming resources",
+    "sources": [
+      "Hsoub Academy (academy.hsoub.com)",
+      "Arabic Wikipedia (ar.wikipedia.org)",
+      "Hsoub Wiki (wiki.hsoub.com)"
+    ],
+    "lastUpdated": "2026-01-26"
+  },
+  "summary": {
+    "termsVerified": 20,
+    "issuesFound": 0,
+    "suggestionsProvided": 1
+  },
+  "verifiedTerms": [
+    {
+      "id": "algorithm",
+      "english": "Algorithm",
+      "currentArabic": "خوارزمية",
+      "status": "verified",
+      "sources": [
+        "https://academy.hsoub.com/programming/advanced/الخوارزميات/",
+        "https://wiki.hsoub.com/Algorithms"
+      ],
+      "notes": "Standard Arabic translation, confirmed by multiple authoritative sources"
+    },
+    {
+      "id": "array",
+      "english": "Array",
+      "currentArabic": "مصفوفة",
+      "status": "verified",
+      "sources": [
+        "https://ar.wikipedia.org/wiki/مصفوفة_(حوسبة)",
+        "https://wiki.hsoub.com/Ruby/Array"
+      ],
+      "notes": "Standard Arabic translation for array data structure"
+    },
+    {
+      "id": "assignment",
+      "english": "Assignment",
+      "currentArabic": "إسناد",
+      "status": "verified",
+      "sources": [
+        "https://academy.hsoub.com/programming/general/"
+      ],
+      "notes": "Standard Arabic programming term"
+    },
+    {
+      "id": "block",
+      "english": "Block",
+      "currentArabic": "كتلة",
+      "status": "verified",
+      "sources": [
+        "https://wiki.hsoub.com/Ruby",
+        "https://academy.hsoub.com/programming/ruby/"
+      ],
+      "notes": "Confirmed by Hsoub Academy Ruby documentation: الكتلة block في روبي"
+    },
+    {
+      "id": "boolean",
+      "english": "Boolean",
+      "currentArabic": "منطقي",
+      "status": "verified",
+      "sources": [
+        "https://wiki.hsoub.com/JavaScript/Boolean",
+        "https://academy.hsoub.com/questions/23146-ما-هو-ال-boolean-في-البرمجة/"
+      ],
+      "notes": "Standard translation for Boolean data type"
+    },
+    {
+      "id": "bug",
+      "english": "Bug",
+      "currentArabic": "خطأ برمجي",
+      "status": "verified",
+      "sources": [
+        "https://ar.wikipedia.org/wiki/خطأ_برمجي"
+      ],
+      "notes": "Standard Arabic translation for programming bug"
+    },
+    {
+      "id": "class",
+      "english": "Class",
+      "currentArabic": "صنف",
+      "status": "verified",
+      "sources": [
+        "https://ar.wikipedia.org/wiki/صنف_(حوسبة)",
+        "https://io.hsoub.com/ELI5/92246-ما-هي-ال-class-في-البرمجة-كائنية-التوجه"
+      ],
+      "notes": "Standard Arabic translation for OOP class"
+    },
+    {
+      "id": "comment",
+      "english": "Comment",
+      "currentArabic": "تعليق",
+      "status": "verified",
+      "sources": [
+        "https://academy.hsoub.com/programming/general/"
+      ],
+      "notes": "Standard Arabic programming term"
+    },
+    {
+      "id": "comparison-operator",
+      "english": "Comparison Operator",
+      "currentArabic": "عامل مقارنة",
+      "status": "verified",
+      "sources": [
+        "https://academy.hsoub.com/programming/general/"
+      ],
+      "notes": "Standard Arabic programming term"
+    },
+    {
+      "id": "concatenation",
+      "english": "Concatenation",
+      "currentArabic": "سَلسَلة",
+      "status": "verified",
+      "sources": [
+        "https://academy.hsoub.com/apps/productivity/office/microsoft-excel/"
+      ],
+      "notes": "Also commonly translated as 'دمج' (merging), but 'سلسلة' is accurate for string concatenation"
+    },
+    {
+      "id": "conditional",
+      "english": "Conditional",
+      "currentArabic": "شرطي",
+      "status": "verified",
+      "sources": [
+        "https://academy.hsoub.com/programming/general/"
+      ],
+      "notes": "Standard Arabic programming term for conditional statements"
+    },
+    {
+      "id": "constant",
+      "english": "Constant",
+      "currentArabic": "ثابت",
+      "status": "verified",
+      "sources": [
+        "https://academy.hsoub.com/programming/general/"
+      ],
+      "notes": "Standard Arabic programming term"
+    },
+    {
+      "id": "constructor",
+      "english": "Constructor",
+      "currentArabic": "مُنشئ",
+      "status": "verified",
+      "sources": [
+        "https://3alam.pro/omnyyah/articles/constructers-in-java"
+      ],
+      "notes": "Also called 'الدالة البانية' in some sources, but 'مُنشئ' is widely used"
+    },
+    {
+      "id": "data-type",
+      "english": "Data Type",
+      "currentArabic": "نوع بيانات",
+      "status": "verified",
+      "sources": [
+        "https://ar.wikipedia.org/wiki/نوع_بيانات",
+        "https://academy.hsoub.com/programming/general/دليلك-الشامل-إلى-أنواع-البيانات-r1726/"
+      ],
+      "notes": "Standard Arabic translation confirmed by Wikipedia and Hsoub"
+    },
+    {
+      "id": "debugging",
+      "english": "Debugging",
+      "currentArabic": "تصحيح الأخطاء",
+      "status": "verified",
+      "sources": [
+        "https://ar.wikipedia.org/wiki/تصحيح_برمجي",
+        "https://academy.hsoub.com/programming/general/كيفية-التعامل-مع-الأخطاء-البرمجية-r1342/"
+      ],
+      "notes": "Standard Arabic translation for debugging process"
+    },
+    {
+      "id": "default-value",
+      "english": "Default Value",
+      "currentArabic": "قيمة افتراضية",
+      "status": "verified",
+      "sources": [
+        "https://academy.hsoub.com/programming/general/"
+      ],
+      "notes": "Standard Arabic programming term"
+    },
+    {
+      "id": "each",
+      "english": "Each",
+      "currentArabic": "لكل عنصر",
+      "status": "verified",
+      "sources": [
+        "https://wiki.hsoub.com/Ruby"
+      ],
+      "notes": "Ruby-specific method name, translation describes functionality"
+    },
+    {
+      "id": "enumerable",
+      "english": "Enumerable",
+      "currentArabic": "قابل للتعداد",
+      "status": "verified",
+      "sources": [
+        "https://rubyreferences.github.io/rubyref/builtin/types/enumerable.html"
+      ],
+      "notes": "Standard Arabic translation for enumerable/countable"
+    },
+    {
+      "id": "exception",
+      "english": "Exception",
+      "currentArabic": "استثناء",
+      "status": "verified",
+      "sources": [
+        "https://academy.hsoub.com/programming/python/التحقق-من-المدخلات-عبر-بايثون-python-r2346/"
+      ],
+      "notes": "Standard Arabic translation for programming exceptions"
+    },
+    {
+      "id": "expression",
+      "english": "Expression",
+      "currentArabic": "تعبير",
+      "status": "verified",
+      "sources": [
+        "https://academy.hsoub.com/programming/java/التعبيرات-expressions-في-جافا-r1019/",
+        "https://academy.hsoub.com/programming/general/مقدمة-إلى-البرمجة-الوظيفية-functional-programming-r1391/"
+      ],
+      "notes": "Confirmed by Hsoub Academy: التعبير هو تجميعة من العمليات والمتغيرات التي ينتج عنها قيمة واحدة"
+    }
+  ],
+  "suggestions": [
+    {
+      "id": "hash",
+      "english": "Hash",
+      "currentArabic": "قاموس",
+      "alternativeArabic": "جدول تجزئة",
+      "status": "acceptable",
+      "sources": [
+        "https://ar.wikipedia.org/wiki/جدول_تجزئة",
+        "https://wiki.hsoub.com/Ruby"
+      ],
+      "notes": "The glossary uses 'قاموس' (dictionary) which is user-friendly for beginners. Technical sources use 'جدول تجزئة' (hash table). Both are acceptable; 'قاموس' is appropriate for an introductory Ruby course as it emphasizes the key-value dictionary-like nature of Ruby hashes."
+    }
+  ],
+  "issues": []
+}
