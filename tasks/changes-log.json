@@ -326,14 +326,64 @@
       "after": "# مرحباً",
       "category": "consistency",
       "storyId": "US-018"
+    },
+    {
+      "id": "CH-033",
+      "issueId": "GI-032",
+      "file": "content/lessons/blocks/block-syntax.md",
+      "line": 120,
+      "before": "\"مرحبا\".each_char { |char| puts char }",
+      "after": "\"مرحباً\".each_char { |char| puts char }",
+      "category": "consistency",
+      "storyId": "US-019"
+    },
+    {
+      "id": "CH-034",
+      "issueId": "GI-033",
+      "file": "content/lessons/oop/classes-objects.md",
+      "line": 29,
+      "before": "puts \"مرحبا\".class    # String",
+      "after": "puts \"مرحباً\".class    # String",
+      "category": "consistency",
+      "storyId": "US-019"
+    },
+    {
+      "id": "CH-035",
+      "issueId": "GI-034",
+      "file": "content/lessons/oop/classes-objects.md",
+      "line": 30,
+      "before": "puts \"مرحبا\".length   # 5",
+      "after": "puts \"مرحباً\".length   # 5",
+      "category": "consistency",
+      "storyId": "US-019"
+    },
+    {
+      "id": "CH-036",
+      "issueId": "GI-035",
+      "file": "content/lessons/modules/modules-mixins.md",
+      "line": 3,
+      "before": "هنا تأتي **الوحدات** (Modules)!",
+      "after": "هنا تأتي **الوحدات** (Modules).",
+      "category": "punctuation",
+      "storyId": "US-019"
+    },
+    {
+      "id": "CH-037",
+      "issueId": "GI-036",
+      "file": "content/lessons/errors/error-handling.md",
+      "line": 3,
+      "before": "الأخطاء أمر **حتمي**!",
+      "after": "الأخطاء أمر **حتمي**.",
+      "category": "punctuation",
+      "storyId": "US-019"
     }
   ],
   "summary": {
-    "totalChanges": 32,
-    "filesModified": 12,
+    "totalChanges": 37,
+    "filesModified": 16,
     "byCategory": {
-      "consistency": 21,
-      "punctuation": 11
+      "consistency": 24,
+      "punctuation": 13
     },
     "byFile": {
       "content/lessons/getting-started/what-is-ruby.md": 2,
@@ -347,12 +397,16 @@
       "content/lessons/control-flow/case-when.md": 1,
       "content/lessons/control-flow/ternary.md": 2,
       "content/lessons/collections/arrays.md": 1,
-      "content/lessons/collections/ranges-enumerables.md": 2
+      "content/lessons/collections/ranges-enumerables.md": 2,
+      "content/lessons/blocks/block-syntax.md": 1,
+      "content/lessons/oop/classes-objects.md": 2,
+      "content/lessons/modules/modules-mixins.md": 1,
+      "content/lessons/errors/error-handling.md": 1
     }
   },
   "metadata": {
     "createdAt": "2026-01-26",
     "lastUpdated": "2026-01-26",
-    "completedStories": ["US-016", "US-017", "US-018"]
+    "completedStories": ["US-016", "US-017", "US-018", "US-019"]
   }
 }

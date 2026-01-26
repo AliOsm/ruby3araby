@@ -117,7 +117,7 @@ end
 # 1 2 3 4 5
 
 # التكرار على نص (كل حرف)
-"مرحبا".each_char { |char| puts char }
+"مرحباً".each_char { |char| puts char }
 # م
 # ر
 # ح
