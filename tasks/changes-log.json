@@ -266,14 +266,74 @@
       "category": "punctuation",
       "storyId": "US-017",
       "note": "Updated both code and output section"
+    },
+    {
+      "id": "CH-027",
+      "issueId": "GI-026",
+      "file": "content/lessons/control-flow/case-when.md",
+      "line": 3,
+      "before": "هنا يأتي دور `case/when`!",
+      "after": "هنا يأتي دور `case/when`.",
+      "category": "punctuation",
+      "storyId": "US-018"
+    },
+    {
+      "id": "CH-028",
+      "issueId": "GI-027",
+      "file": "content/lessons/control-flow/ternary.md",
+      "line": 3,
+      "before": "هنا يأتي دور **العامل الثلاثي** (Ternary Operator)!",
+      "after": "هنا يأتي دور **العامل الثلاثي** (Ternary Operator).",
+      "category": "punctuation",
+      "storyId": "US-018"
+    },
+    {
+      "id": "CH-029",
+      "issueId": "GI-028",
+      "file": "content/lessons/control-flow/ternary.md",
+      "line": 37,
+      "before": "كلا الطريقتين تعطي نفس النتيجة، لكن العامل الثلاثي أقصر بكثير!",
+      "after": "كلا الطريقتين تعطي نفس النتيجة، لكن العامل الثلاثي أقصر بكثير.",
+      "category": "punctuation",
+      "storyId": "US-018"
+    },
+    {
+      "id": "CH-030",
+      "issueId": "GI-029",
+      "file": "content/lessons/collections/arrays.md",
+      "line": 32,
+      "before": "mixed = [42, \"مرحبا\", true, 3.14, nil]",
+      "after": "mixed = [42, \"مرحباً\", true, 3.14, nil]",
+      "category": "consistency",
+      "storyId": "US-018"
+    },
+    {
+      "id": "CH-031",
+      "issueId": "GI-030",
+      "file": "content/lessons/collections/ranges-enumerables.md",
+      "line": 122,
+      "before": "text = \"مرحبا بالعالم\"",
+      "after": "text = \"مرحباً بالعالم\"",
+      "category": "consistency",
+      "storyId": "US-018"
+    },
+    {
+      "id": "CH-032",
+      "issueId": "GI-031",
+      "file": "content/lessons/collections/ranges-enumerables.md",
+      "line": 123,
+      "before": "# مرحبا",
+      "after": "# مرحباً",
+      "category": "consistency",
+      "storyId": "US-018"
     }
   ],
   "summary": {
-    "totalChanges": 26,
-    "filesModified": 8,
+    "totalChanges": 32,
+    "filesModified": 12,
     "byCategory": {
-      "consistency": 18,
-      "punctuation": 8
+      "consistency": 21,
+      "punctuation": 11
     },
     "byFile": {
       "content/lessons/getting-started/what-is-ruby.md": 2,
@@ -283,12 +343,16 @@
       "content/lessons/fundamentals/variables-types.md": 3,
       "content/lessons/fundamentals/string-methods.md": 3,
       "content/lessons/fundamentals/bang-predicate.md": 2,
-      "content/lessons/fundamentals/truthiness.md": 5
+      "content/lessons/fundamentals/truthiness.md": 5,
+      "content/lessons/control-flow/case-when.md": 1,
+      "content/lessons/control-flow/ternary.md": 2,
+      "content/lessons/collections/arrays.md": 1,
+      "content/lessons/collections/ranges-enumerables.md": 2
     }
   },
   "metadata": {
     "createdAt": "2026-01-26",
     "lastUpdated": "2026-01-26",
-    "completedStories": ["US-016", "US-017"]
+    "completedStories": ["US-016", "US-017", "US-018"]
   }
 }

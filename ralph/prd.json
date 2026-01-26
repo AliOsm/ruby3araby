@@ -269,8 +269,8 @@
         "Typecheck passes"
       ],
       "priority": 18,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Applied 6 corrections (3 consistency, 3 punctuation) to 4 files: case-when.md, ternary.md, arrays.md, ranges-enumerables.md. No issues found in loops/ or methods/ directories."
     },
     {
       "id": "US-019",

@@ -1,3 +1,27 @@
+## 2026-01-26 - US-018
+- What was implemented: Applied grammar corrections to control-flow and collections lesson files
+- Files changed:
+  - content/lessons/control-flow/case-when.md (1 fix: GI-026)
+  - content/lessons/control-flow/ternary.md (2 fixes: GI-027, GI-028)
+  - content/lessons/collections/arrays.md (1 fix: GI-029)
+  - content/lessons/collections/ranges-enumerables.md (2 fixes: GI-030, GI-031)
+  - Updated: tasks/changes-log.json (added 6 new corrections, CH-027 to CH-032)
+  - Updated: ralph/prd.json (marked US-018 as passes: true)
+- Corrections applied: 6 total (3 consistency, 3 punctuation)
+  - Consistency: Changed 'مرحبا' to 'مرحباً' (tanween) in code examples and comments
+  - Punctuation: Changed '!' to '.' in introductory explanatory sentences
+- No issues found in:
+  - content/lessons/loops/*.md (0 issues - confirmed in scanning phase US-003)
+  - content/lessons/methods/*.md (0 issues - confirmed in scanning phase US-004)
+- **Learnings for future iterations:**
+  - The control-flow intro pattern "هنا يأتي دور X!" consistently needs changing to periods
+  - The ternary.md file has two punctuation issues (intro line and comparison statement)
+  - The arrays.md mixed array example uses "مرحبا" without tanween
+  - The ranges-enumerables.md has tanween issues in the string slicing example (both code and comment)
+  - Loops and methods directories are clean - no grammar issues found during scanning
+
+---
+
 ## 2026-01-26 - US-017
 - What was implemented: Applied grammar corrections to all 4 fundamentals lesson files
 - Files changed:
