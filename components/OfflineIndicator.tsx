@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 export function OfflineIndicator() {
   const [isOffline, setIsOffline] = useState(false);
   const [showBanner, setShowBanner] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     // Check initial state
@@ -14,12 +15,24 @@ export function OfflineIndicator() {
       setIsOffline(false);
       // Show "back online" briefly
       setShowBanner(true);
-      setTimeout(() => setShowBanner(false), 3000);
+      // Clear any existing timer
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+      }
+      timerRef.current = setTimeout(() => {
+        timerRef.current = null;
+        setShowBanner(false);
+      }, 3000);
     };
 
     const handleOffline = () => {
       setIsOffline(true);
       setShowBanner(true);
+      // Clear auto-hide timer if going offline
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+        timerRef.current = null;
+      }
     };
 
     window.addEventListener("online", handleOnline);
@@ -28,6 +41,11 @@ export function OfflineIndicator() {
     return () => {
       window.removeEventListener("online", handleOnline);
       window.removeEventListener("offline", handleOffline);
+      // Clear timer on unmount
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+        timerRef.current = null;
+      }
     };
   }, []);
 

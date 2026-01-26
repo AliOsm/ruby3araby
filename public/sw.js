@@ -1,7 +1,7 @@
 // Ruby3araby Service Worker
 // Provides offline functionality and caching for the PWA
 
-const CACHE_VERSION = 'v3';
+const CACHE_VERSION = 'v4';
 const STATIC_CACHE = `ruby3araby-static-${CACHE_VERSION}`;
 const PAGES_CACHE = `ruby3araby-pages-${CACHE_VERSION}`;
 const FONTS_CACHE = `ruby3araby-fonts-${CACHE_VERSION}`;
@@ -74,8 +74,8 @@ self.addEventListener('install', (event) => {
       );
     })()
   );
-  // Activate immediately
-  self.skipWaiting();
+  // Don't call skipWaiting() here - let the user control when to update
+  // via the "Update available" banner in PWAProvider
 });
 
 // Activate event - clean up old caches

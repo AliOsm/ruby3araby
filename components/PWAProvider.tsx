@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { registerServiceWorker, skipWaitingAndReload } from "@/lib/sw-register";
 import { OfflineIndicator } from "./OfflineIndicator";
 import { InstallPrompt } from "./InstallPrompt";
@@ -9,12 +9,16 @@ export function PWAProvider({ children }: { children: React.ReactNode }) {
   const [updateAvailable, setUpdateAvailable] = useState(false);
   const [registration, setRegistration] =
     useState<ServiceWorkerRegistration | null>(null);
+  const cleanupRef = useRef<(() => void) | null>(null);
 
   useEffect(() => {
     // Register service worker
     registerServiceWorker().then((result) => {
       if (result.success && result.registration) {
         setRegistration(result.registration);
+        if (result.cleanup) {
+          cleanupRef.current = result.cleanup;
+        }
       }
     });
 
@@ -28,6 +32,10 @@ export function PWAProvider({ children }: { children: React.ReactNode }) {
 
     return () => {
       window.removeEventListener("swUpdate", handleUpdate as EventListener);
+      // Clean up the update interval
+      if (cleanupRef.current) {
+        cleanupRef.current();
+      }
     };
   }, []);
 
@@ -67,6 +75,25 @@ export function PWAProvider({ children }: { children: React.ReactNode }) {
             className="px-3 py-1.5 bg-blue-700 hover:bg-blue-600 rounded text-sm font-medium transition-colors"
           >
             تحديث
+          </button>
+          <button
+            onClick={() => setUpdateAvailable(false)}
+            className="p-1 hover:bg-white/10 rounded transition-colors"
+            aria-label="إغلاق"
+          >
+            <svg
+              className="w-4 h-4"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
           </button>
         </div>
       )}

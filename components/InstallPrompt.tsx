@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 interface BeforeInstallPromptEvent extends Event {
   prompt: () => Promise<void>;
@@ -13,12 +13,22 @@ const DISMISS_DURATION = 7 * 24 * 60 * 60 * 1000; // 7 days
 // Track if prompt was shown this session (prevents repeated showing on navigation)
 let shownThisSession = false;
 
+// Helper to check if dismissed recently
+function isDismissedRecently(): boolean {
+  const dismissedAt = localStorage.getItem(STORAGE_KEY);
+  return !!(
+    dismissedAt &&
+    Date.now() - parseInt(dismissedAt) < DISMISS_DURATION
+  );
+}
+
 export function InstallPrompt() {
   const [deferredPrompt, setDeferredPrompt] =
     useState<BeforeInstallPromptEvent | null>(null);
   const [showPrompt, setShowPrompt] = useState(false);
   const [showIOSGuide, setShowIOSGuide] = useState(false);
   const [isInstalled, setIsInstalled] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     // Check if already installed
@@ -33,8 +43,7 @@ export function InstallPrompt() {
     }
 
     // Check if dismissed recently
-    const dismissedAt = localStorage.getItem(STORAGE_KEY);
-    if (dismissedAt && Date.now() - parseInt(dismissedAt) < DISMISS_DURATION) {
+    if (isDismissedRecently()) {
       return;
     }
 
@@ -45,22 +54,34 @@ export function InstallPrompt() {
 
     if (isIOS) {
       // Show iOS guide after delay
-      const timer = setTimeout(() => {
-        shownThisSession = true;
-        setShowIOSGuide(true);
+      timerRef.current = setTimeout(() => {
+        // Double-check dismissal before showing (in case user dismissed on another page)
+        if (!isDismissedRecently()) {
+          shownThisSession = true;
+          setShowIOSGuide(true);
+        }
       }, 30000); // 30 seconds
-      return () => clearTimeout(timer);
+      return () => {
+        if (timerRef.current) {
+          clearTimeout(timerRef.current);
+          timerRef.current = null;
+        }
+      };
     }
 
     // Handle beforeinstallprompt for Chrome/Edge/Android
     const handleBeforeInstallPrompt = (e: Event) => {
       e.preventDefault();
       setDeferredPrompt(e as BeforeInstallPromptEvent);
-      // Show prompt after delay (only if not shown this session)
-      if (!shownThisSession) {
-        setTimeout(() => {
-          shownThisSession = true;
-          setShowPrompt(true);
+      // Show prompt after delay (only if not shown this session and no pending timer)
+      if (!shownThisSession && !timerRef.current) {
+        timerRef.current = setTimeout(() => {
+          timerRef.current = null;
+          // Double-check dismissal before showing (in case user dismissed on another page)
+          if (!isDismissedRecently()) {
+            shownThisSession = true;
+            setShowPrompt(true);
+          }
         }, 30000); // 30 seconds
       }
     };
@@ -77,6 +98,11 @@ export function InstallPrompt() {
     window.addEventListener("appinstalled", handleAppInstalled);
 
     return () => {
+      // Clear any pending timer
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+        timerRef.current = null;
+      }
       window.removeEventListener(
         "beforeinstallprompt",
         handleBeforeInstallPrompt
