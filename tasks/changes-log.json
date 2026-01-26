@@ -1,0 +1,156 @@
+{
+  "changes": [
+    {
+      "id": "CH-001",
+      "issueId": "GI-001",
+      "file": "content/lessons/getting-started/what-is-ruby.md",
+      "line": 70,
+      "before": "\"مرحبا\".length",
+      "after": "\"مرحباً\".length",
+      "category": "consistency",
+      "storyId": "US-016"
+    },
+    {
+      "id": "CH-002",
+      "issueId": "GI-012",
+      "file": "content/lessons/getting-started/what-is-ruby.md",
+      "line": 30,
+      "before": "هذه الشيفرة تطبع \"مرحباً!\" خمس مرات - واضح وبسيط!",
+      "after": "هذه الشيفرة تطبع \"مرحباً!\" خمس مرات - واضح وبسيط.",
+      "category": "punctuation",
+      "storyId": "US-016"
+    },
+    {
+      "id": "CH-003",
+      "issueId": "GI-002",
+      "file": "content/lessons/getting-started/hello-world.md",
+      "line": 1,
+      "before": "# مرحبا بالعالم",
+      "after": "# مرحباً بالعالم",
+      "category": "consistency",
+      "storyId": "US-016"
+    },
+    {
+      "id": "CH-004",
+      "issueId": "GI-003",
+      "file": "content/lessons/getting-started/hello-world.md",
+      "line": 3,
+      "before": "برنامج \"مرحبا بالعالم\"",
+      "after": "برنامج \"مرحباً بالعالم\"",
+      "category": "consistency",
+      "storyId": "US-016"
+    },
+    {
+      "id": "CH-005",
+      "issueId": "GI-004",
+      "file": "content/lessons/getting-started/hello-world.md",
+      "line": 71,
+      "before": "مرحبا بالعالم",
+      "after": "مرحباً بالعالم",
+      "category": "consistency",
+      "storyId": "US-016",
+      "note": "Expected output section - exercise requires corresponding update in course.json"
+    },
+    {
+      "id": "CH-006",
+      "issueId": "GI-005",
+      "file": "content/lessons/getting-started/hello-world.md",
+      "line": 78,
+      "before": "مرحبا بالعالم",
+      "after": "مرحباً بالعالم",
+      "category": "consistency",
+      "storyId": "US-016",
+      "note": "Expected output section - exercise requires corresponding update in course.json"
+    },
+    {
+      "id": "CH-007",
+      "issueId": "GI-006",
+      "file": "content/lessons/getting-started/comments.md",
+      "line": 19,
+      "before": "puts \"مرحبا\"",
+      "after": "puts \"مرحباً\"",
+      "category": "consistency",
+      "storyId": "US-016"
+    },
+    {
+      "id": "CH-008",
+      "issueId": null,
+      "file": "content/lessons/getting-started/comments.md",
+      "line": 24,
+      "before": "مرحبا",
+      "after": "مرحباً",
+      "category": "consistency",
+      "storyId": "US-016",
+      "note": "Output must match the updated code example"
+    },
+    {
+      "id": "CH-009",
+      "issueId": "GI-007",
+      "file": "content/lessons/getting-started/output-methods.md",
+      "line": 78,
+      "before": "p \"مرحبا\"",
+      "after": "p \"مرحباً\"",
+      "category": "consistency",
+      "storyId": "US-016"
+    },
+    {
+      "id": "CH-010",
+      "issueId": "GI-008",
+      "file": "content/lessons/getting-started/output-methods.md",
+      "line": 79,
+      "before": "puts \"مرحبا\"",
+      "after": "puts \"مرحباً\"",
+      "category": "consistency",
+      "storyId": "US-016"
+    },
+    {
+      "id": "CH-011",
+      "issueId": "GI-009",
+      "file": "content/lessons/getting-started/output-methods.md",
+      "line": 84,
+      "before": "\"مرحبا\"",
+      "after": "\"مرحباً\"",
+      "category": "consistency",
+      "storyId": "US-016"
+    },
+    {
+      "id": "CH-012",
+      "issueId": "GI-010",
+      "file": "content/lessons/getting-started/output-methods.md",
+      "line": 85,
+      "before": "مرحبا",
+      "after": "مرحباً",
+      "category": "consistency",
+      "storyId": "US-016"
+    },
+    {
+      "id": "CH-013",
+      "issueId": "GI-011",
+      "file": "content/lessons/getting-started/output-methods.md",
+      "line": 88,
+      "before": "لاحظ أن `p` يُظهر علامات الاقتباس، بينما `puts` لا يُظهرها!",
+      "after": "لاحظ أن `p` يُظهر علامات الاقتباس، بينما `puts` لا يُظهرها.",
+      "category": "punctuation",
+      "storyId": "US-016"
+    }
+  ],
+  "summary": {
+    "totalChanges": 13,
+    "filesModified": 4,
+    "byCategory": {
+      "consistency": 11,
+      "punctuation": 2
+    },
+    "byFile": {
+      "content/lessons/getting-started/what-is-ruby.md": 2,
+      "content/lessons/getting-started/hello-world.md": 4,
+      "content/lessons/getting-started/comments.md": 2,
+      "content/lessons/getting-started/output-methods.md": 5
+    }
+  },
+  "metadata": {
+    "createdAt": "2026-01-26",
+    "lastUpdated": "2026-01-26",
+    "completedStories": ["US-016"]
+  }
+}
