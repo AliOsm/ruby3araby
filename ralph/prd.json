@@ -1,0 +1,398 @@
+{
+  "project": "Ruby3araby",
+  "branchName": "ralph/content-proofreading",
+  "description": "Content Proofreading & Editing - Validate and fix Arabic grammar, verify translations against authoritative sources, and standardize terminology across all course content",
+  "userStories": [
+    {
+      "id": "US-001",
+      "title": "Scan getting-started lesson files for grammar issues",
+      "description": "As a content maintainer, I want to scan the 4 getting-started lesson markdown files for Arabic grammar issues.",
+      "acceptanceCriteria": [
+        "Read files in content/lessons/getting-started/*.md (4 files)",
+        "Identify spelling and grammatical errors in Arabic text",
+        "Skip code blocks from grammar checking",
+        "Append findings to tasks/grammar-issues.json with file path, line number, original text, issue, and suggested fix",
+        "Typecheck passes"
+      ],
+      "priority": 1,
+      "passes": true,
+      "notes": "Found 12 issues: 10 consistency issues (tanween usage), 2 punctuation issues"
+    },
+    {
+      "id": "US-002",
+      "title": "Scan fundamentals lesson files for grammar issues",
+      "description": "As a content maintainer, I want to scan the 11 fundamentals lesson markdown files for Arabic grammar issues.",
+      "acceptanceCriteria": [
+        "Read files in content/lessons/fundamentals/*.md (11 files)",
+        "Identify spelling and grammatical errors in Arabic text",
+        "Skip code blocks from grammar checking",
+        "Append findings to tasks/grammar-issues.json with file path, line number, original text, issue, and suggested fix",
+        "Typecheck passes"
+      ],
+      "priority": 2,
+      "passes": true,
+      "notes": "Found 13 new issues: 6 consistency issues (tanween usage), 7 punctuation issues"
+    },
+    {
+      "id": "US-003",
+      "title": "Scan control-flow and loops lesson files for grammar issues",
+      "description": "As a content maintainer, I want to scan the control-flow (3 files) and loops (2 files) lesson markdown files for Arabic grammar issues.",
+      "acceptanceCriteria": [
+        "Read files in content/lessons/control-flow/*.md and content/lessons/loops/*.md (5 files total)",
+        "Identify spelling and grammatical errors in Arabic text",
+        "Skip code blocks from grammar checking",
+        "Append findings to tasks/grammar-issues.json with file path, line number, original text, issue, and suggested fix",
+        "Typecheck passes"
+      ],
+      "priority": 3,
+      "passes": true,
+      "notes": "Found 3 new issues: 0 consistency issues, 3 punctuation issues (exclamation marks in intro text)"
+    },
+    {
+      "id": "US-004",
+      "title": "Scan collections and methods lesson files for grammar issues",
+      "description": "As a content maintainer, I want to scan the collections (4 files) and methods (2 files) lesson markdown files for Arabic grammar issues.",
+      "acceptanceCriteria": [
+        "Read files in content/lessons/collections/*.md and content/lessons/methods/*.md (6 files total)",
+        "Identify spelling and grammatical errors in Arabic text",
+        "Skip code blocks from grammar checking",
+        "Append findings to tasks/grammar-issues.json with file path, line number, original text, issue, and suggested fix",
+        "Typecheck passes"
+      ],
+      "priority": 4,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-005",
+      "title": "Scan blocks and oop lesson files for grammar issues",
+      "description": "As a content maintainer, I want to scan the blocks (3 files) and oop (3 files) lesson markdown files for Arabic grammar issues.",
+      "acceptanceCriteria": [
+        "Read files in content/lessons/blocks/*.md and content/lessons/oop/*.md (6 files total)",
+        "Identify spelling and grammatical errors in Arabic text",
+        "Skip code blocks from grammar checking",
+        "Append findings to tasks/grammar-issues.json with file path, line number, original text, issue, and suggested fix",
+        "Typecheck passes"
+      ],
+      "priority": 5,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-006",
+      "title": "Scan modules, errors, and challenges lesson files for grammar issues",
+      "description": "As a content maintainer, I want to scan the modules (1 file), errors (1 file), and challenges (3 files) lesson markdown files for Arabic grammar issues.",
+      "acceptanceCriteria": [
+        "Read files in content/lessons/modules/*.md, content/lessons/errors/*.md, and content/lessons/challenges/*.md (5 files total)",
+        "Identify spelling and grammatical errors in Arabic text",
+        "Skip code blocks from grammar checking",
+        "Append findings to tasks/grammar-issues.json with file path, line number, original text, issue, and suggested fix",
+        "Typecheck passes"
+      ],
+      "priority": 6,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-007",
+      "title": "Scan glossary.json for grammar issues",
+      "description": "As a content maintainer, I want to validate all 60+ glossary entries for grammatical correctness.",
+      "acceptanceCriteria": [
+        "Read content/glossary.json",
+        "Check each arabic field for spelling/grammar",
+        "Check each definition field for spelling/grammar",
+        "Append findings to tasks/grammar-issues.json with term ID, field, original text, issue, and suggested fix",
+        "Typecheck passes"
+      ],
+      "priority": 7,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-008",
+      "title": "Scan course.json for grammar issues",
+      "description": "As a content maintainer, I want to validate all text in course.json including section titles, lesson titles, and exercise content.",
+      "acceptanceCriteria": [
+        "Read public/course.json",
+        "Check section and lesson title fields",
+        "Check exercise starterCode comments (lines starting with #)",
+        "Check exercise hints arrays and expectedOutput for Arabic text",
+        "Append findings to tasks/grammar-issues.json with path, field, original text, issue, and suggested fix",
+        "Typecheck passes"
+      ],
+      "priority": 8,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-009",
+      "title": "Scan UI components for grammar issues",
+      "description": "As a content maintainer, I want to validate Arabic text in the 11 component files.",
+      "acceptanceCriteria": [
+        "Scan all .tsx files in components/ directory (11 files)",
+        "Extract Arabic text from JSX string literals",
+        "Check extracted text for spelling/grammar issues",
+        "Append findings to tasks/grammar-issues.json with file path, line number, original text, issue, and suggested fix",
+        "Typecheck passes"
+      ],
+      "priority": 9,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-010",
+      "title": "Scan app pages for grammar issues",
+      "description": "As a content maintainer, I want to validate Arabic text in the 9 app page files.",
+      "acceptanceCriteria": [
+        "Scan all .tsx files in app/ directory (9 files)",
+        "Extract Arabic text from JSX string literals",
+        "Check extracted text for spelling/grammar issues",
+        "Append findings to tasks/grammar-issues.json with file path, line number, original text, issue, and suggested fix",
+        "Typecheck passes"
+      ],
+      "priority": 10,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-011",
+      "title": "Verify first 20 glossary terms against online resources",
+      "description": "As a content maintainer, I want to verify the first 20 glossary term translations against Hsoub Academy and Arabic Wikipedia.",
+      "acceptanceCriteria": [
+        "Read first 20 terms from content/glossary.json (algorithm through index)",
+        "For each term, search Hsoub Academy and Arabic Wikipedia",
+        "Compare course translation with found translations",
+        "Append findings to tasks/translation-issues.json with term ID, current translation, suggested translation, and source URLs",
+        "Typecheck passes"
+      ],
+      "priority": 11,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-012",
+      "title": "Verify second 20 glossary terms against online resources",
+      "description": "As a content maintainer, I want to verify glossary terms 21-40 against Hsoub Academy and Arabic Wikipedia.",
+      "acceptanceCriteria": [
+        "Read terms 21-40 from content/glossary.json (inheritance through proc)",
+        "For each term, search Hsoub Academy and Arabic Wikipedia",
+        "Compare course translation with found translations",
+        "Append findings to tasks/translation-issues.json with term ID, current translation, suggested translation, and source URLs",
+        "Typecheck passes"
+      ],
+      "priority": 12,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-013",
+      "title": "Verify remaining glossary terms against online resources",
+      "description": "As a content maintainer, I want to verify the remaining glossary terms (41+) against Hsoub Academy and Arabic Wikipedia.",
+      "acceptanceCriteria": [
+        "Read remaining terms from content/glossary.json (puts through yield)",
+        "For each term, search Hsoub Academy and Arabic Wikipedia",
+        "Compare course translation with found translations",
+        "Append findings to tasks/translation-issues.json with term ID, current translation, suggested translation, and source URLs",
+        "Typecheck passes"
+      ],
+      "priority": 13,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-014",
+      "title": "Detect terminology inconsistencies across content",
+      "description": "As a content maintainer, I want to find cases where the same English programming term is translated differently in different places.",
+      "acceptanceCriteria": [
+        "Build a map of English term to Arabic translations from glossary.json",
+        "Scan lesson markdown files for these programming terms",
+        "Identify terms with multiple different Arabic translations",
+        "Write findings to tasks/terminology-inconsistencies.json with term, variants, and locations",
+        "Typecheck passes"
+      ],
+      "priority": 14,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-015",
+      "title": "Generate comprehensive proofreading report",
+      "description": "As a content maintainer, I want a single report file listing all issues found.",
+      "acceptanceCriteria": [
+        "Read tasks/grammar-issues.json, tasks/translation-issues.json, and tasks/terminology-inconsistencies.json",
+        "Generate report at tasks/proofreading-report.md",
+        "Include summary statistics at the top",
+        "Organize by category: Grammar Issues, Translation Issues, Inconsistencies",
+        "Within each category, group by file/source",
+        "Typecheck passes"
+      ],
+      "priority": 15,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-016",
+      "title": "Fix grammar issues in getting-started lessons",
+      "description": "As a content maintainer, I want to apply grammar corrections to the getting-started lesson files.",
+      "acceptanceCriteria": [
+        "Read grammar issues for content/lessons/getting-started/*.md from tasks/grammar-issues.json",
+        "Apply each correction while preserving markdown formatting and code blocks",
+        "Log corrections to tasks/changes-log.json",
+        "Typecheck passes"
+      ],
+      "priority": 16,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-017",
+      "title": "Fix grammar issues in fundamentals lessons",
+      "description": "As a content maintainer, I want to apply grammar corrections to the fundamentals lesson files.",
+      "acceptanceCriteria": [
+        "Read grammar issues for content/lessons/fundamentals/*.md from tasks/grammar-issues.json",
+        "Apply each correction while preserving markdown formatting and code blocks",
+        "Log corrections to tasks/changes-log.json",
+        "Typecheck passes"
+      ],
+      "priority": 17,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-018",
+      "title": "Fix grammar issues in control-flow, loops, collections, and methods lessons",
+      "description": "As a content maintainer, I want to apply grammar corrections to control-flow, loops, collections, and methods lesson files.",
+      "acceptanceCriteria": [
+        "Read grammar issues for these directories from tasks/grammar-issues.json",
+        "Apply each correction while preserving markdown formatting and code blocks",
+        "Log corrections to tasks/changes-log.json",
+        "Typecheck passes"
+      ],
+      "priority": 18,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-019",
+      "title": "Fix grammar issues in blocks, oop, modules, errors, and challenges lessons",
+      "description": "As a content maintainer, I want to apply grammar corrections to blocks, oop, modules, errors, and challenges lesson files.",
+      "acceptanceCriteria": [
+        "Read grammar issues for these directories from tasks/grammar-issues.json",
+        "Apply each correction while preserving markdown formatting and code blocks",
+        "Log corrections to tasks/changes-log.json",
+        "Typecheck passes"
+      ],
+      "priority": 19,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-020",
+      "title": "Fix grammar issues in glossary.json",
+      "description": "As a content maintainer, I want to apply grammar corrections to glossary terms and definitions.",
+      "acceptanceCriteria": [
+        "Read grammar issues for glossary from tasks/grammar-issues.json",
+        "Update content/glossary.json with corrected text",
+        "Maintain valid JSON structure",
+        "Log corrections to tasks/changes-log.json",
+        "Typecheck passes"
+      ],
+      "priority": 20,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-021",
+      "title": "Fix grammar issues in course.json",
+      "description": "As a content maintainer, I want to apply grammar corrections to course.json content.",
+      "acceptanceCriteria": [
+        "Read grammar issues for course.json from tasks/grammar-issues.json",
+        "Update public/course.json with corrected text",
+        "Maintain valid JSON structure",
+        "Log corrections to tasks/changes-log.json",
+        "Typecheck passes"
+      ],
+      "priority": 21,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-022",
+      "title": "Fix grammar issues in UI components and app pages",
+      "description": "As a content maintainer, I want to apply grammar corrections to Arabic text in React components and pages.",
+      "acceptanceCriteria": [
+        "Read grammar issues for components/ and app/ from tasks/grammar-issues.json",
+        "Apply corrections while preserving JSX syntax",
+        "Maintain proper string escaping",
+        "Log corrections to tasks/changes-log.json",
+        "Typecheck passes"
+      ],
+      "priority": 22,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-023",
+      "title": "Update glossary with verified translations",
+      "description": "As a content maintainer, I want to update glossary terms with verified translations from authoritative sources.",
+      "acceptanceCriteria": [
+        "Read translation issues from tasks/translation-issues.json",
+        "For terms with better translations, update content/glossary.json",
+        "Maintain valid JSON structure",
+        "Log updates to tasks/changes-log.json",
+        "Typecheck passes"
+      ],
+      "priority": 23,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-024",
+      "title": "Standardize terminology across lesson files",
+      "description": "As a content maintainer, I want to replace inconsistent terminology in lesson files with the standardized translation.",
+      "acceptanceCriteria": [
+        "Read terminology inconsistencies from tasks/terminology-inconsistencies.json",
+        "For each inconsistency, use the glossary term as canonical translation",
+        "Replace variants in content/lessons/**/*.md",
+        "Skip replacements inside code blocks",
+        "Log replacements to tasks/changes-log.json",
+        "Typecheck passes"
+      ],
+      "priority": 24,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-025",
+      "title": "Standardize terminology in course.json and UI files",
+      "description": "As a content maintainer, I want to replace inconsistent terminology in course.json and UI files with the standardized translation.",
+      "acceptanceCriteria": [
+        "Read terminology inconsistencies from tasks/terminology-inconsistencies.json",
+        "Replace variants in public/course.json (titles, hints, comments)",
+        "Replace variants in components/ and app/ .tsx files",
+        "Maintain valid JSON and JSX syntax",
+        "Log replacements to tasks/changes-log.json",
+        "Typecheck passes"
+      ],
+      "priority": 25,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-026",
+      "title": "Generate editing summary report",
+      "description": "As a content maintainer, I want a summary of all changes made so that I can review the edits applied.",
+      "acceptanceCriteria": [
+        "Read tasks/changes-log.json",
+        "Generate report at tasks/proofreading-changes.md",
+        "Organize by file with list of changes",
+        "Include total counts: files modified, corrections applied, terms standardized",
+        "Include before/after for each change",
+        "Typecheck passes"
+      ],
+      "priority": 26,
+      "passes": false,
+      "notes": ""
+    }
+  ]
+}

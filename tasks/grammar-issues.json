@@ -226,13 +226,40 @@
       "issue": "استخدام علامة تعجب في نهاية جملة توضيحية داخل كود",
       "suggestion": "puts \"القاموس الفارغ صادق في روبي.\"",
       "category": "punctuation"
+    },
+    {
+      "id": "GI-026",
+      "file": "content/lessons/control-flow/case-when.md",
+      "line": 3,
+      "original": "هنا يأتي دور `case/when`!",
+      "issue": "استخدام علامة تعجب في نهاية جملة توضيحية",
+      "suggestion": "هنا يأتي دور `case/when`.",
+      "category": "punctuation"
+    },
+    {
+      "id": "GI-027",
+      "file": "content/lessons/control-flow/ternary.md",
+      "line": 3,
+      "original": "هنا يأتي دور **العامل الثلاثي** (Ternary Operator)!",
+      "issue": "استخدام علامة تعجب في نهاية جملة توضيحية",
+      "suggestion": "هنا يأتي دور **العامل الثلاثي** (Ternary Operator).",
+      "category": "punctuation"
+    },
+    {
+      "id": "GI-028",
+      "file": "content/lessons/control-flow/ternary.md",
+      "line": 37,
+      "original": "كلا الطريقتين تعطي نفس النتيجة، لكن العامل الثلاثي أقصر بكثير!",
+      "issue": "استخدام علامة تعجب في نهاية جملة توضيحية",
+      "suggestion": "كلا الطريقتين تعطي نفس النتيجة، لكن العامل الثلاثي أقصر بكثير.",
+      "category": "punctuation"
     }
   ],
   "summary": {
-    "totalIssues": 25,
+    "totalIssues": 28,
     "byCategory": {
       "consistency": 16,
-      "punctuation": 9
+      "punctuation": 12
     },
     "byFile": {
       "content/lessons/getting-started/what-is-ruby.md": 2,
@@ -242,7 +269,9 @@
       "content/lessons/fundamentals/variables-types.md": 3,
       "content/lessons/fundamentals/string-methods.md": 3,
       "content/lessons/fundamentals/bang-predicate.md": 2,
-      "content/lessons/fundamentals/truthiness.md": 5
+      "content/lessons/fundamentals/truthiness.md": 5,
+      "content/lessons/control-flow/case-when.md": 1,
+      "content/lessons/control-flow/ternary.md": 2
     }
   },
   "metadata": {
@@ -262,8 +291,13 @@
       "content/lessons/fundamentals/bang-predicate.md",
       "content/lessons/fundamentals/user-input.md",
       "content/lessons/fundamentals/type-conversion.md",
-      "content/lessons/fundamentals/multiple-assignment.md"
+      "content/lessons/fundamentals/multiple-assignment.md",
+      "content/lessons/control-flow/conditionals.md",
+      "content/lessons/control-flow/case-when.md",
+      "content/lessons/control-flow/ternary.md",
+      "content/lessons/loops/while-until.md",
+      "content/lessons/loops/for-control.md"
     ],
-    "storyId": "US-002"
+    "storyId": "US-003"
   }
 }

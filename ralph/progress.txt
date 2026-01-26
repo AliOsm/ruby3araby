@@ -1,0 +1,79 @@
+## Codebase Patterns
+- Grammar issues are tracked in tasks/grammar-issues.json with structured JSON format
+- Each issue has: id, file, line, original, issue (Arabic description), suggestion, category
+- Categories include: consistency, punctuation, spelling, grammar
+- The summary section tracks totals by category and file
+- Arabic content should use consistent tanween (التنوين) - prefer "مرحباً" over "مرحبا"
+- Exclamation marks in intro paragraphs (e.g., "هنا يأتي دور X!") should be periods
+- Exclamation marks are acceptable in: warnings, tips/reminders, code output (e.g., "انطلق!"), greetings
+
+---
+
+## 2026-01-26 - US-003
+- What was implemented: Scanned 3 control-flow and 2 loops lesson markdown files for Arabic grammar issues
+- Files changed:
+  - Updated: tasks/grammar-issues.json (added 3 new issues, GI-026 to GI-028)
+- Findings: 3 new issues identified (total now 28)
+  - 0 consistency issues (tanween usage is correct in these files)
+  - 3 punctuation issues (exclamation marks in explanatory intro text)
+- Files scanned:
+  - content/lessons/control-flow/conditionals.md (0 issues)
+  - content/lessons/control-flow/case-when.md (1 issue)
+  - content/lessons/control-flow/ternary.md (2 issues)
+  - content/lessons/loops/while-until.md (0 issues)
+  - content/lessons/loops/for-control.md (0 issues)
+- **Learnings for future iterations:**
+  - Control-flow and loops sections have good tanween consistency (no issues found)
+  - Intro paragraphs tend to use exclamation marks like "هنا يأتي دور X!" - these should be periods
+  - Exclamation marks in code output (e.g., "انطلق!" in countdowns) are contextually appropriate
+  - Exclamation marks in warnings, tips, and error comments are acceptable
+  - The conditionals.md file is very clean with no grammar issues
+
+---
+
+## 2026-01-26 - US-002
+- What was implemented: Scanned 11 fundamentals lesson markdown files for Arabic grammar issues
+- Files changed:
+  - Updated: tasks/grammar-issues.json (added 13 new issues, GI-013 to GI-025)
+- Findings: 13 new issues identified (total now 25)
+  - 6 consistency issues (tanween usage - مرحبا vs مرحباً)
+  - 7 punctuation issues (exclamation marks in explanatory text)
+- Files scanned:
+  - content/lessons/fundamentals/variables-types.md (3 issues)
+  - content/lessons/fundamentals/string-interpolation.md (0 issues)
+  - content/lessons/fundamentals/operators.md (0 issues)
+  - content/lessons/fundamentals/boolean-logic.md (0 issues)
+  - content/lessons/fundamentals/truthiness.md (5 issues)
+  - content/lessons/fundamentals/constants-symbols.md (0 issues)
+  - content/lessons/fundamentals/string-methods.md (3 issues)
+  - content/lessons/fundamentals/bang-predicate.md (2 issues)
+  - content/lessons/fundamentals/user-input.md (0 issues)
+  - content/lessons/fundamentals/type-conversion.md (0 issues)
+  - content/lessons/fundamentals/multiple-assignment.md (0 issues)
+- **Learnings for future iterations:**
+  - The fundamentals section has better tanween consistency than getting-started
+  - truthiness.md has multiple exclamation marks in puts statements inside code blocks
+  - Some files like string-interpolation.md, operators.md, boolean-logic.md are clean
+  - Code block comments (# comment) should also be checked for consistency
+
+---
+
+## 2026-01-26 - US-001
+- What was implemented: Scanned 4 getting-started lesson markdown files for Arabic grammar issues
+- Files changed:
+  - Created: tasks/grammar-issues.json
+- Findings: 12 issues identified
+  - 10 consistency issues (tanween usage - مرحبا vs مرحباً)
+  - 2 punctuation issues (exclamation marks in explanatory text)
+- Files scanned:
+  - content/lessons/getting-started/what-is-ruby.md (2 issues)
+  - content/lessons/getting-started/hello-world.md (4 issues)
+  - content/lessons/getting-started/output-methods.md (5 issues)
+  - content/lessons/getting-started/comments.md (1 issue)
+- **Learnings for future iterations:**
+  - The codebase uses "مرحباً" with tanween as the preferred form in most places
+  - When scanning for issues, skip code blocks (```ruby ... ```) but DO check inline code within Arabic text
+  - Exercise expected outputs need special attention - changing them affects test validation
+  - The JSON structure in grammar-issues.json should include metadata about scan date and story ID
+
+---
