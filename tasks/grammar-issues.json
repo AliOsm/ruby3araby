@@ -280,12 +280,39 @@
       "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين في التعليق",
       "suggestion": "# مرحباً",
       "category": "consistency"
+    },
+    {
+      "id": "GI-032",
+      "file": "content/lessons/blocks/block-syntax.md",
+      "line": 120,
+      "original": "\"مرحبا\".each_char { |char| puts char }",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين",
+      "suggestion": "\"مرحباً\".each_char { |char| puts char }",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-033",
+      "file": "content/lessons/oop/classes-objects.md",
+      "line": 29,
+      "original": "puts \"مرحبا\".class    # String",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين",
+      "suggestion": "puts \"مرحباً\".class    # String",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-034",
+      "file": "content/lessons/oop/classes-objects.md",
+      "line": 30,
+      "original": "puts \"مرحبا\".length   # 5",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين",
+      "suggestion": "puts \"مرحباً\".length   # 5",
+      "category": "consistency"
     }
   ],
   "summary": {
-    "totalIssues": 31,
+    "totalIssues": 34,
     "byCategory": {
-      "consistency": 19,
+      "consistency": 22,
       "punctuation": 12
     },
     "byFile": {
@@ -300,7 +327,9 @@
       "content/lessons/control-flow/case-when.md": 1,
       "content/lessons/control-flow/ternary.md": 2,
       "content/lessons/collections/arrays.md": 1,
-      "content/lessons/collections/ranges-enumerables.md": 2
+      "content/lessons/collections/ranges-enumerables.md": 2,
+      "content/lessons/blocks/block-syntax.md": 1,
+      "content/lessons/oop/classes-objects.md": 2
     }
   },
   "metadata": {
@@ -331,8 +360,14 @@
       "content/lessons/collections/hashes.md",
       "content/lessons/collections/ranges-enumerables.md",
       "content/lessons/methods/defining-methods.md",
-      "content/lessons/methods/returns-splat.md"
+      "content/lessons/methods/returns-splat.md",
+      "content/lessons/blocks/block-syntax.md",
+      "content/lessons/blocks/yield.md",
+      "content/lessons/blocks/procs-lambdas.md",
+      "content/lessons/oop/classes-objects.md",
+      "content/lessons/oop/initialize-accessors.md",
+      "content/lessons/oop/inheritance.md"
     ],
-    "storyId": "US-004"
+    "storyId": "US-005"
   }
 }

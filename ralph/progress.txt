@@ -1,4 +1,34 @@
 ## Codebase Patterns
+- The blocks section (yield.md, procs-lambdas.md) has excellent tanween consistency
+- The oop section (initialize-accessors.md, inheritance.md) is very clean with no grammar issues
+- The block-syntax.md file has issues in the each_char example section
+
+---
+
+## 2026-01-26 - US-005
+- What was implemented: Scanned 3 blocks and 3 oop lesson markdown files for Arabic grammar issues
+- Files changed:
+  - Updated: tasks/grammar-issues.json (added 3 new issues, GI-032 to GI-034)
+  - Updated: ralph/prd.json (marked US-005 as passes: true)
+- Findings: 3 new issues identified (total now 34)
+  - 3 consistency issues (tanween usage - مرحبا vs مرحباً)
+  - 0 punctuation issues
+- Files scanned:
+  - content/lessons/blocks/block-syntax.md (1 issue)
+  - content/lessons/blocks/yield.md (0 issues)
+  - content/lessons/blocks/procs-lambdas.md (0 issues)
+  - content/lessons/oop/classes-objects.md (2 issues)
+  - content/lessons/oop/initialize-accessors.md (0 issues)
+  - content/lessons/oop/inheritance.md (0 issues)
+- **Learnings for future iterations:**
+  - The blocks section (yield.md, procs-lambdas.md) has excellent tanween consistency - uses "مرحباً" correctly throughout
+  - The oop section files (initialize-accessors.md, inheritance.md) are very clean with no issues
+  - The classes-objects.md file has issues in the "everything is an object" demonstration section (line 29-30)
+  - The block-syntax.md issue is in the each_char iteration example
+
+---
+
+
 - Grammar issues are tracked in tasks/grammar-issues.json with structured JSON format
 - Each issue has: id, file, line, original, issue (Arabic description), suggestion, category
 - Categories include: consistency, punctuation, spelling, grammar
@@ -6,6 +36,29 @@
 - Arabic content should use consistent tanween (التنوين) - prefer "مرحباً" over "مرحبا"
 - Exclamation marks in intro paragraphs (e.g., "هنا يأتي دور X!") should be periods
 - Exclamation marks are acceptable in: warnings, tips/reminders, code output (e.g., "انطلق!"), greetings
+- Methods section files (defining-methods.md, returns-splat.md) have excellent tanween consistency
+
+---
+
+## 2026-01-26 - US-004
+- What was implemented: Scanned 4 collections and 2 methods lesson markdown files for Arabic grammar issues
+- Files changed:
+  - Updated: tasks/grammar-issues.json (added 3 new issues, GI-029 to GI-031)
+- Findings: 3 new issues identified (total now 31)
+  - 3 consistency issues (tanween usage - مرحبا vs مرحباً)
+  - 0 punctuation issues
+- Files scanned:
+  - content/lessons/collections/arrays.md (1 issue)
+  - content/lessons/collections/array-methods.md (0 issues)
+  - content/lessons/collections/hashes.md (0 issues)
+  - content/lessons/collections/ranges-enumerables.md (2 issues)
+  - content/lessons/methods/defining-methods.md (0 issues)
+  - content/lessons/methods/returns-splat.md (0 issues)
+- **Learnings for future iterations:**
+  - The methods section has excellent tanween consistency - all instances use "مرحباً" correctly
+  - Exclamation marks in greetings (e.g., "مرحباً أحمد!") are appropriate and should NOT be flagged
+  - Collections section array-methods.md and hashes.md are very clean
+  - The ranges-enumerables.md has issues in the string slicing example section
 
 ---
 

@@ -60,8 +60,8 @@
         "Typecheck passes"
       ],
       "priority": 4,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Found 3 new issues: 3 consistency issues (tanween usage), 0 punctuation issues. Methods lesson files have good tanween consistency."
     },
     {
       "id": "US-005",
@@ -75,8 +75,8 @@
         "Typecheck passes"
       ],
       "priority": 5,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Found 3 new issues: 3 consistency issues (tanween usage), 0 punctuation issues. yield.md, procs-lambdas.md, initialize-accessors.md, and inheritance.md are clean."
     },
     {
       "id": "US-006",
