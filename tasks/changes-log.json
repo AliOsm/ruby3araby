@@ -508,14 +508,59 @@
       "after": "puts \"مرحباً بالعالم!\"",
       "category": "consistency",
       "storyId": "US-022"
+    },
+    {
+      "id": "CH-051",
+      "issueId": "TI-mixin-1",
+      "file": "content/lessons/modules/modules-mixins.md",
+      "line": 1,
+      "before": "# الوحدات والخلط (Modules and Mixins)",
+      "after": "# الوحدات والمزيج (Modules and Mixins)",
+      "category": "terminology-standardization",
+      "storyId": "US-024",
+      "note": "Standardized to glossary term 'مزيج' for Mixin"
+    },
+    {
+      "id": "CH-052",
+      "issueId": "TI-mixin-2",
+      "file": "content/lessons/modules/modules-mixins.md",
+      "line": 30,
+      "before": "2. **الخلط (Mixins)**: مشاركة سلوكيات بين أصناف مختلفة",
+      "after": "2. **المزيج (Mixins)**: مشاركة سلوكيات بين أصناف مختلفة",
+      "category": "terminology-standardization",
+      "storyId": "US-024",
+      "note": "Standardized to glossary term 'مزيج' for Mixin"
+    },
+    {
+      "id": "CH-053",
+      "issueId": "TI-mixin-3",
+      "file": "content/lessons/modules/modules-mixins.md",
+      "line": 117,
+      "before": "## الاستخدام الثاني: الخلط (Mixins)",
+      "after": "## الاستخدام الثاني: المزيج (Mixins)",
+      "category": "terminology-standardization",
+      "storyId": "US-024",
+      "note": "Standardized to glossary term 'مزيج' for Mixin"
+    },
+    {
+      "id": "CH-054",
+      "issueId": "TI-mixin-4",
+      "file": "content/lessons/modules/modules-mixins.md",
+      "line": 119,
+      "before": "الخلط هو **القوة الحقيقية** للوحدات!",
+      "after": "المزيج هو **القوة الحقيقية** للوحدات!",
+      "category": "terminology-standardization",
+      "storyId": "US-024",
+      "note": "Standardized to glossary term 'مزيج' for Mixin"
     }
   ],
   "summary": {
-    "totalChanges": 50,
+    "totalChanges": 54,
     "filesModified": 22,
     "byCategory": {
       "consistency": 34,
-      "punctuation": 16
+      "punctuation": 16,
+      "terminology-standardization": 4
     },
     "byFile": {
       "content/lessons/getting-started/what-is-ruby.md": 2,
@@ -545,7 +590,7 @@
   "metadata": {
     "createdAt": "2026-01-26",
     "lastUpdated": "2026-01-26",
-    "completedStories": ["US-016", "US-017", "US-018", "US-019", "US-020", "US-021", "US-022", "US-023"]
+    "completedStories": ["US-016", "US-017", "US-018", "US-019", "US-020", "US-021", "US-022", "US-023", "US-024"]
   },
   "translationVerification": {
     "storyId": "US-023",

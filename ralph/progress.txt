@@ -1,3 +1,46 @@
+## 2026-01-26 - US-024
+- What was implemented: Standardized terminology across lesson files, replacing inconsistent Arabic translations with glossary canonical terms
+- Files changed:
+  - content/lessons/modules/modules-mixins.md (4 terminology fixes: الخلط → المزيج)
+  - tasks/changes-log.json (added CH-051 through CH-054, updated summary)
+  - ralph/prd.json (marked US-024 as passes: true)
+- Corrections applied: 4 total (all terminology-standardization)
+  - Line 1: Title changed from "الوحدات والخلط" to "الوحدات والمزيج"
+  - Line 30: List item changed from "الخلط (Mixins)" to "المزيج (Mixins)"
+  - Line 117: Section header changed from "الخلط (Mixins)" to "المزيج (Mixins)"
+  - Line 119: Body text changed from "الخلط هو" to "المزيج هو"
+- Analysis of other inconsistencies:
+  - Block (كتلة vs كتلة برمجية): Acceptable variation - longer form is more descriptive for educational content
+  - Constructor/Initialize (مُنشئ vs المُهيّئ): Conceptual overlap - Ruby uses 'initialize' as constructor, lesson terminology is accurate
+  - Range/Scope (نطاق): Inherent ambiguity - both concepts translate to same word, context clarifies meaning
+  - Accessor (جالب/مُعيِّن vs موصّلات): Acceptable - lessons use collective term 'موصّلات' consistently
+- **Learnings for future iterations:**
+  - The terminology-inconsistencies.json categorizes issues as "isActualInconsistency: true/false" - only true ones need changes
+  - Mixin was the only actual inconsistency requiring lesson file changes - glossary uses 'مزيج', lessons used 'الخلط'
+  - The definite article form 'المزيج' is used in Arabic sentences where grammatically appropriate
+  - English technical terms (Mixin, Namespacing) are kept in code comments and tables as reference
+  - Other identified variations are acceptable for educational purposes or require glossary updates instead
+---
+
+## 2026-01-26 - US-023
+- What was implemented: Reviewed translation verification results and determined glossary updates needed
+- Files changed:
+  - tasks/changes-log.json (added translationVerification section documenting review and decisions)
+  - ralph/prd.json (marked US-023 as passes: true)
+- Findings: No glossary updates required
+  - 67 terms verified against authoritative Arabic programming resources
+  - 0 translation issues requiring changes
+  - 2 suggestions noted but marked as "acceptable" for beginner course:
+    - hash: "قاموس" kept (user-friendly alternative to technical "جدول تجزئة")
+    - method: "دالة" kept (simplifies terminology vs "تابع" distinction)
+- **Learnings for future iterations:**
+  - Translation verification (US-011 through US-013) confirmed all glossary translations are accurate
+  - The "acceptable" suggestions in translation-issues.json don't require action - they note alternatives for reference
+  - For beginner-focused courses, simpler terminology is often preferable to more technically precise alternatives
+  - The changes-log.json now documents both grammar corrections AND translation verification decisions
+  - This story validates the glossary quality rather than making changes
+---
+
 ## 2026-01-26 - US-022
 - What was implemented: Applied grammar corrections to UI components and app pages (6 issues: 5 tanween, 1 punctuation)
 - Files changed:
