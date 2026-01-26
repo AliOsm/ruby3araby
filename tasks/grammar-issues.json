@@ -396,13 +396,31 @@
       "issue": "استخدام علامة تعجب في نهاية جملة توضيحية في التلميح",
       "suggestion": "الصفر والنص الفارغ والمصفوفة الفارغة كلها صادقة.",
       "category": "punctuation"
+    },
+    {
+      "id": "GI-044",
+      "file": "components/CodePlayground.tsx",
+      "line": 92,
+      "original": "puts \"مرحبا بالعالم!\"",
+      "issue": "الكلمة 'مرحبا' مكتوبة بدون ألف التنوين في الشيفرة الافتراضية",
+      "suggestion": "puts \"مرحباً بالعالم!\"",
+      "category": "consistency"
+    },
+    {
+      "id": "GI-045",
+      "file": "components/CodeEditor.tsx",
+      "line": 63,
+      "original": "...جارٍ تحميل المحرر",
+      "issue": "النقاط الثلاث في بداية النص غير تقليدية في العربية - الأفضل وضعها في النهاية",
+      "suggestion": "جارٍ تحميل المحرر...",
+      "category": "punctuation"
     }
   ],
   "summary": {
-    "totalIssues": 43,
+    "totalIssues": 45,
     "byCategory": {
-      "consistency": 27,
-      "punctuation": 16
+      "consistency": 28,
+      "punctuation": 17
     },
     "byFile": {
       "content/lessons/getting-started/what-is-ruby.md": 2,
@@ -422,7 +440,9 @@
       "content/lessons/modules/modules-mixins.md": 1,
       "content/lessons/errors/error-handling.md": 1,
       "content/glossary.json": 1,
-      "public/course.json": 6
+      "public/course.json": 6,
+      "components/CodePlayground.tsx": 1,
+      "components/CodeEditor.tsx": 1
     }
   },
   "metadata": {
@@ -466,8 +486,19 @@
       "content/lessons/challenges/calculator.md",
       "content/lessons/challenges/guessing-game.md",
       "content/glossary.json",
-      "public/course.json"
+      "public/course.json",
+      "components/MobileMenuButton.tsx",
+      "components/ThemeToggle.tsx",
+      "components/Tooltip.tsx",
+      "components/LessonActions.tsx",
+      "components/CodeBlock.tsx",
+      "components/Sidebar.tsx",
+      "components/InstallPrompt.tsx",
+      "components/PWAProvider.tsx",
+      "components/OfflineIndicator.tsx",
+      "components/CodeEditor.tsx",
+      "components/CodePlayground.tsx"
     ],
-    "storyId": "US-008"
+    "storyId": "US-009"
   }
 }
