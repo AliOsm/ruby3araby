@@ -735,10 +735,10 @@ export default function CodePlayground({
               </svg>
             </div>
             <div>
-              <h3 className="text-lg font-bold text-green-400">
+              <h3 className="text-lg font-bold text-green-700 dark:text-green-400">
                 🎉 أحسنت! إجابة صحيحة
               </h3>
-              <p className="text-sm text-green-300">
+              <p className="text-sm text-green-600 dark:text-green-300">
                 لقد حللت التمرين بنجاح. استمر في التعلم!
               </p>
             </div>
@@ -769,10 +769,10 @@ export default function CodePlayground({
                 </svg>
               </div>
               <div>
-                <h3 className="text-lg font-bold text-orange-400">
+                <h3 className="text-lg font-bold text-orange-700 dark:text-orange-400">
                   حاول مرة أخرى
                 </h3>
-                <p className="text-sm text-orange-300">
+                <p className="text-sm text-orange-600 dark:text-orange-300">
                   الإجابة ليست صحيحة بعد. راجع الشيفرة وحاول مجدداً.
                 </p>
               </div>
@@ -785,7 +785,7 @@ export default function CodePlayground({
               className="rounded-lg border border-blue-500/50 bg-blue-500/10 p-4"
               dir="rtl"
             >
-              <div className="mb-2 flex items-center gap-2 text-blue-400">
+              <div className="mb-2 flex items-center gap-2 text-blue-700 dark:text-blue-400">
                 <svg
                   className="h-5 w-5"
                   fill="none"
@@ -803,11 +803,11 @@ export default function CodePlayground({
                   تلميح {validation.hintIndex + 1} من {hints.length}:
                 </span>
               </div>
-              <p className="text-sm text-blue-300">
+              <p className="text-sm text-blue-600 dark:text-blue-300">
                 {hints[validation.hintIndex]}
               </p>
               {validation.hintIndex < hints.length - 1 && (
-                <p className="mt-2 text-xs text-blue-400/70">
+                <p className="mt-2 text-xs text-blue-500 dark:text-blue-400/70">
                   💡 حاول مرة أخرى للحصول على تلميح إضافي
                 </p>
               )}
@@ -822,7 +822,7 @@ export default function CodePlayground({
               </h4>
               <div className="grid gap-3 md:grid-cols-2">
                 <div>
-                  <div className="mb-2 text-xs font-medium text-red-400">
+                  <div className="mb-2 text-xs font-medium text-red-600 dark:text-red-400">
                     المخرجات الفعلية:
                   </div>
                   <pre
@@ -833,7 +833,7 @@ export default function CodePlayground({
                   </pre>
                 </div>
                 <div>
-                  <div className="mb-2 text-xs font-medium text-green-400">
+                  <div className="mb-2 text-xs font-medium text-green-600 dark:text-green-400">
                     المخرجات المتوقعة:
                   </div>
                   <pre
