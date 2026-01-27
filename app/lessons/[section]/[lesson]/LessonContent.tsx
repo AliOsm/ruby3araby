@@ -28,7 +28,7 @@ const markdownComponents = {
   ),
   // Paragraphs with proper Arabic spacing
   p: ({ children }: { children?: React.ReactNode }) => (
-    <p className="text-foreground/90 leading-relaxed mb-4">{children}</p>
+    <p className="text-foreground/90 leading-relaxed mb-1">{children}</p>
   ),
   // Lists with RTL support
   ul: ({ children }: { children?: React.ReactNode }) => (

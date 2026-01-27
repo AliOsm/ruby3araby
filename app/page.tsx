@@ -139,7 +139,7 @@ export default function Home() {
             {/* Progress indicator if user has some progress */}
             {completedCount > 0 && (
               <div className="mt-8 text-sm text-foreground/60">
-                أكملت {completedCount} من {totalLessons} درس
+                أكملت {completedCount} من {totalLessons} درساً
               </div>
             )}
           </div>
@@ -166,7 +166,7 @@ export default function Home() {
                 </p>
                 <p>
                   تُستخدم روبي على نطاق واسع في تطوير الويب من خلال إطار العمل
-                  الشهير Rails، وكذلك في الأتمتة وكتابة السكربتات وتحليل البيانات.
+                  الشهير <a className="text-ruby-primary hover:text-ruby-secondary underline" href="https://rubyonrails.org/" target="_blank" rel="noopener noreferrer">Rails</a>، وكذلك في الأتمتة وكتابة السكربتات وتحليل البيانات.
                 </p>
               </div>
 
@@ -279,7 +279,7 @@ export default function Home() {
                     <span>المخرجات</span>
                   </div>
                   <pre
-                    dir="ltr"
+                    dir="rtl"
                     className="font-mono text-sm leading-relaxed text-ruby-accent"
                   >
                     {previewOutput}
