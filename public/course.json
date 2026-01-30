@@ -94,7 +94,7 @@
             "expectedOutput": "مصر\n100000000\nactive\narabic",
             "hints": [
               "الثوابت تُكتب بحروف كبيرة: COUNTRY = \"مصر\"",
-              "الأرقام الكبيرة تُكتب بدون علامات اقتباس: POPULATION = 100000000",
+              "الأرقام تُكتب بدون علامات اقتباس: POPULATION = 100000000",
               "الرموز تبدأ بنقطتين: status = :active",
               "لطباعة الرموز استخدم puts مباشرة: puts status",
               "الحل الكامل: COUNTRY = \"مصر\" ثم POPULATION = 100000000 ثم status = :active ثم language = :arabic ثم اطبع كل واحد"
